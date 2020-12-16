@@ -1,0 +1,163 @@
+@extends('commons.template')
+
+
+@section('conteudo')
+   
+    <div class="row">
+        <div class="col com-md-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Processos</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                         <div class="col col-md-11"></div>
+                         <div class="col col-md-1">
+                             <center><button data-toggle="modal" data-target="#modalInserir" class="btn btn-circle btn-success"><i class="fa fa-plus"></i></button></center>
+                         </div>
+                    </div>
+                     <table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Descrição</th>
+                        <th class='center'>Bpmn</th>
+												<th class='center'>Img</th>
+												<th class='center'>Editar</th>
+												<th class='center'>Excluir</th>
+											</tr>
+										</thead>
+										<tbody>
+											@foreach ($processos as $item)
+											<tr>
+                          <td>{{$item->descricao }}</td>
+                          <td>{{$item->img}}</td>
+                           <td>
+                              
+                              <center><button 
+                                  data-toggle="modal" 
+                                  data-target="#modalEditar" 
+                                  onclick="mostrarModal(event)"
+                                  data-item-id={{$item->id}}
+                                  data-item-descricao='{{$item->descricao}}'
+                                  class="btn btn-sm btn-info"><i class="fa fa-file-code-o"></i></button></center>
+                          </td>
+                           <td>
+                              
+                              <center><button 
+                                  data-toggle="modal" 
+                                  data-target="#modalEditar" 
+                                  onclick="mostrarModal(event)"
+                                  data-item-id={{$item->id}}
+                                  data-item-descricao='{{$item->descricao}}'
+                                  class="btn btn-sm btn-info"><i class="fa fa-file-image-o"></i></button></center>
+                          </td>
+                          <td>
+                              
+                              <center><button 
+                                  data-toggle="modal" 
+                                  data-target="#modalEditar" 
+                                  onclick="mostrarModal(event)"
+                                  data-item-id={{$item->id}}
+                                  data-item-descricao='{{$item->descricao}}'
+                                  class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
+                          </td>
+                          <td>
+                            <form action="/processos" method="post">
+                              @csrf
+                              @method('delete')
+                              <input type="hidden" name="id" value={{$item->id}}>
+                              
+                              <center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
+                            </form>
+                          </td>
+											</tr>
+											@endforeach
+										</tbody>
+									</table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="modalInserir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Inserir</h4>
+      </div>
+      <div class="modal-body">
+          <form action="/processos" method="post" enctype="multipart/form-data">
+              @csrf
+          <div class="row">
+              <div class="col col-md-12">
+                  <label>Descrição</label>
+                  <input type="text" name='descricao' class='form-control'>
+              </div>
+          </div><br>
+          <div class="row">
+              <div class="col col-md-6">
+                  <label>BPMN</label>
+                  <input type="file" name='bpmn' class='form-control'>
+              </div>
+              <div class="col col-md-6">
+                  <label>IMG</label>
+                  <input type="file" name='img' class='form-control'>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Inserir</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+   <!-- Modal -->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+              <form action="/processos" method="post">
+              @csrf
+              @method('put')
+               <input type="hidden" id='item-id' name='id' class='form-control'>
+              <div class="col col-md-6">
+                  <label>Setor</label>
+                 
+                   <input type="text" id='item-descricao' name='descricao' class='form-control'>
+              </div>
+              <div class="col col-md-6">
+                  <label>Pasta</label>
+                  <input type="text" id='item-pasta' name='pasta' class='form-control'>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-warning">Editar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+@push('scripts')
+    <script>
+         function mostrarModal(event) {
+                const button = event.currentTarget
+                const pasta = document.querySelector("#modalEditar #item-pasta")
+                const descricao = document.querySelector("#modalEditar #item-descricao")
+                const id = document.querySelector("#modalEditar #item-id")
+
+                pasta.value = button.getAttribute("data-item-pasta")
+                descricao.value = button.getAttribute("data-item-descricao")
+                id.value = button.getAttribute("data-item-id")
+            }
+    </script>
+@endpush
+@endsection
