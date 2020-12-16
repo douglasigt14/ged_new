@@ -15,8 +15,27 @@ class Processos extends BaseController
     public function index() {
         $processos = DB::select("SELECT * FROM processos");
         for ($i=0; $i < sizeof($processos); $i++) { 
+             $img_temp = $processos[$i]->img;
+             $bpmn_temp = $processos[$i]->bpmn;
              $processos[$i]->img = Storage::url($processos[$i]->img); 
              $processos[$i]->bpmn = Storage::url($processos[$i]->bpmn); 
+
+            $xml = Storage::disk('public')->exists( $bpmn_temp ) ? Storage::disk('public')->get($bpmn_temp) : NULL;
+           
+            // dd(gettype($xml));
+            $simple = $xml;
+            $p = xml_parser_create();
+            xml_parse_into_struct($p, $simple, $vals, $index);
+            xml_parser_free($p);
+            foreach ($vals as $key => $value) {
+               if($value['level']== 3 and ($value['type']== 'open' or $value['type']== 'complete') ){
+                var_dump($value);
+               }
+            }
+            // dd($XML);
+            // $random = collect(json_decode(json_encode((array) simplexml_load_string($XML)), true));
+
+
         }
         return view('processos', compact(["processos"]));
     }

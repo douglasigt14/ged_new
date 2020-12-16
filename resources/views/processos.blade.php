@@ -179,6 +179,7 @@
           <div class="row">
              <div class="col col-md-12">
                    <input id='item-bpmn'>
+                   <source id="item-bpmn" srcset="" type="text/xml">
              </div>
           </div>
       </div>
@@ -213,12 +214,12 @@
             }
             
 
-             function mostrarModalImg(event) {
+             function mostrarModalBpmn(event) {
                
                 const button = event.currentTarget
                 const bpmn = document.querySelector("#modalBpmn #item-bpmn")
 
-                bpmn.value = button.getAttribute("data-item-bpmn")
+                bpmn.srcset = button.getAttribute("data-item-bpmn")
             }
 
     </script>
