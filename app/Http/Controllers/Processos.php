@@ -14,7 +14,10 @@ class Processos extends BaseController
 {
     public function index() {
         $processos = DB::select("SELECT * FROM processos");
-
+        for ($i=0; $i < sizeof($processos); $i++) { 
+             $processos[$i]->img = Storage::url($processos[$i]->img); 
+             $processos[$i]->bpmn = Storage::url($processos[$i]->bpmn); 
+        }
         return view('processos', compact(["processos"]));
     }
     public function inserir(Request $request){
@@ -29,9 +32,9 @@ class Processos extends BaseController
             'bpmn' => NULL,
             'img' => NULL
         ]);
-
-        $url_img = $img->store('images/'.$ultimo_id ,'public') ?? NULL;    
-        $url_bpmn = $bpmn->store('images/'.$ultimo_id ,'public') ?? NULL;   
+        
+        $url_img = $img ? $img->store('images/'.$ultimo_id ,'public') : NULL;    
+        $url_bpmn = $bpmn ? $bpmn->store('images/'.$ultimo_id ,'public'): NULL;   
 
          DB::table('processos')
               ->where('id', $ultimo_id)
