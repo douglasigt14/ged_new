@@ -19,16 +19,27 @@ class Processos extends BaseController
     }
     public function inserir(Request $request){
         $dados = (object) $request->all();
-        $images =  $request->file('img');
-        //dd($images);
-     
-        $url = $images->store('images' ,'public');     
-           dd($url);
-        DB::table('processos')->insert([
+        $img =  $request->file('img');
+        $bpmn =  $request->file('bpmn');
+
+          
+
+       $ultimo_id =  DB::table('processos')->insertGetId([
             'descricao' => $dados->descricao,
-            'bpmn' => $dados->bpmn,
-            'img' => $dados->img
+            'bpmn' => NULL,
+            'img' => NULL
         ]);
+
+        $url_img = $img->store('images/'.$ultimo_id ,'public') ?? NULL;    
+        $url_bpmn = $bpmn->store('images/'.$ultimo_id ,'public') ?? NULL;   
+
+         DB::table('processos')
+              ->where('id', $ultimo_id)
+              ->update([
+                    'bpmn' =>  $url_bpmn,
+                    'img' =>  $url_img
+                ]);
+
         return back();
     }
     public function deletar(Request $request){
