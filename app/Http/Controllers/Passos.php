@@ -23,14 +23,14 @@ class Passos extends BaseController
                                         LEFT JOIN passos_processo pp_para ON
                                         	pp_princial.para = pp_para.id_bpmn
                                     WHERE pp_princial.processo_id = $processo_id 
-                                      AND pp_princial.tipo = 'BPMN:SEQUENCEFLOW' ");
+                                      AND pp_princial.tipo LIKE '%SEQUENCEFLOW%' ");
         
         $passos_processo = DB::select("SELECT 
                                             pp_princial.*
                                       FROM 
                                         passos_processo pp_princial
                                     WHERE pp_princial.processo_id = $processo_id 
-                                      AND pp_princial.tipo <> 'BPMN:SEQUENCEFLOW' ");
+                                      AND pp_princial.tipo NOT LIKE '%SEQUENCEFLOW%' ");
 
         for ($i=0; $i < sizeof($passos_processo_fluxo); $i++) { 
             $passos_processo_fluxo[$i]->tipo = 'SEQUENCIA DO FLUXO';

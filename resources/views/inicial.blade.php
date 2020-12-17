@@ -50,6 +50,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
+									@if($lista_arquivos)
+									<h3>Arquivos no Setor de Compras</h3>
                                     <table class="table table-striped">
 										<thead>
 											<tr>
@@ -77,6 +79,37 @@
 										</tbody>
 									</table>
 									<br><br><br>
+									@endif
+									@if($lista_arquivos_geral)
+									<h3>Arquivos sem processo atribuido</h3>
+                                    <table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Arquivo</th>
+												<th>Setor Anterior</th>
+												<th>Setor Atual</th>
+												<th class='center'>Caminho</th>
+												<th class='center'>Status</th>
+												<th class='center'>Ação</th>
+											</tr>
+										</thead>
+										<tbody>
+											@foreach ($lista_arquivos_geral as $item)
+											<tr>
+											    <td>
+													{!! $item['descricao'] !!}
+												</td>
+												<td>{!! $item['setor_anterior'] !!}</td>
+												<td>{!! $item['setor_atual'] !!}</td>
+												<td>{{$item['caminho']}}</td>
+												<td>{!! $item['status'] !!}</td>
+												<td><center><a href='file:///C:/activity.txt' class="btn btn-sm btn-primary"><i class="fa fa-bars"></i></a></center></td>
+											</tr>
+											@endforeach
+										</tbody>
+									</table>
+									<br><br>
+									@endif
                                 </div>
                             </div>
                         </div>
