@@ -15,11 +15,13 @@ class Dashboard extends BaseController
         $usuario = DB::select("SELECT 
                                     usuarios.*
                                     ,setores.pasta
+                                    ,setores.descricao setor
                                 FROM usuarios INNER JOIN setores ON 
                                     usuarios.setor_id = setores.id 
                             WHERE 
                                 usuarios.id = $id_usuario");
         $path = $usuario[0]->pasta;
+        $setor = $usuario[0]->setor;
 
         $path_geral = "\\\srv-arquivos\GED\GERAL";
        
@@ -40,7 +42,7 @@ class Dashboard extends BaseController
 
         $processos = DB::select("SELECT * FROM processos");
 
-       return view('inicial', compact(["lista_arquivos","lista_arquivos_geral","qtde_setores","qtde_funcionarios","qtde_processos","processos"]));
+       return view('inicial', compact(["lista_arquivos","lista_arquivos_geral","qtde_setores","qtde_funcionarios","qtde_processos","processos","setor"]));
     }
 
    private  function read_dir($dir) {

@@ -22,6 +22,7 @@ use App\Http\Controllers\Passos;
 */
 Route::middleware(MyAuth::class)->group(function () {
     Route::get('/', [Dashboard::class, 'index']);
+   
 
 
     Route::get('/setores', [Setores::class, 'index']);
@@ -40,6 +41,8 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::post('/processos', [Processos::class, 'inserir']);
     Route::delete('/processos', [Processos::class, 'deletar']);
     Route::put('/processos', [Processos::class, 'editar']);
+    
+    Route::get('/atribuir_processo/{documento_id}', [Processos::class, 'atribuir_processo']);
 
     Route::get('/passos_processo/{processo_id}', [Passos::class, 'index']);
 

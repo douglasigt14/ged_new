@@ -7,7 +7,7 @@
                     <!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title">Gerenciamento Eletronico de Documentos</h3>
+							<h3 class="panel-title">Gerenciamento Eletronico de Documentos - {{$setor}}</h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -86,11 +86,10 @@
 										<thead>
 											<tr>
 												<th>Arquivo</th>
-												<th>Setor Anterior</th>
-												<th>Setor Atual</th>
 												<th class='center'>Caminho</th>
+												<th class='center'>Selecionar</th>
 												<th class='center'>Status</th>
-												<th class='center'>Ação</th>
+												<th class='center'>Salvar</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -99,11 +98,15 @@
 											    <td>
 													{!! $item['descricao'] !!}
 												</td>
-												<td>{!! $item['setor_anterior'] !!}</td>
-												<td>{!! $item['setor_atual'] !!}</td>
 												<td>{{$item['caminho']}}</td>
+												<td><select name="" class="form-control">
+														<option></option>
+														@foreach ($processos as $processo)
+															<option>{{$processo->descricao}}</option>
+														@endforeach
+													</select></td>
 												<td>{!! $item['status'] !!}</td>
-												<td><center><a href='file:///C:/activity.txt' class="btn btn-sm btn-primary"><i class="fa fa-bars"></i></a></center></td>
+												<td><center><button class="btn btn-sm btn-primary"><i class="fa fa-save"></i></button></center></td>
 											</tr>
 											@endforeach
 										</tbody>
