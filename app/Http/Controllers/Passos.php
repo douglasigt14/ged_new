@@ -12,9 +12,18 @@ use DB;
 class Passos extends BaseController
 {
     public function index($processo_id = null) {
-       $passos_processo = DB::select("SELECT * FROM passos_processo WHERE processo_id = $processo_id");
-       dd($passos_processo);
-       return view('passos_processo', compact(["passos_processo"]));
+       $passos_processo_fluxo = DB::select("SELECT 
+                                            pp_princial.*
+                                           ,pp_de.nome nome_de
+                                           ,pp_para.nome nome_para
+                                      FROM 
+                                        passos_processo pp_princial LEFT JOIN passos_processo pp_de ON 
+                                            pp_princial.de = pp_de.id_bpmn 
+                                        LEFT JOIN passos_processo pp_para ON
+                                        	pp_princial.para = pp_para.id_bpmn
+                                    WHERE pp_princial.processo_id = 22
+                                      AND pp_princial.tipo = 'BPMN:SEQUENCEFLOW' ");
+       return view('passos_processo', compact(["passos_processo_fluxo"]));
     }
     public function inserir(Request $request){
         $dados = (object) $request->all();

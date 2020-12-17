@@ -16,40 +16,23 @@
                              <center><button data-toggle="modal" data-target="#modalInserir" class="btn btn-circle btn-success"><i class="fa fa-plus"></i></button></center>
                          </div>
                     </div>
+                    <h4>Fluxo</h4>
                      <table class="table table-striped">
 										<thead>
 											<tr>
-												<th>Setor</th>
-												<th>Pasta</th>
-												<th class='center'>Editar</th>
-												<th class='center'>Excluir</th>
+												<th>Tipo</th>
+                        <th>Nome</th>
+                        <th>De</th>
+                        <th>Para</th>
 											</tr>
 										</thead>
 										<tbody>
-											@foreach ($setores as $item)
+											@foreach ($passos_processo_fluxo as $item)
 											<tr>
-											    <td>{{$item->descricao }}</td>
-												<td>{{$item->pasta }}</td>
-                                                <td>
-                                                    
-                                                    <center><button 
-                                                        data-toggle="modal" 
-                                                        data-target="#modalEditar" 
-                                                        onclick="mostrarModal(event)"
-                                                        data-item-id={{$item->id}}
-                                                        data-item-descricao='{{$item->descricao}}'
-                                                        data-item-pasta='{{$item->pasta}}'
-                                                        class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
-                                                </td>
-                                                <td>
-                                                  <form action="/setores" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <input type="hidden" name="id" value={{$item->id}}>
-                                                    
-                                                    <center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
-                                                  </form>
-                                                </td>
+                          <td>{{$item->tipo }}</td>
+											    <td>{{$item->nome }}</td>
+                          <td>{{$item->nome_de }}</td>
+											    <td>{{$item->nome_para }}</td>
 											</tr>
 											@endforeach
 										</tbody>
