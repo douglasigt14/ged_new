@@ -174,7 +174,7 @@
       <div class="modal-body">
           <div class="row">
              <div class="col col-md-12">
-                <textarea id="item-xml" class='form-control' name="story" rows="5" cols="33"> </textarea>    
+                <textarea id="item-xml" readonly='true' class='form-control' name="story" rows="5" cols="33"> </textarea>    
              </div>
           </div>
       </div>

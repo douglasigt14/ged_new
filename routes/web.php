@@ -8,6 +8,7 @@ use App\Http\Controllers\Setores;
 use App\Http\Controllers\Fluxos;
 use App\Http\Controllers\Funcionarios;
 use App\Http\Controllers\Processos;
+use App\Http\Controllers\Passos;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::post('/processos', [Processos::class, 'inserir']);
     Route::delete('/processos', [Processos::class, 'deletar']);
     Route::put('/processos', [Processos::class, 'editar']);
+
+    Route::get('/passos_processo/{processo_id}', [Passos::class, 'index']);
 
     Route::get('/desenho_fluxos', [Fluxos::class, 'index']);
     
