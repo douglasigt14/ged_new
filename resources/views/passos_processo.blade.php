@@ -11,32 +11,49 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                         <div class="col col-md-11"></div>
-                         <div class="col col-md-1">
-                             <center><button data-toggle="modal" data-target="#modalInserir" class="btn btn-circle btn-success"><i class="fa fa-plus"></i></button></center>
-                         </div>
-                    </div>
-                    <h4>Fluxo</h4>
-                     <table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Tipo</th>
-                        <th>Nome</th>
-                        <th>De</th>
-                        <th>Para</th>
-											</tr>
-										</thead>
-										<tbody>
-											@foreach ($passos_processo_fluxo as $item)
-											<tr>
-                          <td>{{$item->tipo }}</td>
-											    <td>{{$item->nome }}</td>
-                          <td>{{$item->nome_de }}</td>
-											    <td>{{$item->nome_para }}</td>
-											</tr>
-											@endforeach
-										</tbody>
-									</table>
+                          <div class="col col-md-6">
+                                <h4>Passos</h4>
+                                <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Tipo</th>
+                                    <th>Nome</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($passos_processo as $item)
+                                  <tr>
+                                      <td>{{$item->tipo }}</td>
+                                      <td>{{$item->nome }}</td>
+                                  </tr>
+                                  @endforeach
+                                </tbody>
+                              </table>
+                          </div>
+                         <div class="col col-md-6">
+                                <h4>Fluxo</h4>
+                                <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Tipo</th>
+                                    <th>Nome</th>
+                                    <th>De</th>
+                                    <th>Para</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($passos_processo_fluxo as $item)
+                                  <tr>
+                                      <td>{{$item->tipo }}</td>
+                                      <td>{{$item->nome }}</td>
+                                      <td>{{$item->nome_de }}</td>
+                                      <td>{{$item->nome_para }}</td>
+                                  </tr>
+                                  @endforeach
+                                </tbody>
+                              </table>
+                          </div>
+                        </div>
                 </div>
             </div>
         </div>

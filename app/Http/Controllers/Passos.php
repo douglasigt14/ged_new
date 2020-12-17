@@ -21,9 +21,16 @@ class Passos extends BaseController
                                             pp_princial.de = pp_de.id_bpmn 
                                         LEFT JOIN passos_processo pp_para ON
                                         	pp_princial.para = pp_para.id_bpmn
-                                    WHERE pp_princial.processo_id = 22
+                                    WHERE pp_princial.processo_id = $processo_id 
                                       AND pp_princial.tipo = 'BPMN:SEQUENCEFLOW' ");
-       return view('passos_processo', compact(["passos_processo_fluxo"]));
+        
+        $passos_processo = DB::select("SELECT 
+                                            pp_princial.*
+                                      FROM 
+                                        passos_processo pp_princial
+                                    WHERE pp_princial.processo_id = $processo_id 
+                                      AND pp_princial.tipo <> 'BPMN:SEQUENCEFLOW' ");
+       return view('passos_processo', compact(["passos_processo_fluxo","passos_processo"]));
     }
     public function inserir(Request $request){
         $dados = (object) $request->all();
