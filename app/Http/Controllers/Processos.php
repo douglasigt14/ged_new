@@ -78,11 +78,10 @@ class Processos extends BaseController
     }
     public function editar(Request $request){
          $dados = (object) $request->all();
-         DB::table('setores')
+         DB::table('processos')
               ->where('id', $dados->id)
               ->update([
                     'descricao' => $dados->descricao
-                   ,'pasta' => $dados->pasta
                     ]);
         return back();
     }

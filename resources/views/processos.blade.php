@@ -128,14 +128,10 @@
               @csrf
               @method('put')
                <input type="hidden" id='item-id' name='id' class='form-control'>
-              <div class="col col-md-6">
-                  <label>Setor</label>
+              <div class="col col-md-12">
+                  <label>Descrição</label>
                  
                    <input type="text" id='item-descricao' name='descricao' class='form-control'>
-              </div>
-              <div class="col col-md-6">
-                  <label>Pasta</label>
-                  <input type="text" id='item-pasta' name='pasta' class='form-control'>
               </div>
           </div>
       </div>
@@ -192,11 +188,9 @@
     <script>
          function mostrarModal(event) {
                 const button = event.currentTarget
-                const pasta = document.querySelector("#modalEditar #item-pasta")
                 const descricao = document.querySelector("#modalEditar #item-descricao")
                 const id = document.querySelector("#modalEditar #item-id")
 
-                pasta.value = button.getAttribute("data-item-pasta")
                 descricao.value = button.getAttribute("data-item-descricao")
                 id.value = button.getAttribute("data-item-id")
             }
