@@ -11,26 +11,8 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                          <div class="col col-md-6">
-                                <h4>Passos</h4>
-                                <table class="table table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>Tipo</th>
-                                    <th>Nome</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  @foreach ($passos_processo as $item)
-                                  <tr>
-                                      <td>{{$item->tipo }}</td>
-                                      <td>{{$item->nome }}</td>
-                                  </tr>
-                                  @endforeach
-                                </tbody>
-                              </table>
-                          </div>
-                         <div class="col col-md-6">
+                          
+                         <div class="col col-md-8">
                                 <h4>Fluxo</h4>
                                 <table class="table table-striped">
                                 <thead>
@@ -52,6 +34,32 @@
                                   @endforeach
                                 </tbody>
                               </table>
+                          </div>
+                          <div class="col col-md-4">
+                                <h4>Etapas</h4>
+                                <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Tipo</th>
+                                    <th>Nome</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($passos_processo as $item)
+                                  <tr>
+                                      <td>{{$item->tipo }}</td>
+                                      <td>{{$item->nome }}</td>
+                                  </tr>
+                                  @endforeach
+                                </tbody>
+                              </table>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col col-md-6"></div>
+                          <div class="col col-md-12">
+                            <source srcset="{{$img}}" type="image/svg+xml">
+                            <img src="{{$img}}" class="img-responsive center-block" alt="...">
                           </div>
                         </div>
                 </div>

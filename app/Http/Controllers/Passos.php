@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use DB;
 
 class Passos extends BaseController
@@ -30,7 +31,26 @@ class Passos extends BaseController
                                         passos_processo pp_princial
                                     WHERE pp_princial.processo_id = $processo_id 
                                       AND pp_princial.tipo <> 'BPMN:SEQUENCEFLOW' ");
-       return view('passos_processo', compact(["passos_processo_fluxo","passos_processo"]));
+
+        for ($i=0; $i < sizeof($passos_processo_fluxo); $i++) { 
+            $passos_processo_fluxo[$i]->tipo = 'SEQUENCIA DO FLUXO';
+        }
+        for ($i=0; $i < sizeof($passos_processo); $i++) { 
+            if($passos_processo[$i]->tipo == 'BPMN:STARTEVENT')
+                $passos_processo[$i]->tipo = 'EVENTO INICIAL';
+            else if($passos_processo[$i]->tipo == 'BPMN:TASK')
+                $passos_processo[$i]->tipo = 'SETOR';
+            else if($passos_processo[$i]->tipo == 'BPMN:EXCLUSIVEGATEWAY')
+                $passos_processo[$i]->tipo = 'DECISSÃO';
+            else if($passos_processo[$i]->tipo == 'BPMN:ENDEVENT')
+                $passos_processo[$i]->tipo = 'EVENTO FINAL';
+        }
+
+         $processos_img = DB::select("SELECT img FROM processos WHERE id = $processo_id ");
+         $img = $processos_img[0]->img ?? NULL;
+         $img  = Storage::url($img); 
+
+       return view('passos_processo', compact(["passos_processo_fluxo","passos_processo","img"]));
     }
     public function inserir(Request $request){
         $dados = (object) $request->all();

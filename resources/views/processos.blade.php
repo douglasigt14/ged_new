@@ -19,7 +19,8 @@
                      <table class="table table-striped">
 										<thead>
 											<tr>
-												<th>Descrição</th>
+                        <th>Descrição</th>
+                        <th class='center'>Fluxo</th>
                         <th class='center'>Bpmn</th>
 												<th class='center'>Img</th>
 												<th class='center'>Editar</th>
@@ -30,7 +31,10 @@
 											@foreach ($processos as $item)
 											<tr>
                           <td>{{$item->descricao }}</td>
-                            
+                            <td>
+                              
+                              <center><a  href='/passos_processo/{{$item->id}}' class="btn btn-sm btn-primary"><i class="fa fa-arrows-alt"></i></a></center>
+                          </td>
                            <td>
                               
                               <center><button 
