@@ -21,14 +21,23 @@ class Processos extends BaseController
              $processos[$i]->bpmn = Storage::url($processos[$i]->bpmn); 
 
             $xml = Storage::disk('public')->exists( $bpmn_temp ) ? Storage::disk('public')->get($bpmn_temp) : NULL;
-           
             $simple = $xml;
             $p = xml_parser_create();
             xml_parse_into_struct($p, $simple, $vals, $index);
             xml_parser_free($p);
             foreach ($vals as $key => $value) {
-               if($value['level']== 3 and ($value['type']== 'open' or $value['type']== 'complete') ){
-                 var_dump($value);
+               if($value['level']== 3 and ($value['type']== 'open' or $value['type']== 'complete') and $value['tag'] != 'BPMNDI:BPMNPLANE'){
+                 DB::table('passos_processo')->updateOrInsert([
+                    'tipo' => $value['tag'],
+                    'id_bpmn' =>  $value['attributes']['ID'],
+                    'nome' =>  $value['attributes']['NAME'] ?? NULL,
+                    'de' =>  $value['attributes']['SOURCEREF'] ?? NULL,
+                    'para' =>  $value['attributes']['TARGETREF'] ?? NULL,
+                    'processo_id' =>  $processos[$i]->id,
+                ],
+                   ['id_bpmn' => $value['attributes']['ID'] ]
+                );
+        
                }
             }
 
@@ -64,6 +73,7 @@ class Processos extends BaseController
     public function deletar(Request $request){
          $dados = (object) $request->all();
          DB::table('processos')->where('id', '=', $dados->id )->delete();
+         DB::table('passos_processo')->where('processo_id', '=', $dados->id )->delete();
         return back();
     }
     public function editar(Request $request){
