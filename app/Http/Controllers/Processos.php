@@ -22,20 +22,17 @@ class Processos extends BaseController
 
             $xml = Storage::disk('public')->exists( $bpmn_temp ) ? Storage::disk('public')->get($bpmn_temp) : NULL;
            
-            // dd(gettype($xml));
             $simple = $xml;
             $p = xml_parser_create();
             xml_parse_into_struct($p, $simple, $vals, $index);
             xml_parser_free($p);
             foreach ($vals as $key => $value) {
                if($value['level']== 3 and ($value['type']== 'open' or $value['type']== 'complete') ){
-                var_dump($value);
+                 var_dump($value);
                }
             }
-            // dd($XML);
-            // $random = collect(json_decode(json_encode((array) simplexml_load_string($XML)), true));
 
-
+            $processos[$i]->xml = $xml;
         }
         return view('processos', compact(["processos"]));
     }

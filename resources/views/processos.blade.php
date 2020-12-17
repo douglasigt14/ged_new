@@ -38,7 +38,7 @@
                                   data-target="#modalBpmn" 
                                   onclick="mostrarModalBpmn(event)"
                                   data-item-id={{$item->id}}
-                                  data-item-bpmn='{{$item->bpmn}}'
+                                  data-item-xml='{{$item->xml}}'
                                   class="btn btn-sm btn-info"><i class="fa fa-file-code-o"></i></button></center>
                           </td>
                            <td>
@@ -178,8 +178,7 @@
       <div class="modal-body">
           <div class="row">
              <div class="col col-md-12">
-                   <input id='item-bpmn'>
-                   <source id="item-bpmn" srcset="" type="text/xml">
+                <textarea id="item-xml" class='form-control' name="story" rows="5" cols="33"> </textarea>    
              </div>
           </div>
       </div>
@@ -217,9 +216,9 @@
              function mostrarModalBpmn(event) {
                
                 const button = event.currentTarget
-                const bpmn = document.querySelector("#modalBpmn #item-bpmn")
+                const xml = document.querySelector("#modalBpmn #item-xml")
 
-                bpmn.srcset = button.getAttribute("data-item-bpmn")
+                xml.innerHTML = button.getAttribute("data-item-xml")
             }
 
     </script>
