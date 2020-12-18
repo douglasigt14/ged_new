@@ -7,7 +7,7 @@
                     <!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title">Gerenciamento Eletronico de Documentos - {{$setor}}</h3>
+							<h3 class="panel-title">Gerenciamento Eletronico de Documentos - {{ucfirst($setor)}}</h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -51,7 +51,7 @@
                             <div class="row">
                                 <div class="col-md-12">
 									@if($lista_arquivos)
-									<h3>Arquivos no Setor de Compras</h3>
+									<h3>Arquivos no Setor de {{ucfirst($setor)}}</h3>
                                     <table class="table table-striped">
 										<thead>
 											<tr>
@@ -73,7 +73,16 @@
 												<td>{{ $item->setor_atual_id }}</td>
 												<td>{{ $item->caminho }}</td>
 												<td>{!! $item->status !!}</td>
-												<td><center><a href='file:///C:/activity.txt' class="btn btn-sm btn-primary"><i class="fa fa-bars"></i></a></center></td>
+												<form action="/seguir_fluxo" method="post">
+                             						 @csrf
+													  <input type="hidden" name="id" value="{{$item->id}}">
+													  <input type="hidden" name="caminho" value="{{$item->caminho}}">
+													  <input type="hidden" name="arquivo" value="{{$item->descricao}}">
+													  <input type="hidden" name="passo_processo_id" value="{{$item->passo_processo_id}}">
+													  <input type="hidden" name="processo_id" value="{{$item->processo_id}}">
+                        
+												<td><center><button class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center></td>
+												</form>
 											</tr>
 											@endforeach
 										</tbody>
@@ -105,16 +114,17 @@
 													  <input type="hidden" name="id" value="{{$item->id}}">
 													  <input type="hidden" name="caminho" value="{{$item->caminho}}">
 													  <input type="hidden" name="arquivo" value="{{$item->descricao}}">
+													  <input type="hidden" name="passo_processo_id" value="0">
                               
                             
-													<select name="processo_id" class="form-control">
+													<select name="processo_id" required class="form-control">
 														<option></option>
 														@foreach ($processos as $processo)
 															<option value="{{$processo->id}}">{{$processo->descricao}}</option>
 														@endforeach
 													</select></td>
 												<td>{!! $item->status !!}</td>
-												<td><center><button class="btn btn-sm btn-primary"><i class="fa fa-save"></i></button></center></td>
+												<td><center><button class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center></td>
 												</form>
 											</tr>
 											@endforeach

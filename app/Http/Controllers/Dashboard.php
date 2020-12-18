@@ -25,7 +25,7 @@ class Dashboard extends BaseController
         $setor = $usuario[0]->setor;
         $setor_id = $usuario[0]->setor_id;
 
-        $path_geral = "\\\srv-arquivos\GED\GERAL";
+        $path_geral = $usuario[0]->pasta."\\INICIAR";
        
         $lista_arquivos = $this->read_dir($path);
         $lista_arquivos_geral = $this->read_dir($path_geral);
@@ -45,7 +45,7 @@ class Dashboard extends BaseController
 
        
 
-        $sql = "SELECT * FROM documentos WHERE setor_atual_id  = $setor_id";
+        $sql = "SELECT * FROM documentos WHERE setor_atual_id  = $setor_id AND finalizado = 0";
         $lista_arquivos = DB::select($sql);
 
         foreach ($lista_arquivos as $key => $lista) {

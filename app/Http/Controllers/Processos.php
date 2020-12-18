@@ -87,24 +87,49 @@ class Processos extends BaseController
     }
     public function seguir_fluxo(Request $request){
         $dados = (object) $request->all();
+        // passo_processo_id
+        $sqlFluxo = "SELECT 
+                        pp_princial.*
+                        ,pp_de.nome nome_de
+                        ,pp_para.nome nome_para
+                        ,pp_de.id_bpmn id_de
+                        ,pp_para.id_bpmn id_para                        
+                    FROM 
+                    passos_processo pp_princial LEFT JOIN passos_processo pp_de ON 
+                        pp_princial.de = pp_de.id_bpmn 
+                    LEFT JOIN passos_processo pp_para ON
+                        pp_princial.para = pp_para.id_bpmn
+                    WHERE pp_princial.processo_id = $dados->processo_id
+                        AND pp_princial.tipo LIKE '%SEQUENCEFLOW%'";
 
-        $passos_processo_fluxo = DB::select("SELECT 
-                                            pp_princial.*
-                                           ,pp_de.nome nome_de
-                                           ,pp_para.nome nome_para
-                                      FROM 
-                                        passos_processo pp_princial LEFT JOIN passos_processo pp_de ON 
-                                            pp_princial.de = pp_de.id_bpmn 
-                                        LEFT JOIN passos_processo pp_para ON
-                                        	pp_princial.para = pp_para.id_bpmn
-                                    WHERE pp_princial.processo_id = $dados->processo_id
-                                      AND pp_princial.tipo LIKE '%SEQUENCEFLOW%'");
         
+        if($dados->passo_processo_id != '0'){
+            $sqlFluxo = $sqlFluxo." AND pp_princial.de = '$dados->passo_processo_id'";
+        }
+
+        // dd($sqlFluxo);
+
+        $passos_processo_fluxo = DB::select($sqlFluxo);
+        $id_para_passo = $passos_processo_fluxo[0]->id_para;
         $setor = strtoupper($passos_processo_fluxo[0]->nome_para);
         
-        $setor = DB::select("SELECT * FROM setores WHERE descricao = '$setor' ");
-        $setor_id = $setor[0]->id ?? NULL; 
-        $setor_pasta = $setor[0]->pasta ?? NULL; 
+        if($setor == 'Fim' or $setor == 'FIM' or $setor == 'Final'){
+            $setor = strtoupper($passos_processo_fluxo[0]->nome_de);
+            $setor = DB::select("SELECT * FROM setores WHERE descricao = '$setor' ");
+            $setor_id = $setor[0]->id ?? NULL; 
+            $setor_pasta = $setor[0]->pasta."\\".'FINALIZADOS' ?? NULL; 
+            $finalizado = 1;
+            $status = 'FINALIZADO';
+        }
+        else{
+            $setor = strtoupper($passos_processo_fluxo[0]->nome_para);
+            $setor = DB::select("SELECT * FROM setores WHERE descricao = '$setor' ");
+            $setor_id = $setor[0]->id ?? NULL; 
+            $setor_pasta = $setor[0]->pasta ?? NULL; 
+            $finalizado = 0;
+            $status = 'PENDENTE';
+        }
+        
         
 
         $fonte = $dados->caminho;
@@ -117,7 +142,9 @@ class Processos extends BaseController
               ->update([
                     'processo_id' => $dados->processo_id
                     ,'setor_atual_id' => $setor_id
-                    ,'status' => 'PENDENTE'
+                    ,'status' => $status
+                    ,'finalizado' => $finalizado
+                    ,'passo_processo_id' => $id_para_passo
                     ,'caminho' => $setor_pasta."\\".$dados->arquivo
          ]);
 
