@@ -42,7 +42,7 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::delete('/processos', [Processos::class, 'deletar']);
     Route::put('/processos', [Processos::class, 'editar']);
     
-    Route::get('/atribuir_processo/{documento_id}', [Processos::class, 'atribuir_processo']);
+    Route::post('/seguir_fluxo', [Processos::class, 'seguir_fluxo']);
 
     Route::get('/passos_processo/{processo_id}', [Passos::class, 'index']);
 

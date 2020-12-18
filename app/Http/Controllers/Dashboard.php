@@ -16,19 +16,20 @@ class Dashboard extends BaseController
                                     usuarios.*
                                     ,setores.pasta
                                     ,setores.descricao setor
+                                    ,setores.id setor_id
                                 FROM usuarios INNER JOIN setores ON 
                                     usuarios.setor_id = setores.id 
                             WHERE 
                                 usuarios.id = $id_usuario");
         $path = $usuario[0]->pasta;
         $setor = $usuario[0]->setor;
+        $setor_id = $usuario[0]->setor_id;
 
         $path_geral = "\\\srv-arquivos\GED\GERAL";
        
         $lista_arquivos = $this->read_dir($path);
         $lista_arquivos_geral = $this->read_dir($path_geral);
 
-        $lista_arquivos = $this->manipular_lista($lista_arquivos,$path);
         $lista_arquivos_geral = $this->manipular_lista($lista_arquivos_geral,$path_geral);
         
         $qtde_setores = DB::select("SELECT count(*) as qtde FROM setores");
@@ -41,6 +42,22 @@ class Dashboard extends BaseController
         $qtde_processos = $qtde_processos[0]->qtde;
 
         $processos = DB::select("SELECT * FROM processos");
+
+       
+
+        $sql = "SELECT * FROM documentos WHERE setor_atual_id  = $setor_id";
+        $lista_arquivos = DB::select($sql);
+
+        foreach ($lista_arquivos as $key => $lista) {
+            $lista->status = '<center><p class="label label-info status-span">'.$lista->status.'</p></center>';
+        }
+
+        $sql = "SELECT * FROM documentos WHERE processo_id IS NULL";
+        $lista_arquivos_geral = DB::select($sql);
+
+        foreach ($lista_arquivos_geral as $key => $lista) {
+            $lista->status = '<center><p class="label label-info status-span">'.$lista->status.'</p></center>';
+        }
 
        return view('inicial', compact(["lista_arquivos","lista_arquivos_geral","qtde_setores","qtde_funcionarios","qtde_processos","processos","setor"]));
     }
@@ -89,20 +106,9 @@ class Dashboard extends BaseController
                     , 'caminho' =>  $path."\\".$lista_arquivos[$i]],
                    ['descricao' => $lista_arquivos[$i]]);
             }
+            
 
-            $lista_arquivos[$i] = $pos === false ? 
-                array( 'descricao' => $lista_arquivos[$i]
-                        ,'caminho' => $path."\\".$lista_arquivos[$i]
-                        ,'tipo' => 'arquivo'
-                        ,'setor_anterior' => null
-                        ,'setor_atual' => null
-                        ,'status' => '<center><p class="label label-info status-span">NOVO</p></center>') : 
-                array( 'descricao' => "<a href='/'>$lista_arquivos[$i]</>"
-                       ,'caminho' =>  $path."\\".$lista_arquivos[$i]
-                       ,'tipo' => 'pasta'
-                       ,'setor_anterior' => null
-                       ,'setor_atual' => null
-                       ,'status' => null );	
+            
         }
 
         return $lista_arquivos;

@@ -85,4 +85,42 @@ class Processos extends BaseController
                     ]);
         return back();
     }
+    public function seguir_fluxo(Request $request){
+        $dados = (object) $request->all();
+
+        $passos_processo_fluxo = DB::select("SELECT 
+                                            pp_princial.*
+                                           ,pp_de.nome nome_de
+                                           ,pp_para.nome nome_para
+                                      FROM 
+                                        passos_processo pp_princial LEFT JOIN passos_processo pp_de ON 
+                                            pp_princial.de = pp_de.id_bpmn 
+                                        LEFT JOIN passos_processo pp_para ON
+                                        	pp_princial.para = pp_para.id_bpmn
+                                    WHERE pp_princial.processo_id = $dados->processo_id
+                                      AND pp_princial.tipo LIKE '%SEQUENCEFLOW%'");
+        
+        $setor = strtoupper($passos_processo_fluxo[0]->nome_para);
+        
+        $setor = DB::select("SELECT * FROM setores WHERE descricao = '$setor' ");
+        $setor_id = $setor[0]->id ?? NULL; 
+        $setor_pasta = $setor[0]->pasta ?? NULL; 
+        
+
+        $fonte = $dados->caminho;
+        $copia = $setor_pasta."\\".$dados->arquivo;
+        $res = copy($fonte , $copia);
+        $res = unlink($fonte);
+
+        DB::table('documentos')
+              ->where('id', $dados->id)
+              ->update([
+                    'processo_id' => $dados->processo_id
+                    ,'setor_atual_id' => $setor_id
+                    ,'status' => 'PENDENTE'
+                    ,'caminho' => $setor_pasta."\\".$dados->arquivo
+         ]);
+
+        return back();
+    }
 }

@@ -60,19 +60,19 @@
 												<th>Setor Atual</th>
 												<th class='center'>Caminho</th>
 												<th class='center'>Status</th>
-												<th class='center'>Ação</th>
+												<th class='center'>Seguir Fluxo</th>
 											</tr>
 										</thead>
 										<tbody>
 											@foreach ($lista_arquivos as $item)
 											<tr>
 											    <td>
-													{!! $item['descricao'] !!}
+													{{$item->descricao }}
 												</td>
-												<td>{!! $item['setor_anterior'] !!}</td>
-												<td>{!! $item['setor_atual'] !!}</td>
-												<td>{{$item['caminho']}}</td>
-												<td>{!! $item['status'] !!}</td>
+												<td>{{ $item->setor_anterior_id }}</td>
+												<td>{{ $item->setor_atual_id }}</td>
+												<td>{{ $item->caminho }}</td>
+												<td>{!! $item->status !!}</td>
 												<td><center><a href='file:///C:/activity.txt' class="btn btn-sm btn-primary"><i class="fa fa-bars"></i></a></center></td>
 											</tr>
 											@endforeach
@@ -89,24 +89,33 @@
 												<th class='center'>Caminho</th>
 												<th class='center'>Selecionar</th>
 												<th class='center'>Status</th>
-												<th class='center'>Salvar</th>
+												<th class='center'>Iniciar Fluxo</th>
 											</tr>
 										</thead>
 										<tbody>
 											@foreach ($lista_arquivos_geral as $item)
 											<tr>
 											    <td>
-													{!! $item['descricao'] !!}
+													{{$item->descricao}}
 												</td>
-												<td>{{$item['caminho']}}</td>
-												<td><select name="" class="form-control">
+												<td>{{$item->caminho}}</td>
+												<td>
+												<form action="/seguir_fluxo" method="post">
+                             						 @csrf
+													  <input type="hidden" name="id" value="{{$item->id}}">
+													  <input type="hidden" name="caminho" value="{{$item->caminho}}">
+													  <input type="hidden" name="arquivo" value="{{$item->descricao}}">
+                              
+                            
+													<select name="processo_id" class="form-control">
 														<option></option>
 														@foreach ($processos as $processo)
-															<option>{{$processo->descricao}}</option>
+															<option value="{{$processo->id}}">{{$processo->descricao}}</option>
 														@endforeach
 													</select></td>
-												<td>{!! $item['status'] !!}</td>
+												<td>{!! $item->status !!}</td>
 												<td><center><button class="btn btn-sm btn-primary"><i class="fa fa-save"></i></button></center></td>
+												</form>
 											</tr>
 											@endforeach
 										</tbody>
