@@ -45,18 +45,22 @@ class Passos extends BaseController
             else if($passos_processo[$i]->tipo == 'BPMN:ENDEVENT')
                 $passos_processo[$i]->tipo = 'EVENTO FINAL';
             
-            // if($passos_processo[$i]->tipo == 'SETOR'){
-            //     $passo_id = $passos_processo[$i]->id;
-            //     $status_lista = DB::select("SELECT 
-            //                 status_lista.* 
-            //             FROM 
-            //                 passos_status
-            //                 ,status_lista
-            //             WHERE 
-            //                 passos_status.status_id = status_lista.id
-            //             AND passos_status.passo_id = $passo_id");
-            // }
+            if($passos_processo[$i]->tipo == 'SETOR'){
+                $passo_id = $passos_processo[$i]->id;
+                $status_lista = DB::select("SELECT 
+                            status_lista.* 
+                        FROM 
+                            passos_status
+                            ,status_lista
+                        WHERE 
+                            passos_status.status_id = status_lista.id
+                        AND passos_status.passo_id = $passo_id");
+            }
+
+            $passos_processo[$i]->status_lista = $status_lista ?? [];
         }
+
+        dd($passos_processo);
 
          $processos_img = DB::select("SELECT img FROM processos WHERE id = $processo_id ");
          $img = $processos_img[0]->img ?? NULL;
