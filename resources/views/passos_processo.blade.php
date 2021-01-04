@@ -95,17 +95,19 @@
           @csrf
          <div class="row">
            <div class="col col-md-12">
-             <select name='status_id' id="item-status_id" class="form-control">
-               {{-- @foreach ($status as $item)
-                   <option value="{{$item->id}}">{{$item->descricao}}</option>
-               @endforeach --}}
-              </select>
+             <div id="div-item-status_id">
+                 
+              </div>
+
+              <div id="div-item-tabela">
+                 
+              </div>
               <input type="hidden" name="passo_id" id="item-id">
            </div>
          </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Vincular</button>
+        
         </form>
       </div>
     </div>
@@ -117,16 +119,31 @@
                 const button = event.currentTarget
                 const descricao = document.querySelector("#modalStatus #item-descricao")
                 const id = document.querySelector("#modalStatus #item-id")
-                var status_id = document.querySelector("#modalStatus #item-status_id")
+                
+                var div_status_id = document.querySelector("#modalStatus #div-item-status_id")
+
+                var div_tabela= document.querySelector("#modalStatus #div-item-tabela")
 
                 var status_lista = JSON.parse(button.getAttribute("data-item-status_lista")); ;
 
-                var op = '';
-                status_lista.forEach(item => {
-                    op = op+'<option value="'+item.id+'">'+item.descricao+'</option>';
-                });
 
-                status_id.innerHTML = op;
+                if(status_lista.length == 0){
+                  div_status_id.innerHTML = '<span></span>';
+                }
+                else{
+                  div_status_id.innerHTML = '<select name="status_id" id="item-status_id" class="form-control"></select><br><button type="submit" class="btn btn-primary">Vincular</button>';
+
+                  var status_id = document.querySelector("#modalStatus #item-status_id")
+                      var op = '';
+                      status_lista.forEach(item => {
+                          op = op+'<option value="'+item.id+'">'+item.descricao+'</option>';
+                      });
+                      status_id.innerHTML = op;
+
+                }
+                
+
+                
 
                 descricao.innerHTML = button.getAttribute("data-item-descricao")
                 id.value = button.getAttribute("data-item-id")
