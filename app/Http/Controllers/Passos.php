@@ -55,9 +55,18 @@ class Passos extends BaseController
                             passos_status.status_id = status_lista.id AND passos_status.passo_id = $passo_id
                         WHERE 
                             IFNULL(passos_status.passo_id,0) = 0");
+                
+                $status_lista_selecionados = DB::select("SELECT 
+                            status_lista.* 
+                        FROM 
+                            status_lista INNER JOIN passos_status ON
+                            passos_status.status_id = status_lista.id 
+                        WHERE 
+                            passos_status.passo_id = $passo_id");
             }
 
             $passos_processo[$i]->status_lista = $status_lista ?? [];
+            $passos_processo[$i]->status_lista_selecionados = $status_lista_selecionados ?? [];
         }
 
 
