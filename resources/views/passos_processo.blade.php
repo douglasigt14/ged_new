@@ -58,6 +58,7 @@
                                             onclick="mostrarModal(event)"
                                             data-item-id={{$item->id}}
                                             data-item-descricao='{{$item->nome}}'
+                                            data-item-status_lista='{{json_encode($item->status_lista)}}'
                                             class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button></center>
                                         @endif
                                       </td>
@@ -94,10 +95,10 @@
           @csrf
          <div class="row">
            <div class="col col-md-12">
-             <select name='status_id' class="form-control">
-               @foreach ($status as $item)
+             <select name='status_id' id="item-status_id" class="form-control">
+               {{-- @foreach ($status as $item)
                    <option value="{{$item->id}}">{{$item->descricao}}</option>
-               @endforeach
+               @endforeach --}}
               </select>
               <input type="hidden" name="passo_id" id="item-id">
            </div>
@@ -113,13 +114,24 @@
 @push('scripts')
     <script>
          function mostrarModal(event) {
-                console.log('Douglas');
                 const button = event.currentTarget
                 const descricao = document.querySelector("#modalStatus #item-descricao")
                 const id = document.querySelector("#modalStatus #item-id")
+                var status_id = document.querySelector("#modalStatus #item-status_id")
+
+                var status_lista = JSON.parse(button.getAttribute("data-item-status_lista")); ;
+
+                var op = '';
+                status_lista.forEach(item => {
+                    op = op+'<option value="'+item.id+'">'+item.descricao+'</option>';
+                });
+
+                status_id.innerHTML = op;
 
                 descricao.innerHTML = button.getAttribute("data-item-descricao")
                 id.value = button.getAttribute("data-item-id")
+
+                // console.log();
             }
     </script>
 @endpush

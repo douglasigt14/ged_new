@@ -35,6 +35,7 @@ class Passos extends BaseController
         for ($i=0; $i < sizeof($passos_processo_fluxo); $i++) { 
             $passos_processo_fluxo[$i]->tipo = 'SEQUENCIA DO FLUXO';
         }
+
         for ($i=0; $i < sizeof($passos_processo); $i++) { 
             if($passos_processo[$i]->tipo == 'BPMN:STARTEVENT')
                 $passos_processo[$i]->tipo = 'EVENTO INICIAL';
@@ -50,11 +51,10 @@ class Passos extends BaseController
                 $status_lista = DB::select("SELECT 
                             status_lista.* 
                         FROM 
-                            passos_status
-                            ,status_lista
+                            status_lista LEFT JOIN passos_status ON
+                            passos_status.status_id = status_lista.id AND passos_status.passo_id = $passo_id
                         WHERE 
-                            passos_status.status_id = status_lista.id
-                        AND passos_status.passo_id = $passo_id");
+                            IFNULL(passos_status.passo_id,0) = 0");
             }
 
             $passos_processo[$i]->status_lista = $status_lista ?? [];
@@ -65,9 +65,9 @@ class Passos extends BaseController
          $img = $processos_img[0]->img ?? NULL;
          $img  = Storage::url($img); 
 
-        $status = DB::select("SELECT * FROM status_lista");
+       
 
-       return view('passos_processo', compact(["passos_processo_fluxo","passos_processo","img","status"]));
+       return view('passos_processo', compact(["passos_processo_fluxo","passos_processo","img"]));
     }
     
     public function vincular_status(Request $request){
