@@ -38,6 +38,15 @@
 										</p>
 									</div>
 								</a>
+								<a href='/status' class="col-md-3 cinzinha">
+									<div class="metric">
+										<span class="icon"><i class="fa fa-exclamation-triangle"></i></span>
+										<p>
+											<span class="number">&nbsp;</span>
+											<span class="title">Status</span>
+										</p>
+									</div>
+								</a>
 								<a href='/desenho_fluxos' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-arrows-alt"></i></span>
