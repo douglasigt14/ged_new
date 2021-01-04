@@ -39,7 +39,7 @@
                                                         class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
                                                 </td>
                                                 <td>
-                                                  <form action="/setores" method="post">
+                                                  <form action="/status" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <input type="hidden" name="id" value={{$item->id}}>
@@ -65,7 +65,7 @@
       </div>
       <div class="modal-body">
           <div class="row">
-              <form action="/setores" method="post">
+              <form action="/status" method="post">
               @csrf
               <div class="col col-md-12">
                   <label>Descrição</label>
@@ -91,7 +91,7 @@
       </div>
       <div class="modal-body">
           <div class="row">
-              <form action="/setores" method="post">
+              <form action="/status" method="post">
               @csrf
               @method('put')
                <input type="hidden" id='item-id' name='id' class='form-control'>
