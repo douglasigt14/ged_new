@@ -41,6 +41,9 @@ class Dashboard extends BaseController
         $qtde_processos = DB::select("SELECT count(*) as qtde FROM processos");
         $qtde_processos = $qtde_processos[0]->qtde;
 
+        $qtde_status = DB::select("SELECT count(*) as qtde FROM status_lista");
+        $qtde_status = $qtde_status[0]->qtde;
+
         $processos = DB::select("SELECT * FROM processos");
 
        
@@ -59,7 +62,7 @@ class Dashboard extends BaseController
             $lista->status = '<center><p class="label label-info status-span">'.$lista->status.'</p></center>';
         }
 
-       return view('inicial', compact(["lista_arquivos","lista_arquivos_geral","qtde_setores","qtde_funcionarios","qtde_processos","processos","setor"]));
+       return view('inicial', compact(["lista_arquivos","lista_arquivos_geral","qtde_setores","qtde_funcionarios","qtde_processos","qtde_status","processos","setor"]));
     }
 
    private  function read_dir($dir) {

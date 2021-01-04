@@ -52,7 +52,9 @@
                                       <td>{{$item->nome }}</td>
                                       <td>
                                         @if ($item->tipo == 'SETOR')
-                                        <center><button class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button></center>
+                                        <center><button 
+                                            data-toggle="modal" 
+                                            data-target="#modalStatus" class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button></center>
                                         @endif
                                       </td>
                                   </tr>

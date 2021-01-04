@@ -42,7 +42,7 @@
 									<div class="metric">
 										<span class="icon"><i class="fa fa-exclamation-triangle"></i></span>
 										<p>
-											<span class="number">&nbsp;</span>
+											<span class="number">{{$qtde_status}}</span>
 											<span class="title">Status</span>
 										</p>
 									</div>
