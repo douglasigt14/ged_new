@@ -9,6 +9,7 @@ use App\Http\Controllers\Fluxos;
 use App\Http\Controllers\Funcionarios;
 use App\Http\Controllers\Processos;
 use App\Http\Controllers\Passos;
+use App\Http\Controllers\Status;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,11 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::post('/processos', [Processos::class, 'inserir']);
     Route::delete('/processos', [Processos::class, 'deletar']);
     Route::put('/processos', [Processos::class, 'editar']);
+
+    Route::get('/status', [Status::class, 'index']);
+    Route::post('/status', [Status::class, 'inserir']);
+    Route::delete('/status', [Status::class, 'deletar']);
+    Route::put('/status', [Status::class, 'editar']);
     
     Route::post('/seguir_fluxo', [Processos::class, 'seguir_fluxo']);
 
