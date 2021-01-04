@@ -60,7 +60,6 @@ class Passos extends BaseController
             $passos_processo[$i]->status_lista = $status_lista ?? [];
         }
 
-        dd($passos_processo);
 
          $processos_img = DB::select("SELECT img FROM processos WHERE id = $processo_id ");
          $img = $processos_img[0]->img ?? NULL;
@@ -74,7 +73,7 @@ class Passos extends BaseController
     public function vincular_status(Request $request){
          $dados = (object) $request->all();
          
-         $ultimo_id =  DB::table('passos_status')->insert([
+         $ultimo_id =  DB::table('passos_status')->updateOrInsert([
             'passo_id' => $dados->passo_id,
             'status_id' => $dados->status_id
         ]);
