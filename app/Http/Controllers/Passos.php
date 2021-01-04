@@ -89,4 +89,8 @@ class Passos extends BaseController
 
         return back();
     }
+    public function desvincular_status($id = null){
+        DB::table('passos_status')->where('id', '=', $id )->delete();
+        return back();
+    }
 }

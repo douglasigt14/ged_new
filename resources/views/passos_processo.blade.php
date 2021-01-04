@@ -59,6 +59,7 @@
                                             data-item-id={{$item->id}}
                                             data-item-descricao='{{$item->nome}}'
                                             data-item-status_lista='{{json_encode($item->status_lista)}}'
+                                            data-item-status_lista_selecionados='{{json_encode($item->status_lista_selecionados)}}'
                                             class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button></center>
                                         @endif
                                       </td>
@@ -98,7 +99,8 @@
              <div id="div-item-status_id">
                  
               </div>
-
+              
+              <br>
               <div id="div-item-tabela">
                  
               </div>
@@ -122,16 +124,17 @@
                 
                 var div_status_id = document.querySelector("#modalStatus #div-item-status_id")
 
-                var div_tabela= document.querySelector("#modalStatus #div-item-tabela")
+                var div_tabela = document.querySelector("#modalStatus #div-item-tabela")
 
                 var status_lista = JSON.parse(button.getAttribute("data-item-status_lista")); ;
+                var status_lista_selecionados = JSON.parse(button.getAttribute("data-item-status_lista_selecionados")); ;
 
 
                 if(status_lista.length == 0){
                   div_status_id.innerHTML = '<span></span>';
                 }
                 else{
-                  div_status_id.innerHTML = '<select name="status_id" id="item-status_id" class="form-control"></select><br><button type="submit" class="btn btn-primary">Vincular</button>';
+                  div_status_id.innerHTML = '<select name="status_id" id="item-status_id" class="form-control"></select><br><center><button type="submit" class="btn btn-primary">Vincular</button></center>';
 
                   var status_id = document.querySelector("#modalStatus #item-status_id")
                       var op = '';
@@ -141,6 +144,21 @@
                       status_id.innerHTML = op;
 
                 }
+                if(status_lista_selecionados.length == 0){
+                  div_tabela.innerHTML = '<span></span>';
+                }
+                else{
+                  var tabela = '<table class="table table-striped"><thead><tr><th>Descrição</th><th class="center">Desvincular</th></tr></thead><tbody>';
+                   
+                   status_lista_selecionados.forEach(item => {
+                          href = "href='/desvincular/"+item.passos_status_id+"'";
+                          tabela = tabela+'<tr><td>'+item.descricao+'</td><td><center><a '+href+' class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></center></td></tr>';
+                   });
+
+                  tabela = tabela+'</tbody></table>'; 
+                     div_tabela.innerHTML = tabela;
+                }
+                
                 
 
                 

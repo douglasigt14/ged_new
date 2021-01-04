@@ -16,7 +16,7 @@
                              <center><button data-toggle="modal" data-target="#modalInserir" class="btn btn-circle btn-success"><i class="fa fa-plus"></i></button></center>
                          </div>
                     </div>
-                     <table class="table table-striped">
+                    <table class="table table-striped">
 										<thead>
 											<tr>
 												<th>Descrição</th>

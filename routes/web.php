@@ -52,6 +52,7 @@ Route::middleware(MyAuth::class)->group(function () {
 
     Route::get('/passos_processo/{processo_id}', [Passos::class, 'index']);
     Route::patch('/passos_processo', [Passos::class, 'vincular_status']);
+    Route::get('/desvincular/{id}', [Passos::class, 'desvincular_status']);
 
     Route::get('/desenho_fluxos', [Fluxos::class, 'index']);
     
