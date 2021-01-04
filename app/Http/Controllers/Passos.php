@@ -52,8 +52,6 @@ class Passos extends BaseController
 
         $status = DB::select("SELECT * FROM status_lista");
 
-        dd($status);
-
        return view('passos_processo', compact(["passos_processo_fluxo","passos_processo","img","status"]));
     }
     public function inserir(Request $request){

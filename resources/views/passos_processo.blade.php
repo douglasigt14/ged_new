@@ -85,7 +85,15 @@
         </button>
       </div>
       <div class="modal-body">
-         
+         <div class="row">
+           <div class="col col-md-12">
+             <select class="form-control">
+               @foreach ($status as $item)
+                   <option value="{{$item->id}}">{{$item->descricao}}</option>
+               @endforeach
+              </select>
+           </div>
+         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Alterar</button>
