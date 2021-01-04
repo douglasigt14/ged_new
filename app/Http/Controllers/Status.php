@@ -17,24 +17,22 @@ class Status extends BaseController
     }
     public function inserir(Request $request){
         $dados = (object) $request->all();
-        DB::table('setores')->insert([
-            'descricao' => $dados->descricao,
-            'pasta' => $dados->pasta
+        DB::table('status_lista')->insert([
+            'descricao' => $dados->descricao
         ]);
         return back();
     }
     public function deletar(Request $request){
          $dados = (object) $request->all();
-         DB::table('setores')->where('id', '=', $dados->id )->delete();
+         DB::table('status_lista')->where('id', '=', $dados->id )->delete();
         return back();
     }
     public function editar(Request $request){
          $dados = (object) $request->all();
-         DB::table('setores')
+         DB::table('status_lista')
               ->where('id', $dados->id)
               ->update([
                     'descricao' => $dados->descricao
-                   ,'pasta' => $dados->pasta
                     ]);
         return back();
     }
