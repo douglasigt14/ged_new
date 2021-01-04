@@ -82,7 +82,7 @@ class Passos extends BaseController
     public function vincular_status(Request $request){
          $dados = (object) $request->all();
          
-         $ultimo_id =  DB::table('passos_status')->updateOrInsert([
+         DB::table('passos_status')->updateOrInsert([
             'passo_id' => $dados->passo_id,
             'status_id' => $dados->status_id
         ]);
