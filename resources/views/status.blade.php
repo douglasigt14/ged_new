@@ -19,17 +19,15 @@
                      <table class="table table-striped">
 										<thead>
 											<tr>
-												<th>Setor</th>
-												<th>Pasta</th>
+												<th>Descrição</th>
 												<th class='center'>Editar</th>
 												<th class='center'>Excluir</th>
 											</tr>
 										</thead>
 										<tbody>
-											@foreach ($setores as $item)
+											@foreach ($status as $item)
 											<tr>
 											    <td>{{$item->descricao }}</td>
-												<td>{{$item->pasta }}</td>
                                                 <td>
                                                     
                                                     <center><button 
@@ -38,7 +36,6 @@
                                                         onclick="mostrarModal(event)"
                                                         data-item-id={{$item->id}}
                                                         data-item-descricao='{{$item->descricao}}'
-                                                        data-item-pasta='{{$item->pasta}}'
                                                         class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
                                                 </td>
                                                 <td>
@@ -70,13 +67,9 @@
           <div class="row">
               <form action="/setores" method="post">
               @csrf
-              <div class="col col-md-6">
-                  <label>Setor</label>
+              <div class="col col-md-12">
+                  <label>Descrição</label>
                   <input type="text" name='descricao' class='form-control'>
-              </div>
-              <div class="col col-md-6">
-                  <label>Pasta</label>
-                  <input type="text" name='pasta' class='form-control'>
               </div>
           </div>
       </div>
@@ -102,14 +95,10 @@
               @csrf
               @method('put')
                <input type="hidden" id='item-id' name='id' class='form-control'>
-              <div class="col col-md-6">
-                  <label>Setor</label>
+              <div class="col col-md-12">
+                  <label>Descrição</label>
                  
                    <input type="text" id='item-descricao' name='descricao' class='form-control'>
-              </div>
-              <div class="col col-md-6">
-                  <label>Pasta</label>
-                  <input type="text" id='item-pasta' name='pasta' class='form-control'>
               </div>
           </div>
       </div>
@@ -124,11 +113,9 @@
     <script>
          function mostrarModal(event) {
                 const button = event.currentTarget
-                const pasta = document.querySelector("#modalEditar #item-pasta")
                 const descricao = document.querySelector("#modalEditar #item-descricao")
                 const id = document.querySelector("#modalEditar #item-id")
 
-                pasta.value = button.getAttribute("data-item-pasta")
                 descricao.value = button.getAttribute("data-item-descricao")
                 id.value = button.getAttribute("data-item-id")
             }

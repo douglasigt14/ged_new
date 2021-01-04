@@ -12,8 +12,8 @@ use DB;
 class Status extends BaseController
 {
     public function index() {
-        $setores = DB::select("SELECT * FROM setores");
-       return view('status', compact(["setores"]));
+        $status = DB::select("SELECT * FROM status_lista");
+       return view('status', compact(["status"]));
     }
     public function inserir(Request $request){
         $dados = (object) $request->all();
