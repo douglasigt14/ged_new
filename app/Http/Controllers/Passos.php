@@ -54,27 +54,10 @@ class Passos extends BaseController
 
        return view('passos_processo', compact(["passos_processo_fluxo","passos_processo","img","status"]));
     }
-    public function inserir(Request $request){
-        $dados = (object) $request->all();
-        DB::table('setores')->insert([
-            'descricao' => $dados->descricao,
-            'pasta' => $dados->pasta
-        ]);
-        return back();
-    }
-    public function deletar(Request $request){
+    
+    public function vincular_status(Request $request){
          $dados = (object) $request->all();
-         DB::table('setores')->where('id', '=', $dados->id )->delete();
-        return back();
-    }
-    public function editar(Request $request){
-         $dados = (object) $request->all();
-         DB::table('setores')
-              ->where('id', $dados->id)
-              ->update([
-                    'descricao' => $dados->descricao
-                   ,'pasta' => $dados->pasta
-                    ]);
+         dd($dados);
         return back();
     }
 }

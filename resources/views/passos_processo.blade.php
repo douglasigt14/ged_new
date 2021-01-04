@@ -54,7 +54,11 @@
                                         @if ($item->tipo == 'SETOR')
                                         <center><button 
                                             data-toggle="modal" 
-                                            data-target="#modalStatus" class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button></center>
+                                            data-target="#modalStatus" 
+                                            onclick="mostrarModal(event)"
+                                            data-item-id={{$item->id}}
+                                            data-item-descricao='{{$item->nome}}'
+                                            class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button></center>
                                         @endif
                                       </td>
                                   </tr>
@@ -79,24 +83,29 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal Status</h5>
+        <h5 class="modal-title" id="exampleModalLabel"><span id="item-descricao"></span> Status</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+        <form action="/passos_processo" method="post">
+          @method('patch')
+          @csrf
          <div class="row">
            <div class="col col-md-12">
-             <select class="form-control">
+             <select name='status_id' class="form-control">
                @foreach ($status as $item)
                    <option value="{{$item->id}}">{{$item->descricao}}</option>
                @endforeach
               </select>
+              <input type="hidden" name="passo_id" id="item-id">
            </div>
          </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Alterar</button>
+        <button type="submit" class="btn btn-primary">Vincular</button>
+        </form>
       </div>
     </div>
   </div>
@@ -104,13 +113,12 @@
 @push('scripts')
     <script>
          function mostrarModal(event) {
+                console.log('Douglas');
                 const button = event.currentTarget
-                const pasta = document.querySelector("#modalEditar #item-pasta")
-                const descricao = document.querySelector("#modalEditar #item-descricao")
-                const id = document.querySelector("#modalEditar #item-id")
+                const descricao = document.querySelector("#modalStatus #item-descricao")
+                const id = document.querySelector("#modalStatus #item-id")
 
-                pasta.value = button.getAttribute("data-item-pasta")
-                descricao.value = button.getAttribute("data-item-descricao")
+                descricao.innerHTML = button.getAttribute("data-item-descricao")
                 id.value = button.getAttribute("data-item-id")
             }
     </script>
