@@ -44,6 +44,18 @@ class Passos extends BaseController
                 $passos_processo[$i]->tipo = 'DECISSÃO';
             else if($passos_processo[$i]->tipo == 'BPMN:ENDEVENT')
                 $passos_processo[$i]->tipo = 'EVENTO FINAL';
+            
+            // if($passos_processo[$i]->tipo == 'SETOR'){
+            //     $passo_id = $passos_processo[$i]->id;
+            //     $status_lista = DB::select("SELECT 
+            //                 status_lista.* 
+            //             FROM 
+            //                 passos_status
+            //                 ,status_lista
+            //             WHERE 
+            //                 passos_status.status_id = status_lista.id
+            //             AND passos_status.passo_id = $passo_id");
+            // }
         }
 
          $processos_img = DB::select("SELECT img FROM processos WHERE id = $processo_id ");
@@ -57,7 +69,12 @@ class Passos extends BaseController
     
     public function vincular_status(Request $request){
          $dados = (object) $request->all();
-         dd($dados);
+         
+         $ultimo_id =  DB::table('passos_status')->insert([
+            'passo_id' => $dados->passo_id,
+            'status_id' => $dados->status_id
+        ]);
+
         return back();
     }
 }
