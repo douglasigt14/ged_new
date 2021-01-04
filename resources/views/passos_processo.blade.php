@@ -42,6 +42,7 @@
                                   <tr>
                                     <th>Tipo</th>
                                     <th>Nome</th>
+                                    <th>Tipos&nbsp;Status</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -49,6 +50,11 @@
                                   <tr>
                                       <td>{{$item->tipo }}</td>
                                       <td>{{$item->nome }}</td>
+                                      <td>
+                                        @if ($item->tipo == 'SETOR')
+                                        <center><button class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button></center>
+                                        @endif
+                                      </td>
                                   </tr>
                                   @endforeach
                                 </tbody>
