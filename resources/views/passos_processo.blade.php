@@ -72,64 +72,21 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-<div class="modal fade" id="modalInserir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Status -->
+<div class="modal fade" id="modalStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Inserir</h4>
+        <h5 class="modal-title" id="exampleModalLabel">Modal Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
-          <div class="row">
-              <form action="/setores" method="post">
-              @csrf
-              <div class="col col-md-6">
-                  <label>Setor</label>
-                  <input type="text" name='descricao' class='form-control'>
-              </div>
-              <div class="col col-md-6">
-                  <label>Pasta</label>
-                  <input type="text" name='pasta' class='form-control'>
-              </div>
-          </div>
+         
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Inserir</button>
-      </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-   <!-- Modal -->
-<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
-      </div>
-      <div class="modal-body">
-          <div class="row">
-              <form action="/setores" method="post">
-              @csrf
-              @method('put')
-               <input type="hidden" id='item-id' name='id' class='form-control'>
-              <div class="col col-md-6">
-                  <label>Setor</label>
-                 
-                   <input type="text" id='item-descricao' name='descricao' class='form-control'>
-              </div>
-              <div class="col col-md-6">
-                  <label>Pasta</label>
-                  <input type="text" id='item-pasta' name='pasta' class='form-control'>
-              </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-warning">Editar</button>
-      </form>
+        <button type="button" class="btn btn-primary">Alterar</button>
       </div>
     </div>
   </div>
