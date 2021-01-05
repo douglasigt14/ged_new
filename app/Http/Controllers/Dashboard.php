@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Storage;
 use DB;
 
 class Dashboard extends BaseController
@@ -69,6 +70,7 @@ class Dashboard extends BaseController
 
         foreach ($lista_arquivos as $key => $lista) {
             $lista->status = '<center><p class="label label-info status-span">'.$lista->status.'</p></center>';
+            $lista->processos_img = Storage::url($lista->processos_img); 
         }
 
         $sql = "SELECT * FROM documentos WHERE processo_id IS NULL";
