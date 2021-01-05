@@ -48,7 +48,18 @@ class Dashboard extends BaseController
 
        
 
-        $sql = "SELECT * FROM documentos WHERE setor_atual_id  = $setor_id AND finalizado = 0";
+        $sql = "SELECT 
+                    documentos.* 
+                ,s_atual.descricao setor_atual
+                ,s_anterior.descricao setor_anterior
+                FROM 
+                    documentos LEFT JOIN setores s_atual ON
+                    documentos.setor_atual_id = s_atual.id
+                    LEFT JOIN setores s_anterior ON
+                    documentos.setor_anterior_id = s_anterior.id
+                WHERE 
+                    s_atual.id  = $setor_id
+                AND finalizado = 0";
         $lista_arquivos = DB::select($sql);
 
         foreach ($lista_arquivos as $key => $lista) {

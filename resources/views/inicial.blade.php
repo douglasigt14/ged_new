@@ -65,9 +65,9 @@
 										<thead>
 											<tr>
 												<th>Arquivo</th>
-												<th>Setor Anterior</th>
-												<th>Setor Atual</th>
-												<th class='center'>Caminho</th>
+												<th>Set.Anterior</th>
+												<th>Set.Atual</th>
+												<th class='center'>Arquivo</th>
 												<th class='center'>Status</th>
 												<th class='center'>Seguir Fluxo</th>
 											</tr>
@@ -78,9 +78,9 @@
 											    <td>
 													{{$item->descricao }}
 												</td>
-												<td>{{ $item->setor_anterior_id }}</td>
-												<td>{{ $item->setor_atual_id }}</td>
-												<td>{{ $item->caminho }}</td>
+												<td>{{ $item->setor_anterior }}</td>
+												<td>{{ $item->setor_atual }}</td>
+												<td class='caminho'>{{$item->caminho}}</td>
 												<td>{!! $item->status !!}</td>
 												<form action="/seguir_fluxo" method="post">
                              						 @csrf
@@ -104,7 +104,7 @@
 										<thead>
 											<tr>
 												<th>Arquivo</th>
-												<th class='center'>Caminho</th>
+												<th class='center'>Arquivo</th>
 												<th class='center'>Selecionar</th>
 												<th class='center'>Status</th>
 												<th class='center'>Iniciar Fluxo</th>
@@ -116,7 +116,7 @@
 											    <td>
 													{{$item->descricao}}
 												</td>
-												<td>{{$item->caminho}}</td>
+												<td class='caminho'>{{$item->caminho}}</td>
 												<td>
 												<form action="/seguir_fluxo" method="post">
                              						 @csrf
