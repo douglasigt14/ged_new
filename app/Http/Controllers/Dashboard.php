@@ -52,11 +52,16 @@ class Dashboard extends BaseController
                     documentos.* 
                 ,s_atual.descricao setor_atual
                 ,s_anterior.descricao setor_anterior
+                ,processos.descricao descricao_processo
+                ,processos.img processos_img
                 FROM 
-                    documentos LEFT JOIN setores s_atual ON
+                    documentos 
+                    LEFT JOIN setores s_atual ON
                     documentos.setor_atual_id = s_atual.id
                     LEFT JOIN setores s_anterior ON
                     documentos.setor_anterior_id = s_anterior.id
+                    INNER JOIN processos ON
+                    processos.id = documentos.processo_id
                 WHERE 
                     s_atual.id  = $setor_id
                 AND finalizado = 0";

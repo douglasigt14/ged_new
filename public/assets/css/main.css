@@ -1787,8 +1787,8 @@ ul.activity-timeline > li {
     width: 100%;
     height: calc(100vh - 200px);
   }
-  .caminho{
-    font-size: 10px;
+  .menor{
+    font-size: 12px;
   }
 
 /*# sourceMappingURL=main.css.map */

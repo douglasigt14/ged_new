@@ -60,14 +60,16 @@
                             <div class="row">
                                 <div class="col-md-12">
 									@if($lista_arquivos)
-									<h3>Arquivos no Setor de {{ucfirst($setor)}}</h3>
-                                    <table class="table table-striped">
+									<h4>Arquivos no Setor de {{ucfirst($setor)}}</h4>
+                                    <table class="table table-striped menor">
 										<thead>
 											<tr>
 												<th>Arquivo</th>
 												<th>Set.Anterior</th>
 												<th>Set.Atual</th>
 												<th class='center'>Arquivo</th>
+												<th class='center'>Processo</th>
+												<th class='center'>Img</th>
 												<th class='center'>Status</th>
 												<th class='center'>Seguir Fluxo</th>
 											</tr>
@@ -80,7 +82,9 @@
 												</td>
 												<td>{{ $item->setor_anterior }}</td>
 												<td>{{ $item->setor_atual }}</td>
-												<td class='caminho'>{{$item->caminho}}</td>
+												<td class='menor'>{{$item->caminho}}</td>
+												<td>{{$item->descricao_processo}}</td>
+												<td></td>
 												<td>{!! $item->status !!}</td>
 												<form action="/seguir_fluxo" method="post">
                              						 @csrf
@@ -116,7 +120,7 @@
 											    <td>
 													{{$item->descricao}}
 												</td>
-												<td class='caminho'>{{$item->caminho}}</td>
+												<td class='menor'>{{$item->caminho}}</td>
 												<td>
 												<form action="/seguir_fluxo" method="post">
                              						 @csrf
