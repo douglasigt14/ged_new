@@ -69,8 +69,8 @@
 												<th>Set.Atual</th>
 												<th class='center'>Arquivo</th>
 												<th class='center'>Processo</th>
-												<th class='center'>Img</th>
 												<th class='center'>Status</th>
+												<th class='center'>Img</th>
 												<th class='center'>Seguir Fluxo</th>
 											</tr>
 										</thead>
@@ -84,6 +84,7 @@
 												<td>{{ $item->setor_atual }}</td>
 												<td class='menor'>{{$item->caminho}}</td>
 												<td>{{$item->descricao_processo}}</td>
+												<td>{!! $item->status !!}</td>
 												<td>
 													<center><button 
 														data-toggle="modal" 
@@ -93,7 +94,6 @@
 														data-item-img='{{$item->processos_img}}'
 														class="btn btn-sm btn-info"><i class="fa fa-file-image-o"></i></button></center>
 												</td>
-												<td>{!! $item->status !!}</td>
 												<form action="/seguir_fluxo" method="post">
                              						 @csrf
 													  <input type="hidden" name="id" value="{{$item->id}}">

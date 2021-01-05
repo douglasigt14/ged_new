@@ -72,7 +72,11 @@ class Dashboard extends BaseController
         $lista_arquivos = DB::select($sql);
 
         foreach ($lista_arquivos as $key => $lista) {
-            $lista->status = '<center><p class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
+            $cor = '#CDC0B0';
+            $resultado = $this->verifica_cor($cor);
+            $cor_texto = $resultado > 128 ? 'black' : 'white';
+
+            $lista->status = '<center><p style="background-color: '.$cor.';color: '.$cor_texto.'" class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
             $lista->processos_img = Storage::url($lista->processos_img); 
         }
 
@@ -125,6 +129,14 @@ class Dashboard extends BaseController
         // $res = copy($fonte , $copia);
         // $res = unlink($fonte);
     }    
+    private function verifica_cor($cor){
+        $red = hexdec(substr($cor, 1, 2));
+        $green = hexdec(substr($cor, 3, 2));
+        $blue = hexdec(substr($cor, 5, 2));
+        $resultado = (($red * 299) + ($green * 587) + ($blue * 114)) / 1000;
+
+        return $resultado;
+    }
     private function manipular_lista($lista_arquivos,$path){
         for ($i=0; $i < sizeof($lista_arquivos); $i++) {
             $haystack = $lista_arquivos[$i];

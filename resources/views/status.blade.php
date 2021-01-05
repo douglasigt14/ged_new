@@ -19,7 +19,8 @@
                     <table class="table table-striped">
 										<thead>
 											<tr>
-												<th>Descrição</th>
+                        <th>Descrição</th>
+                        <th>COR</th>
 												<th class='center'>Editar</th>
 												<th class='center'>Excluir</th>
 											</tr>
