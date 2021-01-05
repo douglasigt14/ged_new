@@ -55,6 +55,7 @@ class Dashboard extends BaseController
                 ,s_anterior.descricao setor_anterior
                 ,processos.descricao descricao_processo
                 ,processos.img processos_img
+                ,status_lista.descricao status_desc
                 FROM 
                     documentos 
                     LEFT JOIN setores s_atual ON
@@ -63,21 +64,32 @@ class Dashboard extends BaseController
                     documentos.setor_anterior_id = s_anterior.id
                     INNER JOIN processos ON
                     processos.id = documentos.processo_id
+                    INNER JOIN status_lista ON
+                    	documentos.status_id = status_lista.id
                 WHERE 
                     s_atual.id  = $setor_id
                 AND finalizado = 0";
         $lista_arquivos = DB::select($sql);
 
         foreach ($lista_arquivos as $key => $lista) {
-            $lista->status = '<center><p class="label label-info status-span">'.$lista->status.'</p></center>';
+            $lista->status = '<center><p class="label label-info status-span">'.$lista->status_desc.'</p></center>';
             $lista->processos_img = Storage::url($lista->processos_img); 
         }
 
-        $sql = "SELECT * FROM documentos WHERE processo_id IS NULL";
+        $sql = "SELECT 
+                    documentos.*
+                    ,status_lista.descricao status_desc
+                FROM 
+                    documentos 
+                    INNER JOIN status_lista ON
+                    documentos.status_id = status_lista.id
+                WHERE 
+                    processo_id IS NULL";
+
         $lista_arquivos_geral = DB::select($sql);
 
         foreach ($lista_arquivos_geral as $key => $lista) {
-            $lista->status = '<center><p class="label label-info status-span">'.$lista->status.'</p></center>';
+            $lista->status = '<center><p class="label label-info status-span">'.$lista->status_desc.'</p></center>';
         }
 
        return view('inicial', compact(["lista_arquivos","lista_arquivos_geral","qtde_setores","qtde_funcionarios","qtde_processos","qtde_status","processos","setor"]));
@@ -123,7 +135,7 @@ class Dashboard extends BaseController
             if($pos === false){
                 DB::table('documentos')->updateOrInsert([
                       'descricao' => $lista_arquivos[$i]
-                    , 'status' => 'NOVO'
+                    , 'status_id' => 1
                     , 'caminho' =>  $path."\\".$lista_arquivos[$i]],
                    ['descricao' => $lista_arquivos[$i]]);
             }

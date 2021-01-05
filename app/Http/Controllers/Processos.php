@@ -119,7 +119,7 @@ class Processos extends BaseController
             $setor_id = $setor[0]->id ?? NULL; 
             $setor_pasta = $setor[0]->pasta."\\".'FINALIZADOS' ?? NULL; 
             $finalizado = 1;
-            $status = 'FINALIZADO';
+            $status = 3;
         }
         else{
             $setor = strtoupper($passos_processo_fluxo[0]->nome_para);
@@ -127,7 +127,7 @@ class Processos extends BaseController
             $setor_id = $setor[0]->id ?? NULL; 
             $setor_pasta = $setor[0]->pasta ?? NULL; 
             $finalizado = 0;
-            $status = 'PENDENTE';
+            $status = 2;
             $setor_anterior = $dados->setor_atual_id ?? NULL;
 
             DB::table('documentos')
@@ -149,7 +149,7 @@ class Processos extends BaseController
               ->update([
                     'processo_id' => $dados->processo_id
                     ,'setor_atual_id' => $setor_id ?? NULL
-                    ,'status' => $status
+                    ,'status_id' => $status
                     ,'finalizado' => $finalizado
                     ,'passo_processo_id' => $id_para_passo
                     ,'caminho' => $setor_pasta."\\".$dados->arquivo
