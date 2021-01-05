@@ -99,6 +99,7 @@
 													  <input type="hidden" name="id" value="{{$item->id}}">
 													  <input type="hidden" name="caminho" value="{{$item->caminho}}">
 													  <input type="hidden" name="arquivo" value="{{$item->descricao}}">
+													  <input type="hidden" name="setor_atual_id" value="{{$item->setor_atual_id}}"> 
 													  <input type="hidden" name="passo_processo_id" value="{{$item->passo_processo_id}}">
 													  <input type="hidden" name="processo_id" value="{{$item->processo_id}}">
                         

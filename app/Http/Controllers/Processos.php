@@ -128,6 +128,13 @@ class Processos extends BaseController
             $setor_pasta = $setor[0]->pasta ?? NULL; 
             $finalizado = 0;
             $status = 'PENDENTE';
+            $setor_anterior = $dados->setor_atual_id ?? NULL;
+
+            DB::table('documentos')
+              ->where('id', $dados->id)
+              ->update([
+                    'setor_anterior_id' => $setor_anterior
+            ]);
         }
         
         
@@ -141,12 +148,16 @@ class Processos extends BaseController
               ->where('id', $dados->id)
               ->update([
                     'processo_id' => $dados->processo_id
-                    ,'setor_atual_id' => $setor_id
+                    ,'setor_atual_id' => $setor_id ?? NULL
                     ,'status' => $status
                     ,'finalizado' => $finalizado
                     ,'passo_processo_id' => $id_para_passo
                     ,'caminho' => $setor_pasta."\\".$dados->arquivo
          ]);
+         
+
+
+         
 
         return back();
     }
