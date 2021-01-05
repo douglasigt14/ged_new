@@ -72,7 +72,7 @@ class Dashboard extends BaseController
         $lista_arquivos = DB::select($sql);
 
         foreach ($lista_arquivos as $key => $lista) {
-            $lista->status = '<center><p class="label label-info status-span">'.$lista->status_desc.'</p></center>';
+            $lista->status = '<center><p class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
             $lista->processos_img = Storage::url($lista->processos_img); 
         }
 
