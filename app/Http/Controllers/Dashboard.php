@@ -76,6 +76,7 @@ class Dashboard extends BaseController
             $lista->processos_img = Storage::url($lista->processos_img); 
         }
 
+        $setor_caminho = strtoupper($setor);
         $sql = "SELECT 
                     documentos.*
                     ,status_lista.descricao status_desc
@@ -84,7 +85,8 @@ class Dashboard extends BaseController
                     INNER JOIN status_lista ON
                     documentos.status_id = status_lista.id
                 WHERE 
-                    processo_id IS NULL";
+                    processo_id IS NULL
+                AND documentos.caminho LIKE '%$setor_caminho%'";
 
         $lista_arquivos_geral = DB::select($sql);
 

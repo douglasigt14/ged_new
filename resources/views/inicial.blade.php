@@ -112,8 +112,8 @@
 									<br><br><br>
 									@endif
 									@if($lista_arquivos_geral)
-									<h3>Arquivos sem processo atribuido</h3>
-                                    <table class="table table-striped">
+									<h4>Arquivos sem processo atribuido</h4>
+                                    <table class="table table-striped menor">
 										<thead>
 											<tr>
 												<th>Arquivo</th>
