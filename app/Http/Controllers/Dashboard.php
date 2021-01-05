@@ -72,7 +72,7 @@ class Dashboard extends BaseController
         $lista_arquivos = DB::select($sql);
 
         foreach ($lista_arquivos as $key => $lista) {
-            $cor = '#CDC0B0';
+            $cor = '#FFA500';
             $resultado = $this->verifica_cor($cor);
             $cor_texto = $resultado > 128 ? 'black' : 'white';
 
