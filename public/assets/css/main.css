@@ -372,7 +372,7 @@ ul.notifications > li {
       background-color: #252c35;
       border-left-color: #00AAFF; }
     .sidebar .nav > li > a[data-toggle="collapse"] .icon-submenu {
-      display: inline-block;
+      /*display: inline-block;*/
       vertical-align: middle;
       *vertical-align: auto;
       *zoom: 1;
@@ -399,8 +399,6 @@ ul.notifications > li {
     .sidebar .nav > li > a .badge {
       font-weight: 400;
       background-color: #F9354C; }
-  .sidebar .nav {
-    /* submenu */ }
     .sidebar .nav i {
       margin-right: 10px;
       font-size: 18px; }
@@ -1713,7 +1711,7 @@ ul.activity-timeline > li {
   position: relative;
   z-index: 0; }
   ul.activity-timeline > li .activity-icon {
-    display: inline-block;
+    /*display: inline-block;*/
     vertical-align: middle;
     *vertical-align: auto;
     *zoom: 1;
