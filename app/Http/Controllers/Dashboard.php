@@ -28,10 +28,10 @@ class Dashboard extends BaseController
 
         $path_geral = $usuario[0]->pasta."\\INICIAR";
        
-        $lista_arquivos = $this->read_dir($path);
-        $lista_arquivos_geral = $this->read_dir($path_geral);
+        $lista_arquivos = [];//$this->read_dir($path);
+        $lista_arquivos_geral = [];//$this->read_dir($path_geral);
 
-        $lista_arquivos_geral = $this->manipular_lista($lista_arquivos_geral,$path_geral);
+        // $lista_arquivos_geral = $this->manipular_lista($lista_arquivos_geral,$path_geral);
         
         $qtde_setores = DB::select("SELECT count(*) as qtde FROM setores");
         $qtde_setores = $qtde_setores[0]->qtde;
