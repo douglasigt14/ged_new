@@ -58,7 +58,7 @@
                                                 <td>{{$item->descricao_processo}}</td>
                                                 <td>{!! $item->status !!}</td>
                                                 <td class='menor'>
-                                                    <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-info"><i class="fa fa-paperclip"></i></a></center> 
+                                                    <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> 
                                                 </td>
                                                 <td>
                                                     <center><button 
@@ -67,7 +67,7 @@
                                                         onclick="mostrarModalImg(event)"
                                                         data-item-id={{$item->id}}
                                                         data-item-img='{{$item->processos_img}}'
-                                                        class="btn btn-sm btn-danger"><i class="fa fa-file-image-o"></i></button></center>
+                                                        class="btn btn-sm btn-info"><i class="fa fa-file-image-o"></i></button></center>
                                                 </td>
                                                 
                                                 <form action="/seguir_fluxo" method="post">
@@ -123,7 +123,7 @@
                                                     </select></td>
                                                 <td>{!! $item->status !!}</td>
                                                  <td class='menor'>
-                                                    <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-info"><i class="fa fa-paperclip"></i></a></center> 
+                                                    <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> 
                                                 </td>
                                                 <td><center><button class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center></td>
                                                 </form>

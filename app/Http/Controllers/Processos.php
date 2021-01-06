@@ -106,6 +106,32 @@ class Processos extends BaseController
         if($dados->passo_processo_id != '0'){
             $sqlFluxo = $sqlFluxo." AND pp_princial.de = '$dados->passo_processo_id'";
         }
+        else{ //Quando é o Primeiro 
+            $sqlFluxo_setores =  "SELECT 
+                        pp_princial.nome                        
+                    FROM 
+                    passos_processo pp_princial LEFT JOIN passos_processo pp_de ON 
+                        pp_princial.de = pp_de.id_bpmn 
+                    LEFT JOIN passos_processo pp_para ON
+                        pp_princial.para = pp_para.id_bpmn
+                    WHERE pp_princial.processo_id = $dados->processo_id
+                        AND pp_princial.tipo LIKE '%TASK%'";
+            //Descobri quais são os Setores do Fluxo
+             $setores_fluxo = DB::select($sqlFluxo_setores);
+             
+             $setor_id_array = [];
+             foreach ($setores_fluxo as $key => $s_f) {
+                $setor_consulta = DB::select("SELECT * FROM setores WHERE descricao = '$s_f->nome' "); 
+                array_push($setor_id_array,$setor_consulta[0]->id ?? NULL);
+             } 
+             $setores_fluxo = implode(",",$setor_id_array);
+             
+             DB::table('documentos')
+              ->where('id', $dados->id)
+              ->update([
+                    'setores_fluxo' => $setores_fluxo
+            ]);
+        }
 
         // dd($sqlFluxo);
 
