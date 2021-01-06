@@ -31,7 +31,7 @@
                           <td>{{$item->descricao }}</td>
                           <td>{!! $item->span_cor !!}</td>
                                                 <td>
-                                                    
+                                                     @if($item->id != 1 and $item->id != 2 and $item->id != 3)
                                                     <center><button 
                                                         data-toggle="modal" 
                                                         data-target="#modalEditar" 
@@ -40,8 +40,10 @@
                                                         data-item-descricao='{{$item->descricao}}'
                                                         data-item-cor='{{$item->cor}}'
                                                         class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
+                                                      @endif
                                                 </td>
                                                 <td>
+                                                  @if($item->id != 1 and $item->id != 2 and $item->id != 3)
                                                   <form action="/status" method="post">
                                                     @csrf
                                                     @method('delete')
@@ -49,6 +51,7 @@
                                                     
                                                     <center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
                                                   </form>
+                                                  @endif
                                                 </td>
 											</tr>
 											@endforeach
