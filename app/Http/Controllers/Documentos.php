@@ -61,6 +61,7 @@ class Documentos extends Controller
             $cor = '#FFA500';
             $resultado = $this->verifica_cor($cor);
             $cor_texto = $resultado > 128 ? 'black' : 'white';
+             $lista->caminho = Storage::url($lista->caminho); 
 
             $lista->status = '<center><p style="background-color: '.$cor.';color: '.$cor_texto.'" class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
             $lista->processos_img = Storage::url($lista->processos_img); 
@@ -75,12 +76,12 @@ class Documentos extends Controller
                     INNER JOIN status_lista ON
                     documentos.status_id = status_lista.id
                 WHERE 
-                    processo_id IS NULL
-                AND documentos.caminho LIKE '%$setor_caminho%'";
+                    processo_id IS NULL";
 
         $lista_arquivos_geral = DB::select($sql);
 
         foreach ($lista_arquivos_geral as $key => $lista) {
+            $lista->caminho = Storage::url($lista->caminho); 
             $lista->status = '<center><p class="label label-info status-span">'.$lista->status_desc.'</p></center>';
         }
 
@@ -94,5 +95,24 @@ class Documentos extends Controller
         $resultado = (($red * 299) + ($green * 587) + ($blue * 114)) / 1000;
 
         return $resultado;
+    }
+    public function inserir(Request $request){
+        $dados = (object) $request->all();
+        $documento =  $request->file('documento');
+
+        
+        $ultimo_id = DB::table('documentos')->insertGetId([
+                            'descricao' => $dados->descricao
+                            , 'status_id' => 1
+                        ]);
+        $caminho = $documento ? $documento->store('docs/'.$ultimo_id ,'public') : NULL;    
+
+        DB::table('documentos')
+            ->where('id', $ultimo_id)
+            ->update([
+                'caminho' =>  $caminho
+        ]);
+
+        return back();
     }
 }

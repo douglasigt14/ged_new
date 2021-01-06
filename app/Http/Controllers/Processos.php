@@ -139,10 +139,10 @@ class Processos extends BaseController
         
         
 
-        $fonte = $dados->caminho;
-        $copia = $setor_pasta."\\".$dados->arquivo;
-        $res = copy($fonte , $copia);
-        $res = unlink($fonte);
+        // $fonte = $dados->caminho;
+        // $copia = $setor_pasta."\\".$dados->arquivo;
+        // $res = copy($fonte , $copia);
+        // $res = unlink($fonte);
 
         DB::table('documentos')
               ->where('id', $dados->id)
@@ -152,7 +152,6 @@ class Processos extends BaseController
                     ,'status_id' => $status
                     ,'finalizado' => $finalizado
                     ,'passo_processo_id' => $id_para_passo
-                    ,'caminho' => $setor_pasta."\\".$dados->arquivo
          ]);
          
 
