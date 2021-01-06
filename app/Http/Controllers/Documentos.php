@@ -71,6 +71,7 @@ class Documentos extends Controller
         $sql = "SELECT 
                     documentos.*
                     ,status_lista.descricao status_desc
+                    ,status_lista.cor cor
                 FROM 
                     documentos 
                     INNER JOIN status_lista ON
@@ -87,7 +88,6 @@ class Documentos extends Controller
             $resultado = $this->verifica_cor($cor);
             $cor_texto = $resultado > 128 ? 'black' : 'white';
             $lista->status = '<center><p style="background-color: '.$cor.';color: '.$cor_texto.'" class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
-            $lista->processos_img = Storage::url($lista->processos_img); 
         }
 
        return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor"]));
