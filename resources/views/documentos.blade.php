@@ -44,7 +44,7 @@
                                                 <th class='center'>Status</th>
                                                 <th class='center'>Arquivo</th>
                                                 <th class='center'>Desenho&nbsp;Fluxo</th>
-                                                <th class='center'>Seguir&nbsp;Fluxo</th>
+                                                <th class='center'>Seguir&nbsp;Setor</th>
                                             </tr>
                                         </thead>
                                         <tbody>

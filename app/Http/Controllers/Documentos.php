@@ -65,6 +65,8 @@ class Documentos extends Controller
             $cor_texto = $resultado > 128 ? 'black' : 'white';
             $lista->status = '<center><p style="background-color: '.$cor.';color: '.$cor_texto.'" class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
             $lista->processos_img = Storage::url($lista->processos_img); 
+
+            $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3) ");
         }
 
         $setor_caminho = strtoupper($setor);
@@ -88,7 +90,12 @@ class Documentos extends Controller
             $resultado = $this->verifica_cor($cor);
             $cor_texto = $resultado > 128 ? 'black' : 'white';
             $lista->status = '<center><p style="background-color: '.$cor.';color: '.$cor_texto.'" class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
+
+            
         }
+
+        
+        
 
        return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor"]));
     }
