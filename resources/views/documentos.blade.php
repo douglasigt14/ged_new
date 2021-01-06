@@ -139,5 +139,41 @@
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="modalImg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Imagem</h4>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+             <div class="col col-md-12">
+                    <source id="item-source-img" srcset="" type="image/svg+xml">
+                    <img id="item-img" src="" class="img-fluid img-thumbnail" alt="...">
+             </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
            
 @endsection
+
+    @push('scripts')
+		  <script>
+			   function mostrarModalImg(event) {     
+						const button = event.currentTarget
+						const img = document.querySelector("#modalImg #item-img")
+						const source_img = document.querySelector("#modalImg #item-source-img")
+						console.log(img);
+
+						img.srcset = button.getAttribute("data-item-img")
+						source_img.src = button.getAttribute("data-item-img")
+            	}
+		  </script>
+	  @endpush 
