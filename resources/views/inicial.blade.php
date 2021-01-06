@@ -1,6 +1,8 @@
 @extends('commons.template')
 
-
+@push('styles')
+	<link rel="stylesheet" href="{{asset('assets/css/card_upload.css')}}">
+@endpush
 @section('conteudo')
 
 		
@@ -56,7 +58,28 @@
 										</p>
 									</div>
 								</a>
-                            </div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="row d-flex justify-content-center">
+										<div class="col-md-12">
+											<div class="card">
+												<div class="card-header">
+													<h5>Upload de Arquivos</h5>
+												</div>
+												<div class="card-block">
+													<form action="#" class="dropzone dz-clickable">
+														
+													</form>
+													<div class="text-center m-t-10">
+														<button class="btn btn-primary">Upload</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
                             <div class="row">
                                 <div class="col-md-12">
 									@if($lista_arquivos)
