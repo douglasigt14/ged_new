@@ -42,6 +42,7 @@ class Documentos extends Controller
                 ,processos.descricao descricao_processo
                 ,processos.img processos_img
                 ,status_lista.descricao status_desc
+                ,status_lista.cor cor
                 FROM 
                     documentos 
                     LEFT JOIN setores s_atual ON
@@ -58,11 +59,10 @@ class Documentos extends Controller
         $lista_arquivos = DB::select($sql);
 
         foreach ($lista_arquivos as $key => $lista) {
-            $cor = '#FFA500';
+             $lista->caminho = Storage::url($lista->caminho); 
+            $cor = $lista->cor ?? '#d3d3d3';
             $resultado = $this->verifica_cor($cor);
             $cor_texto = $resultado > 128 ? 'black' : 'white';
-             $lista->caminho = Storage::url($lista->caminho); 
-
             $lista->status = '<center><p style="background-color: '.$cor.';color: '.$cor_texto.'" class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
             $lista->processos_img = Storage::url($lista->processos_img); 
         }
@@ -82,13 +82,18 @@ class Documentos extends Controller
 
         foreach ($lista_arquivos_geral as $key => $lista) {
             $lista->caminho = Storage::url($lista->caminho); 
-            $lista->status = '<center><p class="label label-info status-span">'.$lista->status_desc.'</p></center>';
+            
+            $cor = $lista->cor ?? '#d3d3d3';
+            $resultado = $this->verifica_cor($cor);
+            $cor_texto = $resultado > 128 ? 'black' : 'white';
+            $lista->status = '<center><p style="background-color: '.$cor.';color: '.$cor_texto.'" class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
+            $lista->processos_img = Storage::url($lista->processos_img); 
         }
 
        return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor"]));
     }
 
-    private function verifica_cor($cor){
+    public static function verifica_cor($cor){
         $red = hexdec(substr($cor, 1, 2));
         $green = hexdec(substr($cor, 3, 2));
         $blue = hexdec(substr($cor, 5, 2));

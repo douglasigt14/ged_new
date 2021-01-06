@@ -20,7 +20,7 @@
 										<thead>
 											<tr>
                         <th>Descrição</th>
-                        <th>COR</th>
+                        <th class='center'>Cor</th>
 												<th class='center'>Editar</th>
 												<th class='center'>Excluir</th>
 											</tr>
@@ -28,7 +28,8 @@
 										<tbody>
 											@foreach ($status as $item)
 											<tr>
-											    <td>{{$item->descricao }}</td>
+                          <td>{{$item->descricao }}</td>
+                          <td>{!! $item->span_cor !!}</td>
                                                 <td>
                                                     
                                                     <center><button 
@@ -37,6 +38,7 @@
                                                         onclick="mostrarModal(event)"
                                                         data-item-id={{$item->id}}
                                                         data-item-descricao='{{$item->descricao}}'
+                                                        data-item-cor='{{$item->cor}}'
                                                         class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
                                                 </td>
                                                 <td>
@@ -68,9 +70,13 @@
           <div class="row">
               <form action="/status" method="post">
               @csrf
-              <div class="col col-md-12">
+              <div class="col col-md-6">
                   <label>Descrição</label>
                   <input type="text" name='descricao' class='form-control'>
+              </div>
+              <div class="col col-md-6">
+                  <label>Cor</label>
+                  <input type="color" name='cor' class='form-control'>
               </div>
           </div>
       </div>
@@ -96,10 +102,13 @@
               @csrf
               @method('put')
                <input type="hidden" id='item-id' name='id' class='form-control'>
-              <div class="col col-md-12">
+              <div class="col col-md-6">
                   <label>Descrição</label>
-                 
                    <input type="text" id='item-descricao' name='descricao' class='form-control'>
+              </div>
+              <div class="col col-md-6">
+                  <label>Cor</label>
+                   <input type="color" id='item-cor' name='cor' class='form-control'>
               </div>
           </div>
       </div>
@@ -116,8 +125,10 @@
                 const button = event.currentTarget
                 const descricao = document.querySelector("#modalEditar #item-descricao")
                 const id = document.querySelector("#modalEditar #item-id")
+                const cor = document.querySelector("#modalEditar #item-cor")
 
                 descricao.value = button.getAttribute("data-item-descricao")
+                cor.value = button.getAttribute("data-item-cor")
                 id.value = button.getAttribute("data-item-id")
             }
     </script>
