@@ -10,6 +10,7 @@ use App\Http\Controllers\Funcionarios;
 use App\Http\Controllers\Processos;
 use App\Http\Controllers\Passos;
 use App\Http\Controllers\Status;
+use App\Http\Controllers\Documentos;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,8 @@ use App\Http\Controllers\Status;
 */
 Route::middleware(MyAuth::class)->group(function () {
     Route::get('/', [Dashboard::class, 'index']);
-   
+    
+    Route::get('/documentos', [Documentos::class, 'index']);
 
 
     Route::get('/setores', [Setores::class, 'index']);
