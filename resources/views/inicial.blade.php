@@ -13,6 +13,15 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
+								<a href='/documentos' class="col-md-3 cinzinha">
+									<div class="metric">
+										<span class="icon"><i class="fa fa-file"></i></span>
+										<p>
+											<span class="number">{{$qtde_documentos}}</span>
+											<span class="title">Documentos</span>
+										</p>
+									</div>
+								</a>
 								<a href='/setores' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-users"></i></span>

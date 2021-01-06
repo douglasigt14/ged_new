@@ -86,4 +86,13 @@ class Documentos extends Controller
 
        return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor"]));
     }
+
+    private function verifica_cor($cor){
+        $red = hexdec(substr($cor, 1, 2));
+        $green = hexdec(substr($cor, 3, 2));
+        $blue = hexdec(substr($cor, 5, 2));
+        $resultado = (($red * 299) + ($green * 587) + ($blue * 114)) / 1000;
+
+        return $resultado;
+    }
 }

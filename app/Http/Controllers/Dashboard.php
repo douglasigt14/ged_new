@@ -25,7 +25,7 @@ class Dashboard extends BaseController
         $path = $usuario[0]->pasta;
         $setor = $usuario[0]->setor;
         $setor_id = $usuario[0]->setor_id;
-        
+
         $qtde_setores = DB::select("SELECT count(*) as qtde FROM setores");
         $qtde_setores = $qtde_setores[0]->qtde;
 
@@ -37,9 +37,12 @@ class Dashboard extends BaseController
 
         $qtde_status = DB::select("SELECT count(*) as qtde FROM status_lista");
         $qtde_status = $qtde_status[0]->qtde;
+
+        $qtde_documentos = DB::select("SELECT count(*) as qtde FROM documentos");
+        $qtde_documentos = $qtde_documentos[0]->qtde;
         
 
-       return view('inicial', compact(["qtde_setores","qtde_funcionarios","qtde_processos","qtde_status","setor"]));
+       return view('inicial', compact(["qtde_setores","qtde_funcionarios","qtde_processos","qtde_status","qtde_documentos","setor"]));
     }
 
    private  function read_dir($dir) {
@@ -63,21 +66,7 @@ class Dashboard extends BaseController
             }
             $d->close();
    return $array;   
-}
-    private function mover(){
-        // $fonte = $path."\\".$lista_arquivos[$i];
-        // $copia = $path_2."\\".$lista_arquivos[$i];
-        // $res = copy($fonte , $copia);
-        // $res = unlink($fonte);
-    }    
-    private function verifica_cor($cor){
-        $red = hexdec(substr($cor, 1, 2));
-        $green = hexdec(substr($cor, 3, 2));
-        $blue = hexdec(substr($cor, 5, 2));
-        $resultado = (($red * 299) + ($green * 587) + ($blue * 114)) / 1000;
-
-        return $resultado;
-    }
+}     
     private function manipular_lista($lista_arquivos,$path){
         for ($i=0; $i < sizeof($lista_arquivos); $i++) {
             $haystack = $lista_arquivos[$i];
