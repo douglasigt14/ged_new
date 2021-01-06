@@ -29,18 +29,7 @@ class Documentos extends Controller
         $lista_arquivos_geral = [];//$this->read_dir($path_geral);
 
         // $lista_arquivos_geral = $this->manipular_lista($lista_arquivos_geral,$path_geral);
-        
-        $qtde_setores = DB::select("SELECT count(*) as qtde FROM setores");
-        $qtde_setores = $qtde_setores[0]->qtde;
-
-        $qtde_funcionarios = DB::select("SELECT count(*) as qtde FROM usuarios");
-        $qtde_funcionarios = $qtde_funcionarios[0]->qtde;
-
-        $qtde_processos = DB::select("SELECT count(*) as qtde FROM processos");
-        $qtde_processos = $qtde_processos[0]->qtde;
-
-        $qtde_status = DB::select("SELECT count(*) as qtde FROM status_lista");
-        $qtde_status = $qtde_status[0]->qtde;
+    
 
         $processos = DB::select("SELECT * FROM processos");
 
@@ -95,6 +84,6 @@ class Documentos extends Controller
             $lista->status = '<center><p class="label label-info status-span">'.$lista->status_desc.'</p></center>';
         }
 
-       return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","qtde_setores","qtde_funcionarios","qtde_processos","qtde_status","processos","setor"]));
+       return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor"]));
     }
 }
