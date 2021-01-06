@@ -66,7 +66,7 @@ class Documentos extends Controller
             $lista->status = '<center><p style="background-color: '.$cor.';color: '.$cor_texto.'" class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
             $lista->processos_img = Storage::url($lista->processos_img); 
 
-            $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3) ");
+            $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3,$lista->status_id) ");
         }
 
         $setor_caminho = strtoupper($setor);
