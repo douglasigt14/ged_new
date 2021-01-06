@@ -6,30 +6,29 @@
 @section('conteudo')
 
     <div class="row">
-        
-                <div class="col-md-12">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>Upload de Arquivos</h5>
-                                </div>
-                                <div class="card-block">
-                                    <form action="#" class="dropzone dz-clickable">
-                                        <div>
-                                            <label for="file">Documento</label>
-                                            <input type="file" id="file" name="file" multiple>
-                                        </div>
-                                    </form>
-                                    <div class="text-center m-t-10">
-                                        <button class="btn btn-primary">Upload</button>
+        <div class="col-md-12">
+            <div class="panel panel-headline">
+						<div class="panel-heading">
+							<h3 class="panel-title">Documentos - {{ucfirst($setor)}}</h3>
+						</div>
+						<div class="panel-body">
+                            <form action="/documentos" method="post" enctype="multipart/form-data">
+                            @csrf
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Documento</label>
+                                        <input type='file' name="documento" class='form-control'>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label>Documento</label>
+                                        <input type='text' name="descricao" class='form-control'>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            </form>
+                       </div>
             </div>
+        </div>
+    </div>
             <div class="row">
                 <div class="col-md-12">
                     @if($lista_arquivos)
