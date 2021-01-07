@@ -54,11 +54,16 @@ class Documentos extends Controller
                     INNER JOIN status_lista ON
                     	documentos.status_id = status_lista.id
                 WHERE 
-                    s_atual.id  = $setor_id
-                AND finalizado = 0";
+                    finalizado = 0";
         $lista_arquivos = DB::select($sql);
-
+        $lista_processo = [];
         foreach ($lista_arquivos as $key => $lista) {
+            if(in_array($setor_id,explode(',',$lista->setores_fluxo))){
+               array_push($lista_processo,$lista->descricao_processo);
+            }
+            else{
+                unset($lista_arquivos[$key]);
+            }
              $lista->caminho = Storage::url($lista->caminho); 
             $cor = $lista->cor ?? '#d3d3d3';
             $resultado = $this->verifica_cor($cor);
@@ -66,6 +71,7 @@ class Documentos extends Controller
             $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3,$lista->status_id) ");
             $lista->processos_img = Storage::url($lista->processos_img); 
         }
+        $lista_processo = array_unique($lista_processo);
 
         $setor_caminho = strtoupper($setor);
         $sql = "SELECT 
@@ -95,7 +101,7 @@ class Documentos extends Controller
         
         
 
-       return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor"]));
+       return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor","lista_processo"]));
     }
 
     public static function verifica_cor($cor){

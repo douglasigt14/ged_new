@@ -33,7 +33,8 @@
                              <div class="row">
                                 <div class="col-md-12">
                                     @if($lista_arquivos)
-                                    <h4>Arquivos no Setor de {{ucfirst($setor)}}</h4>
+                                    @foreach ($lista_processo as $processo)
+                                    <h4>Documentos:  {{ucfirst($processo)}}</h4>
                                     <table class="table table-striped menor">
                                         <thead>
                                             <tr>
@@ -44,11 +45,14 @@
                                                 <th class='center'>Status</th>
                                                 <th class='center'>Arquivo</th>
                                                 <th class='center'>Desenho&nbsp;Fluxo</th>
-                                                <th class='center'>Seguir&nbsp;Setor</th>
+                                                <th class='center'>Seguir&nbsp;Fluxo</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($lista_arquivos as $item)
+                                                @if ($item->descricao_processo != $processo)
+                                                    @php continue; @endphp
+                                                @endif
                                             <tr>
                                                 <td>
                                                     {{$item->descricao }}
@@ -92,7 +96,8 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    <br><br><br>
+                                    <br>
+                                    @endforeach
                                     @endif
                                     @if($lista_arquivos_geral)
                                     <h4>Arquivos sem processo atribuido</h4>
@@ -148,7 +153,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    <br><br>
+                                    <br>
                                     @endif
                                 </div>
                             </div>
