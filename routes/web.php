@@ -27,6 +27,7 @@ Route::middleware(MyAuth::class)->group(function () {
     
     Route::get('/documentos', [Documentos::class, 'index']);
     Route::post('/documentos', [Documentos::class, 'inserir']);
+    Route::patch('/documentos', [Documentos::class, 'alterar_status']);
 
 
     Route::get('/setores', [Setores::class, 'index']);

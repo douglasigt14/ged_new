@@ -125,4 +125,13 @@ class Documentos extends Controller
 
         return back();
     }
+    public function alterar_status(Request $request){
+        $dados = (object) $request->all();
+        DB::table('documentos')
+            ->where('id', $dados->id)
+            ->update([
+                'status_id' =>  $dados->status_id
+        ]);
+        return back();
+    }
 }

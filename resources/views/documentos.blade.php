@@ -176,16 +176,20 @@
         <h4 class="modal-title" id="exampleModalLabel">Alterar Status</h4>
       </div>
       <div class="modal-body">
+          <form action="/documentos" method="POST">
+            @csrf
+            @method('patch')
           <div class="row">
               <input type="hidden" name='id' id='item-id'>
              <div class="col col-md-12">
-                <select class='form-control' name="status_lista" id="item-status_lista">
+                <select class='form-control' name="status_id" id="item-status_lista">
                     
                 </select>
              </div>
           </div>
       </div>
       <div class="modal-footer">
+          <button type="submit" class='btn btn-warning'>Alterar</button>
       </form>
       </div>
     </div>
