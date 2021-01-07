@@ -56,7 +56,14 @@
                                                 <td>{{ $item->setor_anterior }}</td>
                                                 <td>{{ $item->setor_atual }}</td>
                                                 <td>{{$item->descricao_processo}}</td>
-                                                <td>{!! $item->status !!}</td>
+                                                <td><center><p data-toggle="modal" 
+                                                                data-target="#modalStatus" 
+                                                                onclick="mostrarModalStatus(event)"
+                                                                data-item-id={{$item->id}}
+                                                                data-item-status_lista='{{json_encode($item->status_lista)}}'
+                                                                style="background-color: {{$item->cor}};color: {{$item->cor_texto}}"
+                                                                class="label label-warning status-span">
+                                                    {{$item->status_desc}}</p></center></td>
                                                 <td class='menor'>
                                                     <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> 
                                                 </td>
@@ -170,8 +177,10 @@
       </div>
       <div class="modal-body">
           <div class="row">
+              <input type="text" name='id' id='item-id'>
+              <input type="text" name='status_lista' id='item-status_lista'>
              <div class="col col-md-12">
-                   <input type="text" name='id' id=''>
+                   
              </div>
           </div>
       </div>
@@ -201,8 +210,11 @@
 						const id = document.querySelector("#modalStatus #item-id")
 						const status_lista = document.querySelector("#modalStatus #item-status_lista")
 
+                        var lista = button.getAttribute("data-item-status_lista") 
+
+                        console.log(lista);
+                        
                         id.value = button.getAttribute("data-item-id")
-                        status_lista.value = button.getAttribute("data-item-status_lista")
             	}
 		  </script>
 	  @endpush 
