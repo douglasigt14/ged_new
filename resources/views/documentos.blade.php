@@ -34,7 +34,7 @@
                                 <div class="col-md-12">
                                     @if($lista_arquivos)
                                     @foreach ($lista_processo as $processo)
-                                    <h4>Documentos:  {!! $processo !!}</h4>
+                                    <h4>{!! $processo !!}</h4>
                                     <table class="table table-striped menor">
                                         <thead>
                                             <tr>
@@ -50,7 +50,10 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($lista_arquivos as $item)
-                                                @if ($item->descricao_processo.' |  No Setor de <b>'.$item->setor_atual.'</b>' != $processo and $item->descricao_processo.'<b style="color: red"> | EM DECISSÃO</b>' != $processo)
+                                                @if ($item->descricao_processo.' |  No Setor de <b>'.$item->setor_atual.'</b>' != $processo and $item->tipo_passo == 'BPMN:TASK')
+                                                    @php continue; @endphp
+                                                @endif
+                                                @if ($item->descricao_processo.'<b style="color: red"> | EM DECISSÃO</b>' != $processo and $item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY')
                                                     @php continue; @endphp
                                                 @endif
                                             <tr>
