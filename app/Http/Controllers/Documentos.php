@@ -125,6 +125,11 @@ class Documentos extends Controller
 
         return back();
     }
+    public function deletar(Request $request){
+         $dados = (object) $request->all();
+         DB::table('documentos')->where('id', '=', $dados->id )->delete();
+        return back();
+    }
     public function alterar_status(Request $request){
         $dados = (object) $request->all();
         DB::table('documentos')

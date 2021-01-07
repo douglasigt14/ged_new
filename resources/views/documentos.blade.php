@@ -99,6 +99,7 @@
                                     <table class="table table-striped menor">
                                         <thead>
                                             <tr>
+                                                <th class='center'>Apagar</th>
                                                 <th>Descrição</th>
                                                 <th class='center'>Selecionar</th>
                                                 <th class='center'>Status</th>
@@ -109,6 +110,15 @@
                                         <tbody>
                                             @foreach ($lista_arquivos_geral as $item)
                                             <tr>
+                                                 <td>
+                                                  <form action="/documentos" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <input type="hidden" name="id" value={{$item->id}}>
+                                                    
+                                                    <center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
+                                                  </form>
+                                                </td>
                                                 <td>
                                                     {{$item->descricao}}
                                                 </td>
