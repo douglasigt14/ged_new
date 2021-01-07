@@ -50,7 +50,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($lista_arquivos as $item)
-                                                @if ($item->descricao_processo.' |  No Setor de <b>'.$item->setor_atual.'</b>' != $processo)
+                                                @if ($item->descricao_processo.' |  No Setor de <b>'.$item->setor_atual.'</b>' != $processo and $item->descricao_processo.'<b style="color: red"> | EM DECISSÃO</b>' != $processo)
                                                     @php continue; @endphp
                                                 @endif
                                             <tr>
@@ -92,7 +92,10 @@
                         
                                                 <td>
                                                     @if ($item->setor_atual == $setor)
-                                                    <center><button class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center>
+                                                    <center><button type='submit' class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center>
+                                                    @elseif ($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY')
+                                                    <center><button type='button'
+                                                            class="btn btn-sm btn-warning"><i class="fa fa-exchange"></i></button></center>
                                                     @else
                                                         <center><button disabled class="btn btn-sm btn-primary cinza"><i class="fa fa-arrow-right"></i></button></center>
                                                     @endif

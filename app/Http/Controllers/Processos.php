@@ -103,10 +103,12 @@ class Processos extends BaseController
                         AND pp_princial.tipo LIKE '%SEQUENCEFLOW%'";
 
         
-        if($dados->passo_processo_id != '0'){
+        if($dados->passo_processo_id != '0'){ //Os Demais
             $sqlFluxo = $sqlFluxo." AND pp_princial.de = '$dados->passo_processo_id'";
         }
         else{ //Quando é o Primeiro 
+
+            //Descobrir quais são os Setores que participam do Fluxo
             $sqlFluxo_setores =  "SELECT 
                         pp_princial.nome                        
                     FROM 
@@ -116,7 +118,7 @@ class Processos extends BaseController
                         pp_princial.para = pp_para.id_bpmn
                     WHERE pp_princial.processo_id = $dados->processo_id
                         AND pp_princial.tipo LIKE '%TASK%'";
-            //Descobri quais são os Setores do Fluxo
+            
              $setores_fluxo = DB::select($sqlFluxo_setores);
              
              $setor_id_array = [];
@@ -131,6 +133,7 @@ class Processos extends BaseController
               ->update([
                     'setores_fluxo' => $setores_fluxo
             ]);
+            //Descobrir quais são os Setores que participam do Fluxo
         }
 
         // dd($sqlFluxo);

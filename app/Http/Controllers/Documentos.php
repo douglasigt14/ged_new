@@ -43,6 +43,7 @@ class Documentos extends Controller
                 ,processos.img processos_img
                 ,status_lista.descricao status_desc
                 ,status_lista.cor cor
+                ,passos_processo.tipo tipo_passo
                 FROM 
                     documentos 
                     LEFT JOIN setores s_atual ON
@@ -53,13 +54,16 @@ class Documentos extends Controller
                     processos.id = documentos.processo_id
                     INNER JOIN status_lista ON
                     	documentos.status_id = status_lista.id
+                    INNER JOIN passos_processo ON
+                    	documentos.passo_processo_id = passos_processo.id_bpmn
                 WHERE 
                     finalizado = 0";
         $lista_arquivos = DB::select($sql);
         $lista_processo = [];
         foreach ($lista_arquivos as $key => $lista) {
+            $sufixo_lista_processo = ($lista->tipo_passo != 'BPMN:EXCLUSIVEGATEWAY' and $lista->tipo_passo != 'EXCLUSIVEGATEWAY') ? ' |  No Setor de <b>'.$lista->setor_atual.'</b>' : '<b style="color: red"> | EM DECISSÃO</b>';
             if(in_array($setor_id,explode(',',$lista->setores_fluxo))){
-               array_push($lista_processo,$lista->descricao_processo.' |  No Setor de <b>'.$lista->setor_atual.'</b>');
+               array_push($lista_processo,$lista->descricao_processo.''.$sufixo_lista_processo);
             }
             else{
                 unset($lista_arquivos[$key]);
