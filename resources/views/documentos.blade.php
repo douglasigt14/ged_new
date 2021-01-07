@@ -63,11 +63,14 @@
                                                 <td>{{ $item->setor_anterior }}</td>
                                                 <td>{{ $item->setor_atual }}</td>
                                                 <td>{{$item->descricao_processo}}</td>
-                                                <td><center><p data-toggle="modal" 
+                                                <td><center><p 
+                                                                @if ($item->setor_atual == $setor or $item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY')
+                                                                data-toggle="modal" 
                                                                 data-target="#modalStatus" 
                                                                 onclick="mostrarModalStatus(event)"
                                                                 data-item-id={{$item->id}}
                                                                 data-item-status_lista='{{json_encode($item->status_lista)}}'
+                                                                @endif
                                                                 style="background-color: {{$item->cor}};color: {{$item->cor_texto}}"
                                                                 class="label label-warning status-span">
                                                     {{$item->status_desc}}</p></center></td>
