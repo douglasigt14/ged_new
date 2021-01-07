@@ -92,10 +92,13 @@
                         
                                                 <td>
                                                     @if ($item->setor_atual == $setor)
-                                                    <center><button type='submit' class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center>
+                                                        <center><button type='submit' class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center>
                                                     @elseif ($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY')
-                                                    <center><button type='button'
-                                                            class="btn btn-sm btn-warning"><i class="fa fa-exchange"></i></button></center>
+                                                        <center><button 
+                                                            data-toggle="modal" 
+                                                            data-target="#modalDecissao" 
+                                                            data-item-id={{$item->id}}
+                                                            type='button' class="btn btn-sm btn-warning"><i class="fa fa-exchange"></i></button></center>
                                                     @else
                                                         <center><button disabled class="btn btn-sm btn-primary cinza"><i class="fa fa-arrow-right"></i></button></center>
                                                     @endif
@@ -215,6 +218,26 @@
       <div class="modal-footer">
           <button type="submit" class='btn btn-warning'>Alterar</button>
       </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="modal fade" id="modalDecissao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Decissão</h4>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+             <div class="col col-md-12">
+                    
+             </div>
+          </div>
+      </div>
+      <div class="modal-footer">
       </div>
     </div>
   </div>
