@@ -63,10 +63,19 @@ class Documentos extends Controller
             $cor = $lista->cor ?? '#d3d3d3';
             $resultado = $this->verifica_cor($cor);
             $cor_texto = $resultado > 128 ? 'black' : 'white';
-            $lista->status = '<center><p style="background-color: '.$cor.';color: '.$cor_texto.'" class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
+            $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3,$lista->status_id) ");
+
+            $lista->status = '<center><p data-toggle="modal" 
+                                        data-target="#modalImg" 
+                                        onclick="mostrarModalImg(event)"
+                                        data-item-id='.$lista->id.'
+                                        data-item-status_lista="'.json_encode($lista->status_lista).'"
+                                        style="background-color: '.$cor.';color: '.$cor_texto.'" 
+                                        class="label label-warning status-span">
+                            '.$lista->status_desc.'</p></center>';
             $lista->processos_img = Storage::url($lista->processos_img); 
 
-            $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3,$lista->status_id) ");
+            
         }
 
         $setor_caminho = strtoupper($setor);
