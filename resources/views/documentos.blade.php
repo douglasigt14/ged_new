@@ -177,10 +177,11 @@
       </div>
       <div class="modal-body">
           <div class="row">
-              <input type="text" name='id' id='item-id'>
-              <input type="text" name='status_lista' id='item-status_lista'>
+              <input type="hidden" name='id' id='item-id'>
              <div class="col col-md-12">
-                   
+                <select class='form-control' name="status_lista" id="item-status_lista">
+                    
+                </select>
              </div>
           </div>
       </div>
@@ -210,9 +211,13 @@
 						const id = document.querySelector("#modalStatus #item-id")
 						const status_lista = document.querySelector("#modalStatus #item-status_lista")
 
-                        var lista = button.getAttribute("data-item-status_lista") 
+                        var lista = JSON.parse(button.getAttribute("data-item-status_lista")) 
 
-                        console.log(lista);
+                         var op = '';
+                        lista.forEach(item => {
+                            op = op+'<option value="'+item.id+'">'+item.descricao+'</option>';
+                        });
+                         status_lista.innerHTML = op;
                         
                         id.value = button.getAttribute("data-item-id")
             	}
