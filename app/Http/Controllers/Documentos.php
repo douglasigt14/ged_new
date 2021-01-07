@@ -68,6 +68,23 @@ class Documentos extends Controller
             else{
                 unset($lista_arquivos[$key]);
             }
+
+            if($lista->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $lista->tipo_passo == 'EXCLUSIVEGATEWAY'){
+                $lista->bifurcacoes = DB::select("SELECT 
+                        pp_princial.*
+                        ,pp_de.nome nome_de
+                        ,pp_para.nome nome_para
+                        ,pp_de.id_bpmn id_de
+                        ,pp_para.id_bpmn id_para                        
+                    FROM 
+                    passos_processo pp_princial LEFT JOIN passos_processo pp_de ON 
+                        pp_princial.de = pp_de.id_bpmn 
+                    LEFT JOIN passos_processo pp_para ON
+                        pp_princial.para = pp_para.id_bpmn
+                    WHERE pp_princial.processo_id = $lista->processo_id
+                        AND pp_princial.tipo LIKE '%SEQUENCEFLOW%'
+                        AND pp_princial.de = '$lista->passo_processo_id'");
+            }
             $lista->caminho = Storage::url($lista->caminho); 
             $cor = $lista->cor ?? '#d3d3d3';
             $resultado = $this->verifica_cor($cor);
