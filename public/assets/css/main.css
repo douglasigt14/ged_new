@@ -1781,6 +1781,10 @@ ul.activity-timeline > li {
   .cinzinha{
     color: #676a6d;
   }
+  .cinza{
+    background-color: #676a6d;
+    border-color: #676a6d;
+  }
   .iframe-fluxos{
     width: 100%;
     height: calc(100vh - 200px);

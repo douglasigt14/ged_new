@@ -59,12 +59,12 @@ class Documentos extends Controller
         $lista_processo = [];
         foreach ($lista_arquivos as $key => $lista) {
             if(in_array($setor_id,explode(',',$lista->setores_fluxo))){
-               array_push($lista_processo,$lista->descricao_processo);
+               array_push($lista_processo,$lista->descricao_processo.' |  No Setor de <b>'.$lista->setor_atual.'</b>');
             }
             else{
                 unset($lista_arquivos[$key]);
             }
-             $lista->caminho = Storage::url($lista->caminho); 
+            $lista->caminho = Storage::url($lista->caminho); 
             $cor = $lista->cor ?? '#d3d3d3';
             $resultado = $this->verifica_cor($cor);
             $lista->cor_texto = $resultado > 128 ? 'black' : 'white';

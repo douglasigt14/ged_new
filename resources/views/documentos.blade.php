@@ -34,7 +34,7 @@
                                 <div class="col-md-12">
                                     @if($lista_arquivos)
                                     @foreach ($lista_processo as $processo)
-                                    <h4>Documentos:  {{ucfirst($processo)}}</h4>
+                                    <h4>Documentos:  {!! $processo !!}</h4>
                                     <table class="table table-striped menor">
                                         <thead>
                                             <tr>
@@ -50,7 +50,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($lista_arquivos as $item)
-                                                @if ($item->descricao_processo != $processo)
+                                                @if ($item->descricao_processo.' |  No Setor de <b>'.$item->setor_atual.'</b>' != $processo)
                                                     @php continue; @endphp
                                                 @endif
                                             <tr>
@@ -90,7 +90,13 @@
                                                         <input type="hidden" name="passo_processo_id" value="{{$item->passo_processo_id}}">
                                                         <input type="hidden" name="processo_id" value="{{$item->processo_id}}">
                         
-                                                <td><center><button class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center></td>
+                                                <td>
+                                                    @if ($item->setor_atual == $setor)
+                                                    <center><button class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center>
+                                                    @else
+                                                        <center><button disabled class="btn btn-sm btn-primary cinza"><i class="fa fa-arrow-right"></i></button></center>
+                                                    @endif
+                                                </td>
                                                 </form>
                                             </tr>
                                             @endforeach
