@@ -44,6 +44,7 @@ class Documentos extends Controller
                 ,status_lista.descricao status_desc
                 ,status_lista.cor cor
                 ,passos_processo.tipo tipo_passo
+                ,passos_processo.nome nome_passo
                 FROM 
                     documentos 
                     LEFT JOIN setores s_atual ON
@@ -92,6 +93,7 @@ class Documentos extends Controller
             $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3,$lista->status_id) ");
             $lista->processos_img = Storage::url($lista->processos_img); 
         }
+        //dd($lista_arquivos);
         $lista_processo = array_unique($lista_processo);
 
         $setor_caminho = strtoupper($setor);

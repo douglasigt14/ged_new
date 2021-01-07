@@ -103,7 +103,10 @@
                                                         <center><button 
                                                             data-toggle="modal" 
                                                             data-target="#modalDecissao" 
+                                                            onclick="mostrarModalDecisao(event)"
                                                             data-item-id={{$item->id}}
+                                                            data-item-pergunta="{{$item->nome_passo}}"
+                                                            data-item-bifurcacoes='{{json_encode($item->bifurcacoes)}}'
                                                             type='button' class="btn btn-sm btn-warning"><i class="fa fa-exchange"></i></button></center>
                                                     @else
                                                         <center><button disabled class="btn btn-sm btn-primary cinza"><i class="fa fa-arrow-right"></i></button></center>
@@ -239,7 +242,9 @@
       <div class="modal-body">
           <div class="row">
              <div class="col col-md-12">
-                    
+                    <input type="text" name='id' id='item-id'>
+                    <input type="text" name='pergunta' id='item-pergunta'>
+                    <input type="text" name='bifurcacoes' id='item-bifurcacoes'>
              </div>
           </div>
       </div>
@@ -277,6 +282,18 @@
                          status_lista.innerHTML = op;
                         
                         id.value = button.getAttribute("data-item-id")
-            	}
+                }
+                function mostrarModalDecisao(event) {     
+                    const button = event.currentTarget
+                    const id = document.querySelector("#modalDecissao #item-id")
+                    const pergunta = document.querySelector("#modalDecissao #item-pergunta")
+                    const bifurcacoes = document.querySelector("#modalDecissao #item-bifurcacoes")
+
+
+                    id.value = button.getAttribute("data-item-id")
+                    pergunta.value = button.getAttribute("data-item-pergunta")
+                    
+                    
+                }
 		  </script>
 	  @endpush 
