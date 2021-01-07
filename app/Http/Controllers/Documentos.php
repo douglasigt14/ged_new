@@ -66,8 +66,8 @@ class Documentos extends Controller
             $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3,$lista->status_id) ");
 
             $lista->status = '<center><p data-toggle="modal" 
-                                        data-target="#modalImg" 
-                                        onclick="mostrarModalImg(event)"
+                                        data-target="#modalStatus" 
+                                        onclick="mostrarModalStatus(event)"
                                         data-item-id='.$lista->id.'
                                         data-item-status_lista="'.json_encode($lista->status_lista).'"
                                         style="background-color: '.$cor.';color: '.$cor_texto.'" 

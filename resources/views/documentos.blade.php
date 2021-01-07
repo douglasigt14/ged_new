@@ -156,6 +156,26 @@
           </div>
       </div>
       <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+   <div class="modal fade" id="modalStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Alterar Status</h4>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+             <div class="col col-md-12">
+                   <input type="text" name='id' id=''>
+             </div>
+          </div>
+      </div>
+      <div class="modal-footer">
       </form>
       </div>
     </div>
@@ -174,6 +194,15 @@
 
 						img.srcset = button.getAttribute("data-item-img")
 						source_img.src = button.getAttribute("data-item-img")
+                }
+                
+                function mostrarModalStatus(event) {     
+						const button = event.currentTarget
+						const id = document.querySelector("#modalStatus #item-id")
+						const status_lista = document.querySelector("#modalStatus #item-status_lista")
+
+                        id.value = button.getAttribute("data-item-id")
+                        status_lista.value = button.getAttribute("data-item-status_lista")
             	}
 		  </script>
 	  @endpush 
