@@ -87,7 +87,7 @@ class Processos extends BaseController
     }
     public function seguir_fluxo(Request $request){
         $dados = (object) $request->all();
-        // passo_processo_id
+        $tem_bifurcacao = $dados->tem_bifurcacao ?? NULL;
         $sqlFluxo = "SELECT 
                         pp_princial.*
                         ,pp_de.nome nome_de
@@ -102,12 +102,14 @@ class Processos extends BaseController
                     WHERE pp_princial.processo_id = $dados->processo_id
                         AND pp_princial.tipo LIKE '%SEQUENCEFLOW%'";
 
-        
-        if($dados->passo_processo_id != '0'){ //Os Demais
+        if($tem_bifurcacao){
+            $sqlFluxo = $sqlFluxo." AND pp_princial.id = '$dados->passo_processo_id'";
+        }    
+        else if($dados->passo_processo_id != '0'){ //Os Demais
             $sqlFluxo = $sqlFluxo." AND pp_princial.de = '$dados->passo_processo_id'";
         }
         else{ //Quando é o Primeiro 
-
+           // dd($sqlFluxo);
             //Descobrir quais são os Setores que participam do Fluxo
             $sqlFluxo_setores =  "SELECT 
                         pp_princial.nome                        
@@ -136,7 +138,6 @@ class Processos extends BaseController
             //Descobrir quais são os Setores que participam do Fluxo
         }
 
-        // dd($sqlFluxo);
 
         $passos_processo_fluxo = DB::select($sqlFluxo);
         $id_para_passo = $passos_processo_fluxo[0]->id_para;

@@ -90,8 +90,6 @@
                                                 <form action="/seguir_fluxo" method="post">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{$item->id}}">
-                                                        <input type="hidden" name="caminho" value="{{$item->caminho}}">
-                                                        <input type="hidden" name="arquivo" value="{{$item->descricao}}">
                                                         <input type="hidden" name="setor_atual_id" value="{{$item->setor_atual_id}}"> 
                                                         <input type="hidden" name="passo_processo_id" value="{{$item->passo_processo_id}}">
                                                         <input type="hidden" name="processo_id" value="{{$item->processo_id}}">
@@ -106,6 +104,8 @@
                                                             onclick="mostrarModalDecisao(event)"
                                                             data-item-id={{$item->id}}
                                                             data-item-pergunta="{{$item->nome_passo}}"
+                                                            data-item-processo_id="{{$item->processo_id}}"
+                                                            data-item-setor_atual_id="{{$item->setor_anterior_id}}"
                                                             data-item-bifurcacoes='{{json_encode($item->bifurcacoes)}}'
                                                             type='button' class="btn btn-sm btn-warning"><i class="fa fa-arrows-alt"></i></button></center>
                                                     @else
@@ -153,8 +153,6 @@
                                                 <form action="/seguir_fluxo" method="post">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{$item->id}}">
-                                                        <input type="hidden" name="caminho" value="{{$item->caminho}}">
-                                                        <input type="hidden" name="arquivo" value="{{$item->descricao}}">
                                                         <input type="hidden" name="passo_processo_id" value="0">
                                 
                             
@@ -242,16 +240,22 @@
       <div class="modal-body">
           <div class="row">
              <div class="col col-md-12">
-                    <h4 class='center' id='item-pergunta'></h4>
-                    <input type="hidden" name='id' id='item-id'>
-                    <select class='form-control' name="bifurcacoes" id="item-bifurcacoes">
-                    
-                     </select>
+                <h4 class='center' id='item-pergunta'></h4>
+                <form action="/seguir_fluxo" method="post">
+                @csrf
+                <input type="hidden" name="setor_atual_id" id="item-setor_atual_id"> 
+                <input type="hidden" name="processo_id" id="item-processo_id">
+                <input type="hidden" name="tem_bifurcacao" value=1>
+                <input type="hidden" name='id' id='item-id'>
+                <select class='form-control' name="passo_processo_id" id="item-bifurcacoes">
+            
+                </select>
              </div>
           </div>
       </div>
       <div class="modal-footer">
             <button type="submit" class='btn btn-warning'>Selecionar</button>
+            </form>
       </div>
     </div>
   </div>
@@ -291,6 +295,8 @@
                     const id = document.querySelector("#modalDecissao #item-id")
                     const pergunta = document.querySelector("#modalDecissao #item-pergunta")
                     const bifurcacoes = document.querySelector("#modalDecissao #item-bifurcacoes")
+                    const processo_id = document.querySelector("#modalDecissao #item-processo_id")
+                    const setor_atual_id = document.querySelector("#modalDecissao #item-setor_atual_id")
 
                     var lista = JSON.parse(button.getAttribute("data-item-bifurcacoes")) 
 
@@ -302,6 +308,8 @@
 
                     id.value = button.getAttribute("data-item-id")
                     pergunta.innerHTML = button.getAttribute("data-item-pergunta")
+                    processo_id.value = button.getAttribute("data-item-processo_id")
+                    setor_atual_id.value = button.getAttribute("data-item-setor_atual_id")
                     
                     
                 }
