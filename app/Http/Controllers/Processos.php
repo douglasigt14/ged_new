@@ -102,14 +102,15 @@ class Processos extends BaseController
                     WHERE pp_princial.processo_id = $dados->processo_id
                         AND pp_princial.tipo LIKE '%SEQUENCEFLOW%'";
 
-        if($tem_bifurcacao){
+        if($tem_bifurcacao){//Decissões (Com id) 
             $sqlFluxo = $sqlFluxo." AND pp_princial.id = '$dados->passo_processo_id'";
         }    
-        else if($dados->passo_processo_id != '0'){ //Os Demais
+        else if($dados->passo_processo_id != '0'){ //Os Demais (Com id_bpmn "de")
             $sqlFluxo = $sqlFluxo." AND pp_princial.de = '$dados->passo_processo_id'";
         }
         else{ //Quando é o Primeiro 
-           // dd($sqlFluxo);
+            
+            $sqlFluxo = $sqlFluxo." AND pp_princial.de LIKE '%StartEvent%'";
             //Descobrir quais são os Setores que participam do Fluxo
             $sqlFluxo_setores =  "SELECT 
                         pp_princial.nome                        
