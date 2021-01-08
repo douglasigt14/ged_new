@@ -107,7 +107,7 @@
                                                             data-item-id={{$item->id}}
                                                             data-item-pergunta="{{$item->nome_passo}}"
                                                             data-item-bifurcacoes='{{json_encode($item->bifurcacoes)}}'
-                                                            type='button' class="btn btn-sm btn-warning"><i class="fa fa-exchange"></i></button></center>
+                                                            type='button' class="btn btn-sm btn-warning"><i class="fa fa-arrows-alt"></i></button></center>
                                                     @else
                                                         <center><button disabled class="btn btn-sm btn-primary cinza"><i class="fa fa-arrow-right"></i></button></center>
                                                     @endif
@@ -242,13 +242,16 @@
       <div class="modal-body">
           <div class="row">
              <div class="col col-md-12">
-                    <input type="text" name='id' id='item-id'>
-                    <input type="text" name='pergunta' id='item-pergunta'>
-                    <input type="text" name='bifurcacoes' id='item-bifurcacoes'>
+                    <h4 class='center' id='item-pergunta'></h4>
+                    <input type="hidden" name='id' id='item-id'>
+                    <select class='form-control' name="bifurcacoes" id="item-bifurcacoes">
+                    
+                     </select>
              </div>
           </div>
       </div>
       <div class="modal-footer">
+            <button type="submit" class='btn btn-warning'>Selecionar</button>
       </div>
     </div>
   </div>
@@ -289,9 +292,16 @@
                     const pergunta = document.querySelector("#modalDecissao #item-pergunta")
                     const bifurcacoes = document.querySelector("#modalDecissao #item-bifurcacoes")
 
+                    var lista = JSON.parse(button.getAttribute("data-item-bifurcacoes")) 
+
+                     var op = '';
+                    lista.forEach(item => {
+                        op = op+'<option value="'+item.id+'">'+item.nome+'</option>';
+                    });
+                        bifurcacoes.innerHTML = op;
 
                     id.value = button.getAttribute("data-item-id")
-                    pergunta.value = button.getAttribute("data-item-pergunta")
+                    pergunta.innerHTML = button.getAttribute("data-item-pergunta")
                     
                     
                 }
