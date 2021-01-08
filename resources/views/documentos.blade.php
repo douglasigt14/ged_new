@@ -83,7 +83,7 @@
                                                         data-target="#modalImg" 
                                                         onclick="mostrarModalImg(event)"
                                                         data-item-id={{$item->id}}
-                                                        data-item-img='{{$item->processos_img}}'
+                                                        data-item-img='{{$item->caminho_svg}}'
                                                         class="btn btn-sm btn-info"><i class="fa fa-file-image-o"></i></button></center>
                                                 </td>
                                                 
@@ -95,7 +95,7 @@
                                                         <input type="hidden" name="processo_id" value="{{$item->processo_id}}">
                         
                                                 <td>
-                                                    @if ($item->setor_atual == $setor)
+                                                    @if ($item->setor_atual == $setor and $item->finalizado != 1)
                                                         <center><button type='submit' class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center>
                                                     @elseif ($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY')
                                                         <center><button 
@@ -109,7 +109,7 @@
                                                             data-item-bifurcacoes='{{json_encode($item->bifurcacoes)}}'
                                                             type='button' class="btn btn-sm btn-warning"><i class="fa fa-arrows-alt"></i></button></center>
                                                     @else
-                                                        <center><button disabled class="btn btn-sm btn-primary cinza"><i class="fa fa-arrow-right"></i></button></center>
+                                                      
                                                     @endif
                                                 </td>
                                                 </form>

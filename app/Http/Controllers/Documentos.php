@@ -57,8 +57,8 @@ class Documentos extends Controller
                     	documentos.status_id = status_lista.id
                     INNER JOIN passos_processo ON
                     	documentos.passo_processo_id = passos_processo.id_bpmn
-                WHERE 
-                    finalizado = 0";
+                -- WHERE 
+                --     finalizado = 0";
         $lista_arquivos = DB::select($sql);
         $lista_processo = [];
         foreach ($lista_arquivos as $key => $lista) {
@@ -92,6 +92,7 @@ class Documentos extends Controller
             $lista->cor_texto = $resultado > 128 ? 'black' : 'white';
             $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3,$lista->status_id) ");
             $lista->processos_img = Storage::url($lista->processos_img); 
+            $lista->caminho_svg = Storage::url($lista->caminho_svg); 
         }
         //dd($lista_arquivos);
         $lista_processo = array_unique($lista_processo);
