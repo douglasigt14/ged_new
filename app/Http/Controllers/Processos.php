@@ -25,6 +25,7 @@ class Processos extends BaseController
             $p = xml_parser_create();
             xml_parse_into_struct($p, $simple, $vals, $index);
             xml_parser_free($p);
+             
             foreach ($vals as $key => $value) {
                if($value['level']== 3 and ($value['type']== 'open' or $value['type']== 'complete') and $value['tag'] != 'BPMNDI:BPMNPLANE'){
                  DB::table('passos_processo')->updateOrInsert([
@@ -42,6 +43,55 @@ class Processos extends BaseController
             }
 
             $processos[$i]->xml = $xml;
+
+
+            $xml_img = Storage::disk('public')->exists( $img_temp ) ? Storage::disk('public')->get($img_temp) : NULL;
+            $simple_img = $xml_img;
+            $p_img = xml_parser_create();
+            xml_parse_into_struct($p_img, $simple_img, $vals_img, $index);
+            xml_parser_free($p_img);
+            foreach ($vals_img as $key => $value) {
+                if($value['level']==3 and $value['tag'] == 'G'){
+                   //var_dump($value);
+                }
+            }
+
+            
+            $url_bpmn = substr($processos[$i]->bpmn, 1);
+            $url_svg = substr($processos[$i]->img, 1); //tirar a primeira Barra
+
+            $carregador_xml = simplexml_load_file($url_svg);
+            
+            foreach ($carregador_xml->g as $key => $item) {
+               
+                $id_svg = $item->g["data-element-id"];
+                $nome = $item->g->g->text->tspan;
+                $nome = $nome[0].''.$nome[1].''.$nome[2];
+                
+                DB::table('passos_processo')
+                    ->where([
+                                'processo_id' => $processos[$i]->id,
+                                'nome' => $nome 
+                            ])
+                    ->update([
+                            'id_svg' =>  $id_svg,
+                ]);
+                // $item->g->g->rect['style'] = str_replace('fill: white;','',$item->g->g->rect['style']);
+                // $item->g->g->rect['style'] = str_replace('fill: green;','',$item->g->g->rect['style']);
+                // $item->g->g->rect['style'] = $item->g->g->rect['style'].'fill: green;';
+
+                // $item->g->g->circle['style'] = str_replace('fill: white;','',$item->g->g->circle['style']);
+                // $item->g->g->circle['style'] = str_replace('fill: green;','',$item->g->g->circle['style']);
+                // $item->g->g->circle['style'] = $item->g->g->circle['style'].'fill: green;';
+            }
+
+            // dd($carregador_xml);
+            
+            // $newString = $carregador_xml->asXML();
+
+            // $arquivo = fopen($url_svg ,'w');
+            // fwrite($arquivo,$newString);
+           
         }
         return view('processos', compact(["processos"]));
     }
