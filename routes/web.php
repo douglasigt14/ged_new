@@ -11,6 +11,7 @@ use App\Http\Controllers\Processos;
 use App\Http\Controllers\Passos;
 use App\Http\Controllers\Status;
 use App\Http\Controllers\Documentos;
+use App\Http\Controllers\Anexos_Obs;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,8 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/desvincular/{id}', [Passos::class, 'desvincular_status']);
 
     Route::get('/desenho_fluxos', [Fluxos::class, 'index']);
+
+    Route::get('/anexos_obs/{id}', [Anexos_Obs::class, 'index']);
     
 });
 
