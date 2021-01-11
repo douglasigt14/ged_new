@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class Anexos_Obs extends Controller
 {
     public function index($id = null) {
-        return 'Anexos e Obs: '.$id;
+        $anexos = [];
+        return view('anexos_obs', compact(["anexos"]));
     }
 }

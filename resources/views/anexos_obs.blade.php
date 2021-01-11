@@ -5,18 +5,29 @@
 @endpush
 @section('conteudo')
 
-		
-                    <!-- OVERVIEW -->
-					<div class="panel panel-headline">
-						<div class="panel-heading">
-							<h3 class="panel-title">Anexos e Observações - Documento : </h3>
-						</div>
-						<div class="panel-body">
-							
-							
-                        </div>
-                    
-                    
-                            </div>
-					<!-- END OVERVIEW -->            
+	<div class="row">
+		<div class="col col-md-6">
+			<div class="panel panel-headline">
+				<div class="panel-heading">
+					<h4>Anexos - Documento : </h4>
+				</div>
+				<div class="panel-body">
+					
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="col col-md-6">
+			<div class="panel panel-headline">
+				<div class="panel-heading">
+					<h4>Observações - Documento : </h4>
+				</div>
+				<div class="panel-body">
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>           
 @endsection	
