@@ -94,8 +94,9 @@ class Documentos extends Controller
             $lista->processos_img = Storage::url($lista->processos_img); 
             $lista->caminho_svg = Storage::url($lista->caminho_svg); 
         }
-        //dd($lista_arquivos);
         $lista_processo = array_unique($lista_processo);
+
+        $lista_arquivos = collect($lista_arquivos)->sortBy('setor_atual_id')->reverse()->toArray();
 
         $setor_caminho = strtoupper($setor);
         $sql = "SELECT 

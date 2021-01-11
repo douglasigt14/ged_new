@@ -87,7 +87,7 @@
                                                         data-target="#modalImg" 
                                                         onclick="mostrarModalImg(event)"
                                                         data-item-id={{$item->id}}
-                                                        data-item-img='{{$item->caminho_svg}}'
+                                                        data-item-img='{{$item->caminho_svg.'?'.date("YmdHis")}}'
                                                         class="btn btn-sm btn-info"><i class="fa fa-file-image-o"></i></button></center>
                                                 </td>
                                                 
