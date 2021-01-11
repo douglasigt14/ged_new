@@ -247,7 +247,6 @@ class Processos extends BaseController
             $setor = strtoupper($passos_processo_fluxo[0]->nome_de);
             $setor = DB::select("SELECT * FROM setores WHERE descricao = '$setor' ");
             $setor_id = $setor[0]->id ?? NULL; 
-            $setor_pasta = $setor[0]->pasta."\\".'FINALIZADOS' ?? NULL; 
             $finalizado = 1;
             $status = 3;
         }
@@ -255,7 +254,6 @@ class Processos extends BaseController
             $setor = strtoupper($passos_processo_fluxo[0]->nome_para);
             $setor = DB::select("SELECT * FROM setores WHERE descricao = '$setor' ");
             $setor_id = $setor[0]->id ?? NULL; 
-            $setor_pasta = $setor[0]->pasta ?? NULL; 
             $finalizado = 0;
             $status = 2;
             $setor_anterior = $dados->setor_atual_id ?? NULL;
@@ -267,12 +265,6 @@ class Processos extends BaseController
             ]);
         }
         
-        
-
-        // $fonte = $dados->caminho;
-        // $copia = $setor_pasta."\\".$dados->arquivo;
-        // $res = copy($fonte , $copia);
-        // $res = unlink($fonte);
 
         DB::table('documentos')
               ->where('id', $dados->id)

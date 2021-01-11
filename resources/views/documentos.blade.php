@@ -51,7 +51,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($lista_arquivos as $item)
-                                                @if ($item->descricao_processo != $processo and $item->tipo_passo == 'BPMN:TASK')
+                                                @if ($item->descricao_processo != $processo and $item->tipo_passo != 'BPMN:EXCLUSIVEGATEWAY')
                                                     @php continue; @endphp
                                                 @endif
                                                 @if ($item->descricao_processo != $processo and $item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY')

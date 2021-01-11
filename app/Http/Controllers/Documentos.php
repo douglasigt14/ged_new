@@ -57,8 +57,8 @@ class Documentos extends Controller
                     	documentos.status_id = status_lista.id
                     INNER JOIN passos_processo ON
                     	documentos.passo_processo_id = passos_processo.id_bpmn
-                    WHERE 
-                     finalizado = 0";
+                   -- WHERE 
+                   --  finalizado = 0";
         $lista_arquivos = DB::select($sql);
         $lista_processo = [];
         foreach ($lista_arquivos as $key => $lista) {
