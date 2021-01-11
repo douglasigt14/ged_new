@@ -64,7 +64,7 @@ class Documentos extends Controller
         foreach ($lista_arquivos as $key => $lista) {
             $sufixo_lista_processo = ($lista->tipo_passo != 'BPMN:EXCLUSIVEGATEWAY' and $lista->tipo_passo != 'EXCLUSIVEGATEWAY') ? ' |  No Setor de <b>'.$lista->setor_atual.'</b>' : '<b style="color: red"> | EM DECISSÃO</b>';
             if(in_array($setor_id,explode(',',$lista->setores_fluxo))){
-               array_push($lista_processo,$lista->descricao_processo.''.$sufixo_lista_processo);
+               array_push($lista_processo,$lista->descricao_processo);
             }
             else{
                 unset($lista_arquivos[$key]);
