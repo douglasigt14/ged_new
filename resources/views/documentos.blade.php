@@ -15,11 +15,11 @@
                             <form action="/documentos" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <label>Documento</label>
-                                        <input type='file' name="documento" class='form-control'>
+                                        <input type='file' name="documento"  class="dropify" data-height="100">
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-9">
                                         <label>Descrição</label>
                                         <input type='text' name="descricao" class='form-control'>
                                     </div>
@@ -269,6 +269,14 @@
 
     @push('scripts')
 		  <script>
+                $('.dropify').dropify({
+                    messages: {
+                        'default': 'Arraste e solte um arquivo aqui ou clique',
+                        'replace': 'Arraste e solte ou clique para substituir',
+                        'remove':  'Remover',
+                        'error':   'Opa, algo errado aconteceu.'
+                    }
+                });
 			   function mostrarModalImg(event) {     
 						const button = event.currentTarget
 						const img = document.querySelector("#modalImg #item-img")
