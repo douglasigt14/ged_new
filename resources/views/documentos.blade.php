@@ -44,6 +44,7 @@
                                                 <th class='center'>Processo</th>
                                                 <th class='center'>Status</th>
                                                 <th class='center'>Arquivo</th>
+                                                <th class='center'>Anexos&nbsp;e&nbsp;Obs</th>
                                                 <th class='center'>Desenho&nbsp;Fluxo</th>
                                                 <th class='center'>Seguir&nbsp;Fluxo</th>
                                             </tr>
@@ -76,6 +77,9 @@
                                                     {{$item->status_desc}}</p></center></td>
                                                 <td class='menor'>
                                                     <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> 
+                                                </td>
+                                                <td>
+                                                     <center><a target='_blank' href='anexos_obs/{{$item->id}}'  class="btn btn-sm btn-primary"><i class="fa fa-paperclip"></i></button></a>
                                                 </td>
                                                 <td>
                                                     <center><button 
