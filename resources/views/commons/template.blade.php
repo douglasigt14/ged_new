@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="{{asset('assets/vendor/linearicons/style.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/vendor/dropify/dist/css/dropify.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/vendor/chartist/css/chartist-custom.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/vendor/datatables.net-dt/css/jquery.dataTables.css')}}">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
@@ -109,6 +110,7 @@
 	<script src="{{url('assets/vendor/jquery/jquery.min.js')}}"></script>
 	<script src="{{url('assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 	<script src="{{url('assets/vendor/dropify/dist/js/dropify.min.js')}}"></script>
+	<script src="{{url('assets/vendor/datatables.net/js/jquery.dataTables.js')}}"></script>
 	<script src="{{url('assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 	<script src="{{url('assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
 	<script src="{{url('assets/vendor/chartist/js/chartist.min.js')}}"></script>

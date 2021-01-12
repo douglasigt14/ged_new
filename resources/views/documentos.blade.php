@@ -35,7 +35,7 @@
                                     @if($lista_arquivos)
                                     @foreach ($lista_processo as $processo)
                                     <h4>{!! $processo !!}</h4>
-                                    <table class="table table-striped menor">
+                                    <table class="table table-striped menor myTable">
                                         <thead>
                                             <tr>
                                                 <th>Descrição</th>
@@ -277,6 +277,10 @@
                         'error':   'Opa, algo errado aconteceu.'
                     }
                 });
+
+                $(document).ready( function () {
+                    $('.myTable').DataTable();
+                } );
 			   function mostrarModalImg(event) {     
 						const button = event.currentTarget
 						const img = document.querySelector("#modalImg #item-img")
