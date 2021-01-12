@@ -1,8 +1,5 @@
 @extends('commons.template')
 
-@push('styles')
-	<link rel="stylesheet" href="{{asset('assets/css/card_upload.css')}}">
-@endpush
 @section('conteudo')
 
     <div class="row">

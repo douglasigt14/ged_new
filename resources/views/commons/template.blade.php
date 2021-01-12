@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="{{asset('assets/vendor/dropify/dist/css/dropify.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/vendor/chartist/css/chartist-custom.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/vendor/datatables.net-dt/css/jquery.dataTables.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/css/card_upload.css')}}">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
