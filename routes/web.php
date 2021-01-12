@@ -62,7 +62,7 @@ Route::middleware(MyAuth::class)->group(function () {
 
     Route::get('/desenho_fluxos', [Fluxos::class, 'index']);
 
-    Route::get('/anexos_obs/{id}', [Anexos_Obs::class, 'index']);
+    Route::get('/anexos_obs/{documento_id}', [Anexos_Obs::class, 'index']);
     Route::post('/anexos', [Anexos_Obs::class, 'inserir_anexo']);
     
 });

@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use DB;
 class Anexos_Obs extends Controller
 {
-    public function index($id = null) {
-        $anexos = [];
+    public function index($documento_id = null) {
         $sql = "SELECT 
                     documentos.* 
                 ,s_atual.descricao setor_atual
@@ -32,14 +31,33 @@ class Anexos_Obs extends Controller
                     INNER JOIN passos_processo ON
                         documentos.passo_processo_id = passos_processo.id_bpmn
                 WHERE 
-                    documentos.id = $id";
+                    documentos.id = $documento_id";
        
         $documentos = DB::select($sql);
+        $anexos =  DB::select("SELECT * FROM anexos WHERE documento_id = $documento_id");
+        for ($i=0; $i < sizeof($anexos); $i++) {
+             $anexos[$i]->caminho  = Storage::url($anexos[$i]->caminho); 
+        }
 
-        return view('anexos_obs', compact(["anexos","documentos"]));
+
+        return view('anexos_obs', compact(["anexos","documentos","documento_id"]));
     }
     public function inserir_anexo(Request $request) {
          $dados = (object) $request->all();
-         dd($dados);
+         $documento =  $request->file('documento');
+         
+         $ultimo_id = DB::table('anexos')->insertGetId([
+                            'descricao' => $dados->descricao
+                            , 'documento_id' =>  $dados->documento_id
+                        ]);
+        $caminho = $documento ? $documento->store('docs/'.$dados->documento_id.'/anexos/'.$ultimo_id ,'public') : NULL;    
+
+        DB::table('anexos')
+            ->where('id', $ultimo_id)
+            ->update([
+                'caminho' =>  $caminho
+        ]);
+
+        return back();
     }
 }

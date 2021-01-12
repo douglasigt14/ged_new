@@ -13,6 +13,7 @@
 				</div>
 				<div class="panel-body">
 					   <form action="/anexos" method="post" enctype="multipart/form-data">
+						  <input type="hidden" name='documento_id' value='{{$documento_id}}'>
                             @csrf
                                 <div class="row">
                                     <div class="col-md-12">
@@ -47,11 +48,8 @@
                                         <label>Observação</label>
                                         <textarea class='form-control' name="obs" rows="4" cols="30" required></textarea>
                                     </div>
-                                    <div class="col-md-9">
-                                        <label>Descrição</label>
-                                        <input type='text' name="descricao" class='form-control' required>
-                                    </div>
-                                    <div class="col-md-3">
+									<div class="col-md-9"></div>
+									<div class="col-md-3">
                                         <label>&nbsp;</label>
                                         <button class='btn btn-block btn-primary'>Enviar</button>
                                     </div>
