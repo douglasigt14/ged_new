@@ -15,8 +15,8 @@
                          <div class="col col-md-1">
                              <center><button data-toggle="modal" data-target="#modalInserir" class="btn btn-circle btn-success"><i class="fa fa-plus"></i></button></center>
                          </div>
-                    </div>
-                     <table class="table table-striped">
+                    </div><br>
+                     <table class="table table-striped myTable">
 										<thead>
 											<tr>
 												<th>Rotulo</th>
@@ -199,6 +199,9 @@
 </div>
 @push('scripts')
     <script>
+        $(document).ready( function () {
+                    $('.myTable').DataTable();
+        } );
          function mostrarModal(event) {
                 const button = event.currentTarget
                 const rotulo = document.querySelector("#modalEditar #item-rotulo")
