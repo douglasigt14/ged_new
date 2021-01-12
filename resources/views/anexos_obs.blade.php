@@ -9,7 +9,7 @@
 		<div class="col col-md-6">
 			<div class="panel panel-headline">
 				<div class="panel-heading">
-					<h4>Anexos - Documento : <span class='negrito'></span></h4>
+					<h4>Anexos - Documento : <span class='negrito'>{{ $documentos[0]->descricao ?? null}}</span></h4>
 				</div>
 				<div class="panel-body">
 					   <form action="/anexos" method="post" enctype="multipart/form-data">
@@ -37,7 +37,7 @@
 		<div class="col col-md-6">
 			<div class="panel panel-headline">
 				<div class="panel-heading">
-					<h4>Observações - Documento : </h4>
+					<h4>Observações - Documento : <span class='negrito'>{{ $documentos[0]->descricao ?? null}}</span></h4>
 				</div>
 				<div class="panel-body">
 					 <form action="/obs" method="post" enctype="multipart/form-data">
@@ -45,8 +45,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Observação</label>
-                                        <textarea class='form-control' name="obs" rows="4" cols="30"
-													minlength="10" maxlength="20" required></textarea>
+                                        <textarea class='form-control' name="obs" rows="4" cols="30" required></textarea>
                                     </div>
                                     <div class="col-md-9">
                                         <label>Descrição</label>
