@@ -65,7 +65,7 @@
                                                 <td>{{ $item->setor_atual }}</td>
                                                 <td>{{$item->descricao_processo}}</td>
                                                 <td><center><p 
-                                                                @if ($item->setor_atual == $setor or $item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY')
+                                                                @if (($item->setor_atual == $setor or $item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY') and $item->finalizado != 1 )
                                                                     data-toggle="modal" 
                                                                     data-target="#modalStatus" 
                                                                     onclick="mostrarModalStatus(event)"
