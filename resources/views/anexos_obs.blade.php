@@ -9,7 +9,7 @@
 		<div class="col col-md-6">
 			<div class="panel panel-headline">
 				<div class="panel-heading">
-					<h4>Anexos - Documento : </h4>
+					<h4>Anexos - Documento : <span class='negrito'></span></h4>
 				</div>
 				<div class="panel-body">
 					

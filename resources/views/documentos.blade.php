@@ -8,11 +8,11 @@
 						<div class="panel-heading">
                             <div class="row">
                                 <div class="col col-md-10">
-                                    <h3 class="panel-title">Documentos - {{ucfirst($setor)}}</h3>
+                                    <h3 class="panel-title">Documentos - <span class='negrito'>{{ucfirst($setor)}}</span></h3>
                                 </div>
                                 <div class="col col-md-2">
                                     <label>Exibir Finalizados</label>
-                                    <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SIM" data-off="&nbsp;&nbsp;&nbsp;NÃO" data-onstyle="success" data-offstyle="danger"  @if ($finalizados_checked) checked @endif>
+                                    <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SIM <i class='fa fa-eye'></i>" data-off="&nbsp;&nbsp;&nbsp;NÃO <i class='fa fa-eye-slash'></i>" data-onstyle="success" data-offstyle="danger"  @if ($finalizados_checked) checked @endif>
                                 </div>
                             </div>
 							
