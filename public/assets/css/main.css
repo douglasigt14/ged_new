@@ -1792,5 +1792,9 @@ ul.activity-timeline > li {
   .menor{
     font-size: 12px;
   }
+  .negrito{
+    font-weight: bold;
+    color: green;
+  }
 
 /*# sourceMappingURL=main.css.map */

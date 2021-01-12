@@ -12,7 +12,7 @@
                                 </div>
                                 <div class="col col-md-2">
                                     <label>Exibir Finalizados</label>
-                                    <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SIM" data-off="&nbsp;&nbsp;&nbsp;NÃO" data-onstyle="success" data-offstyle="danger" @if ($finalizados_checked) checked @endif>
+                                    <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SIM" data-off="&nbsp;&nbsp;&nbsp;NÃO" data-onstyle="success" data-offstyle="danger"  @if ($finalizados_checked) checked @endif>
                                 </div>
                             </div>
 							
@@ -70,7 +70,9 @@
                                                     {{$item->descricao }}
                                                 </td>
                                                 <td>{{ $item->setor_anterior }}</td>
-                                                <td>{{ $item->setor_atual }}</td>
+                                                <td @if ($item->setor_atual == $setor)
+                                                     class='negrito'   
+                                                    @endif>{{ $item->setor_atual }}</td>
                                                 <td>{{$item->descricao_processo}}</td>
                                                 <td><center><p 
                                                                 @if (($item->setor_atual == $setor or $item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY') and $item->finalizado != 1 )
