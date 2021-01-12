@@ -29,7 +29,26 @@
                                         <button class='btn btn-block btn-primary'>Enviar</button>
                                     </div>
                                 </div>
-                            </form>
+							</form><br>
+							<table class="table table-striped menor myTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Descrição</th>
+                                                <th class='center'>Arquivo</th>
+												<th class='center'>Apagar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+											@foreach ($anexos as $item)
+												
+											<tr>
+												<td>{{$item->descricao}}</td>
+												<td><center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> </td>
+												<td></td>
+											</tr>
+											@endforeach
+										</tbody>
+							</table>
 					
 				</div>
 			</div>
@@ -63,6 +82,9 @@
 
 	@push('scripts')
 		<script>
+			   $(document).ready( function () {
+                    $('.myTable').DataTable();
+                } );
 			  $('.dropify').dropify({
                     messages: {
                         'default': 'Arraste e solte um arquivo aqui ou clique',

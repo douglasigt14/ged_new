@@ -136,7 +136,7 @@
                                     @endif
                                     @if($lista_arquivos_geral)
                                     <h4>Arquivos sem processo atribuido</h4>
-                                    <table class="table table-striped menor">
+                                    <table class="table table-striped menor mytable">
                                         <thead>
                                             <tr>
                                                 <th class='center'>Apagar</th>
