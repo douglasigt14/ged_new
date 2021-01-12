@@ -6,9 +6,20 @@
         <div class="col-md-12">
             <div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title">Documentos - {{ucfirst($setor)}}</h3>
+                            <div class="row">
+                                <div class="col col-md-10">
+                                    <h3 class="panel-title">Documentos - {{ucfirst($setor)}}</h3>
+                                </div>
+                                <div class="col col-md-2">
+                                    <label>Exibir Finalizados</label>
+                                    <input type="checkbox" data-toggle="toggle" data-on="SIM" data-off="&nbsp;&nbsp;&nbsp;NÃO" data-onstyle="success" data-offstyle="danger">
+                                </div>
+                            </div>
+							
 						</div>
 						<div class="panel-body">
+                           
+
                             <form action="/documentos" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="row">
