@@ -10,6 +10,7 @@ class Documentos extends Controller
 {
     public function index() {
         $id_usuario = $_SESSION['id'];
+        $mostrar_finalizado = $_GET['mostrar_finalizado'] ?? null;
         $usuario = DB::select("SELECT 
                                     usuarios.*
                                     ,setores.pasta
@@ -56,9 +57,10 @@ class Documentos extends Controller
                     INNER JOIN status_lista ON
                     	documentos.status_id = status_lista.id
                     INNER JOIN passos_processo ON
-                    	documentos.passo_processo_id = passos_processo.id_bpmn
-                   -- WHERE 
-                   --  finalizado = 0";
+                        documentos.passo_processo_id = passos_processo.id_bpmn";
+        if(!$mostrar_finalizado){
+            $sql = $sql." WHERE finalizado = 0";
+        }
         $lista_arquivos = DB::select($sql);
         $lista_processo = [];
         foreach ($lista_arquivos as $key => $lista) {
