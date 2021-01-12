@@ -30,6 +30,7 @@
                                     </div>
                                 </div>
 							</form><br>
+							@if ($anexos)
 							<table class="table table-striped menor myTable">
                                         <thead>
                                             <tr>
@@ -44,12 +45,20 @@
 											<tr>
 												<td>{{$item->descricao}}</td>
 												<td><center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> </td>
-												<td></td>
+												 <td>
+                                                  <form action="/anexos" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <input type="hidden" name="id" value={{$item->id}}>
+                                                    
+                                                    <center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
+                                                  </form>
+                                                </td>
 											</tr>
 											@endforeach
 										</tbody>
 							</table>
-					
+							@endif
 				</div>
 			</div>
 		</div>

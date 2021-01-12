@@ -7,12 +7,17 @@
             <div class="panel panel-headline">
 						<div class="panel-heading">
                             <div class="row">
-                                <div class="col col-md-10">
+                                <div class="col col-md-8">
                                     <h3 class="panel-title">Documentos - <span class='negrito'>{{ucfirst($setor)}}</span></h3>
                                 </div>
+                                 <div class="col col-md-2">
+                                    <label>Documentos em outros Setores</label>
+                                    <input id="toggle-outros_setores" type="checkbox" data-toggle="toggle" data-on="SIM <i class='fa fa-eye'></i>" data-off="&nbsp;&nbsp;&nbsp;NÃO <i class='fa fa-eye-slash'></i>" data-onstyle="success" data-offstyle="danger">
+                                    {{-- @if ($finalizados_checked) checked @endif --}}
+                                </div>
                                 <div class="col col-md-2">
-                                    <label>Exibir Finalizados</label>
-                                    <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SIM <i class='fa fa-eye'></i>" data-off="&nbsp;&nbsp;&nbsp;NÃO <i class='fa fa-eye-slash'></i>" data-onstyle="success" data-offstyle="danger"  @if ($finalizados_checked) checked @endif>
+                                    <label>Documentos Finalizados</label>
+                                    <input id="toggle-finalizados" type="checkbox" data-toggle="toggle" data-on="SIM <i class='fa fa-eye'></i>" data-off="&nbsp;&nbsp;&nbsp;NÃO <i class='fa fa-eye-slash'></i>" data-onstyle="success" data-offstyle="danger"  @if ($finalizados_checked) checked @endif>
                                 </div>
                             </div>
 							
@@ -279,6 +284,10 @@
 
     @push('scripts')
 		  <script>
+                $(document).ready( function () {
+                    $('.myTable').DataTable();
+                } );
+
                 $('.dropify').dropify({
                     messages: {
                         'default': 'Arraste e solte um arquivo aqui ou clique',
@@ -288,11 +297,14 @@
                     }
                 });
 
-                $(document).ready( function () {
-                    $('.myTable').DataTable();
-                } );
+                
                  $(function() {
-                    $('#toggle-event').change(function() {
+                    $('#toggle-finalizados').change(function() {
+                        window.location.href = $(this).prop('checked') ? "/documentos/1" : "/documentos";
+                    })
+                })
+                $(function() {
+                    $('#toggle-outros_setores').change(function() {
                         window.location.href = $(this).prop('checked') ? "/documentos/1" : "/documentos";
                     })
                 })

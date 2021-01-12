@@ -60,4 +60,9 @@ class Anexos_Obs extends Controller
 
         return back();
     }
+    public function deletar_anexo(Request $request){
+         $dados = (object) $request->all();
+         DB::table('anexos')->where('id', '=', $dados->id )->delete();
+        return back();
+    }
 }
