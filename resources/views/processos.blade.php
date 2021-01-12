@@ -96,17 +96,17 @@
           <div class="row">
               <div class="col col-md-12">
                   <label>Descrição</label>
-                  <input type="text" name='descricao' class='form-control'>
+                  <input type="text" name='descricao' class='form-control' required>
               </div>
           </div><br>
           <div class="row">
               <div class="col col-md-6">
                   <label>BPMN</label>
-                  <input type="file" name='bpmn' class='form-control'>
+                  <input type="file" name='bpmn' class='form-control' required>
               </div>
               <div class="col col-md-6">
                   <label>IMG</label>
-                  <input type="file" name='img' class='form-control'>
+                  <input type="file" name='img' class='form-control' required>
               </div>
           </div>
       </div>
@@ -135,7 +135,7 @@
               <div class="col col-md-12">
                   <label>Descrição</label>
                  
-                   <input type="text" id='item-descricao' name='descricao' class='form-control'>
+                   <input type="text" id='item-descricao' name='descricao' class='form-control' required>
               </div>
           </div>
       </div>

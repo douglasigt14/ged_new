@@ -87,15 +87,15 @@
           <div class="row">
               <div class="col col-md-4">
                   <label>Rotulo</label>
-                  <input type="text" name='rotulo' class='form-control'>
+                  <input type="text" name='rotulo' class='form-control' required>
               </div>
               <div class="col col-md-4">
                   <label>Nome</label>
-                  <input type="text" name='nome' class='form-control'>
+                  <input type="text" name='nome' class='form-control' required>
               </div>
               <div class="col col-md-4">
                   <label>Setor</label>
-                  <select name="setor_id" id="cars" class='form-control'>
+                  <select name="setor_id" id="cars" class='form-control' required>
                     <option></option>
                     @foreach ($setores as $item)
                           <option value="{{$item->id}}">{{$item->descricao}}</option>
@@ -107,11 +107,11 @@
           <div class="row">
               <div class="col col-md-6">
                   <label>Senha</label>
-                  <input type="password" name='senha' class='form-control'>
+                  <input type="password" name='senha' class='form-control' required>
               </div>
               <div class="col col-md-6">
                   <label>Confirmar Senha</label>
-                  <input type="password" name='confirmar_senha' class='form-control'>
+                  <input type="password" name='confirmar_senha' class='form-control' required>
               </div>
           </div>
       </div>
@@ -140,15 +140,15 @@
               <div class="col col-md-4">
                   <label>Rotulo</label>
                  
-                   <input type="text" id='item-rotulo' name='rotulo' class='form-control'>
+                   <input type="text" id='item-rotulo' name='rotulo' class='form-control' required> 
               </div>
               <div class="col col-md-4">
                   <label>Nome</label>
-                  <input type="text" id='item-nome' name='nome' class='form-control'>
+                  <input type="text" id='item-nome' name='nome' class='form-control' required>
               </div>
                <div class="col col-md-4">
                   <label>Setor</label>
-                  <select name="setor_id" id="item-setor_id" class='form-control'>
+                  <select name="setor_id" id="item-setor_id" class='form-control' required>
                     <option></option>
                     @foreach ($setores as $item)
                           <option value="{{$item->id}}">{{$item->descricao}}</option>
@@ -182,11 +182,11 @@
               <div class="col col-md-6">
                   <label>Nova Senha</label>
                  
-                   <input type="password" type="text" name='senha' class='form-control'>
+                   <input type="password" type="text" name='senha' class='form-control' required>
               </div>
               <div class="col col-md-6">
                   <label>Confirmar Nova Senha</label>
-                  <input type="password"  name='confirmar_senha' class='form-control'>
+                  <input type="password"  name='confirmar_senha' class='form-control' required>
               </div>
           </div>
       </div>

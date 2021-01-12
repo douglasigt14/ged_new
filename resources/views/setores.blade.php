@@ -72,7 +72,7 @@
               @csrf
               <div class="col col-md-6">
                   <label>Setor</label>
-                  <input type="text" name='descricao' class='form-control'>
+                  <input type="text" name='descricao' class='form-control' required>
               </div>
               <div class="col col-md-6">
                   <label>Pasta</label>
@@ -105,7 +105,7 @@
               <div class="col col-md-6">
                   <label>Setor</label>
                  
-                   <input type="text" id='item-descricao' name='descricao' class='form-control'>
+                   <input type="text" id='item-descricao' name='descricao' class='form-control' required>
               </div>
               <div class="col col-md-6">
                   <label>Pasta</label>

@@ -75,11 +75,11 @@
               @csrf
               <div class="col col-md-6">
                   <label>Descrição</label>
-                  <input type="text" name='descricao' class='form-control'>
+                  <input type="text" name='descricao' class='form-control' required>
               </div>
               <div class="col col-md-6">
                   <label>Cor</label>
-                  <input type="color" name='cor' class='form-control'>
+                  <input type="color" name='cor' class='form-control' required>
               </div>
           </div>
       </div>
@@ -107,11 +107,11 @@
                <input type="hidden" id='item-id' name='id' class='form-control'>
               <div class="col col-md-6">
                   <label>Descrição</label>
-                   <input type="text" id='item-descricao' name='descricao' class='form-control'>
+                   <input type="text" id='item-descricao' name='descricao' class='form-control' required>
               </div>
               <div class="col col-md-6">
                   <label>Cor</label>
-                   <input type="color" id='item-cor' name='cor' class='form-control'>
+                   <input type="color" id='item-cor' name='cor' class='form-control' required>
               </div>
           </div>
       </div>

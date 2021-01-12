@@ -25,11 +25,11 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Documento</label>
-                                        <input type='file' name="documento"  class="dropify" data-height="100">
+                                        <input type='file' name="documento"  class="dropify" data-height="100" required>
                                     </div>
                                     <div class="col-md-9">
                                         <label>Descrição</label>
-                                        <input type='text' name="descricao" class='form-control'>
+                                        <input type='text' name="descricao" class='form-control' required>
                                     </div>
                                     <div class="col-md-3">
                                         <label>&nbsp;</label>
