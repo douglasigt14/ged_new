@@ -26,7 +26,7 @@ use App\Http\Controllers\Anexos_Obs;
 Route::middleware(MyAuth::class)->group(function () {
     Route::get('/', [Dashboard::class, 'index']);
     
-    Route::get('/documentos', [Documentos::class, 'index']);
+    Route::get('/documentos/{mostrar_finalizado?}', [Documentos::class, 'index']);
     Route::post('/documentos', [Documentos::class, 'inserir']);
     Route::delete('/documentos', [Documentos::class, 'deletar']);
     Route::patch('/documentos', [Documentos::class, 'alterar_status']);

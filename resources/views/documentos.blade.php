@@ -12,7 +12,7 @@
                                 </div>
                                 <div class="col col-md-2">
                                     <label>Exibir Finalizados</label>
-                                    <input type="checkbox" data-toggle="toggle" data-on="SIM" data-off="&nbsp;&nbsp;&nbsp;NÃO" data-onstyle="success" data-offstyle="danger">
+                                    <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SIM" data-off="&nbsp;&nbsp;&nbsp;NÃO" data-onstyle="success" data-offstyle="danger" @if ($finalizados_checked) checked @endif>
                                 </div>
                             </div>
 							
@@ -289,6 +289,11 @@
                 $(document).ready( function () {
                     $('.myTable').DataTable();
                 } );
+                 $(function() {
+                    $('#toggle-event').change(function() {
+                        window.location.href = $(this).prop('checked') ? "/documentos/1" : "/documentos";
+                    })
+                })
 			   function mostrarModalImg(event) {     
 						const button = event.currentTarget
 						const img = document.querySelector("#modalImg #item-img")
