@@ -12,7 +12,7 @@
 					<h4>Anexos - Documento : <span class='negrito'></span></h4>
 				</div>
 				<div class="panel-body">
-					   <form action="/anexos_obs" method="post" enctype="multipart/form-data">
+					   <form action="/anexos" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="row">
                                     <div class="col-md-12">
@@ -40,7 +40,7 @@
 					<h4>Observações - Documento : </h4>
 				</div>
 				<div class="panel-body">
-					 <form action="/anexos_obs" method="post" enctype="multipart/form-data">
+					 <form action="/obs" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="row">
                                     <div class="col-md-12">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use DB;
 class Anexos_Obs extends Controller
 {
@@ -36,5 +37,9 @@ class Anexos_Obs extends Controller
         $documentos = DB::select($sql);
 
         return view('anexos_obs', compact(["anexos","documentos"]));
+    }
+    public function inserir_anexo(Request $request) {
+         $dados = (object) $request->all();
+         dd($dados);
     }
 }
