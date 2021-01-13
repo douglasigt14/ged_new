@@ -75,7 +75,7 @@
               @csrf
               <div class="col col-md-6">
                   <label>Descrição</label>
-                  <input type="text" name='descricao' class='form-control' required>
+                  <input type="text" name='descricao' class='form-control' required autocomplete="off">
               </div>
               <div class="col col-md-6">
                   <label>Cor</label>
@@ -107,7 +107,7 @@
                <input type="hidden" id='item-id' name='id' class='form-control'>
               <div class="col col-md-6">
                   <label>Descrição</label>
-                   <input type="text" id='item-descricao' name='descricao' class='form-control' required>
+                   <input type="text" id='item-descricao' name='descricao' class='form-control' required autocomplete="off">
               </div>
               <div class="col col-md-6">
                   <label>Cor</label>

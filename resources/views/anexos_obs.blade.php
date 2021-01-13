@@ -22,7 +22,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <label>Descrição</label>
-                                        <input type='text' name="descricao" class='form-control' required>
+                                        <input type='text' name="descricao" class='form-control' required autocomplete="off">
                                     </div>
                                     <div class="col-md-3">
                                         <label>&nbsp;</label>
@@ -82,7 +82,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Observação</label>
-                                        <textarea class='form-control' name="descricao" rows="4" cols="30" required></textarea>
+                                        <textarea class='form-control' name="descricao" rows="4" cols="30" required autocomplete="off"></textarea>
                                     </div>
 									<div class="col-md-9"></div>
 									<div class="col-md-3">
@@ -160,7 +160,7 @@
                <input type="hidden" id='item-id' name='id' class='form-control'>
               <div class="col col-md-12">
 				  <label>Descrição</label>
-				  <textarea class='form-control'  id='item-descricao' name="descricao" rows="4" cols="30" required></textarea>
+				  <textarea class='form-control'  id='item-descricao' name="descricao" rows="4" cols="30" required autocomplete="off"></textarea>
               </div>
           </div>
       </div>

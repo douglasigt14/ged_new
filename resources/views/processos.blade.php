@@ -96,7 +96,7 @@
           <div class="row">
               <div class="col col-md-12">
                   <label>Descrição</label>
-                  <input type="text" name='descricao' class='form-control' required>
+                  <input type="text" name='descricao' class='form-control' required autocomplete="off">
               </div>
           </div><br>
           <div class="row">
@@ -135,7 +135,7 @@
               <div class="col col-md-12">
                   <label>Descrição</label>
                  
-                   <input type="text" id='item-descricao' name='descricao' class='form-control' required>
+                   <input type="text" id='item-descricao' name='descricao' class='form-control' required autocomplete="off">
               </div>
           </div>
       </div>
