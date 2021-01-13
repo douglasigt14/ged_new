@@ -107,9 +107,21 @@
 											@foreach ($obs as $item)
 												
 											<tr>
-												<td class='justificado'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$item->descricao}}</td>
+												<td class='justificado'>{{$item->descricao}}</td>
 												<td>{{$item->usuario}}</td>
-												<td></td>
+												<td>
+													@if ($item->usuario_id == $_SESSION['id'])
+													<center><button 
+                                                        data-toggle="modal" 
+                                                        data-target="#modalEditar" 
+                                                        onclick="mostrarModal(event)"
+                                                        data-item-id={{$item->id}}
+                                                        data-item-descricao='{{$item->descricao}}'
+														class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
+													@else	
+													<center><button disabled class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
+													@endif
+												</td>
 												 <td>
 													@if ($item->usuario_id == $_SESSION['id'])
 													<form action="/obs" method="post">
