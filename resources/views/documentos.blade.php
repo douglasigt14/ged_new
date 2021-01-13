@@ -139,7 +139,7 @@
                                     @endforeach
                                     @endif
                                     @if($lista_arquivos_geral)
-                                    <h4>Arquivos sem processo atribuido</h4>
+                                    <h4><b>Arquivos sem processo atribuido</b></h4>
                                     <table class="table table-striped menor mytable">
                                         <thead>
                                             <tr>
