@@ -1825,5 +1825,8 @@ ul.activity-timeline > li {
   .justificado{
     text-align: justify;
   }
-
+  .linha{
+      background-color: black;
+      height: 2px;
+  }
 /*# sourceMappingURL=main.css.map */

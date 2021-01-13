@@ -46,8 +46,9 @@
                              <div class="row">
                                 <div class="col-md-12">
                                     @if($lista_arquivos)
+                                    <hr class='linha'>
                                     @foreach ($lista_processo as $processo)
-                                    <h4>{!! $processo !!}</h4>
+                                    <h4><b>{!! $processo !!}</b></h4>
                                     <table class="table table-striped menor myTable">
                                         <thead>
                                             <tr>
@@ -136,7 +137,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    <br>
+                                    <hr class='linha'>
                                     @endforeach
                                     @endif
                                     @if($lista_arquivos_geral)
