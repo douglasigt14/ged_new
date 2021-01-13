@@ -55,7 +55,6 @@
                                                 <th>Descrição</th>
                                                 <th>Set.Anterior</th>
                                                 <th>Set.Atual</th>
-                                                <th class='center'>Processo</th>
                                                 <th class='center'>Status</th>
                                                 <th class='center'>Arquivo</th>
                                                 <th class='center'>Anexos&nbsp;e&nbsp;Obs</th>
@@ -79,7 +78,6 @@
                                                 <td @if ($item->setor_atual == $setor)
                                                      class='negrito'   
                                                     @endif>{{ $item->setor_atual }}</td>
-                                                <td>{{$item->descricao_processo}}</td>
                                                 <td><center><p 
                                                                 @if (($item->setor_atual == $setor or $item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY') and $item->finalizado != 1 )
                                                                     data-toggle="modal" 
