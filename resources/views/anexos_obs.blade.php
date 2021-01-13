@@ -49,13 +49,15 @@
 												<td>{{$item->usuario}}</td>
 												<td><center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> </td>
 												 <td>
-                                                  <form action="/anexos" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <input type="hidden" name="id" value={{$item->id}}>
-                                                    
-                                                    <center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
-                                                  </form>
+													@if ($item->usuario_id == $_SESSION['id'])
+														<form action="/anexos" method="post">
+															@csrf
+															@method('delete')
+															<input type="hidden" name="id" value={{$item->id}}>
+															
+															<center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
+														</form>
+												  	@endif
                                                 </td>
 											</tr>
 											@endforeach
@@ -107,13 +109,15 @@
 												<td>{{$item->usuario}}</td>
 												<td></td>
 												 <td>
-                                                  <form action="/obs" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <input type="hidden" name="id" value={{$item->id}}>
-                                                    
-                                                    <center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
-                                                  </form>
+													@if ($item->usuario_id == $_SESSION['id'])
+													<form action="/obs" method="post">
+														@csrf
+														@method('delete')
+														<input type="hidden" name="id" value={{$item->id}}>
+														
+														<center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
+													</form>
+													@endif
                                                 </td>
 											</tr>
 											@endforeach
