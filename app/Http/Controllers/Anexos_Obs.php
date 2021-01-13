@@ -98,4 +98,14 @@ class Anexos_Obs extends Controller
         return back();
     }
 
+     public function editar_obs(Request $request){
+        $dados = (object) $request->all();
+        DB::table('obs')
+            ->where('id', $dados->id)
+            ->update([
+                'descricao' =>  $dados->descricao
+        ]);
+        return back();
+    }
+
 }
