@@ -45,10 +45,11 @@ class Anexos_Obs extends Controller
     public function inserir_anexo(Request $request) {
          $dados = (object) $request->all();
          $documento =  $request->file('documento');
-         
+          $usuario_id = $_SESSION['id'];
          $ultimo_id = DB::table('anexos')->insertGetId([
                             'descricao' => $dados->descricao
                             , 'documento_id' =>  $dados->documento_id
+                            ,'usuario_id' => $usuario_id
                         ]);
         $caminho = $documento ? $documento->store('docs/'.$dados->documento_id.'/anexos/'.$ultimo_id ,'public') : NULL;    
 
@@ -68,9 +69,11 @@ class Anexos_Obs extends Controller
 
     public function inserir_obs(Request $request) {
         $dados = (object) $request->all();
+        $usuario_id = $_SESSION['id'];
         DB::table('obs')->insert([
             'descricao' => $dados->descricao
             , 'documento_id' =>  $dados->documento_id
+            ,'usuario_id' => $usuario_id
         ]);
 
         return back();
