@@ -57,6 +57,8 @@
 															
 															<center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
 														</form>
+													@else
+														<center><button disabled class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
 												  	@endif
                                                 </td>
 											</tr>
@@ -117,6 +119,8 @@
 														
 														<center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
 													</form>
+													@else
+														<center><button disabled class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
 													@endif
                                                 </td>
 											</tr>

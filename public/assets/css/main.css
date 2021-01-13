@@ -1785,6 +1785,32 @@ ul.activity-timeline > li {
     background-color: #676a6d;
     border-color: #676a6d;
   }
+  .laranja-escuro{
+    background-color: #FF8C00;
+    border-color: #FF8C00;
+  }
+  .laranja-escuro:hover {
+    background-color:  #FF7F50;
+    border-color: #FF7F50;
+  }
+  .laranja-escuro:focus {
+    background-color:  #FF7F50;
+    border-color: #FF7F50;
+  }
+
+  .cinza-ardosia{
+    background-color: #778899;
+    border-color: #778899;
+  }
+  .cinza-ardosia:hover {
+    background-color:  #708090;
+    border-color: #708090;
+  }
+  .cinza-ardosia:focus {
+    background-color:  #708090;
+    border-color: #708090;
+  }
+  
   .iframe-fluxos{
     width: 100%;
     height: calc(100vh - 200px);

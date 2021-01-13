@@ -94,7 +94,7 @@
                                                     <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> 
                                                 </td>
                                                 <td>
-                                                     <center><a href='/anexos_obs/{{$item->id}}'  class="btn btn-sm btn-primary"><i class="fa fa-paperclip"></i></button></a>
+                                                     <center><a href='/anexos_obs/{{$item->id}}'  class="btn btn-sm btn-primary cinza-ardosia"><i class="fa fa-paperclip"></i></button></a>
                                                 </td>
                                                 <td>
                                                     <center><button 
@@ -126,7 +126,7 @@
                                                             data-item-processo_id="{{$item->processo_id}}"
                                                             data-item-setor_atual_id="{{$item->setor_anterior_id}}"
                                                             data-item-bifurcacoes='{{json_encode($item->bifurcacoes)}}'
-                                                            type='button' class="btn btn-sm btn-warning"><i class="fa fa-arrows-alt"></i></button></center>
+                                                            type='button' class="btn btn-sm btn-warning laranja-escuro"><i class="fa fa-arrows-alt"></i></button></center>
                                                     @else
                                                       
                                                     @endif
@@ -273,7 +273,7 @@
           </div>
       </div>
       <div class="modal-footer">
-            <button type="submit" class='btn btn-warning'>Selecionar</button>
+            <button type="submit" class='btn btn-warning laranja-escuro'>Selecionar</button>
             </form>
       </div>
     </div>
