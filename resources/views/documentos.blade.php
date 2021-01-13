@@ -12,8 +12,8 @@
                                 </div>
                                  <div class="col col-md-2">
                                     <label>Documentos em outros Setores</label>
-                                    <input id="toggle-outros_setores" type="checkbox" data-toggle="toggle" data-on="SIM <i class='fa fa-eye'></i>" data-off="&nbsp;&nbsp;&nbsp;NÃO <i class='fa fa-eye-slash'></i>" data-onstyle="success" data-offstyle="danger">
-                                    {{-- @if ($finalizados_checked) checked @endif --}}
+                                    <input id="toggle-outros_setores" type="checkbox" data-toggle="toggle" data-on="SIM <i class='fa fa-eye'></i>" data-off="&nbsp;&nbsp;&nbsp;NÃO <i class='fa fa-eye-slash'></i>" data-onstyle="success" data-offstyle="danger"  @if ($outros_setores_checked) checked @endif>
+                                   
                                 </div>
                                 <div class="col col-md-2">
                                     <label>Documentos Finalizados</label>
@@ -300,12 +300,16 @@
                 
                  $(function() {
                     $('#toggle-finalizados').change(function() {
-                        window.location.href = $(this).prop('checked') ? "/documentos/1" : "/documentos";
+                        finalizados = $('#toggle-finalizados').prop('checked') ? "/1" : "/0";
+                        outros_setores = $('#toggle-outros_setores').prop('checked') ? "/1" : "/0";
+                        window.location.href = "/documentos"+finalizados+""+outros_setores;
                     })
                 })
                 $(function() {
                     $('#toggle-outros_setores').change(function() {
-                        window.location.href = $(this).prop('checked') ? "/documentos/1" : "/documentos";
+                        finalizados = $('#toggle-finalizados').prop('checked') ? "/1" : "/0";
+                        outros_setores = $('#toggle-outros_setores').prop('checked') ? "/1" : "/0";
+                        window.location.href = "/documentos"+finalizados+""+outros_setores;
                     })
                 })
 			   function mostrarModalImg(event) {     

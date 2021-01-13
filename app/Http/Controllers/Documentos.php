@@ -8,8 +8,9 @@ use DB;
 
 class Documentos extends Controller
 {
-    public function index($mostrar_finalizados = null) {
+    public function index($mostrar_finalizados = null, $mostrar_outros_setores = null) {
         $id_usuario = $_SESSION['id'];
+        //dd($mostrar_outros_setores);
         $usuario = DB::select("SELECT 
                                     usuarios.*
                                     ,setores.pasta
@@ -56,11 +57,16 @@ class Documentos extends Controller
                     INNER JOIN status_lista ON
                     	documentos.status_id = status_lista.id
                     INNER JOIN passos_processo ON
-                        documentos.passo_processo_id = passos_processo.id_bpmn";
+                        documentos.passo_processo_id = passos_processo.id_bpmn
+                    WHERE 1";
         if(!$mostrar_finalizados){
-            $sql = $sql." WHERE finalizado = 0";
+            $sql = $sql." AND documentos.finalizado = 0";
+        }
+        if(!$mostrar_outros_setores){
+            $sql = $sql." AND documentos.setor_atual_id = $setor_id";
         }
         $finalizados_checked =  $mostrar_finalizados ? true : false;
+        $outros_setores_checked =  $mostrar_outros_setores ? true : false;
 
         $lista_arquivos = DB::select($sql);
         $lista_processo = [];
@@ -129,7 +135,7 @@ class Documentos extends Controller
         
         
 
-       return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor","lista_processo","finalizados_checked"]));
+       return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor","lista_processo","finalizados_checked","outros_setores_checked"]));
     }
 
     public static function verifica_cor($cor){
