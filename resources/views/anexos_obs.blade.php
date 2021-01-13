@@ -29,8 +29,9 @@
                                         <button class='btn btn-block btn-primary'>Enviar</button>
                                     </div>
                                 </div>
-							</form><br>
+							</form>
 							@if ($anexos)
+							<br>
 							<table class="table table-striped menor myTable">
                                         <thead>
                                             <tr>
@@ -70,11 +71,12 @@
 				</div>
 				<div class="panel-body">
 					 <form action="/obs" method="post" enctype="multipart/form-data">
+							<input type="hidden" name='documento_id' value='{{$documento_id}}'>
                             @csrf
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Observação</label>
-                                        <textarea class='form-control' name="obs" rows="4" cols="30" required></textarea>
+                                        <textarea class='form-control' name="descricao" rows="4" cols="30" required></textarea>
                                     </div>
 									<div class="col-md-9"></div>
 									<div class="col-md-3">

@@ -63,8 +63,12 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/desenho_fluxos', [Fluxos::class, 'index']);
 
     Route::get('/anexos_obs/{documento_id}', [Anexos_Obs::class, 'index']);
+
     Route::post('/anexos', [Anexos_Obs::class, 'inserir_anexo']);
     Route::delete('/anexos', [Anexos_Obs::class, 'deletar_anexo']);
+    
+    Route::post('/obs', [Anexos_Obs::class, 'inserir_obs']);
+    Route::delete('/obs', [Anexos_Obs::class, 'deletar_obs']);
     
 });
 

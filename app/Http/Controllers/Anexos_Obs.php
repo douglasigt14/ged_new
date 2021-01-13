@@ -65,4 +65,14 @@ class Anexos_Obs extends Controller
          DB::table('anexos')->where('id', '=', $dados->id )->delete();
         return back();
     }
+
+    public function inserir_obs(Request $request) {
+        $dados = (object) $request->all();
+        DB::table('obs')->insert([
+            'descricao' => $dados->descricao
+            , 'documento_id' =>  $dados->documento_id
+        ]);
+
+        return back();
+    }
 }
