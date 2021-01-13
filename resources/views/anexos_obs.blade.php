@@ -145,9 +145,43 @@
 			</div>
 		</div>
 	</div>           
+ <!-- Modal -->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Editar</h4>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+              <form action="/obs" method="post">
+              @csrf
+              @method('put')
+               <input type="hidden" id='item-id' name='id' class='form-control'>
+              <div class="col col-md-12">
+				  <label>Descrição</label>
+				  <textarea class='form-control'  id='item-descricao' name="descricao" rows="4" cols="30" required></textarea>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-warning">Editar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 	@push('scripts')
 		<script>
+			function mostrarModal(event) {
+                const button = event.currentTarget
+                const descricao = document.querySelector("#modalEditar #item-descricao")
+                const id = document.querySelector("#modalEditar #item-id")
+
+                descricao.innerHTML = button.getAttribute("data-item-descricao")
+                id.value = button.getAttribute("data-item-id")
+            }
 			   $(document).ready( function () {
                     $('.myTable').DataTable();
                 } );

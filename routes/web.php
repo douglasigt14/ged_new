@@ -69,6 +69,7 @@ Route::middleware(MyAuth::class)->group(function () {
     
     Route::post('/obs', [Anexos_Obs::class, 'inserir_obs']);
     Route::delete('/obs', [Anexos_Obs::class, 'deletar_obs']);
+    Route::put('/obs', [Anexos_Obs::class, 'editar_obs']);
     
 });
 
