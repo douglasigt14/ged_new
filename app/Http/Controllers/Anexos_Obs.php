@@ -34,12 +34,25 @@ class Anexos_Obs extends Controller
                     documentos.id = $documento_id";
        
         $documentos = DB::select($sql);
-        $anexos =  DB::select("SELECT * FROM anexos WHERE documento_id = $documento_id");
+        $anexos =  DB::select("SELECT 
+                                    anexos.*, 
+                                    usuarios.rotulo usuario
+                               FROM 
+                                    anexos INNER JOIN usuarios ON
+                                    anexos.usuario_id = usuarios.id
+                               WHERE 
+                                    documento_id = $documento_id");
         for ($i=0; $i < sizeof($anexos); $i++) {
              $anexos[$i]->caminho  = Storage::url($anexos[$i]->caminho); 
         }
-        $obs =  DB::select("SELECT * FROM obs WHERE documento_id = $documento_id");;
-
+        $obs =  DB::select("SELECT 
+                                    obs.*, 
+                                    usuarios.rotulo usuario
+                               FROM 
+                                    obs INNER JOIN usuarios ON
+                                    obs.usuario_id = usuarios.id
+                               WHERE 
+                                    documento_id = $documento_id");
         return view('anexos_obs', compact(["anexos","documentos","documento_id","obs"]));
     }
     public function inserir_anexo(Request $request) {

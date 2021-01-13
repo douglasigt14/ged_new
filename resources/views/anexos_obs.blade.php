@@ -35,7 +35,8 @@
 							<table class="table table-striped menor myTable">
                                         <thead>
                                             <tr>
-                                                <th>Descrição</th>
+												<th>Descrição</th>
+												 <th>Usuario</th>
                                                 <th class='center'>Arquivo</th>
 												<th class='center'>Apagar</th>
                                             </tr>
@@ -45,6 +46,7 @@
 												
 											<tr>
 												<td>{{$item->descricao}}</td>
+												<td>{{$item->usuario}}</td>
 												<td><center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> </td>
 												 <td>
                                                   <form action="/anexos" method="post">
@@ -91,7 +93,8 @@
 							<table class="table table-striped menor myTable">
                                         <thead>
                                             <tr>
-                                                <th>Descrição</th>
+												<th>Descrição</th>
+												<th>Usuario</th>
                                                 <th class='center'>Editar</th>
 												<th class='center'>Apagar</th>
                                             </tr>
@@ -101,6 +104,7 @@
 												
 											<tr>
 												<td class='justificado'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$item->descricao}}</td>
+												<td>{{$item->usuario}}</td>
 												<td></td>
 												 <td>
                                                   <form action="/obs" method="post">
