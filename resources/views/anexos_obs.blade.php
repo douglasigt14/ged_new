@@ -84,7 +84,38 @@
                                         <button class='btn btn-block btn-primary'>Enviar</button>
                                     </div>
                                 </div>
-                            </form>
+							</form>
+							
+							@if ($obs)
+							<br>
+							<table class="table table-striped menor myTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Descrição</th>
+                                                <th class='center'>Editar</th>
+												<th class='center'>Apagar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+											@foreach ($obs as $item)
+												
+											<tr>
+												<td class='justificado'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$item->descricao}}</td>
+												<td></td>
+												 <td>
+                                                  <form action="/obs" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <input type="hidden" name="id" value={{$item->id}}>
+                                                    
+                                                    <center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
+                                                  </form>
+                                                </td>
+											</tr>
+											@endforeach
+										</tbody>
+							</table>
+							@endif
 					
 				</div>
 			</div>

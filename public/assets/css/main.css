@@ -1796,5 +1796,8 @@ ul.activity-timeline > li {
     font-weight: bold;
     color: green;
   }
+  .justificado{
+    text-align: justify;
+  }
 
 /*# sourceMappingURL=main.css.map */

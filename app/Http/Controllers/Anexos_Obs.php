@@ -38,9 +38,9 @@ class Anexos_Obs extends Controller
         for ($i=0; $i < sizeof($anexos); $i++) {
              $anexos[$i]->caminho  = Storage::url($anexos[$i]->caminho); 
         }
+        $obs =  DB::select("SELECT * FROM obs WHERE documento_id = $documento_id");;
 
-
-        return view('anexos_obs', compact(["anexos","documentos","documento_id"]));
+        return view('anexos_obs', compact(["anexos","documentos","documento_id","obs"]));
     }
     public function inserir_anexo(Request $request) {
          $dados = (object) $request->all();
@@ -75,4 +75,11 @@ class Anexos_Obs extends Controller
 
         return back();
     }
+
+     public function deletar_obs(Request $request){
+         $dados = (object) $request->all();
+         DB::table('obs')->where('id', '=', $dados->id )->delete();
+        return back();
+    }
+
 }
