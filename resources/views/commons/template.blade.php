@@ -24,8 +24,8 @@
     
      @stack('styles')
 </head>
-
-<body>
+{{-- class="layout-fullwidth" --}}
+<body> 
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
