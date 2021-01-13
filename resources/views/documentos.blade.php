@@ -94,7 +94,7 @@
                                                     <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> 
                                                 </td>
                                                 <td>
-                                                     <center><a target='_blank' href='anexos_obs/{{$item->id}}'  class="btn btn-sm btn-primary"><i class="fa fa-paperclip"></i></button></a>
+                                                     <center><a target='_blank' href='/anexos_obs/{{$item->id}}'  class="btn btn-sm btn-primary"><i class="fa fa-paperclip"></i></button></a>
                                                 </td>
                                                 <td>
                                                     <center><button 
