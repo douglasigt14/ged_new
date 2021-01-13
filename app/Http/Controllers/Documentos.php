@@ -63,7 +63,7 @@ class Documentos extends Controller
             $sql = $sql." AND documentos.finalizado = 0";
         }
         if(!$mostrar_outros_setores){
-            $sql = $sql." AND documentos.setor_atual_id = $setor_id";
+            $sql = $sql." AND (documentos.setor_atual_id = $setor_id OR passos_processo.tipo LIKE '%EXCLUSIVEGATEWAY%')";
         }
         $finalizados_checked =  $mostrar_finalizados ? true : false;
         $outros_setores_checked =  $mostrar_outros_setores ? true : false;
