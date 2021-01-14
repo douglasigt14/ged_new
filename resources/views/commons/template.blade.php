@@ -77,7 +77,7 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="/" @if(Route::current()->uri() == '/') class="active" @endif><i class="lnr lnr-home"></i> <span>Pagina Inicial</span></a></li>
-						<li><a href="/documentos" @if(Route::current()->uri() == 'documentos') class="active" @endif><i class="fa fa-file"></i> <span>Documentos</span></a></li>
+						<li><a href="/documentos" @if(Route::current()->uri() == 'documentos/{mostrar_finalizado?}/{mostrar_outros_setores?}') class="active" @endif><i class="fa fa-file"></i> <span>Documentos</span></a></li>
 						<li><a href="/setores" @if(Route::current()->uri() == 'setores') class="active" @endif><i class="fa fa-users"></i> <span>Setores</span></a></li>
 						<li><a href="/funcionarios" @if(Route::current()->uri() == 'funcionarios') class="active" @endif><i class="fa fa-user"></i> <span>Funcionarios</span></a></li>
 						<li><a href="/processos" @if(Route::current()->uri() == 'processos') class="active" @endif><i class="fa fa-file-text"></i> <span>Processos</span></a></li>
