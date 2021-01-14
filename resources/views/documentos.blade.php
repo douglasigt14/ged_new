@@ -64,10 +64,10 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($lista_arquivos as $item)
-                                                @if ($item->descricao_processo != $processo and $item->tipo_passo != 'BPMN:EXCLUSIVEGATEWAY')
+                                                @if ($item->descricao_processo != $processo and ($item->tipo_passo != 'BPMN:EXCLUSIVEGATEWAY' and $item->tipo_passo != 'EXCLUSIVEGATEWAY'))
                                                     @php continue; @endphp
                                                 @endif
-                                                @if ($item->descricao_processo != $processo and $item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY')
+                                                @if ($item->descricao_processo != $processo and ($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY') )
                                                     @php continue; @endphp
                                                 @endif
                                             <tr>
@@ -79,7 +79,7 @@
                                                      class='negrito'   
                                                     @endif>{{ $item->setor_atual }}</td>
                                                 <td><center><p 
-                                                                @if (($item->setor_atual == $setor or $item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY') and $item->finalizado != 1 )
+                                                                @if (($item->setor_atual == $setor or ($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY')) and $item->finalizado != 1 )
                                                                     data-toggle="modal" 
                                                                     data-target="#modalStatus" 
                                                                     onclick="mostrarModalStatus(event)"
@@ -115,7 +115,7 @@
                                                 <td>
                                                     @if ($item->setor_atual == $setor and $item->finalizado != 1)
                                                         <center><button type='submit' class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center>
-                                                    @elseif ($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY')
+                                                    @elseif (($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY'))
                                                         <center><button 
                                                             data-toggle="modal" 
                                                             data-target="#modalDecissao" 

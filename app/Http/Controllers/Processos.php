@@ -150,9 +150,10 @@ class Processos extends BaseController
         }
         else{ //Quando é o Primeiro 
             
+            $sqlFluxo = $sqlFluxo." AND pp_de.tipo LIKE '%STARTEVENT%'";
             Storage::disk('public')->copy($url_svg,$url);
         
-            $sqlFluxo = $sqlFluxo." AND pp_princial.de LIKE '%StartEvent%'";
+            
             //Descobrir quais são os Setores que participam do Fluxo
             $sqlFluxo_setores =  "SELECT 
                         pp_princial.nome                        
