@@ -1,5 +1,3 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<!------ Include the above in your HEAD tag ---------->
 
 <!DOCTYPE html>
 <html>
@@ -7,14 +5,15 @@
 	<title>GED</title>
    <!--Made with love by Mutiullah Samim -->
    
-	<!--Bootsrap 4 CDN-->
-	<link rel="stylesheet" href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" id="bootstrap-css">
-    
     <!--Fontawesome CDN-->
 	<link rel="stylesheet" href="{{asset('assets/vendor/font-awesome/css/font-awesome.min.css')}}">
 
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/login.css')}}">
+
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/bootstrap-4.1.3/css/bootstrap.min.css')}}">
+
+	{{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
 </head>
 <body>
     @if (Session::has('login_erro'))
