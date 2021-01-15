@@ -279,11 +279,13 @@ class Processos extends BaseController
          $usuario_id = $_SESSION['id'];
          $ip = $_SERVER['REMOTE_ADDR'];
 
-       // dd($passos_processo_fluxo);
         if($atualizar){
             DB::table('log_fluxo')->insert([
                     'usuario_id' =>  $usuario_id
                    ,'ip' => $ip
+                   ,'processo_id' => $dados->processo_id
+                   ,'id_bpmn_de' => $passos_processo_fluxo[0]->id_de
+                   ,'id_bpmn_para' => $passos_processo_fluxo[0]->id_para
             ]);
         }                
 
