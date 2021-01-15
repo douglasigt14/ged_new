@@ -30,9 +30,22 @@ class Documentos extends Controller
         $lista_arquivos_geral = [];//$this->read_dir($path_geral);
 
         // $lista_arquivos_geral = $this->manipular_lista($lista_arquivos_geral,$path_geral);
-    
+        
 
-        $processos = DB::select("SELECT * FROM processos");
+        $processos = DB::select("SELECT  
+                          processos.id
+                         ,processos.descricao                    
+                    FROM 
+                    passos_processo pp_princial LEFT JOIN passos_processo pp_de ON 
+                        pp_princial.de = pp_de.id_bpmn 
+                    LEFT JOIN passos_processo pp_para ON
+                        pp_princial.para = pp_para.id_bpmn
+                    INNER JOIN processos ON
+                    	processos.id = pp_princial.processo_id
+                    WHERE 
+                            pp_princial.tipo LIKE '%SEQUENCEFLOW%'
+                        AND pp_de.tipo LIKE '%STARTEVENT%'
+                        AND pp_para.nome = '$setor'");
 
        
 
