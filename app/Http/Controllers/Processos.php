@@ -286,6 +286,9 @@ class Processos extends BaseController
                    ,'processo_id' => $dados->processo_id
                    ,'id_bpmn_de' => $passos_processo_fluxo[0]->id_de
                    ,'id_bpmn_para' => $passos_processo_fluxo[0]->id_para
+                   ,'nome_de' => $passos_processo_fluxo[0]->nome_de
+                   ,'nome_para' => $passos_processo_fluxo[0]->nome_para
+                   ,'documento_id' => $dados->id
             ]);
         }                
 
