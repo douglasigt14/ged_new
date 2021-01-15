@@ -188,8 +188,7 @@ class Processos extends BaseController
         $id_para_passo = $passos_processo_fluxo[0]->id_para;
         $id_de_passo = $passos_processo_fluxo[0]->id_de;
         $setor = strtoupper($passos_processo_fluxo[0]->nome_para);
-
-        // dd($passos_processo_fluxo);
+    
 
 
             $url_storage = 'storage/'.$url;
@@ -267,7 +266,7 @@ class Processos extends BaseController
         }
         
 
-        DB::table('documentos')
+        $atualizar = DB::table('documentos')
               ->where('id', $dados->id)
               ->update([
                     'processo_id' => $dados->processo_id
@@ -277,7 +276,16 @@ class Processos extends BaseController
                     ,'passo_processo_id' => $id_para_passo
          ]);
          
+         $usuario_id = $_SESSION['id'];
+         $ip = $_SERVER['REMOTE_ADDR'];
 
+       // dd($passos_processo_fluxo);
+        if($atualizar){
+            DB::table('log_fluxo')->insert([
+                    'usuario_id' =>  $usuario_id
+                   ,'ip' => $ip
+            ]);
+        }                
 
          
 
