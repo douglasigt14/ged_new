@@ -8,7 +8,14 @@ use DB;
 class HistMov extends Controller
 {
     public function index($documento_id = null) {
-        $hist_mov = DB::select("SELECT * FROM log_fluxo WHERE documento_id = $documento_id");
+        $hist_mov = DB::select("SELECT 
+                                    log_fluxo.* 
+                                   ,processos.descricao proceso_descricao
+                                FROM 
+                                 log_fluxo INNER JOIN processos ON
+                                 processos.id = log_fluxo.processo_id
+                               WHERE 
+                                    documento_id = $documento_id");
         for ($i=0; $i < sizeof($hist_mov); $i++) {
             $partes = explode(" ",$hist_mov[$i]->systemdate);
             $data = $partes[0];
