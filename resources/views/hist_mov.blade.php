@@ -16,6 +16,7 @@
                         <th>Data e Hora</th>
                         <th class='center'>De</th>
                         <th class='center'>Para</th>
+                        <th class='center'>Usuario</th>
                       </tr>
 										</thead>
 										<tbody>
@@ -24,6 +25,7 @@
                           <td>{{$item->systemdate }}</td>
                           <td class='center'>{{$item->nome_de }}</td>
                           <td class='center'>{{$item->nome_para }}</td>
+                          <td class='center'>{{$item->rotulo }}</td>
 											</tr>
 											@endforeach
 										</tbody>

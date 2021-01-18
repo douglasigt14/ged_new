@@ -11,9 +11,12 @@ class HistMov extends Controller
         $hist_mov = DB::select("SELECT 
                                     log_fluxo.* 
                                    ,processos.descricao proceso_descricao
+                                   ,usuarios.rotulo
                                 FROM 
                                  log_fluxo INNER JOIN processos ON
                                  processos.id = log_fluxo.processo_id
+                                 INNER JOIN usuarios ON
+                                    usuarios.id = log_fluxo.usuario_id
                                WHERE 
                                     documento_id = $documento_id");
         for ($i=0; $i < sizeof($hist_mov); $i++) {
