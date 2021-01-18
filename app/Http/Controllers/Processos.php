@@ -188,60 +188,58 @@ class Processos extends BaseController
         $id_para_passo = $passos_processo_fluxo[0]->id_para;
         $id_de_passo = $passos_processo_fluxo[0]->id_de;
         $setor = strtoupper($passos_processo_fluxo[0]->nome_para);
-    
 
+        $url_storage = 'storage/'.$url;
+        $carregador_xml = simplexml_load_file($url_storage );
 
-            $url_storage = 'storage/'.$url;
-            $carregador_xml = simplexml_load_file($url_storage );
-
-            foreach ($carregador_xml->g as $key => $item) {
-                
-                     $id_svg = $item->g["data-element-id"];
-                    
-                    // var_dump($id_svg .'|'.$dados->passo_processo_id);
-                    if($id_svg == $id_de_passo){
-                        $item->g->g->rect['style'] = str_replace('fill: white;','',$item->g->g->rect['style']);
-                        $item->g->g->rect['style'] = str_replace('fill: #BEBEBE;','',$item->g->g->rect['style']);
-                        $item->g->g->rect['style'] = $item->g->g->rect['style'].'fill:  #BEBEBE;';
-
-                        $item->g->g->circle['style'] = str_replace('fill: white;','',$item->g->g->circle['style']);
-                        $item->g->g->circle['style'] = str_replace('fill:  #BEBEBE;','',$item->g->g->circle['style']);
-                        $item->g->g->circle['style'] = $item->g->g->circle['style'].'fill:  #BEBEBE;';
-
-                        $item->g->g->polygon['style'] = str_replace('fill: white;','',$item->g->g->polygon['style']);
-                        $item->g->g->polygon['style'] = str_replace('fill:  #BEBEBE;','',$item->g->g->polygon['style']);
-                        $item->g->g->polygon['style'] = $item->g->g->polygon['style'].'fill:  #BEBEBE;';
-                        
-                    }
-                    if($id_svg == $id_para_passo){
-                        $item->g->g->rect['style'] = str_replace('fill: white;','',$item->g->g->rect['style']);
-                        $item->g->g->rect['style'] = str_replace('fill: #41B314;','',$item->g->g->rect['style']);
-                        $item->g->g->rect['style'] = str_replace('fill: #BEBEBE;','',$item->g->g->rect['style']);
-                        $item->g->g->rect['style'] = $item->g->g->rect['style'].'fill:  #41B314;';
-
-                        $item->g->g->circle['style'] = str_replace('fill: white;','',$item->g->g->circle['style']);
-                        $item->g->g->circle['style'] = str_replace('fill:  #41B314;','',$item->g->g->circle['style']);
-                        $item->g->g->circle['style'] = str_replace('fill: #BEBEBE;','',$item->g->g->circle['style']);
-                        $item->g->g->circle['style'] = $item->g->g->circle['style'].'fill:  #41B314;';
-
-                        $item->g->g->polygon['style'] = str_replace('fill: white;','',$item->g->g->polygon['style']);
-                        $item->g->g->polygon['style'] = str_replace('fill:  #41B314;','',$item->g->g->polygon['style']);
-                        $item->g->g->polygon['style'] = str_replace('fill: #BEBEBE;','',$item->g->g->polygon['style']);
-                        $item->g->g->polygon['style'] = $item->g->g->polygon['style'].'fill:  #41B314;';
-                        
-                    }
-                    if($setor == 'Fim' or $setor == 'FIM' or $setor == 'Final'){
-                        if($id_svg == $id_para_passo){
-                            $item->g->g->circle['style'] = str_replace('fill: white;','',$item->g->g->circle['style']);
-                            $item->g->g->circle['style'] = str_replace('fill:  #BEBEBE;','',$item->g->g->circle['style']);
-                            $item->g->g->circle['style'] = $item->g->g->circle['style'].'fill:  #BEBEBE;';
-                        }
-                    }
-            }
+        foreach ($carregador_xml->g as $key => $item) {
             
-            $newString = $carregador_xml->asXML();
-            $arquivo = fopen($url_storage ,'w');
-            fwrite($arquivo,$newString);
+            $id_svg = $item->g["data-element-id"];
+            
+            // var_dump($id_svg .'|'.$dados->passo_processo_id);
+            if($id_svg == $id_de_passo){
+                $item->g->g->rect['style'] = str_replace('fill: white;','',$item->g->g->rect['style']);
+                $item->g->g->rect['style'] = str_replace('fill: #BEBEBE;','',$item->g->g->rect['style']);
+                $item->g->g->rect['style'] = $item->g->g->rect['style'].'fill:  #BEBEBE;';
+
+                $item->g->g->circle['style'] = str_replace('fill: white;','',$item->g->g->circle['style']);
+                $item->g->g->circle['style'] = str_replace('fill:  #BEBEBE;','',$item->g->g->circle['style']);
+                $item->g->g->circle['style'] = $item->g->g->circle['style'].'fill:  #BEBEBE;';
+
+                $item->g->g->polygon['style'] = str_replace('fill: white;','',$item->g->g->polygon['style']);
+                $item->g->g->polygon['style'] = str_replace('fill:  #BEBEBE;','',$item->g->g->polygon['style']);
+                $item->g->g->polygon['style'] = $item->g->g->polygon['style'].'fill:  #BEBEBE;';
+                
+            }
+            if($id_svg == $id_para_passo){
+                $item->g->g->rect['style'] = str_replace('fill: white;','',$item->g->g->rect['style']);
+                $item->g->g->rect['style'] = str_replace('fill: #41B314;','',$item->g->g->rect['style']);
+                $item->g->g->rect['style'] = str_replace('fill: #BEBEBE;','',$item->g->g->rect['style']);
+                $item->g->g->rect['style'] = $item->g->g->rect['style'].'fill:  #41B314;';
+
+                $item->g->g->circle['style'] = str_replace('fill: white;','',$item->g->g->circle['style']);
+                $item->g->g->circle['style'] = str_replace('fill:  #41B314;','',$item->g->g->circle['style']);
+                $item->g->g->circle['style'] = str_replace('fill: #BEBEBE;','',$item->g->g->circle['style']);
+                $item->g->g->circle['style'] = $item->g->g->circle['style'].'fill:  #41B314;';
+
+                $item->g->g->polygon['style'] = str_replace('fill: white;','',$item->g->g->polygon['style']);
+                $item->g->g->polygon['style'] = str_replace('fill:  #41B314;','',$item->g->g->polygon['style']);
+                $item->g->g->polygon['style'] = str_replace('fill: #BEBEBE;','',$item->g->g->polygon['style']);
+                $item->g->g->polygon['style'] = $item->g->g->polygon['style'].'fill:  #41B314;';
+                
+            }
+            if($setor == 'Fim' or $setor == 'FIM' or $setor == 'Final'){
+                if($id_svg == $id_para_passo){
+                    $item->g->g->circle['style'] = str_replace('fill: white;','',$item->g->g->circle['style']);
+                    $item->g->g->circle['style'] = str_replace('fill:  #BEBEBE;','',$item->g->g->circle['style']);
+                    $item->g->g->circle['style'] = $item->g->g->circle['style'].'fill:  #BEBEBE;';
+                }
+            }
+        }
+        
+        $newString = $carregador_xml->asXML();
+        $arquivo = fopen($url_storage ,'w');
+        fwrite($arquivo,$newString);
         
         if($setor == 'Fim' or $setor == 'FIM' or $setor == 'Final'){
             $setor = strtoupper($passos_processo_fluxo[0]->nome_de);
