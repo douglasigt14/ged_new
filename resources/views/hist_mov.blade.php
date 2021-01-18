@@ -18,6 +18,7 @@
                         <th class='center'>De</th>
                         <th class='center'>Para</th>
                         <th class='center'>Usuario</th>
+                        <th class='center'>Processo</th>
                       </tr>
 										</thead>
 										<tbody>
@@ -27,6 +28,7 @@
                           <td class='center'>{{$item->nome_de }}</td>
                           <td class='center'>{{$item->nome_para }}</td>
                           <td class='center'>{{$item->rotulo }}</td>
+                          <td class='center'>{{$item->proceso_descricao }}</td>
 											</tr>
 											@endforeach
 										</tbody>
