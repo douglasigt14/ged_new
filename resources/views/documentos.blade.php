@@ -73,7 +73,14 @@
                                                 @endif
                                             <tr>
                                                 <td>
-                                                    {{$item->descricao }}
+                                                    <span
+                                                        data-toggle="modal" 
+                                                        data-target="#modalTrocarProcesso" 
+                                                        onclick="mostrarModalTrocarProcesso(event)"
+                                                        data-item-id={{$item->id}}    
+                                                    >
+                                                        {{$item->descricao }} 
+                                                    </span>
                                                 </td>
                                                 <td>{{ $item->setor_anterior }}</td>
                                                 <td @if ($item->setor_atual == $setor)
@@ -279,6 +286,32 @@
       <div class="modal-footer">
             <button type="submit" class='btn btn-warning laranja-escuro'>Selecionar</button>
             </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalTrocarProcesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Trocar Processo</h4>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+             <div class="col col-md-12">
+                  <select name="processo_id" required class="form-control">
+                        <option></option>
+                        @foreach ($processos as $processo)
+                            <option value="{{$processo->id}}">{{$processo->descricao}}</option>
+                        @endforeach
+                    </select>
+             </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <button type="submit" class='btn btn-warning laranja-escuro'>Selecionar</button>
       </div>
     </div>
   </div>
