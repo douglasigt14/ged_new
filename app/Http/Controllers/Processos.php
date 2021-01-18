@@ -129,7 +129,9 @@ class Processos extends BaseController
                         ,pp_de.nome nome_de
                         ,pp_para.nome nome_para
                         ,pp_de.id_bpmn id_de
-                        ,pp_para.id_bpmn id_para                        
+                        ,pp_para.id_bpmn id_para 
+                        ,pp_de.tipo tipo_de
+                        ,pp_para.tipo tipo_para
                     FROM 
                     passos_processo pp_princial LEFT JOIN passos_processo pp_de ON 
                         pp_princial.de = pp_de.id_bpmn 
@@ -187,6 +189,10 @@ class Processos extends BaseController
         $passos_processo_fluxo = DB::select($sqlFluxo);
         $id_para_passo = $passos_processo_fluxo[0]->id_para;
         $id_de_passo = $passos_processo_fluxo[0]->id_de;
+
+        $tipo_para = $passos_processo_fluxo[0]->tipo_para;
+        $tipo_de = $passos_processo_fluxo[0]->tipo_de;
+
         $setor = strtoupper($passos_processo_fluxo[0]->nome_para);
 
         $url_storage = 'storage/'.$url;
@@ -228,7 +234,7 @@ class Processos extends BaseController
                 $item->g->g->polygon['style'] = $item->g->g->polygon['style'].'fill:  #41B314;';
                 
             }
-            if($setor == 'Fim' or $setor == 'FIM' or $setor == 'Final'){
+            if($tipo_para == 'ENDEVENT' or  $tipo_para == 'BPMN:ENDEVENT'){
                 if($id_svg == $id_para_passo){
                     $item->g->g->circle['style'] = str_replace('fill: white;','',$item->g->g->circle['style']);
                     $item->g->g->circle['style'] = str_replace('fill:  #BEBEBE;','',$item->g->g->circle['style']);
@@ -241,7 +247,7 @@ class Processos extends BaseController
         $arquivo = fopen($url_storage ,'w');
         fwrite($arquivo,$newString);
         
-        if($setor == 'Fim' or $setor == 'FIM' or $setor == 'Final'){
+        if($tipo_para == 'ENDEVENT' or  $tipo_para == 'BPMN:ENDEVENT'){
             $setor = strtoupper($passos_processo_fluxo[0]->nome_de);
             $setor = DB::select("SELECT * FROM setores WHERE descricao = '$setor' ");
             $setor_id = $setor[0]->id ?? NULL; 
