@@ -59,6 +59,7 @@
                                                 <th class='center'>Arquivo</th>
                                                 <th class='center'>Anexos&nbsp;e&nbsp;Obs</th>
                                                 <th class='center'>Desenho&nbsp;Fluxo</th>
+                                                <th class='center'>Hist.&nbsp;Mov.</th>
                                                 <th class='center'>Seguir&nbsp;Fluxo</th>
                                             </tr>
                                         </thead>
@@ -103,6 +104,10 @@
                                                         data-item-id={{$item->id}}
                                                         data-item-img='{{$item->caminho_svg.'?'.date("YmdHis")}}'
                                                         class="btn btn-sm btn-info"><i class="fa fa-file-image-o"></i></button></center>
+                                                </td>
+
+                                                <td>
+                                                     <center><a href='/hist_mov/{{$item->id}}'  class="btn btn-sm btn-warning"><i class="fa fa-file-text"></i></button></a>
                                                 </td>
                                                 
                                                 <form action="/seguir_fluxo" method="post">

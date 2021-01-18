@@ -12,6 +12,7 @@ use App\Http\Controllers\Passos;
 use App\Http\Controllers\Status;
 use App\Http\Controllers\Documentos;
 use App\Http\Controllers\Anexos_Obs;
+use App\Http\Controllers\HistMov;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,8 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/desenho_fluxos', [Fluxos::class, 'index']);
 
     Route::get('/anexos_obs/{documento_id}', [Anexos_Obs::class, 'index']);
+
+    Route::get('/hist_mov/{documento_id}', [HistMov::class, 'index']);
 
     Route::post('/anexos', [Anexos_Obs::class, 'inserir_anexo']);
     Route::delete('/anexos', [Anexos_Obs::class, 'deletar_anexo']);
