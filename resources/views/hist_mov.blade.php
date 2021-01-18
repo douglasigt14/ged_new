@@ -7,7 +7,8 @@
         <div class="col com-md-12">
             <div class="panel">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Status</h3>
+                    <h3>Historico de Movimentações</h3>
+                    <h4>Documento: {{$doc_descricao}}</h4>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped myTable">
