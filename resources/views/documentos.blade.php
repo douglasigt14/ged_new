@@ -75,8 +75,8 @@
                                                 <td>
                                                     <span
                                                         data-toggle="modal" 
-                                                        data-target="#modalTrocarProcesso" 
-                                                        onclick="mostrarModalTrocarProcesso(event)"
+                                                        data-target="#modalDesvincularProcesso" 
+                                                        onclick="mostrarModalDesvincularProcesso(event)"
                                                         data-item-id={{$item->id}}    
                                                     >
                                                         {{$item->descricao }} 
@@ -292,26 +292,22 @@
 </div>
 
 
-<div class="modal fade" id="modalTrocarProcesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalDesvincularProcesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Trocar Processo</h4>
+        <h4 class="modal-title" id="exampleModalLabel">Desvincular Processo</h4>
       </div>
       <div class="modal-body">
           <div class="row">
-             <div class="col col-md-12">
-                  <select name="processo_id" required class="form-control">
-                        <option></option>
-                        @foreach ($processos as $processo)
-                            <option value="{{$processo->id}}">{{$processo->descricao}}</option>
-                        @endforeach
-                    </select>
+             <div class="col col-md-12 center">
+                  <h4>Deseja Realmente Desvincular desse processo ?</h4>
              </div>
           </div>
       </div>
       <div class="modal-footer">
-          <button type="submit" class='btn btn-warning laranja-escuro'>Selecionar</button>
+           <button class='btn btn-default' data-dismiss="modal">Cancelar</button>
+          <button type="submit" class='btn btn-danger'>Desvincular</button>
       </div>
     </div>
   </div>
