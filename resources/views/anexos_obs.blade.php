@@ -4,7 +4,42 @@
 	<link rel="stylesheet" href="{{asset('assets/css/card_upload.css')}}">
 @endpush
 @section('conteudo')
-
+	<div class="row">
+        <div class="col com-md-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3>Historico de Movimentações</h3>
+                    <h4>Documento: {{$doc_descricao}}</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped myTable">
+										<thead>
+											<tr>
+                        <th>Data e Hora</th>
+                        <th class='center'>De</th>
+                        <th class='center'>Para</th>
+                        <th class='center'>Usuario</th>
+                        <th class='center'>IP</th>
+                        <th class='center'>Processo</th>
+                      </tr>
+										</thead>
+										<tbody>
+											@foreach ($hist_mov as $item)
+											<tr>
+                          <td>{{$item->systemdate }}</td>
+                          <td class='center'>{{$item->nome_de }}</td>
+                          <td class='center'>{{$item->nome_para }}</td>
+                          <td class='center'>{{$item->rotulo }}</td>
+                          <td class='center'>{{$item->ip }}</td>
+                          <td class='center'>{{$item->proceso_descricao }}</td>
+											</tr>
+											@endforeach
+										</tbody>
+									</table>
+                </div>
+            </div>
+        </div>
+    </div>
 	<div class="row">
 		<div class="col col-md-6">
 			<div class="panel panel-headline">

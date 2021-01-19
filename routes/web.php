@@ -65,7 +65,6 @@ Route::middleware(MyAuth::class)->group(function () {
 
     Route::get('/anexos_obs/{documento_id}', [Anexos_Obs::class, 'index']);
 
-    Route::get('/hist_mov/{documento_id}', [HistMov::class, 'index']);
 
     Route::post('/anexos', [Anexos_Obs::class, 'inserir_anexo']);
     Route::delete('/anexos', [Anexos_Obs::class, 'deletar_anexo']);

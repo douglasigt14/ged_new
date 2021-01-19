@@ -53,7 +53,34 @@ class Anexos_Obs extends Controller
                                     obs.usuario_id = usuarios.id
                                WHERE 
                                     documento_id = $documento_id");
-        return view('anexos_obs', compact(["anexos","documentos","documento_id","obs"]));
+        //HIST MOV
+        $hist_mov = DB::select("SELECT 
+                                    log_fluxo.* 
+                                   ,processos.descricao proceso_descricao
+                                   ,usuarios.rotulo
+                                   ,documentos.descricao doc_descricao
+                                FROM 
+                                 log_fluxo INNER JOIN processos ON
+                                 processos.id = log_fluxo.processo_id
+                                 INNER JOIN usuarios ON
+                                    usuarios.id = log_fluxo.usuario_id
+                                INNER JOIN documentos ON
+                                    documentos.id = log_fluxo.documento_id
+                               WHERE 
+                                    documento_id = $documento_id");
+        $doc_descricao = "";
+        for ($i=0; $i < sizeof($hist_mov); $i++) {
+            $partes = explode(" ",$hist_mov[$i]->systemdate);
+            $data = $partes[0];
+            $hora = $partes[1];
+            $partes = explode("-",$data);
+            $data = $partes[2]."/".$partes[1].'/'.$partes[0];
+            $hist_mov[$i]->systemdate = $data.' '.$hora;
+
+            $doc_descricao = $hist_mov[$i]->doc_descricao;
+        }
+        //HIST MOV
+        return view('anexos_obs', compact(["anexos","documentos","documento_id","obs","hist_mov","doc_descricao"]));
     }
     public function inserir_anexo(Request $request) {
          $dados = (object) $request->all();
