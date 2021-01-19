@@ -80,13 +80,20 @@ Array.from(document.querySelectorAll('.btn-seguir')).forEach(
         button.addEventListener('click',function(e){
             e.preventDefault();
             id_doc = button.getAttribute("data-item-id");
-            var txt;
-            var r = confirm("Tem certeza que deseja seguir o fluxo ?");
-                if (r == true) {
-                    document.getElementById("form-seguir-"+id_doc).submit();
-                } else {
-                    
-                }
+            
+
+            Swal.fire({
+            title: 'Deseja Realmente seguir o fluxo para o proximo passo ?',
+            showCancelButton: true,
+            confirmButtonColor: '#3ca512',
+            cancelButtonColor: '#d9534f',
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                 document.getElementById("form-seguir-"+id_doc).submit();
+            }
+            })
         });
     }
 );
@@ -96,13 +103,21 @@ Array.from(document.querySelectorAll('.btn-seguir-inicio')).forEach(
         button.addEventListener('click',function(e){
             e.preventDefault();
              id_doc = button.getAttribute("data-item-id");
-            var txt;
-            var r = confirm("Tem certeza que deseja seguir o fluxo ?");
-                if (r == true) {
-                   document.getElementById("form-seguir-inicio-"+id_doc).submit();
-                } else {
-                    
-                }
+            
+             Swal.fire({
+            title: 'Deseja iniciar o Fluxo com esse processo ?',
+            showCancelButton: true,
+            confirmButtonColor: '#3ca512',
+            cancelButtonColor: '#d9534f',
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                 document.getElementById("form-seguir-inicio-"+id_doc).submit();
+            }
+            })
+            
+            
         });
     }
 );
