@@ -64,6 +64,11 @@
 						<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('assets/img/semfotocircular.png')}}" class="img-circle" alt="Avatar"> <span>{{ $_SESSION['usuario']}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
+								<li><a data-toggle="modal" 
+                                data-target="#modalSenha" 
+                                onclick="mostrarModalSenha(event)"
+								data-item-senha-id={{$_SESSION['id']}}>
+								<i class="fa fa-key"></i> <span>Mudar Senha</span></a></li>
 								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Sair</span></a></li>
 							</ul>
 						</li>
