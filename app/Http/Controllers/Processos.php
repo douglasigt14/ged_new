@@ -125,7 +125,7 @@ class Processos extends BaseController
     public function seguir_fluxo(Request $request){
         $dados = (object) $request->all();
         if(!$dados->processo_id){
-            return back()->with('error-iniciar', 'Selecione um Processo para Iniciar o Fluxo');;
+            return back()->with('error-iniciar', 'Selecione um Processo para Iniciar o Fluxo');
         }
         $tem_bifurcacao = $dados->tem_bifurcacao ?? NULL;
         $sqlFluxo = "SELECT 
@@ -302,6 +302,6 @@ class Processos extends BaseController
 
          
 
-        return back();
+        return back()->with('sucesso-seguir', 'Arquivo passou para o proximo passo com Sucesso');;
     }
 }

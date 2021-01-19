@@ -45,11 +45,18 @@
                             <br>
                              <div class="row">
                                 <div class="col-md-12">
-                                     @if (\Session::has('error-iniciar'))
-                                    <div class="alert alert-danger alert-block">
-                                        <button type="button" class="close" data-dismiss="alert">×</button>	
-                                            <strong>{!! \Session::get('error-iniciar') !!}</strong>
-                                    </div>
+                                    @if (\Session::has('error-iniciar'))
+                                        <div class="alert alert-danger alert-block">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>	
+                                                <strong>{!! \Session::get('error-iniciar') !!}</strong>
+                                        </div>
+                                    @endif
+
+                                    @if (\Session::has('sucesso-seguir'))
+                                        <div class="alert alert-success alert-block">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>	
+                                                <strong>{!! \Session::get('sucesso-seguir') !!}</strong>
+                                        </div>
                                     @endif
                                     @if($lista_arquivos)
                                     <hr class='linha'>
