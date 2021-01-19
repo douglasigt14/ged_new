@@ -48,11 +48,20 @@ class MyLogin extends Controller
     }
     
     public function mudarSenha(Request $request) {
-        session_start();
-        $nova_senha = $request->all();
-        $senha_crip = password_hash($nova_senha['nova_senha'], PASSWORD_BCRYPT);
-        $id = $_SESSION['id'];
-        DB::update("UPDATE usuarios SET senha = ? WHERE id = ?", [$senha_crip, $id]);
-        return back();
+        $dados = (object) $request->all();
+       
+        
+        if($dados->senha == $dados->confirmar_senha){
+             $dados->senha = password_hash( $dados->senha, PASSWORD_BCRYPT);
+            DB::table('usuarios')
+              ->where('id', $dados->id)
+              ->update([
+                    'senha' => $dados->senha
+                ]);
+            return back();
+        }
+       
+        
+        
     }
 }

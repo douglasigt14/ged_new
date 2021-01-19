@@ -44,6 +44,8 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::put('/funcionarios', [Funcionarios::class, 'editar']);
     Route::patch('/funcionarios', [Funcionarios::class, 'mudar_senha']);
 
+    Route::patch('/mudar_senha', [MyLogin::class, 'mudarSenha']);
+
 
     Route::get('/processos', [Processos::class, 'index']);
     Route::post('/processos', [Processos::class, 'inserir']);

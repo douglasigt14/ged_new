@@ -125,7 +125,7 @@
       </div>
       <div class="modal-body">
           <div class="row">
-              <form action="/funcionarios" method="post" onsubmit="onAddOperator(event)">
+              <form action="/mudar_senha" method="post" onsubmit="onAddOperator(event)">
               @csrf
               @method('patch')
                <input type="hidden" id='item-senha-id' name='id' class='form-control'>
