@@ -79,10 +79,11 @@ Array.from(document.querySelectorAll('.btn-seguir')).forEach(
     function(button){
         button.addEventListener('click',function(e){
             e.preventDefault();
+            id_doc = button.getAttribute("data-item-id");
             var txt;
             var r = confirm("Tem certeza que deseja seguir o fluxo ?");
                 if (r == true) {
-                   document.getElementById("form-seguir").submit();
+                    document.getElementById("form-seguir-"+id_doc).submit();
                 } else {
                     
                 }
@@ -94,10 +95,11 @@ Array.from(document.querySelectorAll('.btn-seguir-inicio')).forEach(
     function(button){
         button.addEventListener('click',function(e){
             e.preventDefault();
+             id_doc = button.getAttribute("data-item-id");
             var txt;
             var r = confirm("Tem certeza que deseja seguir o fluxo ?");
                 if (r == true) {
-                   document.getElementById("form-seguir-inicio").submit();
+                   document.getElementById("form-seguir-inicio-"+id_doc).submit();
                 } else {
                     
                 }

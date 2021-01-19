@@ -117,6 +117,9 @@
 	<script src="{{url('assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
 	<script src="{{url('assets/vendor/chartist/js/chartist.min.js')}}"></script>
 	<script src="{{url('assets/scripts/klorofil-common.js')}}"></script>
+
+	<script src="{{url('assets/vendor/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
+
 	
     
      @stack('scripts')
