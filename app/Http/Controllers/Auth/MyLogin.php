@@ -27,6 +27,7 @@ class MyLogin extends Controller
             // Cria a sessao
             $_SESSION['usuario'] = $user->rotulo;
             $_SESSION['id'] = $user->id;
+            $_SESSION['is_admin'] = $user->is_admin ?? NULL;
             $_SESSION['login'] = $name;
             return redirect('/');
         } else {

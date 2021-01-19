@@ -19,6 +19,7 @@
 										</p>
 									</div>
 								</a>
+								@if($_SESSION['is_admin'])
 								<a href='/setores' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-users"></i></span>
@@ -46,6 +47,7 @@
 										</p>
 									</div>
 								</a>
+								@endif
 								<a href='/status' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-exclamation-triangle"></i></span>
@@ -55,6 +57,7 @@
 										</p>
 									</div>
 								</a>
+								@if($_SESSION['is_admin'])
 								<a href='/desenho_fluxos' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-arrows-alt"></i></span>
@@ -64,6 +67,7 @@
 										</p>
 									</div>
 								</a>
+								@endif
 							</div>
 							
                         </div>
