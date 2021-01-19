@@ -65,8 +65,8 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{asset('assets/img/semfotocircular.png')}}" class="img-circle" alt="Avatar"> <span>{{ $_SESSION['usuario']}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a data-toggle="modal" 
-                                data-target="#modalSenha" 
-                                onclick="mostrarModalSenha(event)"
+                                data-target="#modalSenha_template" 
+                                onclick="mostrarModalSenha_template(event)"
 								data-item-senha-id={{$_SESSION['id']}}>
 								<i class="fa fa-key"></i> <span>Mudar Senha</span></a></li>
 								<li><a href="/logout"><i class="lnr lnr-exit"></i> <span>Sair</span></a></li>
@@ -116,6 +116,37 @@
 		<footer>
 		</footer>
 	</div>
+
+	<div class="modal fade" id="modalSenha_template" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Mudar Senhar</h4>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+              <form action="/funcionarios" method="post" onsubmit="onAddOperator(event)">
+              @csrf
+              @method('patch')
+               <input type="hidden" id='item-senha-id' name='id' class='form-control'>
+              <div class="col col-md-6">
+                  <label>Nova Senha</label>
+                 
+                   <input type="password" type="text" name='senha' class='form-control' required>
+              </div>
+              <div class="col col-md-6">
+                  <label>Confirmar Nova Senha</label>
+                  <input type="password"  name='confirmar_senha' class='form-control' required>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info">Alterar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
 	<script src="{{url('assets/vendor/jquery/jquery.min.js')}}"></script>
@@ -130,7 +161,13 @@
 
 	<script src="{{url('assets/vendor/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
 
-	
+	<script>
+		 function mostrarModalSenha_template(event) {
+                const button = event.currentTarget
+                const id = document.querySelector("#modalSenha_template #item-senha-id")
+                id.value = button.getAttribute("data-item-senha-id")
+            }
+	</script>
     
      @stack('scripts')
 </body>
