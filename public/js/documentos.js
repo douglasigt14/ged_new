@@ -31,7 +31,6 @@ function mostrarModalImg(event) {
         const button = event.currentTarget
         const img = document.querySelector("#modalImg #item-img")
         const source_img = document.querySelector("#modalImg #item-source-img")
-        console.log(img);
 
         img.srcset = button.getAttribute("data-item-img")
         source_img.src = button.getAttribute("data-item-img")
@@ -75,3 +74,33 @@ function mostrarModalDecisao(event) {
     
     
 }
+
+Array.from(document.querySelectorAll('.btn-seguir')).forEach(
+    function(button){
+        button.addEventListener('click',function(e){
+            e.preventDefault();
+            var txt;
+            var r = confirm("Tem certeza que deseja seguir o fluxo ?");
+                if (r == true) {
+                   document.getElementById("form-seguir").submit();
+                } else {
+                    
+                }
+        });
+    }
+);
+
+Array.from(document.querySelectorAll('.btn-seguir-inicio')).forEach(
+    function(button){
+        button.addEventListener('click',function(e){
+            e.preventDefault();
+            var txt;
+            var r = confirm("Tem certeza que deseja seguir o fluxo ?");
+                if (r == true) {
+                   document.getElementById("form-seguir-inicio").submit();
+                } else {
+                    
+                }
+        });
+    }
+);

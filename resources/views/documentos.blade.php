@@ -117,7 +117,7 @@
                                                      <center><a href='/hist_mov/{{$item->id}}'  class="btn btn-sm btn-warning"><i class="fa fa-file-text"></i></button></a>
                                                 </td>
                                                 
-                                                <form action="/seguir_fluxo" method="post">
+                                                <form action="/seguir_fluxo" method="post" id='form-seguir'>
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{$item->id}}">
                                                         <input type="hidden" name="setor_atual_id" value="{{$item->setor_atual_id}}"> 
@@ -127,7 +127,7 @@
                         
                                                 <td>
                                                     @if ($item->setor_atual == $setor and $item->finalizado != 1)
-                                                        <center><button type='submit' class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center>
+                                                        <center><button type='submit' class="btn btn-sm btn-primary btn-seguir"><i class="fa fa-arrow-right"></i></button></center>
                                                     @elseif (($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY'))
                                                         <center><button 
                                                             data-toggle="modal" 
@@ -181,7 +181,7 @@
                                                 </td>
                                                
                                                 <td>
-                                                <form action="/seguir_fluxo" method="post">
+                                                <form action="/seguir_fluxo" id='form-seguir-inicio' method="post">
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{$item->id}}">
                                                         <input type="hidden" name="passo_processo_id" value="0">
@@ -198,7 +198,7 @@
                                                  <td class='menor'>
                                                     <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> 
                                                 </td>
-                                                <td><center><button class="btn btn-sm btn-primary"><i class="fa fa-arrow-right"></i></button></center></td>
+                                                <td><center><button class="btn btn-sm btn-primary btn-seguir-inicio"><i class="fa fa-arrow-right"></i></button></center></td>
                                                 </form>
                                             </tr>
                                             @endforeach
