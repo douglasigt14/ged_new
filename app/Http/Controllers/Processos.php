@@ -280,7 +280,7 @@ class Processos extends BaseController
                     ,'passo_processo_id' => $id_para_passo
          ]);
          
-         $usuario_id = $_SESSION['id'];
+         $usuario_id = $dados->usuario_id;
          $ip = $_SERVER['REMOTE_ADDR'];
 
         if($atualizar){

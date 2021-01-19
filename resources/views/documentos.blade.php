@@ -123,6 +123,7 @@
                                                         <input type="hidden" name="setor_atual_id" value="{{$item->setor_atual_id}}"> 
                                                         <input type="hidden" name="passo_processo_id" value="{{$item->passo_processo_id}}">
                                                         <input type="hidden" name="processo_id" value="{{$item->processo_id}}">
+                                                        <input type="hidden" name='usuario_id' value="{{$_SESSION['id']}}">
                         
                                                 <td>
                                                     @if ($item->setor_atual == $setor and $item->finalizado != 1)
@@ -184,6 +185,7 @@
                                                         @csrf
                                                         <input type="hidden" name="id" value="{{$item->id}}">
                                                         <input type="hidden" name="passo_processo_id" value="0">
+                                                        <input type="hidden" name='usuario_id' value="{{$_SESSION['id']}}">
                                 
                             
                                                     <select name="processo_id" required class="form-control">
@@ -277,6 +279,7 @@
                 <input type="hidden" name="processo_id" id="item-processo_id">
                 <input type="hidden" name="tem_bifurcacao" value=1>
                 <input type="hidden" name='id' id='item-id'>
+                <input type="hidden" name='usuario_id' value="{{$_SESSION['id']}}">
                 <select class='form-control' name="passo_processo_id" id="item-bifurcacoes">
             
                 </select>
@@ -301,7 +304,7 @@
       <div class="modal-body">
           <div class="row">
              <div class="col col-md-12 center">
-                  <h4>Deseja Realmente Desvincular desse processo ?</h4>
+                  <h4>Deseja realmente desvincular desse processo ?</h4>
              </div>
           </div>
       </div>
