@@ -113,7 +113,7 @@
                                                     <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> 
                                                 </td>
                                                 <td>
-                                                     <center><a href='/anexos_obs/{{$item->id}}'  class="btn btn-sm btn-primary cinza-ardosia"><i class="fa fa-paperclip"></i></button></a>
+                                                     <center><a href='/anexos_obs/{{$item->id}}'  class="btn btn-sm btn-info"><i class="fa fa-info-circle"></i></button></a>
                                                 </td>
                                                 <td>
                                                     <center><button 
@@ -122,7 +122,7 @@
                                                         onclick="mostrarModalImg(event)"
                                                         data-item-id={{$item->id}}
                                                         data-item-img='{{$item->caminho_svg.'?'.date("YmdHis")}}'
-                                                        class="btn btn-sm btn-info"><i class="fa fa-file-image-o"></i></button></center>
+                                                        class="btn btn-sm btn-info  cinza-ardosia"><i class="fa fa-file-image-o"></i></button></center>
                                                 </td>
                                                 
                                                 <form action="/seguir_fluxo" method="post" id='form-seguir-{{$item->id}}'>

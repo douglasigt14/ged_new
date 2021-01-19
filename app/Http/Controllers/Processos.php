@@ -297,11 +297,13 @@ class Processos extends BaseController
                    ,'nome_de' => $passos_processo_fluxo[0]->nome_de
                    ,'nome_para' => $passos_processo_fluxo[0]->nome_para
                    ,'documento_id' => $dados->id
+                   ,'nome_seta' => $passos_processo_fluxo[0]->nome ?? NULL
             ]);
         }                
 
-         
+         $documento = DB::select("SELECT * FROM documentos WHERE id = $dados->id");
+         $desc_documento = $documento[0]->descricao ?? NULL;
 
-        return back()->with('sucesso-seguir', 'Arquivo passou para o proximo passo com Sucesso');;
+        return back()->with('sucesso-seguir', 'Arquivo ('.$desc_documento.') movimentou-se <br>De: '.$passos_processo_fluxo[0]->nome_de.' Para: '.$passos_processo_fluxo[0]->nome_para);
     }
 }
