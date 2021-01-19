@@ -57,18 +57,16 @@ class MyLogin extends Controller
             $user = $user[0];
         }
     
-        if($user and
-            password_verify($dados->senha_atual , $user->senha)
-        ) {
+        if($user and password_verify($dados->senha_atual , $user->senha)) {
             if($dados->senha == $dados->confirmar_senha){
-             $dados->senha = password_hash( $dados->senha, PASSWORD_BCRYPT);
-            DB::table('usuarios')
-              ->where('id', $dados->id)
-              ->update([
-                    'senha' => $dados->senha
-                ]);
-            $msg_tipo = "sucesso";
-            $msg = "Senha alterada com sucesso";
+                $dados->senha = password_hash( $dados->senha, PASSWORD_BCRYPT);
+                DB::table('usuarios')
+                ->where('id', $dados->id)
+                ->update([
+                        'senha' => $dados->senha
+                    ]);
+                $msg_tipo = "sucesso";
+                $msg = "Senha alterada com sucesso";
             }
             else{
                 $msg_tipo = "error";
