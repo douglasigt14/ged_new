@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use DB;
 
+
 class Processos extends BaseController
 {
     public function index() {
@@ -123,6 +124,9 @@ class Processos extends BaseController
     }
     public function seguir_fluxo(Request $request){
         $dados = (object) $request->all();
+        if(!$dados->processo_id){
+            return back()->with('error-iniciar', 'Selecione um Processo para Iniciar o Fluxo');;
+        }
         $tem_bifurcacao = $dados->tem_bifurcacao ?? NULL;
         $sqlFluxo = "SELECT 
                         pp_princial.*
