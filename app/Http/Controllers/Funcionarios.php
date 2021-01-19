@@ -56,12 +56,14 @@ class Funcionarios extends BaseController
 
      public function mudar_senha(Request $request){
         $dados = (object) $request->all();
-        $dados->senha = password_hash( $dados->senha, PASSWORD_BCRYPT);
-        DB::table('usuarios')
-              ->where('id', $dados->id)
-              ->update([
-                    'senha' => $dados->senha
-                ]);
+        if($dados->senha == $dados->confirmar_senha){
+             $dados->senha = password_hash( $dados->senha, PASSWORD_BCRYPT);
+            DB::table('usuarios')
+                ->where('id', $dados->id)
+                ->update([
+                        'senha' => $dados->senha
+                    ]);
+         }
         return back();
      }
 }

@@ -50,18 +50,39 @@ class MyLogin extends Controller
     public function mudarSenha(Request $request) {
         $dados = (object) $request->all();
        
-        
-        if($dados->senha == $dados->confirmar_senha){
+        $msg = "";
+        $msg_tipo = "";
+        $user = DB::select("SELECT * FROM usuarios WHERE id = '$dados->id'");
+        if (!empty($user)) {
+            $user = $user[0];
+        }
+    
+        if($user and
+            password_verify($dados->senha_atual , $user->senha)
+        ) {
+            if($dados->senha == $dados->confirmar_senha){
              $dados->senha = password_hash( $dados->senha, PASSWORD_BCRYPT);
             DB::table('usuarios')
               ->where('id', $dados->id)
               ->update([
                     'senha' => $dados->senha
                 ]);
-            return back();
+            $msg_tipo = "sucesso";
+            $msg = "Senha alterada com sucesso";
+            }
+            else{
+                $msg_tipo = "error";
+                $msg = "As senhas não são iguais";
+            }
+
         }
-       
+        else{
+             $msg_tipo = "error";
+             $msg = "A senha atual está incorreta";
+        }
         
+       
+        return back()->with($msg_tipo,$msg);
         
     }
 }

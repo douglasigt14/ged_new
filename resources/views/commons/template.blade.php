@@ -104,7 +104,20 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					
+					@if (\Session::has('error'))
+						<div class="alert alert-danger alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+								<strong>{!! \Session::get('error') !!}</strong>
+						</div>
+					@endif
+
+					@if (\Session::has('sucesso'))
+						<div class="alert alert-success alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+								<strong>{!! \Session::get('sucesso') !!}</strong>
+						</div>
+					@endif
+									
 					@yield('conteudo')
                 
                 </div>
@@ -129,12 +142,17 @@
               @csrf
               @method('patch')
                <input type="hidden" id='item-senha-id' name='id' class='form-control'>
-              <div class="col col-md-6">
+			  <div class="col col-md-4">
+                  <label>Senha Atual</label>
+                 
+                   <input type="password" type="text" name='senha_atual' class='form-control' required>
+              </div>
+			   <div class="col col-md-4">
                   <label>Nova Senha</label>
                  
                    <input type="password" type="text" name='senha' class='form-control' required>
               </div>
-              <div class="col col-md-6">
+              <div class="col col-md-4">
                   <label>Confirmar Nova Senha</label>
                   <input type="password"  name='confirmar_senha' class='form-control' required>
               </div>
