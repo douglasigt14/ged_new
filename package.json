@@ -25,6 +25,7 @@
         "datatables.net": "^1.10.23",
         "datatables.net-dt": "^1.10.23",
         "dropify": "^0.2.2",
-        "mdbootstrap": "^4.19.2"
+        "mdbootstrap": "^4.19.2",
+        "sweetalert2": "^10.13.0"
     }
 }
