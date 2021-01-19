@@ -20,7 +20,8 @@
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="{{asset('assets/css/demo.css')}}">
 	<!-- GOOGLE FONTS -->
-    
+	<link rel="stylesheet" href="{{url('assets/vendor/sweetalert2/dist/sweetalert2.min.css')}}">
+	
      @stack('styles')
 </head>
 {{-- class="layout-fullwidth" --}}

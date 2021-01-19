@@ -85,6 +85,7 @@ Array.from(document.querySelectorAll('.btn-seguir')).forEach(
             Swal.fire({
             title: 'Deseja Realmente seguir o fluxo para o proximo passo ?',
             showCancelButton: true,
+            //width: 600,
             confirmButtonColor: '#3ca512',
             cancelButtonColor: '#d9534f',
             confirmButtonText: 'Sim',

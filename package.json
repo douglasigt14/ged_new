@@ -21,6 +21,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "animate.css": "^4.1.1",
         "bootstrap4-toggle": "^3.6.1",
         "datatables.net": "^1.10.23",
         "datatables.net-dt": "^1.10.23",
