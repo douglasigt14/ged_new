@@ -29,7 +29,10 @@ class MyLogin extends Controller
             $_SESSION['id'] = $user->id;
             $_SESSION['is_admin'] = $user->is_admin ?? NULL;
             $_SESSION['login'] = $name;
-            return redirect('/');
+            if($user->is_admin) 
+                return redirect('/');
+            else
+               return redirect('/documentos');
         } else {
             \Session::flash('login_erro', 'Dados incorretos');
             return redirect('/login');
