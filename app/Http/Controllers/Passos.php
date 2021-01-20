@@ -37,13 +37,13 @@ class Passos extends BaseController
         }
 
         for ($i=0; $i < sizeof($passos_processo); $i++) { 
-            if($passos_processo[$i]->tipo == 'BPMN:STARTEVENT')
+            if($passos_processo[$i]->tipo == 'BPMN:STARTEVENT' or $passos_processo[$i]->tipo == 'STARTEVENT')
                 $passos_processo[$i]->tipo = 'EVENTO INICIAL';
-            else if($passos_processo[$i]->tipo == 'BPMN:TASK')
+            else if($passos_processo[$i]->tipo == 'BPMN:TASK' or $passos_processo[$i]->tipo == 'TASK')
                 $passos_processo[$i]->tipo = 'SETOR';
-            else if($passos_processo[$i]->tipo == 'BPMN:EXCLUSIVEGATEWAY')
+            else if($passos_processo[$i]->tipo == 'BPMN:EXCLUSIVEGATEWAY' or $passos_processo[$i]->tipo == 'EXCLUSIVEGATEWAY')
                 $passos_processo[$i]->tipo = 'DECISSÃO';
-            else if($passos_processo[$i]->tipo == 'BPMN:ENDEVENT')
+            else if($passos_processo[$i]->tipo == 'BPMN:ENDEVENT' or $passos_processo[$i]->tipo == 'ENDEVENT')
                 $passos_processo[$i]->tipo = 'EVENTO FINAL';
             
             if($passos_processo[$i]->tipo == 'SETOR'){
