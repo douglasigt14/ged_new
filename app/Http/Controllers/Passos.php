@@ -27,8 +27,10 @@ class Passos extends BaseController
         
         $passos_processo = DB::select("SELECT 
                                             pp_princial.*
+                                           ,setores.descricao setor
                                       FROM 
-                                        passos_processo pp_princial
+                                        passos_processo pp_princial LEFT JOIN setores ON
+                                          setores.id =   pp_princial.quem_decide
                                     WHERE pp_princial.processo_id = $processo_id 
                                       AND pp_princial.tipo NOT LIKE '%SEQUENCEFLOW%' ");
 
@@ -102,6 +104,13 @@ class Passos extends BaseController
 
      public function gerenciar_quem_decide(Request $request){
             $dados = (object) $request->all();
-            dd($dados);
+            
+             DB::table('passos_processo')
+              ->where('id', $dados->passo_id)
+              ->update([
+                    'quem_decide' => $dados->setor_id
+                    ]);
+
+        return back();
      }
 }

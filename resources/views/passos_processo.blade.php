@@ -51,8 +51,9 @@
                                       <td>{{$item->tipo }}</td>
                                       <td>{{$item->nome }}</td>
                                       <td>
+                                        <center>
                                         @if ($item->tipo == 'SETOR')
-                                        {{-- <center><button 
+                                        {{-- <button 
                                             data-toggle="modal" 
                                             data-target="#modalStatus" 
                                             onclick="mostrarModal(event)"
@@ -60,17 +61,19 @@
                                             data-item-descricao='{{$item->nome}}'
                                             data-item-status_lista='{{json_encode($item->status_lista)}}'
                                             data-item-status_lista_selecionados='{{json_encode($item->status_lista_selecionados)}}'
-                                            class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button></center> --}}
+                                            class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button> --}}
                                         @endif
                                         @if ($item->tipo == 'DECISSÃO')
-                                          <center><button 
+                                            <button 
                                             data-toggle="modal" 
                                             data-target="#modalDecisao" 
                                             onclick="mostrarModalDecissao(event)"
                                             data-item-id={{$item->id}}
                                             data-item-descricao='{{$item->nome}}'
-                                            class='btn btn-sm btn-primary laranja-escuro'> <i class="fa fa-th-list"></i> </button></center> 
+                                            class='btn btn-sm btn-primary laranja-escuro'> <i class="fa fa-th-list"></i> </button> <br>
                                         @endif
+                                        {{$item->setor}}
+                                        </center>
                                       </td>
                                   </tr>
                                   @endforeach
@@ -141,7 +144,7 @@
           @csrf
          <div class="row">
            <div class="col col-md-12">
-              <input type="text" name="passo_id" id="item-id">
+              <input type="hidden" name="passo_id" id="item-id">
                <select name="setor_id" required class="form-control">
                     @foreach ($setores as $setor)
                         <option value="{{$setor->id}}">{{$setor->descricao}}</option>
