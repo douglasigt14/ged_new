@@ -59,6 +59,7 @@ class Documentos extends Controller
                 ,status_lista.cor cor
                 ,passos_processo.tipo tipo_passo
                 ,passos_processo.nome nome_passo
+                ,s_quem_decide.descricao quem_decide
                 FROM 
                     documentos 
                     LEFT JOIN setores s_atual ON
@@ -71,12 +72,15 @@ class Documentos extends Controller
                     	documentos.status_id = status_lista.id
                     INNER JOIN passos_processo ON
                         documentos.passo_processo_id = passos_processo.id_bpmn
+                    LEFT JOIN setores s_quem_decide ON
+                    passos_processo.quem_decide = s_quem_decide.id
                     WHERE 1";
         if(!$mostrar_finalizados){
             $sql = $sql." AND documentos.finalizado = 0";
         }
         if(!$mostrar_outros_setores){
-            $sql = $sql." AND (documentos.setor_atual_id = $setor_id OR passos_processo.tipo LIKE '%EXCLUSIVEGATEWAY%')";
+            $sql = $sql." AND (documentos.setor_atual_id = $setor_id) OR 
+            ( (passos_processo.tipo LIKE '%EXCLUSIVEGATEWAY%') AND (passos_processo.quem_decide = $setor_id) )";
         }
         $finalizados_checked =  $mostrar_finalizados ? true : false;
         $outros_setores_checked =  $mostrar_outros_setores ? true : false;

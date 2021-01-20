@@ -138,7 +138,7 @@
                                                         <center><button type='submit' 
                                                             data-item-id={{$item->id}} 
                                                             class="btn btn-sm btn-primary btn-seguir"><i class="fa fa-arrow-right"></i></button></center>
-                                                    @elseif (($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY'))
+                                                    @elseif ( ($item->quem_decide == $setor) and($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY'))
                                                         <center><button 
                                                             data-toggle="modal" 
                                                             data-target="#modalDecissao" 
