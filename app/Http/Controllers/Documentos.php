@@ -153,7 +153,7 @@ class Documentos extends Controller
         
         
 
-       return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor","lista_processo","finalizados_checked","outros_setores_checked"]));
+       return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor","lista_processo","finalizados_checked","outros_setores_checked","id_usuario"]));
     }
 
     public static function verifica_cor($cor){

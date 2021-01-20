@@ -93,6 +93,7 @@
                                                 @endif
                                             <tr>
                                                 <td>
+                                                    @if($id_usuario == $item->upload_usuario_id)
                                                     <span
                                                         data-toggle="modal" 
                                                         data-target="#modalDesvincularProcesso" 
@@ -103,6 +104,10 @@
                                                     >
                                                         {{$item->descricao }} 
                                                     </span>
+                                                    @else
+                                                         {{$item->descricao }} 
+                                                    @endif
+                                                    
                                                 </td>
                                                 <td>{{ $item->setor_anterior }}</td>
                                                 <td @if ($item->setor_atual == $setor)
