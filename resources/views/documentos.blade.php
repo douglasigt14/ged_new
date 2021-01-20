@@ -163,9 +163,10 @@
                                                             data-item-processo_id="{{$item->processo_id}}"
                                                             data-item-setor_atual_id="{{$item->setor_anterior_id}}"
                                                             data-item-bifurcacoes='{{json_encode($item->bifurcacoes)}}'
-                                                            type='button' class="btn btn-sm btn-warning laranja-escuro"><i class="fa fa-arrows-alt"></i></button></center>
-                                                    @else
-                                                      
+                                                            type='button' class="btn btn-sm btn-warning laranja-escuro"><i class="fa fa-arrows-alt"></i></button>
+                                                            <br></center>
+                                                    @elseif($item->quem_decide != $setor and ($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY'))
+                                                      Setor que Decide: <b>{{$item->quem_decide}}</b>
                                                     @endif
                                                 </td>
                                                 </form>
