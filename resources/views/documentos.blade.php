@@ -59,6 +59,13 @@
                                                 <strong>{!! \Session::get('sucesso-seguir') !!}</strong>
                                         </div>
                                     @endif
+
+                                    @if (\Session::has('desvincular'))
+                                        <div class="alert alert-warning alert-block">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>	
+                                                <strong>{!! \Session::get('desvincular') !!}</strong>
+                                        </div>
+                                    @endif
                                     @if($lista_arquivos)
                                     <hr class='linha'>
                                     @foreach ($lista_processo as $processo)

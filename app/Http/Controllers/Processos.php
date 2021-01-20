@@ -323,6 +323,6 @@ class Processos extends BaseController
                     'processo_id' => NULL
         ]);
 
-         return back();
+         return back()->with('desvincular', 'Arquivo foi desvinculado do processo e zerado');
     }
 }
