@@ -67,12 +67,14 @@ class Passos extends BaseController
             }
 
             if($passos_processo[$i]->tipo == 'DECISSÃO'){
-                var_dump($passos_processo[$i]);
+                
             }
 
             $passos_processo[$i]->status_lista = $status_lista ?? [];
             $passos_processo[$i]->status_lista_selecionados = $status_lista_selecionados ?? [];
         }
+
+        $setores = DB::select("SELECT * FROM setores");
 
          $processos_img = DB::select("SELECT img FROM processos WHERE id = $processo_id ");
          $img = $processos_img[0]->img ?? NULL;
@@ -80,7 +82,7 @@ class Passos extends BaseController
 
        
 
-       return view('passos_processo', compact(["passos_processo_fluxo","passos_processo","img"]));
+       return view('passos_processo', compact(["passos_processo_fluxo","passos_processo","img","setores"]));
     }
     
     public function vincular_status(Request $request){
