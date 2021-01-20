@@ -122,3 +122,12 @@ Array.from(document.querySelectorAll('.btn-seguir-inicio')).forEach(
         });
     }
 );
+
+function mostrarModalDesvincularProcesso (event) {
+    const button = event.currentTarget
+    const descricao = document.querySelector("#modalDesvincularProcesso #item-descricao")
+    const id = document.querySelector("#modalDesvincularProcesso #item-id")
+
+    descricao.innerHTML = button.getAttribute("data-item-descricao")
+    id.value = button.getAttribute("data-item-id")
+ }

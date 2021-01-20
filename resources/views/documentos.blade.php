@@ -90,7 +90,8 @@
                                                         data-toggle="modal" 
                                                         data-target="#modalDesvincularProcesso" 
                                                         onclick="mostrarModalDesvincularProcesso(event)"
-                                                        data-item-id={{$item->id}}    
+                                                        data-item-id={{$item->id}}
+                                                        data-item-descricao="{{$item->descricao }}"     
                                                     >
                                                         {{$item->descricao }} 
                                                     </span>
@@ -311,17 +312,20 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="exampleModalLabel">Desvincular Processo</h4>
+         <h5>Documento: <span id="item-descricao"></span></h5>
       </div>
       <div class="modal-body">
           <div class="row">
              <div class="col col-md-12 center">
                   <h4>Deseja realmente desvincular desse processo ?</h4>
+                   <h6>Obs: Essa ação deixará o documento sem processo e disponivel para iniciar um novo do zero</h5>
              </div>
           </div>
       </div>
       <div class="modal-footer">
-           <button class='btn btn-default' data-dismiss="modal">Cancelar</button>
-          <button type="submit" class='btn btn-danger'>Desvincular</button>
+            <input type="hidden" name='id' id='item-id'>
+            <button class='btn btn-default' data-dismiss="modal">Cancelar</button>
+            <button type="submit" class='btn btn-danger'>Desvincular</button>
       </div>
     </div>
   </div>
