@@ -26,6 +26,7 @@
                            
 
                             <form action="/documentos" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name='usuario_id' value="{{$_SESSION['id']}}">
                             @csrf
                                 <div class="row">
                                     <div class="col-md-12">

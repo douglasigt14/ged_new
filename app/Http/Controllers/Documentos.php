@@ -134,7 +134,8 @@ class Documentos extends Controller
                     INNER JOIN status_lista ON
                     documentos.status_id = status_lista.id
                 WHERE 
-                    processo_id IS NULL";
+                    processo_id IS NULL
+                AND documentos.upload_usuario_id = $id_usuario";
 
         $lista_arquivos_geral = DB::select($sql);
 
@@ -171,6 +172,7 @@ class Documentos extends Controller
         $ultimo_id = DB::table('documentos')->insertGetId([
                             'descricao' => $dados->descricao
                             , 'status_id' => 1
+                            ,'upload_usuario_id' => $dados->usuario_id
                         ]);
         $caminho = $documento ? $documento->store('docs/'.$ultimo_id ,'public') : NULL;    
 
