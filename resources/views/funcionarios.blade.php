@@ -233,16 +233,16 @@
             }
 
              function onAddOperator(e) {
-              e.preventDefault()
+                  e.preventDefault()
 
-              const form = e.target;
-              if(form.senha.value !== form.confirmar_senha.value) {
-                  alert("As senhas devem ser iguais")
-              } else {
-                  form.submit();
+                  const form = e.target;
+                  if(form.senha.value !== form.confirmar_senha.value) {
+                      alert("As senhas devem ser iguais")
+                  } else {
+                      form.submit();
+                  }
+
               }
-
-          }
     </script>
 @endpush
 @endsection
