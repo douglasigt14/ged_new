@@ -126,8 +126,10 @@ Array.from(document.querySelectorAll('.btn-seguir-inicio')).forEach(
 function mostrarModalDesvincularProcesso (event) {
     const button = event.currentTarget
     const descricao = document.querySelector("#modalDesvincularProcesso #item-descricao")
+    const caminho_svg = document.querySelector("#modalDesvincularProcesso #item-caminho_svg")
     const id = document.querySelector("#modalDesvincularProcesso #item-id")
 
     descricao.innerHTML = button.getAttribute("data-item-descricao")
     id.value = button.getAttribute("data-item-id")
+    caminho_svg.value = button.getAttribute("data-item-caminho_svg")
  }

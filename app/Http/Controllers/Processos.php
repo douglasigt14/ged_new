@@ -309,8 +309,8 @@ class Processos extends BaseController
     
     public function desvincular_processo(Request $request){
         $dados = (object) $request->all();
-        $caminho_svg = "";
-        Storage::disk('public')->exists( $caminho ) ? Storage::disk('public')->delete($caminho_svg) : NULL;
+        $caminho_svg = str_replace("/storage/","", $dados->caminho_svg );
+        $arquivo = Storage::disk('public')->exists( $caminho_svg ) ? Storage::disk('public')->delete($caminho_svg) : NULL;
 
         DB::table('documentos')
               ->where('id', $dados->id)

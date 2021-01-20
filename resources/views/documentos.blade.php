@@ -91,6 +91,7 @@
                                                         data-target="#modalDesvincularProcesso" 
                                                         onclick="mostrarModalDesvincularProcesso(event)"
                                                         data-item-id={{$item->id}}
+                                                        data-item-caminho_svg={{$item->caminho_svg}}
                                                         data-item-descricao="{{$item->descricao }}"     
                                                     >
                                                         {{$item->descricao }} 
@@ -326,6 +327,7 @@
       </div>
       <div class="modal-footer">
             <input type="hidden" name='id' id='item-id'>
+            <input type="hidden" name='caminho_svg' id='item-caminho_svg'>
             <button class='btn btn-default' data-dismiss="modal">Cancelar</button>
             <button type="submit" class='btn btn-danger'>Desvincular</button>
         </form>
