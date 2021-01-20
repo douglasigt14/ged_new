@@ -99,4 +99,9 @@ class Passos extends BaseController
         DB::table('passos_status')->where('id', '=', $id )->delete();
         return back();
     }
+
+     public function gerenciar_quem_decide(Request $request){
+            $dados = (object) $request->all();
+            dd($dados);
+     }
 }

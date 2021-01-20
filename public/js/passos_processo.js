@@ -49,3 +49,12 @@
 
     // console.log();
 }
+
+ function mostrarModalDecissao(event) {
+    const button = event.currentTarget
+    const descricao = document.querySelector("#modalDecisao #item-descricao")
+    const id = document.querySelector("#modalDecisao #item-id")
+
+    descricao.innerHTML = button.getAttribute("data-item-descricao")
+    id.value = button.getAttribute("data-item-id")
+ }

@@ -63,7 +63,13 @@
                                             class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button></center> --}}
                                         @endif
                                         @if ($item->tipo == 'DECISSÃO')
-                                          Aqui
+                                          <center><button 
+                                            data-toggle="modal" 
+                                            data-target="#modalDecisao" 
+                                            onclick="mostrarModalDecissao(event)"
+                                            data-item-id={{$item->id}}
+                                            data-item-descricao='{{$item->nome}}'
+                                            class='btn btn-sm btn-primary laranja-escuro'> <i class="fa fa-th-list"></i> </button></center> 
                                         @endif
                                       </td>
                                   </tr>
@@ -95,7 +101,7 @@
       </div>
       <div class="modal-body">
         <form action="/passos_processo" method="post">
-          @method('patch')
+          @method('put')
           @csrf
          <div class="row">
            <div class="col col-md-12">
@@ -113,6 +119,39 @@
       </div>
       <div class="modal-footer">
         
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Decisao -->
+<div class="modal fade" id="modalDecisao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"> Gerenciar que decide essa bifurcação</h4>
+        <h5><span id="item-descricao"></span></h5>
+      </div>
+      <div class="modal-body">
+        <form action="/passos_processo" method="post">
+          @method('patch')
+          @csrf
+         <div class="row">
+           <div class="col col-md-12">
+              <input type="text" name="passo_id" id="item-id">
+               <select name="setor_id" required class="form-control">
+                    @foreach ($setores as $setor)
+                        <option value="{{$setor->id}}">{{$setor->descricao}}</option>
+                    @endforeach
+                </select>
+           </div>
+         </div>
+      </div>
+      <div class="modal-footer">
+         <button type='submit' class='btn btn-primary laranja-escuro'>Selecionar</button>
         </form>
       </div>
     </div>
