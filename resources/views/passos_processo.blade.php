@@ -42,7 +42,7 @@
                                   <tr>
                                     <th>Tipo</th>
                                     <th>Nome</th>
-                                    <th>Tipos&nbsp;Status</th>
+                                    <th>Ação</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -52,7 +52,7 @@
                                       <td>{{$item->nome }}</td>
                                       <td>
                                         @if ($item->tipo == 'SETOR')
-                                        <center><button 
+                                        {{-- <center><button 
                                             data-toggle="modal" 
                                             data-target="#modalStatus" 
                                             onclick="mostrarModal(event)"
@@ -60,7 +60,10 @@
                                             data-item-descricao='{{$item->nome}}'
                                             data-item-status_lista='{{json_encode($item->status_lista)}}'
                                             data-item-status_lista_selecionados='{{json_encode($item->status_lista_selecionados)}}'
-                                            class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button></center>
+                                            class='btn btn-sm btn-primary'> <i class="fa fa-th-list"></i> </button></center> --}}
+                                        @endif
+                                        @if ($item->tipo == 'DECISSÃO')
+                                          Aqui
                                         @endif
                                       </td>
                                   </tr>
@@ -116,6 +119,6 @@
   </div>
 </div>
 @push('scripts')
-        <script src="{{url('js/documentos.js')}}"> </script>
+        <script src="{{url('js/passos_processo.js')}}"> </script>
 @endpush
 @endsection

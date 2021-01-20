@@ -66,6 +66,10 @@ class Passos extends BaseController
                             passos_status.passo_id = $passo_id");
             }
 
+            if($passos_processo[$i]->tipo == 'DECISSÃO'){
+                var_dump($passos_processo[$i]);
+            }
+
             $passos_processo[$i]->status_lista = $status_lista ?? [];
             $passos_processo[$i]->status_lista_selecionados = $status_lista_selecionados ?? [];
         }
