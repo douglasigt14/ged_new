@@ -306,4 +306,23 @@ class Processos extends BaseController
 
         return back()->with('sucesso-seguir', 'Arquivo ('.$desc_documento.') movimentou-se <br>De: '.$passos_processo_fluxo[0]->nome_de.' Para: '.$passos_processo_fluxo[0]->nome_para);
     }
+    
+    public function desvincular_processo(Request $request){
+        $dados = (object) $request->all();
+        $caminho_svg = "";
+        Storage::disk('public')->exists( $caminho ) ? Storage::disk('public')->delete($caminho_svg) : NULL;
+
+        DB::table('documentos')
+              ->where('id', $dados->id)
+              ->update([
+                    'setores_fluxo' => NULL,
+                    'caminho_svg' => NULL,
+                    'setor_anterior_id' => NULL,
+                    'setor_atual_id' => NULL,
+                    'status_id' => 1,
+                    'processo_id' => NULL
+        ]);
+
+         return back();
+    }
 }

@@ -316,6 +316,8 @@
       </div>
       <div class="modal-body">
           <div class="row">
+              <form action="/desvincular_processo" method="post">
+                @csrf
              <div class="col col-md-12 center">
                   <h4>Deseja realmente desvincular desse processo ?</h4>
                    <h6>Obs: Essa ação deixará o documento sem processo e disponivel para iniciar um novo do zero</h5>
@@ -326,6 +328,7 @@
             <input type="hidden" name='id' id='item-id'>
             <button class='btn btn-default' data-dismiss="modal">Cancelar</button>
             <button type="submit" class='btn btn-danger'>Desvincular</button>
+        </form>
       </div>
     </div>
   </div>

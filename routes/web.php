@@ -52,12 +52,15 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::delete('/processos', [Processos::class, 'deletar']);
     Route::put('/processos', [Processos::class, 'editar']);
 
+    Route::post('/seguir_fluxo', [Processos::class, 'seguir_fluxo']);
+    Route::post('/desvincular_processo', [Processos::class, 'desvincular_processo']);
+
     Route::get('/status', [Status::class, 'index']);
     Route::post('/status', [Status::class, 'inserir']);
     Route::delete('/status', [Status::class, 'deletar']);
     Route::put('/status', [Status::class, 'editar']);
     
-    Route::post('/seguir_fluxo', [Processos::class, 'seguir_fluxo']);
+   
 
     Route::get('/passos_processo/{processo_id}', [Passos::class, 'index']);
     Route::put('/passos_processo', [Passos::class, 'vincular_status']);
