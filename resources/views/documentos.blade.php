@@ -78,6 +78,7 @@
                                                 <th>Set.Atual</th>
                                                 <th class='center'>Status</th>
                                                 <th class='center'>Arquivo</th>
+                                                <th class='center'>Config.</th>
                                                 <th class='center'>Info</th>
                                                 <th class='center'>Desenho&nbsp;Fluxo</th>
                                                 <th class='center'>Seguir&nbsp;Fluxo</th>
@@ -124,11 +125,16 @@
                                                                 style="background-color: {{$item->cor}};color: {{$item->cor_texto}}"
                                                                 class="label label-warning status-span">
                                                     {{$item->status_desc}}</p></center></td>
-                                                <td class='menor'>
-                                                    <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> 
+                                                
+                                                <td>
+                                                    <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> 
+                                                </td>
+
+                                                <td>
+                                                    <center><a target='_blank' href='#' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-cog"></i></a></center> 
                                                 </td>
                                                 <td>
-                                                     <center><a href='/anexos_obs/{{$item->id}}'  class="btn btn-sm btn-info"><i class="fa fa-info-circle"></i></button></a>
+                                                     <center><a href='/anexos_obs/{{$item->id}}'  class="btn btn-sm btn-info cinza-ardosia"><i class="fa fa-info-circle"></i></button></a>
                                                 </td>
                                                 <td>
                                                     <center><button 
