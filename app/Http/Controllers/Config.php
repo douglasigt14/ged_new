@@ -53,4 +53,30 @@ class Config extends Controller
 
         return back()->with('sucesso-doc', 'Documento upado com Sucesso');
     }
+
+    public function trocar_principal(Request $request){
+        $dados = (object) $request->all();
+        $log_documentos = DB::select("SELECT * FROM log_documentos WHERE id= $dados->log_documento_id");
+        $caminho = $log_documentos[0]->caminho ?? NULL;
+        
+        DB::table('log_documentos')
+            ->where('documento_id', $dados->id)
+            ->update([
+                'is_principal' =>  0
+        ]);
+        
+        DB::table('log_documentos')
+            ->where('id', $dados->log_documento_id)
+            ->update([
+                'is_principal' =>  1 
+        ]);
+
+        DB::table('documentos')
+            ->where('id', $dados->id)
+            ->update([
+                'caminho' =>  $caminho 
+        ]);
+
+        return back()->with('sucesso-doc', 'Documento alterador com Sucesso');
+    }
 }

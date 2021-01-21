@@ -76,6 +76,7 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/config/{documento_id}', [Config::class, 'index']);
     Route::post('/config', [Config::class, 'inserir_doc']);
     Route::put('/config', [Config::class, 'editar_descricao']);
+    Route::patch('/config', [Config::class, 'trocar_principal']);
     
     
     Route::post('/obs', [Anexos_Obs::class, 'inserir_obs']);

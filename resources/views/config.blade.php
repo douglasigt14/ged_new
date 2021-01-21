@@ -38,13 +38,15 @@
                 </div>
                             
                             <div class="col col-md-6">
-                        
+                                <form action="/config" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('patch')
+                                     <input type="hidden" name="id" value={{$documento_id}}>
                                     <table class="table">
                                         <thead>
                                             <tr>
                                                 <th class='center'>#</th>
                                                  <th>Observação</th>
-                                                 <th>Data e Hora do Upload</th>
                                                 <th class='center'>Arquivo</th>
                                                 <th class='center'>Principal</th>
                                             </tr>
@@ -54,15 +56,21 @@
                                             <tr>
                                                 <td class='center'>{{$key+1}}</td>
                                                 <td>{{$item->obs}}</td>
-                                                <td>{{$item->systemdate}}</td>
                                                 <td> <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> </td>
-                                                <td> <center> <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" @if($item->is_principal)checked @endif> </center>
+                                                <td> <center> <input class="form-check-input" type="radio" name="log_documento_id" value="{{$item->id}}" @if($item->is_principal)checked @endif> </center>
                                                 </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
-
+                                    <div class="row">
+                                        <div class="col-md-9"></div>
+                                        <div class="col-md-3">
+                                            <label>&nbsp;</label>
+                                            <button type='submit' class='btn btn-block btn-warning'>Alterar</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                              <div class="col col-md-6">
                                  
