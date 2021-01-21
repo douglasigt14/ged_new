@@ -193,6 +193,7 @@
                                                 <th class='center'>Selecionar</th>
                                                 <th class='center'>Status</th>
                                                 <th class='center'>Arquivo</th>
+                                                <th class='center'>Config.</th>
                                                 <th class='center'>Iniciar Fluxo</th>
                                             </tr>
                                         </thead>
@@ -228,7 +229,10 @@
                                                     </select></td>
                                                 <td>{!! $item->status !!}</td>
                                                  <td class='menor'>
-                                                    <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> 
+                                                    <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> 
+                                                </td>
+                                                 <td>
+                                                    <center><a href='/config/{{$item->id}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-cog"></i></a></center> 
                                                 </td>
                                                 <td><center><button data-item-id={{$item->id}}  class="btn btn-sm btn-primary btn-seguir-inicio"><i class="fa fa-arrow-right"></i></button></center></td>
                                                 </form>

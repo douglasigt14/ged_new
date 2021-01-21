@@ -182,6 +182,12 @@ class Documentos extends Controller
                 'caminho' =>  $caminho
         ]);
 
+        DB::table('log_documentos')->insert([
+            'documento_id' => $ultimo_id
+            , 'caminho' => $caminho
+            ,'is_principal' => 1
+        ]);
+
         return back();
     }
     public function deletar(Request $request){
