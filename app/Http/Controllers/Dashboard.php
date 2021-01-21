@@ -15,14 +15,12 @@ class Dashboard extends BaseController
         $id_usuario = $_SESSION['id'];
         $usuario = DB::select("SELECT 
                                     usuarios.*
-                                    ,setores.pasta
                                     ,setores.descricao setor
                                     ,setores.id setor_id
                                 FROM usuarios INNER JOIN setores ON 
                                     usuarios.setor_id = setores.id 
                             WHERE 
                                 usuarios.id = $id_usuario");
-        $path = $usuario[0]->pasta;
         $setor = $usuario[0]->setor;
         $setor_id = $usuario[0]->setor_id;
 
