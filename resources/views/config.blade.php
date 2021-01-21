@@ -29,6 +29,9 @@
                                 <button class="btn btn-warning btn-block" @if(!$doc_descricao) disabled @endif>Editar</button>
                             </div>
                         </form>
+                    </div><br>
+                    <div class="row">
+                        <h4>Versões do Documento</h4>
                     </div>
                     
                 </div>
