@@ -187,6 +187,7 @@ class Documentos extends Controller
             , 'caminho' => $caminho
             ,'is_principal' => 1
             ,'obs' => 'Primeiro Upload'
+            ,'upload_usuario_id' => $dados->usuario_id
         ]);
 
         return back();

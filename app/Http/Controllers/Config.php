@@ -36,4 +36,21 @@ class Config extends Controller
 
         return back()->with('sucesso-descricao', 'Descrição Alterada com Sucesso');
     }
+
+    public function inserir_doc(Request $request){
+        $dados = (object) $request->all();
+        $documento =  $request->file('documento');
+       // dd($dados);
+        $caminho = $documento ? $documento->store('docs/'.$dados->id ,'public') : NULL;  
+
+        DB::table('log_documentos')->insert([
+            'documento_id' =>  $dados->id
+            , 'caminho' => $caminho
+            ,'is_principal' => 0
+            ,'obs' => $dados->obs
+            ,'upload_usuario_id' => $dados->usuario_id
+        ]);
+
+        return back()->with('sucesso-doc', 'Documento upado com Sucesso');
+    }
 }

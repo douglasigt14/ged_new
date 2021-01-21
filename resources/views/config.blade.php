@@ -68,6 +68,7 @@
                                  
                             <form action="/config" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name='usuario_id' value="{{$_SESSION['id']}}">
+                                <input type="hidden" name="id" value={{$documento_id}}>
                             @csrf
                                 <div class="row">
                                     <div class="col-md-12">
