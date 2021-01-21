@@ -43,6 +43,7 @@
                                         <thead>
                                             <tr>
                                                 <th class='center'>#</th>
+                                                 <th>Observação</th>
                                                  <th>Data e Hora do Upload</th>
                                                 <th class='center'>Arquivo</th>
                                                 <th class='center'>Principal</th>
@@ -52,6 +53,7 @@
                                             @foreach ($log_documentos as $key => $item)
                                             <tr>
                                                 <td class='center'>{{$key+1}}</td>
+                                                <td>{{$item->obs}}</td>
                                                 <td>{{$item->systemdate}}</td>
                                                 <td> <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> </td>
                                                 <td> <center> <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" @if($item->is_principal)checked @endif> </center>
@@ -73,6 +75,8 @@
                                         <input type='file'  name="documento"  class="dropify" data-height="100" required>
                                     </div>
                                     <div class="col-md-9">
+                                        <label>Observação</label>
+                                        <input type="text" name='obs' class="form-control" required>
                                     </div>
                                     <div class="col-md-3">
                                         <label>&nbsp;</label>
