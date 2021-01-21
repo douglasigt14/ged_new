@@ -10,7 +10,6 @@ class Documentos extends Controller
 {
     public function index($mostrar_finalizados = null, $mostrar_outros_setores = null) {
         $id_usuario = $_SESSION['id'];
-        dd('Douglas');
         $usuario = DB::select("SELECT 
                                     usuarios.*
                                     ,setores.descricao setor
