@@ -32,6 +32,29 @@
                     </div><br>
                     <div class="row">
                         <h4>Versões do Documento</h4>
+                        <div class="row">
+                            <div class="col col-md-3">
+                        
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Arquivo</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($log_documentos as $item)
+                                            <tr>
+                                                <td>{{$item->id}}</td>
+                                                <td> <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+
+                            </div>
+
+                        </div>
                     </div>
                     
                 </div>

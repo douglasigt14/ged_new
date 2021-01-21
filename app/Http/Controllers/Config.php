@@ -13,6 +13,10 @@ class Config extends Controller
         $log_documentos = DB::select("SELECT * FROM log_documentos WHERE documento_id = $documento_id");
         $doc_descricao = $documento[0]->descricao ?? NULL;
 
+        for ($i=0; $i < sizeof($log_documentos); $i++) { 
+            $log_documentos[$i]->caminho = Storage::url($log_documentos[$i]->caminho); 
+        }
+
         return view('config', compact(["documento_id","documento","doc_descricao","log_documentos"]));
     }
     public function editar_descricao (Request $request){
