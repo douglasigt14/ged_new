@@ -32,10 +32,12 @@
                             </form>
                         </div>
                     </div><br>
-                    <div class="row">
-                        <h4>Versões do Documento</h4>
                         <div class="row">
-                            <div class="col col-md-5">
+                            <div class="panel-heading">
+                    <h4>Versões do Documento</h4>
+                </div>
+                            
+                            <div class="col col-md-6">
                         
                                     <table class="table">
                                         <thead>
@@ -60,11 +62,41 @@
                                     </table>
 
                             </div>
+                             <div class="col col-md-6">
+                                 
+                            <form action="/config" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name='usuario_id' value="{{$_SESSION['id']}}">
+                            @csrf
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Documento</label>
+                                        <input type='file'  name="documento"  class="dropify" data-height="100" required>
+                                    </div>
+                                    <div class="col-md-9">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>&nbsp;</label>
+                                        <button class='btn btn-block btn-primary'>Enviar</button>
+                                    </div>
+                                </div>
+                            </form>
+                             </div>
 
                         </div>
-                    </div>
                     
                 </div>
             </div>
-    
 @endsection
+
+@push('scripts')
+    <script>
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Arraste e solte um arquivo aqui ou clique',
+                'replace': 'Arraste e solte ou clique para substituir',
+                'remove':  'Remover',
+                'error':   'Opa, algo errado aconteceu.'
+            }
+        });
+    </script>
+@endpush
