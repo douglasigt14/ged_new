@@ -19,7 +19,6 @@ class Setores extends BaseController
         $dados = (object) $request->all();
         DB::table('setores')->insert([
             'descricao' => $dados->descricao,
-            'pasta' => $dados->pasta
         ]);
         return back();
     }
@@ -34,7 +33,6 @@ class Setores extends BaseController
               ->where('id', $dados->id)
               ->update([
                     'descricao' => $dados->descricao
-                   ,'pasta' => $dados->pasta
                     ]);
         return back();
     }
