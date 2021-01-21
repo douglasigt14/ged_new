@@ -14,4 +14,14 @@ class Config extends Controller
 
         return view('config', compact(["documento_id","documento","doc_descricao"]));
     }
+    public function editar_descricao (Request $request){
+        $dados = (object) $request->all();
+         DB::table('documentos')
+              ->where('id', $dados->id)
+              ->update([
+                    'descricao' => $dados->descricao
+         ]);
+
+        return back()->with('sucesso-descricao', 'Descrição Alterada com Sucesso');
+    }
 }

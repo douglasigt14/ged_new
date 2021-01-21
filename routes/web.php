@@ -74,6 +74,7 @@ Route::middleware(MyAuth::class)->group(function () {
 
 
     Route::get('/config/{documento_id}', [Config::class, 'index']);
+    Route::put('/config', [Config::class, 'editar_descricao']);
     
     Route::post('/obs', [Anexos_Obs::class, 'inserir_obs']);
     Route::delete('/obs', [Anexos_Obs::class, 'deletar_obs']);
