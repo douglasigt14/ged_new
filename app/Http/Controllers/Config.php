@@ -15,6 +15,13 @@ class Config extends Controller
 
         for ($i=0; $i < sizeof($log_documentos); $i++) { 
             $log_documentos[$i]->caminho = Storage::url($log_documentos[$i]->caminho); 
+
+            $partes = explode(" ",$log_documentos[$i]->systemdate);
+            $data = $partes[0];
+            $hora = $partes[1];
+            $partes = explode("-",$data);
+            $data = $partes[2]."/".$partes[1].'/'.$partes[0];
+            $log_documentos[$i]->systemdate = $data.' '.$hora;
         }
 
         return view('config', compact(["documento_id","documento","doc_descricao","log_documentos"]));
