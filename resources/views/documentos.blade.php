@@ -94,7 +94,7 @@
                                                 @endif
                                             <tr>
                                                 <td>
-                                                    @if($id_usuario == $item->upload_usuario_id)
+                                                    @if($id_usuario == $item->upload_usuario_id and $item->finalizado != 1)
                                                     <span
                                                         data-toggle="modal" 
                                                         data-target="#modalDesvincularProcesso" 
@@ -130,8 +130,9 @@
                                                     <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> 
                                                 </td>
 
-                                                <td>
-                                                    <center><a href='/config/{{$item->id}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-cog"></i></a></center> 
+                                                <td>            
+                                                    <center><a href='/config/{{$item->id}}' class="btn btn-sm btn-success cinza-ardosia" @if ($item->finalizado == 1) disabled @endif><i class="fa fa-cog"></i></a></center> 
+                                                    
                                                 </td>
                                                 <td>
                                                      <center><a href='/anexos_obs/{{$item->id}}'  class="btn btn-sm btn-info cinza-ardosia"><i class="fa fa-info-circle"></i></button></a>
