@@ -13,6 +13,7 @@ use App\Http\Controllers\Status;
 use App\Http\Controllers\Documentos;
 use App\Http\Controllers\Anexos_Obs;
 use App\Http\Controllers\HistMov;
+use App\Http\Controllers\Config;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,8 +73,7 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/anexos_obs/{documento_id}', [Anexos_Obs::class, 'index']);
 
 
-    Route::post('/anexos', [Anexos_Obs::class, 'inserir_anexo']);
-    Route::delete('/anexos', [Anexos_Obs::class, 'deletar_anexo']);
+    Route::get('/config/{documento_id}', [Config::class, 'index']);
     
     Route::post('/obs', [Anexos_Obs::class, 'inserir_obs']);
     Route::delete('/obs', [Anexos_Obs::class, 'deletar_obs']);

@@ -131,7 +131,7 @@
                                                 </td>
 
                                                 <td>
-                                                    <center><a target='_blank' href='#' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-cog"></i></a></center> 
+                                                    <center><a href='/config/{{$item->id}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-cog"></i></a></center> 
                                                 </td>
                                                 <td>
                                                      <center><a href='/anexos_obs/{{$item->id}}'  class="btn btn-sm btn-info cinza-ardosia"><i class="fa fa-info-circle"></i></button></a>
