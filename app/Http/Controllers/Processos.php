@@ -257,13 +257,18 @@ class Processos extends BaseController
             $setor_id = $setor[0]->id ?? NULL; 
             $finalizado = 1;
             $status = 3;
+
+             DB::table('documentos')
+              ->where('id', $dados->id)
+              ->update([
+                    'status_id' => $status
+                    ,'finalizado' => $finalizado
+            ]);
         }
         else{
             $setor = strtoupper($passos_processo_fluxo[0]->nome_para);
             $setor = DB::select("SELECT * FROM setores WHERE descricao = '$setor' ");
             $setor_id = $setor[0]->id ?? NULL; 
-            $finalizado = 0;
-            $status = 2;
             $setor_anterior = $dados->setor_atual_id ?? NULL;
 
             DB::table('documentos')
@@ -279,8 +284,6 @@ class Processos extends BaseController
               ->update([
                     'processo_id' => $dados->processo_id
                     ,'setor_atual_id' => $setor_id ?? NULL
-                    ,'status_id' => $status
-                    ,'finalizado' => $finalizado
                     ,'passo_processo_id' => $id_para_passo
          ]);
          
