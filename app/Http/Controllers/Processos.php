@@ -184,7 +184,8 @@ class Processos extends BaseController
               ->where('id', $dados->id)
               ->update([
                     'setores_fluxo' => $setores_fluxo,
-                    'caminho_svg' => $url 
+                    'caminho_svg' => $url,
+                    'status' => 2
             ]);
             //Descobrir quais são os Setores que participam do Fluxo
         }
