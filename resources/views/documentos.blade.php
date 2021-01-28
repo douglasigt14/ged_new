@@ -371,3 +371,9 @@
 @push('scripts')
         <script src="{{url('js/documentos.js')}}"> </script>
 @endpush 
+
+@if($setor == 'DIRETORIA')
+    @section('tela_inteira')
+            class="layout-fullwidth"
+    @endsection
+@endif

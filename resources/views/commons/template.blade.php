@@ -25,7 +25,7 @@
      @stack('styles')
 </head>
 {{-- class="layout-fullwidth" --}}
-<body> 
+<body @yield('tela_inteira') > 
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
