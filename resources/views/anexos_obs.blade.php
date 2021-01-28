@@ -20,7 +20,7 @@
 						<th class='center'>Para</th>
 						<th class='center'>Escolha</th>
                         <th class='center'>Usuario</th>
-                        <th class='center'>IP</th>
+                        {{-- <th class='center'>IP</th> --}}
                         <th class='center'>Processo</th>
                       </tr>
 										</thead>
@@ -32,7 +32,7 @@
 						  <td class='center'>{{$item->nome_para }}</td>
 						  <td class='center'>{{$item->nome_seta }}</td>
                           <td class='center'>{{$item->rotulo }}</td>
-                          <td class='center'>{{$item->ip }}</td>
+                          {{-- <td class='center'>{{$item->ip }}</td> --}}
                           <td class='center'>{{$item->proceso_descricao }}</td>
 											</tr>
 											@endforeach

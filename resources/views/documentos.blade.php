@@ -10,6 +10,7 @@
                         <div class="col col-md-8">
                             <h3 class="panel-title">Documentos - <span class='negrito'>{{ucfirst($setor)}}</span></h3>
                         </div>
+                        
                             <div class="col col-md-2">
                             <label>Outros Setores</label><br>
                             <input id="toggle-outros_setores" type="checkbox" data-toggle="toggle" data-on="SIM <i class='fa fa-eye'></i>" data-off="&nbsp;&nbsp;&nbsp;NÃO <i class='fa fa-eye-slash'></i>" data-onstyle="success" data-offstyle="danger"  @if ($outros_setores_checked) checked @endif>
@@ -24,7 +25,9 @@
                 </div>
                 <div class="panel-body">
                     
-
+                    @if ($setor != 'DIRETORIA')
+                        
+                   
                     <form action="/documentos" method="post" enctype="multipart/form-data">
                         <input type="hidden" name='usuario_id' value="{{$_SESSION['id']}}">
                     @csrf
@@ -44,6 +47,7 @@
                         </div>
                     </form>
                     <br>
+                    @endif
                         <div class="row">
                         <div class="col-md-12">
                             @if (\Session::has('error-iniciar'))
@@ -78,9 +82,11 @@
                                         <th>Set.Atual</th>
                                         <th class='center'>Status</th>
                                         <th class='center'>Arquivo</th>
-                                        <th class='center'>Config.</th>
-                                        <th class='center'>Info</th>
-                                        <th class='center'>Desenho&nbsp;Fluxo</th>
+                                        @if ($setor != 'DIRETORIA')
+                                            <th class='center'>Config.</th>
+                                            <th class='center'>Info</th>
+                                            <th class='center'>Desenho&nbsp;Fluxo</th>
+                                        @endif
                                         <th class='center'>Seguir&nbsp;Fluxo</th>
                                     </tr>
                                 </thead>
@@ -129,7 +135,7 @@
                                         <td>
                                             <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> 
                                         </td>
-
+                                        @if ($setor != 'DIRETORIA')
                                         <td>            
                                             <center><a href='/config/{{$item->id}}' class="btn btn-sm btn-success cinza-ardosia" @if ($item->finalizado == 1) disabled @endif><i class="fa fa-cog"></i></a></center> 
                                             
@@ -146,7 +152,7 @@
                                                 data-item-img='{{$item->caminho_svg.'?'.date("YmdHis")}}'
                                                 class="btn btn-sm btn-info  cinza-ardosia"><i class="fa fa-file-image-o"></i></button></center>
                                         </td>
-                                        
+                                        @endif
                                         <form action="/seguir_fluxo" method="post" id='form-seguir-{{$item->id}}'>
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$item->id}}">
