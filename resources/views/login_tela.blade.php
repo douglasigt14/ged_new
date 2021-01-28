@@ -29,7 +29,7 @@
 				<form action="{{url('/login')}}" method="POST">
                 @csrf
 					<div class="input-group form-group">
-						<input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name='name'  type="text" class="form-control" placeholder="login">
+						<input  autocorrect="off" autocapitalize="off" spellcheck="false" name='name'  type="text" class="form-control" placeholder="login">
 						
 					</div>
 					<div class="input-group form-group">
