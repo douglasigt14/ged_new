@@ -5,7 +5,7 @@
 <div class="panel">
                 <div class="panel-heading">
                     <h3>Configurações</h3>
-                    <h4>Documento: {{$doc_descricao}}</h4>
+                    <h4>Documento: <span class='negrito'>{{$doc_descricao}}</span></h4>
                 </div>
                 <div class="panel-body">
                     @if (\Session::has('sucesso-descricao'))
