@@ -10,7 +10,7 @@
                         <div class="col col-md-8">
                             <h3 class="panel-title">Documentos - <span class='negrito'>{{ucfirst($setor)}}</span></h3>
                         </div>
-                        
+                        <div  @if ($setor == 'DIRETORIA') class="sumir" @endif>
                             <div class="col col-md-2">
                             <label>Outros Setores</label><br>
                             <input id="toggle-outros_setores" type="checkbox" data-toggle="toggle" data-on="SIM <i class='fa fa-eye'></i>" data-off="&nbsp;&nbsp;&nbsp;NÃO <i class='fa fa-eye-slash'></i>" data-onstyle="success" data-offstyle="danger"  @if ($outros_setores_checked) checked @endif>
@@ -19,6 +19,7 @@
                         <div class="col col-md-2">
                             <label>Finalizados</label><br>
                             <input id="toggle-finalizados" type="checkbox" data-toggle="toggle" data-on="SIM <i class='fa fa-eye'></i>" data-off="&nbsp;&nbsp;&nbsp;NÃO <i class='fa fa-eye-slash'></i>" data-onstyle="success" data-offstyle="danger"  @if ($finalizados_checked) checked @endif>
+                        </div>
                         </div>
                     </div>
                     

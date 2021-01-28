@@ -1829,4 +1829,7 @@ ul.activity-timeline > li {
       background-color: black;
       height: 2px;
   }
+  .sumir{
+    display: none;
+  }
 /*# sourceMappingURL=main.css.map */
