@@ -75,7 +75,7 @@
                             <hr class='linha'>
                             @foreach ($lista_processo as $processo)
                             <h4><b>{!! $processo !!}</b></h4>
-                            <table class="table table-striped menor myTable">
+                            <table class="table table-striped myTable @if($setor == 'DIRETORIA') font-maior @endif ">
                                 <thead>
                                     <tr>
                                         <th>Descrição</th>
@@ -86,9 +86,9 @@
                                         @if ($setor != 'DIRETORIA')
                                             <th class='center'>Config.</th>
                                             <th class='center'>Info</th>
-                                            <th class='center'>Desenho&nbsp;Fluxo</th>
+                                            <th class='center'>Desenho</th>
                                         @endif
-                                        <th class='center'>Seguir&nbsp;Fluxo</th>
+                                        <th class='center'>Seguir</th>
                                     </tr>
                                 </thead>
                                 <tbody>

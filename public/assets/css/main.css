@@ -1832,4 +1832,7 @@ ul.activity-timeline > li {
   .sumir{
     display: none;
   }
+  .font-maior{
+    font-size: 16px !important;
+  }
 /*# sourceMappingURL=main.css.map */
