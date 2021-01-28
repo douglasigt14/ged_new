@@ -121,7 +121,7 @@
                                                 class='negrito'   
                                             @endif>{{ $item->setor_atual }}</td>
                                         <td><center><p 
-                                                        @if (($item->setor_atual == $setor or ($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY')) and $item->finalizado != 1 )
+                                                        @if ((($item->setor_atual == $setor or ($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY')) and $item->finalizado != 1 ) and $setor != 'DIRETORIA')
                                                             data-toggle="modal" 
                                                             data-target="#modalStatus" 
                                                             onclick="mostrarModalStatus(event)"
