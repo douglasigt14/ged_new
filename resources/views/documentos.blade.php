@@ -134,15 +134,15 @@
                                             {{$item->status_desc}}</p></center></td>
                                         
                                         <td>
-                                            <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> 
+                                            <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> 
                                         </td>
                                         @if ($setor != 'DIRETORIA')
                                         <td>            
-                                            <center><a href='/config/{{$item->id}}' class="btn btn-sm btn-success cinza-ardosia" @if ($item->finalizado == 1) disabled @endif><i class="fa fa-cog"></i></a></center> 
+                                            <center><a href='/config/{{$item->id}}' class="btn btn-success cinza-ardosia" @if ($item->finalizado == 1) disabled @endif><i class="fa fa-cog"></i></a></center> 
                                             
                                         </td>
                                         <td>
-                                                <center><a href='/anexos_obs/{{$item->id}}'  class="btn btn-sm btn-info cinza-ardosia"><i class="fa fa-info-circle"></i></button></a>
+                                                <center><a href='/anexos_obs/{{$item->id}}'  class="btn  btn-info cinza-ardosia"><i class="fa fa-info-circle"></i></button></a>
                                         </td>
                                         <td>
                                             <center><button 
@@ -151,7 +151,7 @@
                                                 onclick="mostrarModalImg(event)"
                                                 data-item-id={{$item->id}}
                                                 data-item-img='{{$item->caminho_svg.'?'.date("YmdHis")}}'
-                                                class="btn btn-sm btn-info  cinza-ardosia"><i class="fa fa-file-image-o"></i></button></center>
+                                                class="btn  btn-info  cinza-ardosia"><i class="fa fa-file-image-o"></i></button></center>
                                         </td>
                                         @endif
                                         <form action="/seguir_fluxo" method="post" id='form-seguir-{{$item->id}}'>
@@ -166,7 +166,7 @@
                                             @if ($item->setor_atual == $setor and $item->finalizado != 1)
                                                 <center><button type='submit' 
                                                     data-item-id={{$item->id}} 
-                                                    class="btn btn-sm btn-primary btn-seguir"><i class="fa fa-arrow-right"></i></button></center>
+                                                    class="btn btn-primary btn-seguir"><i class="fa fa-arrow-right"></i></button></center>
                                             @elseif ( ($item->quem_decide == $setor) and($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY'))
                                                 <center><button 
                                                     data-toggle="modal" 
@@ -177,7 +177,7 @@
                                                     data-item-processo_id="{{$item->processo_id}}"
                                                     data-item-setor_atual_id="{{$item->setor_anterior_id}}"
                                                     data-item-bifurcacoes='{{json_encode($item->bifurcacoes)}}'
-                                                    type='button' class="btn btn-sm btn-warning laranja-escuro"><i class="fa fa-arrows-alt"></i></button>
+                                                    type='button' class="btn  btn-warning laranja-escuro"><i class="fa fa-arrows-alt"></i></button>
                                                     <br></center>
                                             @elseif($item->quem_decide != $setor and ($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY'))
                                                 Setor que Decide: <b>{{$item->quem_decide}}</b>
@@ -214,7 +214,7 @@
                                             @method('delete')
                                             <input type="hidden" name="id" value={{$item->id}}>
                                             
-                                            <center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
+                                            <center><button class="btn btn-danger"><i class="fa fa-trash"></i></button></center>
                                             </form>
                                         </td>
                                         <td>
@@ -237,12 +237,12 @@
                                             </select></td>
                                         <td>{!! $item->status !!}</td>
                                             <td class='menor'>
-                                            <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> 
+                                            <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> 
                                         </td>
                                             <td>
-                                            <center><a href='/config/{{$item->id}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-cog"></i></a></center> 
+                                            <center><a href='/config/{{$item->id}}' class="btn btn-success cinza-ardosia"><i class="fa fa-cog"></i></a></center> 
                                         </td>
-                                        <td><center><button data-item-id={{$item->id}}  class="btn btn-sm btn-primary btn-seguir-inicio"><i class="fa fa-arrow-right"></i></button></center></td>
+                                        <td><center><button data-item-id={{$item->id}}  class="btn btn-primary btn-seguir-inicio"><i class="fa fa-arrow-right"></i></button></center></td>
                                         </form>
                                     </tr>
                                     @endforeach
