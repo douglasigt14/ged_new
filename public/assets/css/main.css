@@ -1830,6 +1830,6 @@ ul.activity-timeline > li {
       height: 2px;
   }
   .sumir{
-    visibility: hidden;
+    display: none;
   }
 /*# sourceMappingURL=main.css.map */
