@@ -118,7 +118,7 @@ class Documentos extends Controller
             
             $lista->cor_dt_vencimento = 'em_dia';
             if($lista->dt_vencimento){
-                if($lista->dt_vencimento >= date('Y-m-d')){
+                if($lista->dt_vencimento <= date('Y-m-d')){
                     $lista->cor_dt_vencimento = 'atraso';
                 }
                 $partes_dt_v = explode("-",$lista->dt_vencimento); 
