@@ -83,9 +83,9 @@
                                         <th>Set.Atual</th>
                                         <th class='center'>Status</th>
                                         <th class='center'>Arquivo</th>
+                                        <th class='center'>Info</th>
                                         @if ($setor != 'DIRETORIA')
                                             <th class='center'>Config.</th>
-                                            <th class='center'>Info</th>
                                             <th class='center'>Desenho</th>
                                         @endif
                                         <th class='center'>Seguir</th>
@@ -136,14 +136,15 @@
                                         <td>
                                             <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> 
                                         </td>
+                                        <td>
+                                            <center><a href='/anexos_obs/{{$item->id}}'  class="btn  btn-info cinza-ardosia"><i class="fa fa-info-circle"></i></button></a>
+                                        </td>
                                         @if ($setor != 'DIRETORIA')
                                         <td>            
                                             <center><a href='/config/{{$item->id}}' class="btn btn-success cinza-ardosia" @if ($item->finalizado == 1) disabled @endif><i class="fa fa-cog"></i></a></center> 
                                             
                                         </td>
-                                        <td>
-                                                <center><a href='/anexos_obs/{{$item->id}}'  class="btn  btn-info cinza-ardosia"><i class="fa fa-info-circle"></i></button></a>
-                                        </td>
+                                        
                                         <td>
                                             <center><button 
                                                 data-toggle="modal" 
