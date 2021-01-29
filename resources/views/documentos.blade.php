@@ -113,11 +113,11 @@
                                                 data-item-descricao="{{$item->descricao }}"     
                                             >
                                                 {{$item->descricao }} <br> 
-                                               <div class="dt-vencimento"> {{$item->dt_vencimento }} </div>
+                                               <div class="dt-vencimento {{$item->cor_dt_vencimento}}"> {{$item->dt_vencimento }} </div>
                                             </span>
                                             @else
                                                     {{$item->descricao }} <br>
-                                                    <div class="dt-vencimento"> {{$item->dt_vencimento }} </div>
+                                                    <div class="dt-vencimento {{$item->cor_dt_vencimento}}"> {{$item->dt_vencimento }} </div>
                                             @endif
                                             
                                         </td>
