@@ -20,9 +20,13 @@
                                 @csrf
                                 @method('put')
                                 <input type="hidden" name="id" value={{$documento_id}}>
-                                <div class="col col-md-10">
+                                <div class="col col-md-7">
                                     <label>Editar descrição</label>
                                     <input type="text" autocomplete="off" name='descricao' value="{{$doc_descricao}}" class="form-control" required>
+                                </div>
+                                <div class="col col-md-3">
+                                    <label>Data Vencimento</label>
+                                    <input type="date" autocomplete="off" name='dt_vencimento' value="{{$dt_vencimento}}" class="form-control" >
                                 </div>
                                 <div class="col col-md-2">
                                     <label>&nbsp;</label>

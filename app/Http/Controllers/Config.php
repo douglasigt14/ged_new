@@ -12,6 +12,8 @@ class Config extends Controller
         $documento = DB::select("SELECT * FROM documentos WHERE id = $documento_id");
         $log_documentos = DB::select("SELECT * FROM log_documentos WHERE documento_id = $documento_id");
         $doc_descricao = $documento[0]->descricao ?? NULL;
+        $dt_vencimento = $documento[0]->dt_vencimento ?? NULL;
+        //dd($dt_vencimento);
 
         for ($i=0; $i < sizeof($log_documentos); $i++) { 
             $log_documentos[$i]->caminho = Storage::url($log_documentos[$i]->caminho); 
@@ -24,7 +26,7 @@ class Config extends Controller
             $log_documentos[$i]->systemdate = $data.' '.$hora;
         }
 
-        return view('config', compact(["documento_id","documento","doc_descricao","log_documentos"]));
+        return view('config', compact(["documento_id","documento","doc_descricao","log_documentos","dt_vencimento"]));
     }
     public function editar_descricao (Request $request){
         $dados = (object) $request->all();
@@ -32,9 +34,10 @@ class Config extends Controller
               ->where('id', $dados->id)
               ->update([
                     'descricao' => $dados->descricao
+                    ,'dt_vencimento' => $dados->dt_vencimento
          ]);
 
-        return back()->with('sucesso-descricao', 'Descrição Alterada com Sucesso');
+        return back()->with('sucesso-descricao', 'Informações alteradas com Sucesso');
     }
 
     public function inserir_doc(Request $request){
