@@ -1835,4 +1835,8 @@ ul.activity-timeline > li {
   .font-maior{
     font-size: 16px !important;
   }
+  .dt-vencimento{
+    font-size: 10px !important;
+    font-weight: bold;
+  } 
 /*# sourceMappingURL=main.css.map */

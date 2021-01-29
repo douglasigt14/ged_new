@@ -115,6 +115,11 @@ class Documentos extends Controller
             $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3,$lista->status_id) ");
             $lista->processos_img = Storage::url($lista->processos_img); 
             $lista->caminho_svg = Storage::url($lista->caminho_svg); 
+
+            if($lista->dt_vencimento){
+                $partes_dt_v = explode("-",$lista->dt_vencimento); 
+                $lista->dt_vencimento = '('.$partes_dt_v[2].'/'.$partes_dt_v[1].'/'.$partes_dt_v[0].')';
+            }
         }
         $lista_processo = array_unique($lista_processo);
 
