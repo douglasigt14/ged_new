@@ -4,8 +4,9 @@
 	<link rel="stylesheet" href="{{asset('assets/css/card_upload.css')}}">
 @endpush
 @section('conteudo')
+	@if($setor != 'DIRETORIA')
 	<div class="row">
-        <div class="col com-md-12">
+        <div class="col col-md-12">
             <div class="panel">
                 <div class="panel-heading">
                     <h3>Historico de Movimentações</h3>
@@ -41,7 +42,8 @@
                 </div>
             </div>
         </div>
-    </div>
+	</div>
+	@endif
 	<div class="row">
 		<div class="col col-md-6">
 			<div class="panel panel-headline">
@@ -49,6 +51,7 @@
 					<h4>Anexos - Documento : <span class='negrito'>{{ $documentos[0]->descricao ?? null}}</span></h4>
 				</div>
 				<div class="panel-body">
+					@if($setor != 'DIRETORIA')
 					   <form action="/anexos" method="post" enctype="multipart/form-data">
 						  <input type="hidden" name='documento_id' value='{{$documento_id}}'>
                             @csrf
@@ -67,6 +70,7 @@
                                     </div>
                                 </div>
 							</form>
+							@endif
 							@if ($anexos)
 							<br>
 							<table class="table table-striped menor myTable">
@@ -113,6 +117,7 @@
 					<h4>Observações - Documento : <span class='negrito'>{{ $documentos[0]->descricao ?? null}}</span></h4>
 				</div>
 				<div class="panel-body">
+					 @if($setor != 'DIRETORIA')
 					 <form action="/obs" method="post" enctype="multipart/form-data">
 							<input type="hidden" name='documento_id' value='{{$documento_id}}'>
                             @csrf
@@ -128,7 +133,7 @@
                                     </div>
                                 </div>
 							</form>
-							
+							@endif
 							@if ($obs)
 							<br>
 							<table class="table table-striped menor myTable">
@@ -233,3 +238,9 @@
 		</script>
 	@endpush
 @endsection	
+
+@if($setor == 'DIRETORIA')
+    @section('tela_inteira')
+            class="layout-fullwidth"
+    @endsection
+@endif

@@ -8,6 +8,16 @@ use DB;
 class Anexos_Obs extends Controller
 {
     public function index($documento_id = null) {
+        $id_usuario = $_SESSION['id'];
+        $usuario = DB::select("SELECT 
+                                    usuarios.*
+                                    ,setores.descricao setor
+                                    ,setores.id setor_id
+                                FROM usuarios INNER JOIN setores ON 
+                                    usuarios.setor_id = setores.id 
+                            WHERE 
+                                usuarios.id = $id_usuario");
+        $setor = $usuario[0]->setor;
         $sql = "SELECT 
                     documentos.* 
                 ,s_atual.descricao setor_atual
@@ -80,7 +90,7 @@ class Anexos_Obs extends Controller
             $doc_descricao = $hist_mov[$i]->doc_descricao;
         }
         //HIST MOV
-        return view('anexos_obs', compact(["anexos","documentos","documento_id","obs","hist_mov","doc_descricao"]));
+        return view('anexos_obs', compact(["anexos","documentos","documento_id","obs","hist_mov","doc_descricao","setor"]));
     }
     public function inserir_anexo(Request $request) {
          $dados = (object) $request->all();
