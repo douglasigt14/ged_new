@@ -78,8 +78,10 @@
                                             <tr>
 												<th>Descrição</th>
 												 <th>Usuario</th>
-                                                <th class='center'>Arquivo</th>
+												<th class='center'>Arquivo</th>
+												@if ($setor != 'DIRETORIA')
 												<th class='center'>Apagar</th>
+												@endif
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -89,6 +91,7 @@
 												<td>{{$item->descricao}}</td>
 												<td>{{$item->usuario}}</td>
 												<td><center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> </td>
+												@if ($setor != 'DIRETORIA')
 												 <td>
 													@if ($item->usuario_id == $_SESSION['id'])
 														<form action="/anexos" method="post">
@@ -101,7 +104,8 @@
 													@else
 														<center><button disabled class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
 												  	@endif
-                                                </td>
+												</td>
+												@endif
 											</tr>
 											@endforeach
 										</tbody>
@@ -141,8 +145,10 @@
                                             <tr>
 												<th>Descrição</th>
 												<th>Usuario</th>
+												@if ($setor != 'DIRETORIA')
                                                 <th class='center'>Editar</th>
 												<th class='center'>Apagar</th>
+												@endif
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -151,6 +157,7 @@
 											<tr>
 												<td class='justificado'>{{$item->descricao}}</td>
 												<td>{{$item->usuario}}</td>
+												@if ($setor != 'DIRETORIA')
 												<td>
 													@if ($item->usuario_id == $_SESSION['id'])
 													<center><button 
@@ -176,7 +183,8 @@
 													@else
 														<center><button disabled class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
 													@endif
-                                                </td>
+												</td>
+												@endif
 											</tr>
 											@endforeach
 										</tbody>
