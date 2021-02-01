@@ -13,6 +13,7 @@ class Config extends Controller
         $log_documentos = DB::select("SELECT * FROM log_documentos WHERE documento_id = $documento_id");
         $doc_descricao = $documento[0]->descricao ?? NULL;
         $dt_vencimento = $documento[0]->dt_vencimento ?? NULL;
+        $num_pedido = $documento[0]->num_pedido ?? NULL;
         //dd($dt_vencimento);
 
         for ($i=0; $i < sizeof($log_documentos); $i++) { 
@@ -26,7 +27,7 @@ class Config extends Controller
             $log_documentos[$i]->systemdate = $data.' '.$hora;
         }
 
-        return view('config', compact(["documento_id","documento","doc_descricao","log_documentos","dt_vencimento"]));
+        return view('config', compact(["documento_id","documento","doc_descricao","log_documentos","dt_vencimento","num_pedido"]));
     }
     public function editar_descricao (Request $request){
         $dados = (object) $request->all();
