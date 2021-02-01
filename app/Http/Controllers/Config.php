@@ -18,6 +18,7 @@ class Config extends Controller
         //dd($dt_vencimento);
         $empresas  = DB::connection("oracle")->select("SELECT * FROM FOCCO3i.tempresas");
         $dados_pedido = [];
+        $observacao = NULL;
         if($num_pedido && $empr_id){
             $sql_dados_pedido = "SELECT 
             TITENS.COD_ITEM
@@ -25,7 +26,7 @@ class Config extends Controller
             ,TFORNECEDORES.COD_FOR||'-'||TFORNECEDORES.NOME_FAN FORNECEDOR
             ,TO_CHAR(SUM(TPEDC_ITEM.VLR_TOTAL), '999G999G990D99') VLR 
             ,TPED_COMPRA.COD_PEDC
-            ,TPED_COMPRA.OBSERVACAO
+            ,TPED_COMPRA.OBSERVACAO OBS
         FROM FOCCO3i.TPED_COMPRA,
              FOCCO3i.TPEDC_ITEM,
              FOCCO3i.TFUNCIONARIOS,
@@ -52,6 +53,10 @@ class Config extends Controller
             ,TPED_COMPRA.OBSERVACAO";
 
             $dados_pedido = DB::connection('oracle')->select($sql_dados_pedido);
+
+            foreach ($dados_pedido as $key => $d_p) {
+                $observacao = $d_p->obs ?? NULL;
+            }
             
         }
 
@@ -68,7 +73,7 @@ class Config extends Controller
             $log_documentos[$i]->systemdate = $data.' '.$hora;
         }
 
-        return view('config', compact(["documento_id","documento","doc_descricao","log_documentos","dt_vencimento","num_pedido","empresas","empr_id","dados_pedido"]));
+        return view('config', compact(["documento_id","documento","doc_descricao","log_documentos","dt_vencimento","num_pedido","empresas","empr_id","dados_pedido","observacao"]));
     }
     public function editar_descricao (Request $request){
         $dados = (object) $request->all();

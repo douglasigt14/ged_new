@@ -153,6 +153,12 @@
                                     <td>{{$item->vlr}}</td>
                                 </tr>
                                 @endforeach
+                                <tr>
+                                    <th colspan="100%">Observação</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="100%">{{$observacao}}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
