@@ -46,7 +46,10 @@
                                 <div class="col col-md-2">
                                     <label>&nbsp;</label>
                                     
-                                    <button type='button' class="btn btn-info btn-block">Dados Pedido</button>
+                                    <button 
+                                    data-toggle="modal" 
+                                    data-target="#modalDadosPedido" 
+                                    type='button' class="btn btn-info btn-block">Dados Pedido</button>
                                 </div>
                                 <div class="col col-md-8"></div>
                                     
@@ -125,6 +128,23 @@
                     
                 </div>
             </div>
+
+            <div class="modal fade" id="modalDadosPedido" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="exampleModalLabel">Dados Pedido</h4>
+                    </div>
+                    <div class="modal-body">
+                       
+                    </div>
+                    <div class="modal-footer">
+                          <button class='btn btn-default' data-dismiss="modal">Fechar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
 @endsection
 
 @push('scripts')
