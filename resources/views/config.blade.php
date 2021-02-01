@@ -20,17 +20,28 @@
                                 @csrf
                                 @method('put')
                                 <input type="hidden" name="id" value={{$documento_id}}>
-                                <div class="col col-md-4">
+                                <div class="col col-md-7">
                                     <label>Descrição</label>
                                     <input type="text" autocomplete="off" name='descricao' value="{{$doc_descricao}}" class="form-control" required>
                                 </div>
-                                <div class="col col-md-3">
+                                <div class="col col-md-5">
                                     <label>Data de Vencimento</label>
                                     <input type="date" autocomplete="off" name='dt_vencimento' value="{{$dt_vencimento}}" class="form-control" >
                                 </div>
-                                <div class="col col-md-3">
+                                <br>
+                                <div class="col col-md-6">
                                     <label>Num Pedido</label>
                                     <input type="text" autocomplete="off" name='num_pedido' value="{{$num_pedido}}" class="form-control" >
+                                </div>
+                                
+                                <div class="col col-md-6">
+                                    <label>Empresa</label>
+                                    <select name="empr_id" class="form-control">
+                                        <option value=""></option>
+                                        @foreach ($empresas as $item)
+                                            <option value="{{$item->id}}">{{$item->razao_social}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col col-md-2">
                                     <label>&nbsp;</label>
