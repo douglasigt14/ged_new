@@ -1,7 +1,7 @@
 
 $(document).ready( function () {
     $('.myTable').DataTable({
-        "pageLength": 25,
+        "pageLength": 100,
         "order": [[ 3, "asc" ]]
     });
 } );
