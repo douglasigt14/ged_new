@@ -54,7 +54,7 @@ class Config extends Controller
 
             foreach ($dados_pedido as $key => $d_p) {
                 $observacao = $d_p->obs ?? NULL;
-                $d_p->vlr = number_format($d_p->vlr,2,",",".");
+               // $d_p->vlr = number_format($d_p->vlr,2,",",".");
             }
             
         }
