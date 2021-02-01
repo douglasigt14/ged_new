@@ -79,10 +79,10 @@ class Config extends Controller
          DB::table('documentos')
               ->where('id', $dados->id)
               ->update([
-                    'descricao' => $dados->descricao
-                    ,'dt_vencimento' => $dados->dt_vencimento
-                    ,'num_pedido' => trim($dados->num_pedido)
-                    ,'empr_id' => $dados->empr_id
+                    'descricao' => $dados->descricao ?? NULL
+                    ,'dt_vencimento' => $dados->dt_vencimento ?? NULL
+                    ,'num_pedido' => trim($dados->num_pedido) ?? NULL
+                    ,'empr_id' => $dados->empr_id ?? NULL
          ]);
 
         return back()->with('sucesso-descricao', 'Informações alteradas com Sucesso');
