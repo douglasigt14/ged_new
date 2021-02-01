@@ -45,11 +45,12 @@
                                 </div>
                                 <div class="col col-md-2">
                                     <label>&nbsp;</label>
-                                    
-                                    <button 
-                                    data-toggle="modal" 
-                                    data-target="#modalDadosPedido" 
-                                    type='button' class="btn btn-info btn-block">Dados Pedido</button>
+                                    @if($dados_pedido)
+                                        <button 
+                                        data-toggle="modal" 
+                                        data-target="#modalDadosPedido" 
+                                        type='button' class="btn btn-info btn-block">Dados Pedido</button>
+                                    @endif
                                 </div>
                                 <div class="col col-md-8"></div>
                                     
