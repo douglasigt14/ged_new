@@ -20,11 +20,11 @@
                                 @csrf
                                 @method('put')
                                 <input type="hidden" name="id" value={{$documento_id}}>
-                                <div class="col col-md-7">
+                                <div class="col col-md-8">
                                     <label>Descrição</label>
                                     <input type="text" autocomplete="off" name='descricao' value="{{$doc_descricao}}" class="form-control" required>
                                 </div>
-                                <div class="col col-md-5">
+                                <div class="col col-md-4">
                                     <label>Data de Vencimento</label>
                                     <input type="date" autocomplete="off" name='dt_vencimento' value="{{$dt_vencimento}}" class="form-control" >
                                 </div>
@@ -43,12 +43,17 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col col-md-10"></div>
+                                <div class="col col-md-2">
+                                    <label>&nbsp;</label>
+                                    
+                                    <button type='button' class="btn btn-info btn-block">Dados Pedido</button>
+                                </div>
+                                <div class="col col-md-8"></div>
                                     
                                 <div class="col col-md-2">
                                     <label>&nbsp;</label>
                                     
-                                    <button class="btn btn-warning btn-block" @if(!$doc_descricao) disabled @endif>Editar</button>
+                                    <button type='submit' class="btn btn-warning btn-block" @if(!$doc_descricao) disabled @endif>Editar</button>
                                 </div>
                             </form>
                         </div>
