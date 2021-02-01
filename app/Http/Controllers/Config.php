@@ -81,7 +81,7 @@ class Config extends Controller
               ->update([
                     'descricao' => $dados->descricao ?? NULL
                     ,'dt_vencimento' => $dados->dt_vencimento ?? NULL
-                    ,'num_pedido' => trim($dados->num_pedido) ?? NULL
+                    ,'num_pedido' => $dados->num_pedido ?? NULL
                     ,'empr_id' => $dados->empr_id ?? NULL
          ]);
 
