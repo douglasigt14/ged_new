@@ -137,7 +137,24 @@
                       <h4 class="modal-title" id="exampleModalLabel">Dados Pedido</h4>
                     </div>
                     <div class="modal-body">
-                       
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class='center'>#</th>
+                                    <th>ITEM</th>
+                                    <th>VALOR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($dados_pedido as $key => $item)
+                                <tr>
+                                    <td class='center'>{{$key+1}}</td>
+                                    <td>{{$item->desc_tecnica}}</td>
+                                    <td>{{$item->vlr}}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                     <div class="modal-footer">
                           <button class='btn btn-default' data-dismiss="modal">Fechar</button>
