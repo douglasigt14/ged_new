@@ -39,7 +39,7 @@
                                     <select name="empr_id" class="form-control">
                                         <option value=""></option>
                                         @foreach ($empresas as $item)
-                                            <option value="{{$item->id}}">{{$item->razao_social}}</option>
+                                            <option value="{{$item->id}}" @if($item->id == $empr_id) selected @endif>{{$item->razao_social}}</option>
                                         @endforeach
                                     </select>
                                 </div>

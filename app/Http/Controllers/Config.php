@@ -14,6 +14,7 @@ class Config extends Controller
         $doc_descricao = $documento[0]->descricao ?? NULL;
         $dt_vencimento = $documento[0]->dt_vencimento ?? NULL;
         $num_pedido = $documento[0]->num_pedido ?? NULL;
+        $empr_id = $documento[0]->empr_id ?? NULL;
         //dd($dt_vencimento);
         $empresas  = DB::connection("oracle")->select("SELECT * FROM FOCCO3i.tempresas");
 
@@ -30,7 +31,7 @@ class Config extends Controller
             $log_documentos[$i]->systemdate = $data.' '.$hora;
         }
 
-        return view('config', compact(["documento_id","documento","doc_descricao","log_documentos","dt_vencimento","num_pedido","empresas"]));
+        return view('config', compact(["documento_id","documento","doc_descricao","log_documentos","dt_vencimento","num_pedido","empresas","empr_id"]));
     }
     public function editar_descricao (Request $request){
         $dados = (object) $request->all();
@@ -40,6 +41,7 @@ class Config extends Controller
                     'descricao' => $dados->descricao
                     ,'dt_vencimento' => $dados->dt_vencimento
                     ,'num_pedido' => $dados->num_pedido
+                    ,'empr_id' => $dados->empr_id
          ]);
 
         return back()->with('sucesso-descricao', 'Informações alteradas com Sucesso');
