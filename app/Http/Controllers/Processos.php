@@ -21,6 +21,8 @@ class Processos extends BaseController
              $processos[$i]->img = Storage::url($processos[$i]->img); 
              $processos[$i]->bpmn = Storage::url($processos[$i]->bpmn); 
 
+             $processos[$i]->ativo =  $processos[$i]->ativo == 1 ? 'Ativo' : 'Inativo';
+
             $xml = Storage::disk('public')->exists( $bpmn_temp ) ? Storage::disk('public')->get($bpmn_temp) : NULL;
             $simple = $xml;
             $p = xml_parser_create();
