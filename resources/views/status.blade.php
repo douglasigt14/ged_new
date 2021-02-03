@@ -36,6 +36,9 @@
                               @csrf
                               @method('patch')
                               <input type="hidden" name="id" value={{$item->id}}>
+                              <input type="hidden" name='usuario_id' value="{{$_SESSION['id']}}">
+
+                              <input type="hidden" name="tipo" value="esconder">
                               
                               <center><button class="btn btn-sm btn-success"><i class="fa fa-eye"></i></button></center>
                             </form>
