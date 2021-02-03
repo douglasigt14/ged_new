@@ -21,6 +21,7 @@
 											<tr>
                         <th>Descrição</th>
                         <th class='center'>Cor</th>
+                        <th class='center'>Visualizar</th>
 												<th class='center'>Editar</th>
 												<th class='center'>Excluir</th>
 											</tr>
@@ -30,29 +31,39 @@
 											<tr>
                           <td>{{$item->descricao }}</td>
                           <td>{!! $item->span_cor !!}</td>
-                                                <td>
-                                                     @if($item->id != 1 and $item->id != 2 and $item->id != 3)
-                                                    <center><button 
-                                                        data-toggle="modal" 
-                                                        data-target="#modalEditar" 
-                                                        onclick="mostrarModal(event)"
-                                                        data-item-id={{$item->id}}
-                                                        data-item-descricao='{{$item->descricao}}'
-                                                        data-item-cor='{{$item->cor}}'
-                                                        class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
-                                                      @endif
-                                                </td>
-                                                <td>
-                                                  @if($item->id != 1 and $item->id != 2 and $item->id != 3)
-                                                  <form action="/status" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <input type="hidden" name="id" value={{$item->id}}>
-                                                    
-                                                    <center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
-                                                  </form>
-                                                  @endif
-                                                </td>
+                          <td>
+                            <form action="/status" method="post">
+                              @csrf
+                              @method('patch')
+                              <input type="hidden" name="id" value={{$item->id}}>
+                              
+                              <center><button class="btn btn-sm btn-success"><i class="fa fa-eye"></i></button></center>
+                            </form>
+                          </td>
+                          <td>
+                                @if($item->id != 1 and $item->id != 2 and $item->id != 3)
+                              <center><button 
+                                  data-toggle="modal" 
+                                  data-target="#modalEditar" 
+                                  onclick="mostrarModal(event)"
+                                  data-item-id={{$item->id}}
+                                  data-item-descricao='{{$item->descricao}}'
+                                  data-item-cor='{{$item->cor}}'
+                                  class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
+                                @endif
+                          </td>
+                          
+                          <td>
+                            @if($item->id != 1 and $item->id != 2 and $item->id != 3)
+                            <form action="/status" method="post">
+                              @csrf
+                              @method('delete')
+                              <input type="hidden" name="id" value={{$item->id}}>
+                              
+                              <center><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></center>
+                            </form>
+                            @endif
+                          </td>
 											</tr>
 											@endforeach
 										</tbody>
