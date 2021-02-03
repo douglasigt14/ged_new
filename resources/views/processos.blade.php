@@ -65,6 +65,7 @@
                                   onclick="mostrarModal(event)"
                                   data-item-id={{$item->id}}
                                   data-item-descricao='{{$item->descricao}}'
+                                  data-item-ativo='{{$item->ativo}}'
                                   class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
                           </td>
                           <td>
@@ -134,11 +135,19 @@
               @csrf
               @method('put')
                <input type="hidden" id='item-id' name='id' class='form-control'>
-              <div class="col col-md-12">
+              <div class="col col-md-6">
                   <label>Descrição</label>
                  
                    <input type="text" id='item-descricao' name='descricao' class='form-control' required autocomplete="off">
               </div>
+              <div class="col col-md-6">
+                <label>Situação</label>
+               
+                 <select name="ativo" class="form-control" id="item-ativo">
+                   <option value="Ativo">Ativo</option>
+                   <option value="Inativo">Inativo</option>
+                 </select>
+            </div>
           </div>
       </div>
       <div class="modal-footer">
@@ -199,9 +208,20 @@
                 const button = event.currentTarget
                 const descricao = document.querySelector("#modalEditar #item-descricao")
                 const id = document.querySelector("#modalEditar #item-id")
+                const ativo = document.querySelector("#modalEditar #item-ativo")
 
                 descricao.value = button.getAttribute("data-item-descricao")
                 id.value = button.getAttribute("data-item-id")
+
+
+                opcoes = [...ativo.options]
+                opcoes.forEach(function (opcao) {
+                    if (opcao.innerText.trim() == button.getAttribute("data-item-ativo").trim()) {
+                      ativo.selectedIndex = opcao.index 
+                    }else{
+                    }
+                })
+
             }
 
           function mostrarModalImg(event) {
