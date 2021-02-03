@@ -60,7 +60,7 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::post('/status', [Status::class, 'inserir']);
     Route::delete('/status', [Status::class, 'deletar']);
     Route::put('/status', [Status::class, 'editar']);
-    
+    Route::patch('/status', [Status::class, 'gerenciar_visulizacao']);
    
 
     Route::get('/passos_processo/{processo_id}', [Passos::class, 'index']);

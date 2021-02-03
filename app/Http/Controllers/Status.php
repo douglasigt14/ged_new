@@ -13,6 +13,7 @@ use DB;
 class Status extends BaseController
 {
     public function index() {
+        $id_usuario = $_SESSION['id'];
         $status = DB::select("SELECT * FROM status_lista");
 
         foreach ($status as $key => $st) {
@@ -24,6 +25,14 @@ class Status extends BaseController
             }
             else{
                 $st->span_cor = NULL;
+            }
+
+            $usuario_status = DB::select("SELECT * FROM usuario_status WHERE status_lista_id = $st->id AND usuario_id = $id_usuario");
+            if($usuario_status){
+                $st->visualizacao = 'mostrar'; //é ao contrario
+            }
+            else{
+                $st->visualizacao = 'esconder';
             }
         }
        return view('status', compact(["status"]));
@@ -49,6 +58,22 @@ class Status extends BaseController
                     'descricao' => $dados->descricao
                     ,'cor' => $dados->cor
                     ]);
+        return back();
+    }
+    public function gerenciar_visulizacao(Request $request) {
+        $dados = (object) $request->all();
+        if($dados->tipo == 'esconder'){
+            DB::table('usuario_status')->insert([
+                'status_lista_id' => $dados->id
+                ,'usuario_id' => $dados->usuario_id
+            ]);
+        }
+        else if($dados->tipo == 'mostrar'){
+            DB::table('usuario_status')->where([
+                'status_lista_id' => $dados->id
+                ,'usuario_id' => $dados->usuario_id
+            ])->delete();
+        }
         return back();
     }
 }

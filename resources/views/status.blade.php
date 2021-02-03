@@ -38,9 +38,12 @@
                               <input type="hidden" name="id" value={{$item->id}}>
                               <input type="hidden" name='usuario_id' value="{{$_SESSION['id']}}">
 
-                              <input type="hidden" name="tipo" value="esconder">
-                              
+                              <input type="hidden" name="tipo" value="{{$item->visualizacao}}">
+                              @if($item->visualizacao == 'esconder')
                               <center><button class="btn btn-sm btn-success"><i class="fa fa-eye"></i></button></center>
+                              @else
+                              <center><button class="btn btn-sm btn-danger"><i class="fa fa-eye-slash"></i></button></center>
+                              @endif
                             </form>
                           </td>
                           <td>
