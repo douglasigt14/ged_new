@@ -41,7 +41,8 @@ class Documentos extends Controller
                     WHERE 
                             pp_princial.tipo LIKE '%SEQUENCEFLOW%'
                         AND pp_de.tipo LIKE '%STARTEVENT%'
-                        AND pp_para.nome = '$setor'");
+                        AND pp_para.nome = '$setor'
+                        AND processos.ativo = 1");
 
        
 
