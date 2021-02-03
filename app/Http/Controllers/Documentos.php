@@ -85,6 +85,12 @@ class Documentos extends Controller
         $lista_arquivos = DB::select($sql);
         $lista_processo = [];
         foreach ($lista_arquivos as $key => $lista) {
+            $usuario_status = DB::select("SELECT * FROM usuario_status WHERE status_lista_id = $lista->status_id AND usuario_id = $id_usuario");
+
+            if($usuario_status){
+                unset($lista_arquivos[$key]);
+            }    
+
             $sufixo_lista_processo = ($lista->tipo_passo != 'BPMN:EXCLUSIVEGATEWAY' and $lista->tipo_passo != 'EXCLUSIVEGATEWAY') ? ' |  No Setor de <b>'.$lista->setor_atual.'</b>' : '<b style="color: red"> | EM DECISSÃO</b>';
             if(in_array($setor_id,explode(',',$lista->setores_fluxo))){
                array_push($lista_processo,$lista->descricao_processo);
