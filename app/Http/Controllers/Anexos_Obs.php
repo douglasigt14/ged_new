@@ -77,7 +77,8 @@ class Anexos_Obs extends Controller
                                 INNER JOIN documentos ON
                                     documentos.id = log_fluxo.documento_id
                                WHERE 
-                                    documento_id = $documento_id");
+                                    documento_id = $documento_id
+                                AND documentos.processo_id = log_fluxo.processo_id");
         $doc_descricao = "";
         for ($i=0; $i < sizeof($hist_mov); $i++) {
             $partes = explode(" ",$hist_mov[$i]->systemdate);
