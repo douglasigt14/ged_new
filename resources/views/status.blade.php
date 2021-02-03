@@ -142,7 +142,9 @@
 @push('scripts')
     <script>
           $(document).ready( function () {
-                    $('.myTable').DataTable();
+                    $('.myTable').DataTable({
+                      "pageLength": 100
+                    });
          } );
          function mostrarModal(event) {
                 const button = event.currentTarget
