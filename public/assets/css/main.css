@@ -1770,6 +1770,7 @@ ul.activity-timeline > li {
   }
   .status-span{
     display: inline-block;
+    min-width: 100px !important;
   }
   .label-finalizado{
     background-color:gray;
