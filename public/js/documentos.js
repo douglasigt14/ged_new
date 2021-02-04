@@ -1,9 +1,24 @@
 
 $(document).ready( function () {
-    $('.myTable').DataTable({
+    var tabelas = $('.myTable').DataTable({
         "pageLength": 100,
         "order": [[ 3, "asc" ]]
     });
+    var pesquisa = localStorage.getItem('pesquisa');
+    if(pesquisa){
+        tabelas.search(pesquisa).draw();
+    }
+
+    $('.myTable').on('search.dt', function() {
+        var divs = document.querySelectorAll('.dataTables_filter input');
+        
+        divs.forEach((item,i) => {
+            let id_tabela = this.id.replace("DataTables_Table_", "");
+            if(id_tabela == i){
+                localStorage.setItem('pesquisa', item.value);
+            }
+        });
+    })
 } );
 
 $('.dropify').dropify({
