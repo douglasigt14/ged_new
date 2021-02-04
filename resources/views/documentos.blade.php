@@ -121,6 +121,7 @@
                                                     data-target="#modalStatus" 
                                                     onclick="mostrarModalStatus(event)"
                                                     data-item-id={{$item->id}}
+                                                    data-item-dt_vencimento="{{$item->dt_vencimento}}"
                                                     data-item-status_lista='{{json_encode($item->status_lista)}}'
                                                 style="background-color: {{$item->cor}};color: {{$item->cor_texto}}"
                                                 class="label label-warning status-span">
@@ -208,6 +209,7 @@
                                                             data-target="#modalStatus" 
                                                             onclick="mostrarModalStatus(event)"
                                                             data-item-id={{$item->id}}
+                                                            data-item-dt_vencimento="{{$item->dt_vencimento}}"
                                                             data-item-status_lista='{{json_encode($item->status_lista)}}'
                                                         @endif
                                                         style="background-color: {{$item->cor}};color: {{$item->cor_texto}}"
@@ -327,11 +329,20 @@
           <div class="row">
               <input type="hidden" name='id' id='item-id'>
              <div class="col col-md-12">
+                 <label>Status</label>
                 <select class='form-control' name="status_id" id="item-status_lista">
                     
                 </select>
              </div>
-          </div>
+             <br>
+            </div>
+             <div class="row">
+                <div class="col col-md-12">
+                    <label>Data Vencimento</label>
+                    <input name='dt_vencimento' type="date" class="form-control" id="item-dt_vencimento">
+                </div>
+            </div>
+        
       </div>
       <div class="modal-footer">
           <button type="submit" class='btn btn-warning'>Alterar</button>

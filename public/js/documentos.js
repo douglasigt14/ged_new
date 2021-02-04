@@ -59,6 +59,8 @@ function mostrarModalStatus(event) {
         const id = document.querySelector("#modalStatus #item-id")
         const status_lista = document.querySelector("#modalStatus #item-status_lista")
 
+        const dt_vencimento = document.querySelector("#modalStatus #item-dt_vencimento")
+
         var lista = JSON.parse(button.getAttribute("data-item-status_lista")) 
 
             var op = '';
@@ -68,6 +70,7 @@ function mostrarModalStatus(event) {
             status_lista.innerHTML = op;
         
         id.value = button.getAttribute("data-item-id")
+        dt_vencimento.value = button.getAttribute("data-item-dt_vencimento")
 }
 function mostrarModalDecisao(event) {     
     const button = event.currentTarget

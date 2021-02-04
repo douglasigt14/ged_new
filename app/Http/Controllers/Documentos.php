@@ -215,7 +215,8 @@ class Documentos extends Controller
         DB::table('documentos')
             ->where('id', $dados->id)
             ->update([
-                'status_id' =>  $dados->status_id
+                'status_id' =>  $dados->status_id,
+                'dt_vencimento' => $dados->dt_vencimento
         ]);
         return back();
     }
