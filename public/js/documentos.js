@@ -83,7 +83,7 @@ Array.from(document.querySelectorAll('.btn-seguir')).forEach(
         button.addEventListener('click',function(e){
             e.preventDefault();
             id_doc = button.getAttribute("data-item-id");
-            
+            //window.open(button.getAttribute("data-item-caminho"),'_blank');
 
             Swal.fire({
             title: 'Deseja Realmente seguir o fluxo para o proximo passo ?',
@@ -136,3 +136,11 @@ function mostrarModalDesvincularProcesso (event) {
     id.value = button.getAttribute("data-item-id")
     caminho_svg.value = button.getAttribute("data-item-caminho_svg")
  }
+
+
+ function mostrarModalArquivo(event) {     
+    const button = event.currentTarget
+    const iframe = document.querySelector("#modalArquivo #item-iframe")
+
+    iframe.src = button.getAttribute("data-item-caminho")
+}

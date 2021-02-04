@@ -1845,4 +1845,12 @@ ul.activity-timeline > li {
   .atraso{
     color: red;
   }
+  .modal-pdf{
+    width: 90% !important;
+    height: 75vh !important;
+  }  
+  .iframe-pdf{
+    width: 100% !important;
+    height: 75vh !important;
+  }
 /*# sourceMappingURL=main.css.map */

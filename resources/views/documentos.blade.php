@@ -140,7 +140,15 @@
                                             {{$item->status_desc}}</p></center></td>
                                         
                                         <td>
-                                            <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> 
+                                            {{-- <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> --}}
+                                            <center><button 
+                                                data-toggle="modal" 
+                                            data-target="#modalArquivo" 
+                                            onclick="mostrarModalArquivo(event)"
+                                            data-item-id="{{$item->id}}"
+                                            data-item-caminho="{{$item->caminho}}" class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></button></center> 
+
+                                            
                                         </td>
                                         <td>
                                             <center><a href='/anexos_obs/{{$item->id}}'  class="btn  btn-info cinza-ardosia"><i class="fa fa-info-circle"></i></button></a>
@@ -173,6 +181,7 @@
                                             @if ($item->setor_atual == $setor and $item->finalizado != 1)
                                                 <center><button type='submit' 
                                                     data-item-id={{$item->id}} 
+                                                    data-item-caminho={{$item->caminho}} 
                                                     class="btn btn-primary btn-seguir"><i class="fa fa-arrow-right"></i></button></center>
                                             @elseif ( ($item->quem_decide == $setor) and($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY'))
                                                 <center><button 
@@ -373,6 +382,27 @@
     </div>
   </div>
 </div>
+
+
+
+<div class="modal fade" id="modalArquivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-pdf" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Arquivo</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+               <div class="col col-md-12">
+                      <iframe class='iframe-pdf' src="" id='item-iframe' frameborder="0"></iframe>
+               </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
            
 @endsection
 
