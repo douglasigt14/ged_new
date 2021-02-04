@@ -140,14 +140,16 @@
                                             {{$item->status_desc}}</p></center></td>
                                         
                                         <td>
-                                            {{-- <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> --}}
+                                            @if ($setor == 'DIRETORIA')
+                                            <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center>
+                                            @else
                                             <center><button 
                                                 data-toggle="modal" 
                                             data-target="#modalArquivo" 
                                             onclick="mostrarModalArquivo(event)"
                                             data-item-id="{{$item->id}}"
                                             data-item-caminho="{{$item->caminho}}" class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></button></center> 
-
+                                            @endif
                                             
                                         </td>
                                         <td>
