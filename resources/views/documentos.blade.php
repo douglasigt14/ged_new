@@ -195,7 +195,7 @@
                                             </span>
                                             @else
                                                     {{$item->descricao }} <br>
-                                                    <div class="dt-vencimento {{$item->cor_dt_vencimento}}"> {{$item->dt_vencimento }} </div>
+                                                    <div class="dt-vencimento {{$item->cor_dt_vencimento}}"> {{$item->dt_vencimento_formatada }} </div>
                                             @endif
                                             
                                         </td>

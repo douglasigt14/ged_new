@@ -62,7 +62,7 @@ function mostrarModalStatus(event) {
         const dt_vencimento = document.querySelector("#modalStatus #item-dt_vencimento")
 
         var lista = JSON.parse(button.getAttribute("data-item-status_lista")) 
-
+        console.log(button.getAttribute("data-item-status_desc"));
             var op = '';
         lista.forEach(item => {
             op = op+'<option value="'+item.id+'">'+item.descricao+'</option>';
@@ -71,10 +71,12 @@ function mostrarModalStatus(event) {
 
             opcoes = [...status_lista.options]
             opcoes.forEach(function (opcao) {
+                console.log(opcao.innerText.trim())
+                console.log(button.getAttribute("data-item-status_desc").trim()+' (O que Veio)')
                 if (opcao.innerText.trim() == button.getAttribute("data-item-status_desc").trim()) {
                     status_lista.selectedIndex = opcao.index 
-                }else{
-                    console.log('false')
+                    console.log('Deu certo')
+                    
                 }
             })
 

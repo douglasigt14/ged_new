@@ -119,7 +119,7 @@ class Documentos extends Controller
             $cor = $lista->cor ?? '#d3d3d3';
             $resultado = $this->verifica_cor($cor);
             $lista->cor_texto = $resultado > 128 ? 'black' : 'white';
-            $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3,$lista->status_id) ");
+            $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3) ");
             $lista->processos_img = Storage::url($lista->processos_img); 
             $lista->caminho_svg = Storage::url($lista->caminho_svg); 
             
