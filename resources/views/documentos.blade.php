@@ -71,6 +71,71 @@
                                         <strong>{!! \Session::get('desvincular') !!}</strong>
                                 </div>
                             @endif
+                            @if($lista_arquivos_geral)
+                            <h4><b>Arquivos sem processo atribuido</b></h4>
+                            <table class="table table-striped menor mytable">
+                                <thead>
+                                    <tr>
+                                        <th class='center'>Apagar</th>
+                                        <th>Descrição</th>
+                                        <th class='center'>Selecionar</th>
+                                        <th class='center'>Status</th>
+                                        <th class='center'>Arquivo</th>
+                                        <th class='center'>Config.</th>
+                                        <th class='center'>Iniciar Fluxo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($lista_arquivos_geral as $item)
+                                    <tr>
+                                            <td>
+                                            <form action="/documentos" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <input type="hidden" name="id" value={{$item->id}}>
+                                            
+                                            <center><button class="btn btn-danger"><i class="fa fa-trash"></i></button></center>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            {{$item->descricao}}
+                                        </td>
+                                        
+                                        <td>
+                                        <form action="/seguir_fluxo" id='form-seguir-inicio-{{$item->id}}' method="post">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$item->id}}">
+                                                <input type="hidden" name="passo_processo_id" value="0">
+                                                <input type="hidden" name='usuario_id' value="{{$_SESSION['id']}}">
+                        
+                    
+                                            <select name="processo_id" required class="form-control">
+                                                <option></option>
+                                                @foreach ($processos as $processo)
+                                                    <option value="{{$processo->id}}">{{$processo->descricao}}</option>
+                                                @endforeach
+                                            </select></td>
+                                        <td>{!! $item->status !!}</td>
+                                            <td class='menor'>
+                                                <center><button
+                                                    type='button' 
+                                                    data-toggle="modal" 
+                                                data-target="#modalArquivo" 
+                                                onclick="mostrarModalArquivo(event)"
+                                                data-item-id="{{$item->id}}"
+                                                data-item-caminho="{{$item->caminho}}" class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></button></center> 
+                                        </td>
+                                            <td>
+                                            <center><a href='/config/{{$item->id}}' class="btn btn-success cinza-ardosia"><i class="fa fa-cog"></i></a></center> 
+                                        </td>
+                                        <td><center><button data-item-id={{$item->id}}  class="btn btn-primary btn-seguir-inicio"><i class="fa fa-arrow-right"></i></button></center></td>
+                                        </form>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <br>
+                            @endif
                             @if($lista_arquivos)
                             <hr class='linha'>
                             @foreach ($lista_processo as $processo)
@@ -209,71 +274,7 @@
                             <hr class='linha'>
                             @endforeach
                             @endif
-                            @if($lista_arquivos_geral)
-                            <h4><b>Arquivos sem processo atribuido</b></h4>
-                            <table class="table table-striped menor mytable">
-                                <thead>
-                                    <tr>
-                                        <th class='center'>Apagar</th>
-                                        <th>Descrição</th>
-                                        <th class='center'>Selecionar</th>
-                                        <th class='center'>Status</th>
-                                        <th class='center'>Arquivo</th>
-                                        <th class='center'>Config.</th>
-                                        <th class='center'>Iniciar Fluxo</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($lista_arquivos_geral as $item)
-                                    <tr>
-                                            <td>
-                                            <form action="/documentos" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <input type="hidden" name="id" value={{$item->id}}>
-                                            
-                                            <center><button class="btn btn-danger"><i class="fa fa-trash"></i></button></center>
-                                            </form>
-                                        </td>
-                                        <td>
-                                            {{$item->descricao}}
-                                        </td>
-                                        
-                                        <td>
-                                        <form action="/seguir_fluxo" id='form-seguir-inicio-{{$item->id}}' method="post">
-                                                @csrf
-                                                <input type="hidden" name="id" value="{{$item->id}}">
-                                                <input type="hidden" name="passo_processo_id" value="0">
-                                                <input type="hidden" name='usuario_id' value="{{$_SESSION['id']}}">
-                        
-                    
-                                            <select name="processo_id" required class="form-control">
-                                                <option></option>
-                                                @foreach ($processos as $processo)
-                                                    <option value="{{$processo->id}}">{{$processo->descricao}}</option>
-                                                @endforeach
-                                            </select></td>
-                                        <td>{!! $item->status !!}</td>
-                                            <td class='menor'>
-                                                <center><button
-                                                    type='button' 
-                                                    data-toggle="modal" 
-                                                data-target="#modalArquivo" 
-                                                onclick="mostrarModalArquivo(event)"
-                                                data-item-id="{{$item->id}}"
-                                                data-item-caminho="{{$item->caminho}}" class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></button></center> 
-                                        </td>
-                                            <td>
-                                            <center><a href='/config/{{$item->id}}' class="btn btn-success cinza-ardosia"><i class="fa fa-cog"></i></a></center> 
-                                        </td>
-                                        <td><center><button data-item-id={{$item->id}}  class="btn btn-primary btn-seguir-inicio"><i class="fa fa-arrow-right"></i></button></center></td>
-                                        </form>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <br>
-                            @endif
+                           
                         </div>
                     </div>
                 </div>
