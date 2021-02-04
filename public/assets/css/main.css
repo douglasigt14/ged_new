@@ -1846,11 +1846,12 @@ ul.activity-timeline > li {
     color: red;
   }
   .modal-pdf{
-    width: 90% !important;
-    height: 75vh !important;
+    width: 95% !important;
+    height: 83vh !important;
+    margin-top: 1rem;
   }  
   .iframe-pdf{
     width: 100% !important;
-    height: 75vh !important;
+    height: 83vh !important;
   }
 /*# sourceMappingURL=main.css.map */
