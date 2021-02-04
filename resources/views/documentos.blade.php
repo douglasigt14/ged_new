@@ -255,7 +255,8 @@
                                             </select></td>
                                         <td>{!! $item->status !!}</td>
                                             <td class='menor'>
-                                                <center><button 
+                                                <center><button
+                                                    type='button' 
                                                     data-toggle="modal" 
                                                 data-target="#modalArquivo" 
                                                 onclick="mostrarModalArquivo(event)"
