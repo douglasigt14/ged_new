@@ -68,7 +68,16 @@ function mostrarModalStatus(event) {
             op = op+'<option value="'+item.id+'">'+item.descricao+'</option>';
         });
             status_lista.innerHTML = op;
-        
+
+            opcoes = [...status_lista.options]
+            opcoes.forEach(function (opcao) {
+                if (opcao.innerText.trim() == button.getAttribute("data-item-status_desc").trim()) {
+                    status_lista.selectedIndex = opcao.index 
+                }else{
+                    console.log('false')
+                }
+            })
+
         id.value = button.getAttribute("data-item-id")
         dt_vencimento.value = button.getAttribute("data-item-dt_vencimento")
 }

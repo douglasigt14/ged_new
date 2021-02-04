@@ -124,12 +124,13 @@ class Documentos extends Controller
             $lista->caminho_svg = Storage::url($lista->caminho_svg); 
             
             $lista->cor_dt_vencimento = 'em_dia';
+            $lista->dt_vencimento_formatada = NULL;
             if($lista->dt_vencimento){
                 if($lista->dt_vencimento <= date('Y-m-d')){
                     $lista->cor_dt_vencimento = 'atraso';
                 }
                 $partes_dt_v = explode("-",$lista->dt_vencimento); 
-                $lista->dt_vencimento = '('.$partes_dt_v[2].'/'.$partes_dt_v[1].'/'.$partes_dt_v[0].')';
+                $lista->dt_vencimento_formatada  = '('.$partes_dt_v[2].'/'.$partes_dt_v[1].'/'.$partes_dt_v[0].')';
             }
         }
         $lista_processo = array_unique($lista_processo);
@@ -162,12 +163,13 @@ class Documentos extends Controller
             $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3) ");
             
             $lista->cor_dt_vencimento = 'em_dia';
+            $lista->dt_vencimento_formatada = NULL;
             if($lista->dt_vencimento){
                 if($lista->dt_vencimento <= date('Y-m-d')){
                     $lista->cor_dt_vencimento = 'atraso';
                 }
                 $partes_dt_v = explode("-",$lista->dt_vencimento); 
-                $lista->dt_vencimento = '('.$partes_dt_v[2].'/'.$partes_dt_v[1].'/'.$partes_dt_v[0].')';
+                $lista->dt_vencimento_formatada = '('.$partes_dt_v[2].'/'.$partes_dt_v[1].'/'.$partes_dt_v[0].')';
             }
         }
 

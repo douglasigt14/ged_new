@@ -99,7 +99,7 @@
                                         </td>
                                         <td>
                                             {{$item->descricao}}
-                                            <div class="dt-vencimento {{$item->cor_dt_vencimento}}"> {{$item->dt_vencimento }} </div>
+                                            <div class="dt-vencimento {{$item->cor_dt_vencimento}}"> {{$item->dt_vencimento_formatada }} </div>
                                         </td>
                                         
                                         <td>
@@ -122,6 +122,7 @@
                                                     data-target="#modalStatus" 
                                                     onclick="mostrarModalStatus(event)"
                                                     data-item-id={{$item->id}}
+                                                    data-item-status_desc="{{$item->status_desc}}"
                                                     data-item-dt_vencimento="{{$item->dt_vencimento}}"
                                                     data-item-status_lista='{{json_encode($item->status_lista)}}'
                                                 style="background-color: {{$item->cor}};color: {{$item->cor_texto}}"
@@ -190,7 +191,7 @@
                                                 data-item-descricao="{{$item->descricao }}"     
                                             >
                                                 {{$item->descricao }} <br> 
-                                               <div class="dt-vencimento {{$item->cor_dt_vencimento}}"> {{$item->dt_vencimento }} </div>
+                                               <div class="dt-vencimento {{$item->cor_dt_vencimento}}"> {{$item->dt_vencimento_formatada }} </div>
                                             </span>
                                             @else
                                                     {{$item->descricao }} <br>
@@ -210,6 +211,7 @@
                                                             data-target="#modalStatus" 
                                                             onclick="mostrarModalStatus(event)"
                                                             data-item-id={{$item->id}}
+                                                            data-item-status_desc="{{$item->status_desc}}"
                                                             data-item-dt_vencimento="{{$item->dt_vencimento}}"
                                                             data-item-status_lista='{{json_encode($item->status_lista)}}'
                                                         @endif
