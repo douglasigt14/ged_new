@@ -115,7 +115,17 @@
                                                     <option value="{{$processo->id}}">{{$processo->descricao}}</option>
                                                 @endforeach
                                             </select></td>
-                                        <td>{!! $item->status !!}</td>
+                                        <td>
+                                            <center><p 
+                                                    data-toggle="modal" 
+                                                    data-target="#modalStatus" 
+                                                    onclick="mostrarModalStatus(event)"
+                                                    data-item-id={{$item->id}}
+                                                    data-item-status_lista='{{json_encode($item->status_lista)}}'
+                                                style="background-color: {{$item->cor}};color: {{$item->cor_texto}}"
+                                                class="label label-warning status-span">
+                                    {{$item->status_desc}}</p></center>
+                                        </td>
                                             <td class='menor'>
                                                 <center><button
                                                     type='button' 

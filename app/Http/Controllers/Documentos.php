@@ -156,10 +156,11 @@ class Documentos extends Controller
             
             $cor = $lista->cor ?? '#d3d3d3';
             $resultado = $this->verifica_cor($cor);
-            $cor_texto = $resultado > 128 ? 'black' : 'white';
-            $lista->status = '<center><p style="background-color: '.$cor.';color: '.$cor_texto.'" class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
+            $lista->cor_texto = $resultado > 128 ? 'black' : 'white';
+            $lista->status = '<center><p style="background-color: '.$cor.';color: '. $lista->cor_texto.'" class="label label-warning status-span">'.$lista->status_desc.'</p></center>';
 
-            
+            $lista->status_lista = DB::select("SELECT * FROM status_lista WHERE id NOT IN (1,3) ");
+            //dd();
         }
 
         
