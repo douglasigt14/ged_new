@@ -255,7 +255,12 @@
                                             </select></td>
                                         <td>{!! $item->status !!}</td>
                                             <td class='menor'>
-                                            <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> 
+                                                <center><button 
+                                                    data-toggle="modal" 
+                                                data-target="#modalArquivo" 
+                                                onclick="mostrarModalArquivo(event)"
+                                                data-item-id="{{$item->id}}"
+                                                data-item-caminho="{{$item->caminho}}" class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></button></center> 
                                         </td>
                                             <td>
                                             <center><a href='/config/{{$item->id}}' class="btn btn-success cinza-ardosia"><i class="fa fa-cog"></i></a></center> 
