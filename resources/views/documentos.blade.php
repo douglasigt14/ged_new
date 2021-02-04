@@ -99,6 +99,7 @@
                                         </td>
                                         <td>
                                             {{$item->descricao}}
+                                            <div class="dt-vencimento {{$item->cor_dt_vencimento}}"> {{$item->dt_vencimento }} </div>
                                         </td>
                                         
                                         <td>
