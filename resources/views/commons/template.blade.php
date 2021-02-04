@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="{{asset('assets/vendor/bootstrap4-toggle/css/bootstrap4-toggle.min.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/css/card_upload.css')}}">
 	<!-- MAIN CSS -->
-	<link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/css/main.css')}}?{{date("YmdHis")}}">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="{{asset('assets/css/demo.css')}}">
 	<!-- GOOGLE FONTS -->

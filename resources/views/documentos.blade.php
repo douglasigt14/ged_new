@@ -409,7 +409,7 @@
 @endsection
 
 @push('scripts')
-        <script src="{{url('js/documentos.js')}}"> </script>
+        <script src="{{url('js/documentos.js')}}?{{date("YmdHis")}}"> </script>
 @endpush 
 
 @if($setor == 'DIRETORIA')
