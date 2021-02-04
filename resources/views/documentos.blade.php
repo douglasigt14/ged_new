@@ -391,7 +391,14 @@
     <div class="modal-dialog modal-pdf" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">Arquivo</h4>
+        <div class="row">
+            <div class="col col-md-1">
+                <center><button class='btn btn-default' data-dismiss="modal"><i class="fa fa-arrow-left"></i></button></center>
+            </div>
+            <div class="col col-md-11">
+                <h4>Arquivo</h4>
+            </div>
+        </div>
         </div>
         <div class="modal-body">
             <div class="row">
