@@ -113,7 +113,7 @@ Array.from(document.querySelectorAll('.btn-seguir')).forEach(
             //window.open(button.getAttribute("data-item-caminho"),'_blank');
 
             Swal.fire({
-            text: 'Documento: '+descricao,
+            text: descricao,
             title: 'Deseja realmente seguir ?',
             showCancelButton: true,
             //width: 600,
@@ -137,7 +137,7 @@ Array.from(document.querySelectorAll('.btn-seguir-inicio')).forEach(
              id_doc = button.getAttribute("data-item-id");
             
              Swal.fire({
-            title: 'Deseja iniciar  ?',
+            title: 'Deseja realmente iniciar  ?',
             showCancelButton: true,
             confirmButtonColor: '#3ca512',
             cancelButtonColor: '#d9534f',
