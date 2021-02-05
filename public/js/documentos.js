@@ -107,10 +107,12 @@ Array.from(document.querySelectorAll('.btn-seguir')).forEach(
         button.addEventListener('click',function(e){
             e.preventDefault();
             id_doc = button.getAttribute("data-item-id");
+            descricao = button.getAttribute("data-item-descricao");
             //window.open(button.getAttribute("data-item-caminho"),'_blank');
 
             Swal.fire({
-            title: 'Deseja Realmente seguir o fluxo para o proximo passo ?',
+            text: 'Documento: '+descricao,
+            title: 'Deseja realmente seguir ?',
             showCancelButton: true,
             //width: 600,
             confirmButtonColor: '#3ca512',
@@ -133,7 +135,7 @@ Array.from(document.querySelectorAll('.btn-seguir-inicio')).forEach(
              id_doc = button.getAttribute("data-item-id");
             
              Swal.fire({
-            title: 'Deseja iniciar o Fluxo com esse processo ?',
+            title: 'Deseja iniciar  ?',
             showCancelButton: true,
             confirmButtonColor: '#3ca512',
             cancelButtonColor: '#d9534f',

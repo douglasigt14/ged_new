@@ -263,6 +263,7 @@
                                             @if ($item->setor_atual == $setor and $item->finalizado != 1)
                                                 <center><button type='submit' 
                                                     data-item-id={{$item->id}} 
+                                                    data-item-descricao="{{$item->descricao}}"
                                                     data-item-caminho={{$item->caminho}} 
                                                     class="btn btn-primary btn-seguir"><i class="fa fa-arrow-right"></i></button></center>
                                             @elseif ( ($item->quem_decide == $setor) and($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY'))
