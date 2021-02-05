@@ -89,6 +89,7 @@ class Documentos extends Controller
 
             if($usuario_status){
                 unset($lista_arquivos[$key]);
+                continue;
             }    
 
             $sufixo_lista_processo = ($lista->tipo_passo != 'BPMN:EXCLUSIVEGATEWAY' and $lista->tipo_passo != 'EXCLUSIVEGATEWAY') ? ' |  No Setor de <b>'.$lista->setor_atual.'</b>' : '<b style="color: red"> | EM DECISSÃO</b>';
