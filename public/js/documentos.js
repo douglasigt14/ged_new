@@ -30,6 +30,18 @@ $('.dropify').dropify({
     }
 });
 
+$('.dropify').change('dropify-filename-inner', function() {
+    var nome_doc = document.querySelector(".dropify-filename-inner").innerText;
+   
+    var partes = nome_doc.split(".")
+    partes.pop();
+    nome_doc =  partes.join(".");
+
+    console.log(partes);
+
+    document.querySelector("#descricao").value = nome_doc;
+});
+
 
     $(function() {
     $('#toggle-finalizados').change(function() {

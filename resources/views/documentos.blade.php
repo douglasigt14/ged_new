@@ -39,7 +39,7 @@
                             </div>
                             <div class="col-md-9">
                                 <label>Descrição</label>
-                                <input type='text' autocomplete="off" name="descricao" class='form-control' required>
+                                <input type='text' autocomplete="off" name="descricao" id='descricao' class='form-control' required>
                             </div>
                             <div class="col-md-3">
                                 <label>&nbsp;</label>
