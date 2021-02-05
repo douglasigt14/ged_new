@@ -82,6 +82,7 @@ function mostrarModalDecisao(event) {
     const button = event.currentTarget
     const id = document.querySelector("#modalDecissao #item-id")
     const pergunta = document.querySelector("#modalDecissao #item-pergunta")
+    const descricao = document.querySelector("#modalDecissao #item-descricao")
     const bifurcacoes = document.querySelector("#modalDecissao #item-bifurcacoes")
     const processo_id = document.querySelector("#modalDecissao #item-processo_id")
     const setor_atual_id = document.querySelector("#modalDecissao #item-setor_atual_id")
@@ -96,6 +97,7 @@ function mostrarModalDecisao(event) {
 
     id.value = button.getAttribute("data-item-id")
     pergunta.innerHTML = button.getAttribute("data-item-pergunta")
+    descricao.innerHTML = button.getAttribute("data-item-descricao")
     processo_id.value = button.getAttribute("data-item-processo_id")
     setor_atual_id.value = button.getAttribute("data-item-setor_atual_id")
     

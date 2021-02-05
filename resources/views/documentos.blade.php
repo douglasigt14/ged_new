@@ -273,6 +273,7 @@
                                                     onclick="mostrarModalDecisao(event)"
                                                     data-item-id={{$item->id}}
                                                     data-item-pergunta="{{$item->nome_passo}}"
+                                                    data-item-descricao="{{$item->descricao}}"
                                                     data-item-processo_id="{{$item->processo_id}}"
                                                     data-item-setor_atual_id="{{$item->setor_anterior_id}}"
                                                     data-item-bifurcacoes='{{json_encode($item->bifurcacoes)}}'
@@ -361,7 +362,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Decissão</h4>
+        <h4 class="modal-title" id="exampleModalLabel">Decissão: <span id='item-descricao'></span></h4>
       </div>
       <div class="modal-body">
           <div class="row">
