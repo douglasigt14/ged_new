@@ -362,7 +362,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Decissão: <span id='item-descricao'></span></h4>
+        <h4 class="modal-title" id="exampleModalLabel">Decissão: <span class='negrito' id='item-descricao'></span></h4>
       </div>
       <div class="modal-body">
           <div class="row">
