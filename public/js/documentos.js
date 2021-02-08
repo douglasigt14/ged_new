@@ -184,7 +184,7 @@ function mostrarModalDesvincularProcesso (event) {
 }
 var criar_obs = document.querySelector(".criar-obs").addEventListener('click',function(e){
     e.preventDefault();
-    console.log('Douglas');
-    
+    var campo_obs = document.querySelector(".campo-obs");
+    campo_obs.style.display = 'block';
     
 });

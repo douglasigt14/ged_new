@@ -381,11 +381,12 @@
              </div>
           </div><br>
           <div class="row">
-            <div class="col col-md-3"></div> 
-             <div class="col col-md-6">
-                   <button class="btn btn-primary btn-block btn-sm criar-obs">Criar Observação</button>
+              <div class="col col-md-4">
+                    <button type='button' class="btn btn-primary btn-block btn-sm criar-obs">Criar Observação</button>
               </div>
-              <div class="col col-md-3"></div>
+              <div class="col col-md-8">
+                <input class="campo-obs form-control" type="text" name="obs" >
+              </div> 
           </div>
       </div>
       <div class="modal-footer">

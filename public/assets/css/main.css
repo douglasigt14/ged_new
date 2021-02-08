@@ -1854,4 +1854,7 @@ ul.activity-timeline > li {
     width: 100% !important;
     height: 83vh !important;
   }
+  .campo-obs{
+    display: none;
+  }
 /*# sourceMappingURL=main.css.map */
