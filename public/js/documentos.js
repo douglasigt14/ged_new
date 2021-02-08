@@ -179,8 +179,10 @@ function mostrarModalDesvincularProcesso (event) {
  function mostrarModalArquivo(event) {     
     const button = event.currentTarget
     const iframe = document.querySelector("#modalArquivo #item-iframe")
+    const descricao = document.querySelector("#modalArquivo #item-descricao")
 
     iframe.src = button.getAttribute("data-item-caminho")
+    descricao.innerHTML = button.getAttribute("data-item-descricao")
 }
 var criar_obs = document.querySelector(".criar-obs").addEventListener('click',function(e){
     e.preventDefault();

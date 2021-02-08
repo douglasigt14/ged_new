@@ -136,6 +136,7 @@
                                                 data-target="#modalArquivo" 
                                                 onclick="mostrarModalArquivo(event)"
                                                 data-item-id="{{$item->id}}"
+                                                data-item-descricao="{{$item->descricao}}"
                                                 data-item-caminho="{{$item->caminho}}" class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></button></center> 
                                         </td>
                                             <td>
@@ -228,6 +229,7 @@
                                             data-target="#modalArquivo" 
                                             onclick="mostrarModalArquivo(event)"
                                             data-item-id="{{$item->id}}"
+                                            data-item-descricao="{{$item->descricao}}"
                                             data-item-caminho="{{$item->caminho}}" class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></button></center> 
                                             @endif
                                             
@@ -434,10 +436,10 @@
         <div class="modal-header">
         <div class="row">
             <div class="col col-md-1">
-                <center><button class='btn btn-default' data-dismiss="modal"><i class="fa fa-arrow-left"></i></button></center>
+                <center><button class='btn btn-danger' data-dismiss="modal"><i class="fa fa-arrow-left"></i></button></center>
             </div>
             <div class="col col-md-11">
-                <h4>Arquivo</h4>
+                <h4><span class='negrito' id='item-descricao'></span></h4>
             </div>
         </div>
         </div>
