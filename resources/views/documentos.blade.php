@@ -379,6 +379,11 @@
             
                 </select>
              </div>
+          </div><br>
+          <div class="row">
+              <div class="col col-md-12">
+                  <h5>Deseja criar uma observação ?</h5>
+              </div>
           </div>
       </div>
       <div class="modal-footer">
