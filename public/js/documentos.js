@@ -3,7 +3,7 @@ $(document).ready( function () {
     var tabelas = $('.myTable').DataTable({
         "pageLength": 100,
         "order": [[ 3, "asc" ]],
-        scrollY:        '40vh',
+        scrollY:        '30vh',
         "scrollX": true,
         scrollCollapse: true
     });
