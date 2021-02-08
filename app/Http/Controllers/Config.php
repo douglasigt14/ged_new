@@ -94,12 +94,25 @@ class Config extends Controller
        // dd($dados);
         $caminho = $documento ? $documento->store('docs/'.$dados->id ,'public') : NULL;  
 
-        DB::table('log_documentos')->insert([
+        DB::table('log_documentos')
+            ->where('documento_id', $dados->id)
+            ->update([
+                'is_principal' =>  0
+        ]);
+
+        $ultimo_id = DB::table('log_documentos')->insertGetId([
             'documento_id' =>  $dados->id
             , 'caminho' => $caminho
-            ,'is_principal' => 0
+            ,'is_principal' => 1
             ,'obs' => $dados->obs
             ,'upload_usuario_id' => $dados->usuario_id
+        ]);
+
+
+        DB::table('documentos')
+            ->where('id', $dados->id)
+            ->update([
+                'caminho' =>  $caminho 
         ]);
 
         return back()->with('sucesso-doc', 'Documento upado com Sucesso');
