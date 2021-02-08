@@ -230,6 +230,7 @@
                                             onclick="mostrarModalArquivo(event)"
                                             data-item-id="{{$item->id}}"
                                             data-item-descricao="{{$item->descricao}}"
+                                            data-item-tipo_passo="{{$item->tipo_passo}}"
                                             data-item-caminho="{{$item->caminho}}" class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></button></center> 
                                             @endif
                                             
@@ -442,7 +443,10 @@
                 <h4><span class='negrito' id='item-descricao'></span></h4>
             </div>
             <div class="col col-md-2">
-                <center><button class='btn btn-primary btn-block btn-seguir-modal'>Seguir Fluxo</i></button></center>
+                <div id="div-btn-seguir-modal">
+
+                </div>
+                
             </div>
         </div>
         </div>

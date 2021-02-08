@@ -180,7 +180,7 @@ Array.from(document.querySelectorAll('.btn-seguir-modal')).forEach(
             cancelButtonText: 'Não'
             }).then((result) => {
             if (result.isConfirmed) {
-                 document.getElementById("form-seguir-inicio-"+id_doc).submit();
+                 document.getElementById("form-seguir-modal-"+id_doc).submit();
             }
             })
             
@@ -205,6 +205,15 @@ function mostrarModalDesvincularProcesso (event) {
     const button = event.currentTarget
     const iframe = document.querySelector("#modalArquivo #item-iframe")
     const descricao = document.querySelector("#modalArquivo #item-descricao")
+    const div_btn_seguir_modal = document.querySelector("#modalArquivo #div-btn-seguir-modal")
+
+    var tipo_passo = button.getAttribute("data-item-tipo_passo");
+    if(tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' || tipo_passo == 'EXCLUSIVEGATEWAY'){
+        //console.log('Decissao');
+    }
+    else{
+        // div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block btn-seguir-modal'>Seguir Fluxo</i></button></center>");
+    }
 
     iframe.src = button.getAttribute("data-item-caminho")
     descricao.innerHTML = button.getAttribute("data-item-descricao")
