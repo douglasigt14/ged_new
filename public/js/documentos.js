@@ -2,7 +2,10 @@
 $(document).ready( function () {
     var tabelas = $('.myTable').DataTable({
         "pageLength": 100,
-        "order": [[ 3, "asc" ]]
+        "order": [[ 3, "asc" ]],
+        scrollY:        '40vh',
+        "scrollX": true,
+        scrollCollapse: true
     });
     var pesquisa = localStorage.getItem('pesquisa');
     if(pesquisa){
