@@ -311,6 +311,15 @@ class Processos extends BaseController
          $documento = DB::select("SELECT * FROM documentos WHERE id = $dados->id");
          $desc_documento = $documento[0]->descricao ?? NULL;
 
+        if($dados->obs){
+            DB::table('obs')->insert([
+                'descricao' => $dados->obs
+                , 'documento_id' =>  $dados->id
+                ,'usuario_id' => $usuario_id
+            ]);
+        }
+
+
         return back()->with('sucesso-seguir', 'Arquivo ('.$desc_documento.') movimentou-se <br>De: '.$passos_processo_fluxo[0]->nome_de.' Para: '.$passos_processo_fluxo[0]->nome_para);
     }
     
