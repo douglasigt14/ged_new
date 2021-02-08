@@ -311,6 +311,7 @@ class Processos extends BaseController
          $documento = DB::select("SELECT * FROM documentos WHERE id = $dados->id");
          $desc_documento = $documento[0]->descricao ?? NULL;
 
+         $dados->obs = $dados->obs ?? NULL;
         if($dados->obs){
             DB::table('obs')->insert([
                 'descricao' => $dados->obs
