@@ -385,7 +385,7 @@
                     <button type='button' class="btn btn-primary btn-block btn-sm criar-obs">Criar Observação</button>
               </div>
               <div class="col col-md-8">
-                <input class="campo-obs form-control" type="text" name="obs" >
+                <input class="campo-obs form-control" autocomplete="off" type="text" name="obs" >
               </div> 
           </div>
       </div>
