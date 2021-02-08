@@ -381,9 +381,11 @@
              </div>
           </div><br>
           <div class="row">
-              <div class="col col-md-12">
-                  <h5>Deseja criar uma observação ?</h5>
+            <div class="col col-md-3"></div> 
+             <div class="col col-md-6">
+                   <button class="btn btn-primary btn-block btn-sm criar-obs">Criar Observação</button>
               </div>
+              <div class="col col-md-3"></div>
           </div>
       </div>
       <div class="modal-footer">

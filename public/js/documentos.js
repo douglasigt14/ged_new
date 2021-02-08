@@ -182,3 +182,9 @@ function mostrarModalDesvincularProcesso (event) {
 
     iframe.src = button.getAttribute("data-item-caminho")
 }
+var criar_obs = document.querySelector(".criar-obs").addEventListener('click',function(e){
+    e.preventDefault();
+    console.log('Douglas');
+    
+    
+});
