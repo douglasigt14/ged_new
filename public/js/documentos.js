@@ -164,6 +164,31 @@ Array.from(document.querySelectorAll('.btn-seguir-inicio')).forEach(
     }
 );
 
+
+Array.from(document.querySelectorAll('.btn-seguir-modal')).forEach(
+    function(button){
+        button.addEventListener('click',function(e){
+            e.preventDefault();
+             id_doc = button.getAttribute("data-item-id");
+            
+             Swal.fire({
+            title: 'Deseja realmente seguir ?',
+            showCancelButton: true,
+            confirmButtonColor: '#3ca512',
+            cancelButtonColor: '#d9534f',
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                 document.getElementById("form-seguir-inicio-"+id_doc).submit();
+            }
+            })
+            
+            
+        });
+    }
+);
+
 function mostrarModalDesvincularProcesso (event) {
     const button = event.currentTarget
     const descricao = document.querySelector("#modalDesvincularProcesso #item-descricao")

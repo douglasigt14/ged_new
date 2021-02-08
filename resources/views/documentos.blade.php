@@ -436,10 +436,13 @@
         <div class="modal-header">
         <div class="row">
             <div class="col col-md-1">
-                <center><button class='btn btn-danger' data-dismiss="modal"><i class="fa fa-arrow-left"></i></button></center>
+                <center><button class='btn btn-default' data-dismiss="modal"><i class="fa fa-arrow-left"></i></button></center>
             </div>
-            <div class="col col-md-11">
+            <div class="col col-md-9">
                 <h4><span class='negrito' id='item-descricao'></span></h4>
+            </div>
+            <div class="col col-md-2">
+                <center><button class='btn btn-primary btn-block btn-seguir-modal'>Seguir Fluxo</i></button></center>
             </div>
         </div>
         </div>
