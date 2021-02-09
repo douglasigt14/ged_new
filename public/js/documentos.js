@@ -165,29 +165,7 @@ Array.from(document.querySelectorAll('.btn-seguir-inicio')).forEach(
 );
 
 
-Array.from(document.querySelectorAll('.btn-seguir-modal')).forEach(
-    function(button){
-        button.addEventListener('click',function(e){
-            e.preventDefault();
-             id_doc = button.getAttribute("data-item-id");
-            
-             Swal.fire({
-            title: 'Deseja realmente seguir ?',
-            showCancelButton: true,
-            confirmButtonColor: '#3ca512',
-            cancelButtonColor: '#d9534f',
-            confirmButtonText: 'Sim',
-            cancelButtonText: 'Não'
-            }).then((result) => {
-            if (result.isConfirmed) {
-                 document.getElementById("form-seguir-modal-"+id_doc).submit();
-            }
-            })
-            
-            
-        });
-    }
-);
+
 
 function mostrarModalDesvincularProcesso (event) {
     const button = event.currentTarget
@@ -209,10 +187,35 @@ function mostrarModalDesvincularProcesso (event) {
 
     var tipo_passo = button.getAttribute("data-item-tipo_passo");
     if(tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' || tipo_passo == 'EXCLUSIVEGATEWAY'){
-        //console.log('Decissao');
+        // div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block laranja-escuro'>Decidir</i></button></center>");
     }
     else{
-        // div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block btn-seguir-modal'>Seguir Fluxo</i></button></center>");
+        //  div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block btn-seguir-modal'>Seguir Fluxo</i></button></center>");
+
+
+         Array.from(document.querySelectorAll('.btn-seguir-modal')).forEach(
+            function(button){
+                button.addEventListener('click',function(e){
+                    e.preventDefault();
+                     id_doc = button.getAttribute("data-item-id");
+                    
+                     Swal.fire({
+                    title: 'Deseja realmente seguir ?',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3ca512',
+                    cancelButtonColor: '#d9534f',
+                    confirmButtonText: 'Sim',
+                    cancelButtonText: 'Não'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                         document.getElementById("form-seguir-modal-"+id_doc).submit();
+                    }
+                    })
+                    
+                    
+                });
+            }
+        );
     }
 
     iframe.src = button.getAttribute("data-item-caminho")
