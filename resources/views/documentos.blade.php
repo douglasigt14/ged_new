@@ -136,6 +136,7 @@
                                                 data-target="#modalArquivo" 
                                                 onclick="mostrarModalArquivo(event)"
                                                 data-item-id="{{$item->id}}"
+                                                data-item-com_processo=0
                                                 data-item-descricao="{{$item->descricao}}"
                                                 data-item-caminho="{{$item->caminho}}" class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></button></center> 
                                         </td>
@@ -229,6 +230,7 @@
                                             data-target="#modalArquivo" 
                                             onclick="mostrarModalArquivo(event)"
                                             data-item-id="{{$item->id}}"
+                                            data-item-com_processo=1
                                             data-item-descricao="{{$item->descricao}}"
                                             data-item-tipo_passo="{{$item->tipo_passo}}"
                                             data-item-caminho="{{$item->caminho}}" class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></button></center> 

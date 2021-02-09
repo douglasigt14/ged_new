@@ -185,22 +185,33 @@ function mostrarModalDesvincularProcesso (event) {
     const descricao = document.querySelector("#modalArquivo #item-descricao")
     const div_btn_seguir_modal = document.querySelector("#modalArquivo #div-btn-seguir-modal")
 
+    var id_doc = button.getAttribute("data-item-id");
+    var com_processo = button.getAttribute("data-item-com_processo");
     var tipo_passo = button.getAttribute("data-item-tipo_passo");
+    var texto_descricao = button.getAttribute("data-item-descricao");
+    console.log(com_processo);
     if(tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' || tipo_passo == 'EXCLUSIVEGATEWAY'){
         // div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block laranja-escuro'>Decidir</i></button></center>");
     }
     else{
-        //  div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block btn-seguir-modal'>Seguir Fluxo</i></button></center>");
+         div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block btn-seguir-modal'>Seguir Fluxo</i></button></center>");
 
 
          Array.from(document.querySelectorAll('.btn-seguir-modal')).forEach(
             function(button){
                 button.addEventListener('click',function(e){
                     e.preventDefault();
-                     id_doc = button.getAttribute("data-item-id");
                     
+                    if(com_processo == '1'){
+                        formulario = "form-seguir-"+id_doc;
+                    }
+                    else{
+                        formulario = "form-seguir-inicio-"+id_doc;
+                    }
+
                      Swal.fire({
                     title: 'Deseja realmente seguir ?',
+                    text: texto_descricao,
                     showCancelButton: true,
                     confirmButtonColor: '#3ca512',
                     cancelButtonColor: '#d9534f',
@@ -208,7 +219,7 @@ function mostrarModalDesvincularProcesso (event) {
                     cancelButtonText: 'Não'
                     }).then((result) => {
                     if (result.isConfirmed) {
-                         document.getElementById("form-seguir-modal-"+id_doc).submit();
+                         document.getElementById(formulario).submit();
                     }
                     })
                     
