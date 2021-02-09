@@ -114,7 +114,8 @@ class Documentos extends Controller
                         pp_princial.para = pp_para.id_bpmn
                     WHERE pp_princial.processo_id = $lista->processo_id
                         AND pp_princial.tipo LIKE '%SEQUENCEFLOW%'
-                        AND pp_princial.de = '$lista->passo_processo_id'");
+                        AND pp_princial.de = '$lista->passo_processo_id'
+                    ORDER BY pp_princial.nome DESC");
             }
             $lista->caminho = Storage::url($lista->caminho); 
             $cor = $lista->cor ?? '#d3d3d3';
