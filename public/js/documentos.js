@@ -185,6 +185,8 @@ function mostrarModalDesvincularProcesso (event) {
     const descricao = document.querySelector("#modalArquivo #item-descricao")
     const div_btn_seguir_modal = document.querySelector("#modalArquivo #div-btn-seguir-modal")
 
+    div_btn_seguir_modal.innerHTML = ("");
+
     var id_doc = button.getAttribute("data-item-id");
     var com_processo = button.getAttribute("data-item-com_processo");
     var tipo_passo = button.getAttribute("data-item-tipo_passo");
@@ -192,6 +194,7 @@ function mostrarModalDesvincularProcesso (event) {
     console.log(com_processo);
     if(tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' || tipo_passo == 'EXCLUSIVEGATEWAY'){
         // div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block laranja-escuro'>Decidir</i></button></center>");
+        
     }
     else{
          div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block btn-seguir-modal'>Seguir Fluxo</i></button></center>");
