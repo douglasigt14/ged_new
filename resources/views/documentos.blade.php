@@ -385,6 +385,7 @@
                 </select>
              </div>
           </div><br>
+          @if ($setor != 'DIRETORIA')
           <div class="row">
               <div class="col col-md-4">
                     <button type='button' class="btn btn-primary btn-block btn-sm criar-obs">Criar Observação</button>
@@ -393,6 +394,7 @@
                 <input class="campo-obs form-control" autocomplete="off" type="text" name="obs" >
               </div> 
           </div>
+          @endif
       </div>
       <div class="modal-footer">
             <button type="submit" class='btn btn-warning laranja-escuro'>Selecionar</button>
