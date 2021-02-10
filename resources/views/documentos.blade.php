@@ -471,7 +471,7 @@
         <script src="{{url('js/documentos.js')}}?{{date("YmdHis")}}"> </script>
 @endpush 
 
-@if($setor == 'DIRETORIA')
+@if($setor == 'DIRETORIA' or $_SESSION['id'] == '5')
     @section('tela_inteira')
             class="layout-fullwidth"
     @endsection
