@@ -222,7 +222,7 @@
                                             {{$item->status_desc}}</p></center></td>
                                         
                                         <td>
-                                            @if ($setor == 'DIRETORIA')
+                                            @if ($setor == 'DIRETORIA' or $_SESSION['id'] == '5')
                                             <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center>
                                             @else
                                             <center><button 
