@@ -2,7 +2,7 @@
 $(document).ready( function () {
     var tabelas = $('.myTable').DataTable({
         "pageLength": 100,
-        "order": [[ 3, "asc" ]]
+        "order": [[ 1, "asc" ]]
     });
     var pesquisa = localStorage.getItem('pesquisa');
     if(pesquisa){
