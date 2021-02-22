@@ -91,7 +91,7 @@
 												
 											<tr>
 												<td>{{$item->descricao}}</td>
-												<td>{{$item->usuario}}</td>
+												<td class="center">{{$item->usuario}} <br>{{$item->systemdate }}</td>
 												<td><center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success"><i class="fa fa-file"></i></a></center> </td>
 												@if ($setor != 'DIRETORIA')
 												 <td>
@@ -160,7 +160,7 @@
 											<tr>
 												<td class='center hide'>{{$item->id }}</td>
 												<td class='justificado'>{{$item->descricao}}</td>
-												<td>{{$item->usuario}}</td>
+												<td class='center'>{{$item->usuario}}<br>{{$item->systemdate }}</td>
 												@if ($setor != 'DIRETORIA')
 												<td>
 													@if ($item->usuario_id == $_SESSION['id'])

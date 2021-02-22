@@ -54,6 +54,13 @@ class Anexos_Obs extends Controller
                                     documento_id = $documento_id");
         for ($i=0; $i < sizeof($anexos); $i++) {
              $anexos[$i]->caminho  = Storage::url($anexos[$i]->caminho); 
+
+             $partes = explode(" ",$anexos[$i]->systemdate);
+             $data = $partes[0];
+             $hora = $partes[1];
+             $partes = explode("-",$data);
+             $data = $partes[2]."/".$partes[1].'/'.$partes[0];
+             $anexos[$i]->systemdate = $data.' '.$hora;
         }
         $obs =  DB::select("SELECT 
                                     obs.*, 
@@ -63,6 +70,15 @@ class Anexos_Obs extends Controller
                                     obs.usuario_id = usuarios.id
                                WHERE 
                                     documento_id = $documento_id");
+        for ($i=0; $i < sizeof($obs); $i++) {
+            $partes = explode(" ",$obs[$i]->systemdate);
+            $data = $partes[0];
+            $hora = $partes[1];
+            $partes = explode("-",$data);
+            $data = $partes[2]."/".$partes[1].'/'.$partes[0];
+            $obs[$i]->systemdate = $data.' '.$hora;
+        }
+
         //HIST MOV
         $hist_mov = DB::select("SELECT 
                                     log_fluxo.* 
@@ -90,6 +106,9 @@ class Anexos_Obs extends Controller
 
             $doc_descricao = $hist_mov[$i]->doc_descricao;
         }
+
+
+        
         //HIST MOV
         return view('anexos_obs', compact(["anexos","documentos","documento_id","obs","hist_mov","doc_descricao","setor"]));
     }
