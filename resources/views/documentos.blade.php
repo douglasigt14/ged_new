@@ -230,7 +230,8 @@
                                             
                                         </td>
                                         <td>
-                                            <center><a href='/anexos_obs/{{$item->id}}'  class="btn  btn-info cinza-ardosia"><i class="fa fa-info-circle"></i></button></a>
+                                            <center><a href='/anexos_obs/{{$item->id}}'  class="btn  btn-info cinza-ardosia">{{$item->qtde_anexos}} <i class="fa fa-paperclip"></i> {{$item->qtde_obs}} <i class="fa fa-info-circle"></i> 
+                                 
                                         </td>
                                         @if ($setor != 'DIRETORIA')
                                         <td>            

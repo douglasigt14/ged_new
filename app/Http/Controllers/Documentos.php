@@ -134,6 +134,14 @@ class Documentos extends Controller
                 $partes_dt_v = explode("-",$lista->dt_vencimento); 
                 $lista->dt_vencimento_formatada  = '('.$partes_dt_v[2].'/'.$partes_dt_v[1].'/'.$partes_dt_v[0].')';
             }
+
+            $qtde_anexos = DB::select("SELECT count(*) as qtde FROM anexos WHERE documento_id = $lista->id");
+            $lista->qtde_anexos = $qtde_anexos[0]->qtde;
+
+            $qtde_obs = DB::select("SELECT count(*) as qtde FROM obs WHERE documento_id = $lista->id");
+            $lista->qtde_obs = $qtde_obs[0]->qtde;
+
+
         }
         $lista_processo = array_unique($lista_processo);
 
