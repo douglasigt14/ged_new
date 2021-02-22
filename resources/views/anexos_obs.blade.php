@@ -145,6 +145,7 @@
 							<table class="table table-striped menor myTable">
                                         <thead>
                                             <tr>
+												<th class='hide'>#</th>
 												<th>Descrição</th>
 												<th>Usuario</th>
 												@if ($setor != 'DIRETORIA')
@@ -157,6 +158,7 @@
 											@foreach ($obs as $item)
 												
 											<tr>
+												<td class='center hide'>{{$item->id }}</td>
 												<td class='justificado'>{{$item->descricao}}</td>
 												<td>{{$item->usuario}}</td>
 												@if ($setor != 'DIRETORIA')
