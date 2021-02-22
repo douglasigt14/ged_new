@@ -160,8 +160,6 @@
                                     <tr>
                                         <th>Descrição</th>
                                         @if ($setor != 'DIRETORIA')
-                                        <th>Set.Anterior</th>
-                                        <th>Set.Atual</th>
                                         @endif
                                         <th class='center'>Status</th>
                                         <th class='center'>Arquivo</th>
@@ -201,12 +199,6 @@
                                             @endif
                                             
                                         </td>
-                                        @if ($setor != 'DIRETORIA')
-                                        <td>{{ $item->setor_anterior }}</td>
-                                        <td @if ($item->setor_atual == $setor)
-                                                class='negrito'   
-                                            @endif>{{ $item->setor_atual }}</td>
-                                        @endif
                                         <td><center><p 
                                                         @if ((($item->setor_atual == $setor or ($item->tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' or $item->tipo_passo == 'EXCLUSIVEGATEWAY')) and $item->finalizado != 1 ) and $setor != 'DIRETORIA')
                                                             data-toggle="modal" 
