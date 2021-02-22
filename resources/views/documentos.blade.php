@@ -160,8 +160,8 @@
                                     <tr>
                                         <th class='descricao'>Descrição</th>
                                         @if ($setor != 'DIRETORIA')
-                                             <th class="hide">Set.Anterior</th>
-                                        <th class="hide">Set.Atual</th>
+                                             <th class="">Set.Anterior</th>
+                                        <th class="">Set.Atual</th>
                                         @endif
                                         <th class='center'>Status</th>
                                         <th class='center'>Arquivo</th>
@@ -202,8 +202,8 @@
                                             
                                         </td>
                                         @if ($setor != 'DIRETORIA')
-                                        <td class='hide'>{{ $item->setor_anterior }}</td>
-                                        <td class='hide @if ($item->setor_atual == $setor)
+                                        <td>{{ $item->setor_anterior }}</td>
+                                        <td class='@if ($item->setor_atual == $setor)
                                             negrito   
                                         @endif' >{{ $item->setor_atual }}</td>
                                         @endif
