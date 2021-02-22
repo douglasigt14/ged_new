@@ -16,6 +16,7 @@
                     <table class="table table-striped myTable">
 										<thead>
 											<tr>
+						<th class='hide'>#</th>
                         <th>Data e Hora</th>
                         <th class='center'>De</th>
 						<th class='center'>Para</th>
@@ -28,6 +29,7 @@
 										<tbody>
 											@foreach ($hist_mov as $item)
 											<tr>
+						  <td class='center hide'>{{$item->id }}</td>
                           <td>{{$item->systemdate }}</td>
                           <td class='center'>{{$item->nome_de }}</td>
 						  <td class='center'>{{$item->nome_para }}</td>
