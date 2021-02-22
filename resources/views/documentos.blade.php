@@ -158,7 +158,7 @@
                             <table class="table table-striped myTable menor @if($setor == 'DIRETORIA') font-maior @endif ">
                                 <thead>
                                     <tr>
-                                        <th>Descrição</th>
+                                        <th class='descricao'>Descrição</th>
                                         @if ($setor != 'DIRETORIA')
                                         @endif
                                         <th class='center'>Status</th>
