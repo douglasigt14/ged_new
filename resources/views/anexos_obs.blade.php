@@ -289,7 +289,9 @@
 					descricao.innerHTML = button.getAttribute("data-item-descricao")
 				}
 			   $(document).ready( function () {
-                    $('.myTable').DataTable();
+                    $('.myTable').DataTable({
+						"pageLength": 25
+					});
                 } );
 			  $('.dropify').dropify({
                     messages: {
