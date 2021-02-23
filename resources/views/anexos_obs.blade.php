@@ -13,7 +13,9 @@
                     <h4><span class='negrito'>Documento: {{$doc_descricao}}</span></h4>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-striped myTable">
+					<div class="row">
+					<div class="col col-lg-6 col-md-12 col-sm-12">
+                    <table class="table table-striped myTable menor">
 										<thead>
 											<tr>
 						<th class='hide'>#</th>
@@ -23,7 +25,7 @@
 						<th class='center'>Escolha</th>
                         <th class='center'>Usuario</th>
                         {{-- <th class='center'>IP</th> --}}
-                        <th class='center'>Processo</th>
+                        {{-- <th class='center'>Processo</th> --}}
                       </tr>
 										</thead>
 										<tbody>
@@ -36,11 +38,17 @@
 						  <td class='center'>{{$item->nome_seta }}</td>
                           <td class='center'>{{$item->rotulo }}</td>
                           {{-- <td class='center'>{{$item->ip }}</td> --}}
-                          <td class='center'>{{$item->proceso_descricao }}</td>
+                          {{-- <td class='center'>{{$item->proceso_descricao }}</td> --}}
 											</tr>
 											@endforeach
 										</tbody>
-									</table>
+					</table>
+					</div>
+					<div class="col col-lg-6 col-md-12 col-sm-12">
+							<source srcset="{{$img}}" type="image/svg+xml">
+							<img src="{{$img}}" class="img-responsive" >
+					</div>
+					</div>
                 </div>
             </div>
         </div>

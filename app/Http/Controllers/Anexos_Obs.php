@@ -85,6 +85,7 @@ class Anexos_Obs extends Controller
                                    ,processos.descricao proceso_descricao
                                    ,usuarios.rotulo
                                    ,documentos.descricao doc_descricao
+                                   ,documentos.caminho_svg img
                                 FROM 
                                  log_fluxo INNER JOIN processos ON
                                  processos.id = log_fluxo.processo_id
@@ -96,6 +97,8 @@ class Anexos_Obs extends Controller
                                     documento_id = $documento_id
                                 AND documentos.processo_id = log_fluxo.processo_id");
         $doc_descricao = "";
+        $img = NULL;
+       
         for ($i=0; $i < sizeof($hist_mov); $i++) {
             $partes = explode(" ",$hist_mov[$i]->systemdate);
             $data = $partes[0];
@@ -105,12 +108,15 @@ class Anexos_Obs extends Controller
             $hist_mov[$i]->systemdate = $data.' '.$hora;
 
             $doc_descricao = $hist_mov[$i]->doc_descricao;
+
+            $img = $hist_mov[0]->img ?? NULL;
+            $img  = Storage::url($img); 
         }
 
 
         
         //HIST MOV
-        return view('anexos_obs', compact(["anexos","documentos","documento_id","obs","hist_mov","doc_descricao","setor"]));
+        return view('anexos_obs', compact(["anexos","documentos","documento_id","obs","hist_mov","doc_descricao","setor","img"]));
     }
     public function inserir_anexo(Request $request) {
          $dados = (object) $request->all();
