@@ -222,7 +222,7 @@
                                             {{$item->status_desc}}</p></center></td>
                                         
                                         <td>
-                                            @if ($setor == 'DIRETORIA' or $_SESSION['id'] == '5')
+                                            @if ($setor == 'DIRETORIA')
                                             <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center>
                                             @else
                                             <center><button 
@@ -472,7 +472,7 @@
         <script src="{{url('js/documentos.js')}}?{{date("YmdHis")}}"> </script>
 @endpush 
 
-@if($setor == 'DIRETORIA' or $_SESSION['id'] == '5')
+@if($setor == 'DIRETORIA')
     @section('tela_inteira')
             class="layout-fullwidth"
     @endsection
