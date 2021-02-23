@@ -86,7 +86,21 @@
                                             <tr>
                                                 <td class='center'>{{$key+1}}</td>
                                                 <td>{{$item->obs}}</td>
-                                                <td> <center><a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-file"></i></a></center> </td>
+                                                <td> <center>
+                                                    @if ($setor != 'DIRETORIA')
+													<button
+                                                    type='button' 
+                                                    data-toggle="modal" 
+                                                data-target="#modalArquivo" 
+                                                onclick="mostrarModalArquivo(event)"
+                                                data-item-id="{{$item->id}}"
+                                                data-item-descricao="{{$item->obs}}"
+                                                data-item-caminho="{{$item->caminho}}" class="btn btn-success btn-sm cinza-ardosia"><i class="fa fa-file"></i></button>
+												@else
+													<a target='_blank' href='{{$item->caminho}}' class="btn btn-sm btn-success cinza-ardosia"><i class="fa fa-file"></i></a>
+												@endif
+
+                                                </center> </td>
                                                 <td> <center> <input class="form-check-input" type="radio" name="log_documento_id" value="{{$item->id}}" @if($item->is_principal)checked @endif> </center>
                                                 </td>
                                             </tr>
@@ -169,10 +183,45 @@
                 </div>
               </div>
 
+              <div class="modal fade" id="modalArquivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-pdf" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                    <div class="row">
+                        <div class="col col-md-1">
+                            <center><button class='btn btn-default' data-dismiss="modal"><i class="fa fa-arrow-left"></i></button></center>
+                        </div>
+                        <div class="col col-md-9">
+                            <h4><span class='negrito' id='item-descricao'></span></h4>
+                        </div>
+                        <div class="col col-md-2">
+                            
+                        </div>
+                    </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                           <div class="col col-md-12">
+                                  <iframe class='iframe-pdf' src="" id='item-iframe' frameborder="0"></iframe>
+                           </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
 @endsection
 
 @push('scripts')
     <script>
+        function mostrarModalArquivo(event) {     
+					const button = event.currentTarget
+					const iframe = document.querySelector("#modalArquivo #item-iframe")
+					const descricao = document.querySelector("#modalArquivo #item-descricao")
+
+					iframe.src = button.getAttribute("data-item-caminho")
+					descricao.innerHTML = button.getAttribute("data-item-descricao")
+				}
         $('.dropify').dropify({
             messages: {
                 'default': 'Arraste e solte um arquivo aqui ou clique',

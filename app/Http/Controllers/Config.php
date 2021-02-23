@@ -9,6 +9,17 @@ use DB;
 class Config extends Controller
 {
     public function index($documento_id = null) {
+        $id_usuario = $_SESSION['id'];
+        $usuario = DB::select("SELECT 
+                                    usuarios.*
+                                    ,setores.descricao setor
+                                    ,setores.id setor_id
+                                FROM usuarios INNER JOIN setores ON 
+                                    usuarios.setor_id = setores.id 
+                            WHERE 
+                                usuarios.id = $id_usuario");
+        $setor = $usuario[0]->setor;
+        
         $documento = DB::select("SELECT * FROM documentos WHERE id = $documento_id");
         $log_documentos = DB::select("SELECT * FROM log_documentos WHERE documento_id = $documento_id");
         $doc_descricao = $documento[0]->descricao ?? NULL;
@@ -72,7 +83,7 @@ class Config extends Controller
             $log_documentos[$i]->systemdate = $data.' '.$hora;
         }
 
-        return view('config', compact(["documento_id","documento","doc_descricao","log_documentos","dt_vencimento","num_pedido","empresas","empr_id","dados_pedido","observacao"]));
+        return view('config', compact(["documento_id","documento","doc_descricao","log_documentos","dt_vencimento","num_pedido","empresas","empr_id","dados_pedido","observacao","setor"]));
     }
     public function editar_descricao (Request $request){
         $dados = (object) $request->all();
