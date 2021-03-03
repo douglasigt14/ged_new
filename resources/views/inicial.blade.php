@@ -6,7 +6,7 @@
                     <!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title">Gerenciamento Eletronico de Documentos - {{ucfirst($setor)}}</h3>
+							<h3 class="panel-title">Gerenciamento Eletrônico de Documentos - {{ucfirst($setor)}}</h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">

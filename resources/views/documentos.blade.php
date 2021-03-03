@@ -8,7 +8,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col col-md-8">
-                            <h3 class="panel-title">Documentos - <span class='negrito'>{{ucfirst($setor)}}</span></h3>
+                            <h3 class="panel-title">Gerenciamento Eletrônico de Documentos - <span class='negrito'>{{ucfirst($setor)}}</span></h3>
                         </div>
                         <div  @if ($setor == 'DIRETORIA') class="sumir" @endif>
                             <div class="col col-md-2">
