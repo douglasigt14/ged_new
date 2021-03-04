@@ -77,6 +77,7 @@
                                             <tr>
                                                 <th class='center'>#</th>
                                                  <th>Observação</th>
+                                                 <th>Usuário</th>
                                                 <th class='center'>Arquivo</th>
                                                 <th class='center'>Principal</th>
                                             </tr>
@@ -86,6 +87,7 @@
                                             <tr>
                                                 <td class='center'>{{$key+1}}</td>
                                                 <td>{{$item->obs}}</td>
+                                                <td>{{$item->rotulo}}</td>
                                                 <td> <center>
                                                     @if ($setor != 'DIRETORIA')
 													<button
