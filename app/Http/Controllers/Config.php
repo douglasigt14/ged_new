@@ -21,7 +21,13 @@ class Config extends Controller
         $setor = $usuario[0]->setor;
         
         $documento = DB::select("SELECT * FROM documentos WHERE id = $documento_id");
-        $log_documentos = DB::select("SELECT * FROM log_documentos WHERE documento_id = $documento_id");
+        $log_documentos = DB::select("SELECT 
+                log_documentos.*,
+                usuarios.rotulo 
+            FROM 
+                log_documentos  INNER JOIN usuarios ON
+                log_documentos.upload_usuario_id  = usuarios.id
+            WHERE documento_id = $documento_id");
         $doc_descricao = $documento[0]->descricao ?? NULL;
         $dt_vencimento = $documento[0]->dt_vencimento ?? NULL;
         $num_pedido = $documento[0]->num_pedido ?? NULL;
