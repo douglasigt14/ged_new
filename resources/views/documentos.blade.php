@@ -73,7 +73,7 @@
                             @endif
                             @if($lista_arquivos_geral)
                             <h4><b>Arquivos sem processo atribuido</b></h4>
-                            <table class="table table-striped menor myTable">
+                            <table class="table table-hover table-striped menor myTable">
                                 <thead>
                                     <tr>
                                         <th class='center'>Apagar</th>
@@ -155,7 +155,7 @@
                             <hr class='linha'>
                             @foreach ($lista_processo as $processo)
                             <h4><b>{!! $processo !!}</b></h4>
-                            <table class="table table-striped myTable menor @if($setor == 'DIRETORIA') font-maior @endif ">
+                            <table class="table table-hover table-striped myTable menor @if($setor == 'DIRETORIA') font-maior @endif ">
                                 <thead>
                                     <tr>
                                         <th>Descrição</th>
