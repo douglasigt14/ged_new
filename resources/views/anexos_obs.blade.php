@@ -21,8 +21,8 @@
 						<th class='hide'>#</th>
                         <th>Data e Hora</th>
                         <th class='center'>De</th>
-						<th class='center'>Para</th>
 						<th class='center'>Escolha</th>
+						<th class='center'>Para</th>
                         <th class='center'>Usuario</th>
                         {{-- <th class='center'>IP</th> --}}
                         {{-- <th class='center'>Processo</th> --}}
@@ -34,8 +34,8 @@
 						  <td class='center hide'>{{$item->id }}</td>
                           <td>{{$item->systemdate }}</td>
                           <td class='center'>{{$item->nome_de }}</td>
-						  <td class='center'>{{$item->nome_para }}</td>
 						  <td class='center'>{{$item->nome_seta }}</td>
+						  <td class='center'>{{$item->nome_para }}</td>
                           <td class='center'>{{$item->rotulo }}</td>
                           {{-- <td class='center'>{{$item->ip }}</td> --}}
                           {{-- <td class='center'>{{$item->proceso_descricao }}</td> --}}
