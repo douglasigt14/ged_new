@@ -233,6 +233,8 @@
                                             data-item-com_processo=1
                                             data-item-descricao="{{$item->descricao}}"
                                             data-item-tipo_passo="{{$item->tipo_passo}}"
+                                            data-item-setor_atual= "{{$item->setor_atual}}"
+                                            data-item-setor_usuario= "{{$setor}}"
                                             data-item-caminho="{{$item->caminho}}" class="btn btn-success cinza-ardosia"><i class="fa fa-file"></i></button></center> 
                                             @endif
                                             
