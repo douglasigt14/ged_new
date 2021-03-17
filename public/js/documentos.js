@@ -193,8 +193,6 @@ function mostrarModalDesvincularProcesso (event) {
     var texto_descricao = button.getAttribute("data-item-descricao");
     var setor_atual = button.getAttribute("data-item-setor_atual");
     var setor_usuario = button.getAttribute("data-item-setor_usuario");
-    console.log(setor_atual);
-    console.log(setor_usuario);
 
     if(tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' || tipo_passo == 'EXCLUSIVEGATEWAY'){
         // div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block laranja-escuro'>Decidir</i></button></center>");
