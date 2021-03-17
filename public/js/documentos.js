@@ -191,11 +191,18 @@ function mostrarModalDesvincularProcesso (event) {
     var com_processo = button.getAttribute("data-item-com_processo");
     var tipo_passo = button.getAttribute("data-item-tipo_passo");
     var texto_descricao = button.getAttribute("data-item-descricao");
-    console.log(com_processo);
+    var setor_atual = button.getAttribute("data-item-setor_atual");
+    var setor_usuario = button.getAttribute("data-item-setor_usuario");
+    console.log(setor_atual);
+    console.log(setor_usuario);
+
     if(tipo_passo == 'BPMN:EXCLUSIVEGATEWAY' || tipo_passo == 'EXCLUSIVEGATEWAY'){
         // div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block laranja-escuro'>Decidir</i></button></center>");
         
     }
+    else if (setor_atual != setor_usuario){
+    
+    }    
     else{
          div_btn_seguir_modal.innerHTML = ("<center><button class='btn btn-primary btn-block btn-seguir-modal'>Seguir Fluxo</i></button></center>");
 
