@@ -127,6 +127,8 @@
 
                                                     data-item-num_pedido="{{$item->num_pedido}}"
 
+                                                    data-item-empr_id="{{$item->empr_id}}"
+
                                                     data-item-status_lista='{{json_encode($item->status_lista)}}'
                                                 style="background-color: {{$item->cor}};color: {{$item->cor_texto}}"
                                                 class="label label-warning status-span">
@@ -220,6 +222,8 @@
                                                             data-item-dt_vencimento="{{$item->dt_vencimento}}"
 
                                                             data-item-num_pedido="{{$item->num_pedido}}"
+
+                                                            data-item-empr_id="{{$item->empr_id}}"
 
                                                             data-item-status_lista='{{json_encode($item->status_lista)}}'
                                                         @endif
@@ -368,7 +372,7 @@
                 
                 <div class="col col-md-8">
                     <label>Empresa</label>
-                    <select name="empr_id" class="form-control" id="item-empresa_lista">
+                    <select name="empr_id" class="form-control" id="item-empresa">
                         <option value=""></option>
                         @foreach ($empresas as $item)
                             <option value="{{$item->id}}">{{$item->razao_social}}</option>

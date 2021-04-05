@@ -73,6 +73,16 @@ function mostrarModalStatus(event) {
 
         const num_pedido = document.querySelector("#modalStatus #item-num_pedido")
 
+        const empresa_lista = document.querySelector("#modalStatus #item-empresa")
+
+
+        opcoes2 = [...empresa_lista.options]
+            opcoes2.forEach(function (opcao) {
+                if (opcao.value == button.getAttribute("data-item-empr_id")) {
+                    empresa_lista.selectedIndex = opcao.index 
+                }
+            })
+
         var lista = JSON.parse(button.getAttribute("data-item-status_lista")) 
             var op = '';
         lista.forEach(item => {
