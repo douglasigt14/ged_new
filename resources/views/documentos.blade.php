@@ -341,25 +341,26 @@
             @method('patch')
           <div class="row">
               <input type="hidden" name='id' id='item-id'>
-                    <div class="col col-md-6">
+                    <div class="col col-md-8">
                         <label>Status</label>
                         <select class='form-control' name="status_id" id="item-status_lista">
                             
                         </select>
                     </div>
-                    <div class="col col-md-6">
+                    <div class="col col-md-4">
                         <label>Data Vencimento</label>
                         <input name='dt_vencimento' type="date" class="form-control" id="item-dt_vencimento">
                     </div>
-             <br>
+             
             </div>
+            <br>
              <div class="row">
-                <div class="col col-md-6">
+                <div class="col col-md-4">
                     <label>Num Pedido</label>
                     <input type="text" autocomplete="off" name='num_pedido'  class="form-control" >
                 </div>
                 
-                <div class="col col-md-6">
+                <div class="col col-md-8">
                     <label>Empresa</label>
                     <select name="empr_id" class="form-control">
                         <option value=""></option>
