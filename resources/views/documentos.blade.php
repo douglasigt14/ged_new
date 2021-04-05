@@ -124,6 +124,9 @@
                                                     data-item-id={{$item->id}}
                                                     data-item-status_desc="{{$item->status_desc}}"
                                                     data-item-dt_vencimento="{{$item->dt_vencimento}}"
+
+                                                    data-item-num_pedido="{{$item->num_pedido}}"
+
                                                     data-item-status_lista='{{json_encode($item->status_lista)}}'
                                                 style="background-color: {{$item->cor}};color: {{$item->cor_texto}}"
                                                 class="label label-warning status-span">
@@ -215,6 +218,9 @@
                                                             data-item-id={{$item->id}}
                                                             data-item-status_desc="{{$item->status_desc}}"
                                                             data-item-dt_vencimento="{{$item->dt_vencimento}}"
+
+                                                            data-item-num_pedido="{{$item->num_pedido}}"
+
                                                             data-item-status_lista='{{json_encode($item->status_lista)}}'
                                                         @endif
                                                         style="background-color: {{$item->cor}};color: {{$item->cor_texto}}"
@@ -357,12 +363,12 @@
              <div class="row">
                 <div class="col col-md-4">
                     <label>Num Pedido</label>
-                    <input type="text" autocomplete="off" name='num_pedido'  class="form-control" >
+                    <input type="text" id="item-num_pedido" autocomplete="off" name='num_pedido'  class="form-control" >
                 </div>
                 
                 <div class="col col-md-8">
                     <label>Empresa</label>
-                    <select name="empr_id" class="form-control">
+                    <select name="empr_id" class="form-control" id="item-empresa_lista">
                         <option value=""></option>
                         @foreach ($empresas as $item)
                             <option value="{{$item->id}}">{{$item->razao_social}}</option>

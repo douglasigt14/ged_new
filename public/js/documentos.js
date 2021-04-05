@@ -71,6 +71,8 @@ function mostrarModalStatus(event) {
 
         const dt_vencimento = document.querySelector("#modalStatus #item-dt_vencimento")
 
+        const num_pedido = document.querySelector("#modalStatus #item-num_pedido")
+
         var lista = JSON.parse(button.getAttribute("data-item-status_lista")) 
             var op = '';
         lista.forEach(item => {
@@ -87,6 +89,7 @@ function mostrarModalStatus(event) {
 
         id.value = button.getAttribute("data-item-id")
         dt_vencimento.value = button.getAttribute("data-item-dt_vencimento")
+        num_pedido.value = button.getAttribute("data-item-num_pedido")
 }
 function mostrarModalDecisao(event) {     
     const button = event.currentTarget
