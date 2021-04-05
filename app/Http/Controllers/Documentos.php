@@ -183,10 +183,10 @@ class Documentos extends Controller
             }
         }
 
-        
+        $empresas  = DB::connection("oracle")->select("SELECT * FROM FOCCO3i.tempresas");
         
 
-       return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor","lista_processo","finalizados_checked","outros_setores_checked","id_usuario"]));
+       return view('documentos', compact(["lista_arquivos","lista_arquivos_geral","processos","setor","lista_processo","finalizados_checked","outros_setores_checked","id_usuario","empresas"]));
     }
 
     public static function verifica_cor($cor){
