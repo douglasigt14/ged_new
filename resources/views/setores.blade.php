@@ -39,6 +39,7 @@
                                                         data-item-id={{$item->id}}
                                                         data-item-descricao='{{$item->descricao}}'
                                                         data-item-lista_usuarios='{{json_encode($item->lista_usuarios)}}'
+                                                        data-item-rotulo='{{$item->rotulo}}'
                                                         class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
                                                 </td>
                                                 <td>
@@ -136,17 +137,12 @@
                   });
                   lista_usuarios.innerHTML = op;
 
-                    // opcoes = [...status_lista.options]
-                    // opcoes.forEach(function (opcao) {
-                    //     if (opcao.innerText.trim() == button.getAttribute("data-item-status_desc").trim()) {
-                    //         status_lista.selectedIndex = opcao.index 
-                    //     }
-                    // })
-                
-                
-                console.log(lista);
-                console.log(lista_usuarios);
-
+                    opcoes = [...lista_usuarios.options]
+                    opcoes.forEach(function (opcao) {
+                        if (opcao.innerText.trim() == button.getAttribute("data-item-rotulo").trim()) {
+                          lista_usuarios.selectedIndex = opcao.index 
+                        }
+                    })
 
 
                 descricao.value = button.getAttribute("data-item-descricao")
