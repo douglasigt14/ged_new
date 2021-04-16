@@ -141,6 +141,15 @@ class Documentos extends Controller
             $qtde_obs = DB::select("SELECT count(*) as qtde FROM obs WHERE documento_id = $lista->id");
             $lista->qtde_obs = $qtde_obs[0]->qtde;
 
+            $lider_id_dados = DB::select("SELECT 
+                    setores.*
+                FROM 
+                    usuarios INNER JOIN setores ON
+                usuarios.setor_id = setores.id
+                WHERE
+                    usuarios.id = '$lista->upload_usuario_id'");
+            
+            $lista->lider_upload_id = $lider_id_dados[0]->lider_id ?? NULL;
 
         }
         $lista_processo = array_unique($lista_processo);

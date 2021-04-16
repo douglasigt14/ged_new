@@ -188,7 +188,7 @@
                                         @endif
                                     <tr>
                                         <td>
-                                            @if(($id_usuario == $item->upload_usuario_id) and $item->finalizado != 1)
+                                            @if(($id_usuario == $item->upload_usuario_id or $id_usuario == $item->lider_upload_id) and $item->finalizado != 1)
                                             <span
                                                 data-toggle="modal" 
                                                 data-target="#modalDesvincularProcesso" 
