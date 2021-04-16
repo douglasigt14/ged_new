@@ -38,6 +38,7 @@
                                                         onclick="mostrarModal(event)"
                                                         data-item-id={{$item->id}}
                                                         data-item-descricao='{{$item->descricao}}'
+                                                        data-item-lista_usuarios='{{json_encode($item->lista_usuarios)}}'
                                                         class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
                                                 </td>
                                                 <td>
@@ -97,10 +98,16 @@
               @csrf
               @method('put')
                <input type="hidden" id='item-id' name='id' class='form-control'>
-              <div class="col col-md-12">
+              <div class="col col-md-6">
                   <label>Setor</label>
                  
                    <input type="text" id='item-descricao' name='descricao' class='form-control' required autocomplete="off">
+              </div>
+              <div class="col col-md-6">
+                <label>Lider</label>
+                <select class='form-control' name="lider_id" id="item-lista_usuarios">
+                            
+                </select>
               </div>
           </div>
       </div>
@@ -120,6 +127,27 @@
                 const button = event.currentTarget
                 const descricao = document.querySelector("#modalEditar #item-descricao")
                 const id = document.querySelector("#modalEditar #item-id")
+                const lista_usuarios = document.querySelector("#modalEditar #item-lista_usuarios")
+
+                var lista = JSON.parse(button.getAttribute("data-item-lista_usuarios")) 
+                    var op = '';
+                  lista.forEach(item => {
+                      op = op+'<option value="'+item.id+'">'+item.rotulo+'</option>';
+                  });
+                  lista_usuarios.innerHTML = op;
+
+                    // opcoes = [...status_lista.options]
+                    // opcoes.forEach(function (opcao) {
+                    //     if (opcao.innerText.trim() == button.getAttribute("data-item-status_desc").trim()) {
+                    //         status_lista.selectedIndex = opcao.index 
+                    //     }
+                    // })
+                
+                
+                console.log(lista);
+                console.log(lista_usuarios);
+
+
 
                 descricao.value = button.getAttribute("data-item-descricao")
                 id.value = button.getAttribute("data-item-id")

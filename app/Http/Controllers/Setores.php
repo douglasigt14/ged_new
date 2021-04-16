@@ -30,8 +30,6 @@ class Setores extends BaseController
             $setor->lista_usuarios = $lista_usuarios;
         }
 
-        dd($setores);
-       
         return view('setores', compact(["setores"]));
     }
     public function inserir(Request $request){
@@ -52,6 +50,7 @@ class Setores extends BaseController
               ->where('id', $dados->id)
               ->update([
                     'descricao' => $dados->descricao
+                    ,'lider_id' => $dados->lider_id
                     ]);
         return back();
     }
