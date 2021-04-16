@@ -12,7 +12,13 @@ use DB;
 class Setores extends BaseController
 {
     public function index() {
-        $setores = DB::select("SELECT * FROM setores");
+        $setores = DB::select("SELECT 
+                                    setores.*
+                                   ,usuarios.rotulo
+                               FROM 
+                                    setores LEFT JOIN usuarios ON
+                                    setores.lider_id = usuarios.id");
+        dd($setores);
        return view('setores', compact(["setores"]));
     }
     public function inserir(Request $request){
