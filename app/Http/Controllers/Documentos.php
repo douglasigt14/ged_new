@@ -165,9 +165,13 @@ class Documentos extends Controller
                     documentos 
                     INNER JOIN status_lista ON
                     documentos.status_id = status_lista.id
+                    INNER JOIN usuarios ON
+                    documentos.upload_usuario_id = usuarios.id
+                    INNER JOIN setores ON
+                    setores.id = usuarios.setor_id
                 WHERE 
                     processo_id IS NULL
-                AND documentos.upload_usuario_id = $id_usuario";
+                AND (documentos.upload_usuario_id = $id_usuario or setores.lider_id = $id_usuario )";
 
         $lista_arquivos_geral = DB::select($sql);
 
