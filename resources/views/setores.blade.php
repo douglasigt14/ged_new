@@ -20,6 +20,7 @@
 										<thead>
 											<tr>
 												<th>Setor</th>
+                        <th>Lider</th>
 												<th class='center'>Editar</th>
 												<th class='center'>Excluir</th>
 											</tr>
@@ -28,6 +29,7 @@
 											@foreach ($setores as $item)
 											<tr>
 											    <td>{{$item->descricao }}</td>
+                          <td>{{$item->rotulo }}</td>
                                                 <td>
                                                     
                                                     <center><button 

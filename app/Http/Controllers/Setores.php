@@ -18,8 +18,21 @@ class Setores extends BaseController
                                FROM 
                                     setores LEFT JOIN usuarios ON
                                     setores.lider_id = usuarios.id");
+        
+        foreach ($setores as $key => $setor) {
+            $lista_usuarios = DB::select("SELECT 
+                                                id
+                                               ,rotulo
+                                            FROM 
+                                                usuarios
+                                            WHERE
+                                               setor_id = '$setor->id'");
+            $setor->lista_usuarios = $lista_usuarios;
+        }
+
         dd($setores);
-       return view('setores', compact(["setores"]));
+       
+        return view('setores', compact(["setores"]));
     }
     public function inserir(Request $request){
         $dados = (object) $request->all();
