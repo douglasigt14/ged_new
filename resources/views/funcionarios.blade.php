@@ -22,6 +22,7 @@
 												<th>Rotulo</th>
                         <th>Nome</th>
                         <th>Setor</th>
+                        <th class="center">Administrador</th>
                         <th class='center'>Senha</th>
                         <th class='center'>Editar</th>
 												<th class='center'>Excluir</th>
@@ -33,6 +34,7 @@
 											  <td>{{$item->rotulo }}</td>
                         <td>{{$item->nome }}</td>
                         <td>{{$item->setor }}</td>
+                        <td class="center">{{$item->is_admin ? 'sim' : 'não'}}</td>
                         <td>
                             
                             <center><button 
@@ -44,6 +46,7 @@
                                 data-item-pasta='{{$item->nome}}'
                                 class="btn btn-sm btn-info"><i class="fa fa-key"></i></button></center>
                         </td>
+                        
                         <td>
                             
                             <center><button 
@@ -113,6 +116,12 @@
                   <label>Confirmar Senha</label>
                   <input type="password" name='confirmar_senha' class='form-control' required>
               </div>
+          </div><br>
+          <div class="form-check">
+            <input class="form-check-input" name='is_admin'  type="checkbox"  id="is_admin">
+            <label class="form-check-label" for="is_admin">
+              Administrador
+            </label>
           </div>
       </div>
       <div class="modal-footer">
