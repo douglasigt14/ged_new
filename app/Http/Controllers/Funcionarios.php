@@ -52,12 +52,21 @@ class Funcionarios extends BaseController
     }
     public function editar(Request $request){
          $dados = (object) $request->all();
+
+        if(isset($dados->is_admin)) {
+            $dados->is_admin = 1;
+        }
+        else{
+            $dados->is_admin  = NULL;
+        }
+
          DB::table('usuarios')
               ->where('id', $dados->id)
               ->update([
                     'rotulo' => $dados->rotulo
                    ,'nome' => $dados->nome
                    ,'setor_id' => $dados->setor_id
+                   ,'is_admin' => $dados->is_admin
                     ]);
         return back();
     }
