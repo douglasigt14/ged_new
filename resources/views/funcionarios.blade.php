@@ -57,6 +57,7 @@
                                 data-item-rotulo='{{$item->rotulo}}'
                                 data-item-nome='{{$item->nome}}'
                                 data-item-setor='{{$item->setor}}'
+                                data-item-is_admin='{{$item->is_admin ? 'sim' : 'não'}}'
                                 class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button></center>
                         </td>
                         <td>
@@ -164,8 +165,14 @@
                     @endforeach
                   </select>
               </div>
+          </div><br>
+          <div class="form-check">
+            <input class="form-check-input" name='is_admin'  type="checkbox"  id="item-is_admin">
+            <label class="form-check-label" for="item-is_admin">
+              Administrador
+            </label>
           </div>
-      </div>
+        </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-warning">Editar</button>
       </form>

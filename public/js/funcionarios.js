@@ -7,6 +7,16 @@ const rotulo = document.querySelector("#modalEditar #item-rotulo")
 const nome = document.querySelector("#modalEditar #item-nome")
 const id = document.querySelector("#modalEditar #item-id")
 const setor_id = document.querySelector("#modalEditar #item-setor_id")
+const is_admin = document.querySelector("#modalEditar #item-is_admin")
+
+is_admin_valor = button.getAttribute("data-item-is_admin");
+
+if(is_admin_valor == 'sim'){
+    is_admin.checked = true;
+}
+else{
+    is_admin.checked = false;
+}
 
 rotulo.value = button.getAttribute("data-item-rotulo")
 nome.value = button.getAttribute("data-item-nome")
@@ -19,7 +29,6 @@ opcoes.forEach(function (opcao) {
     if (opcao.innerText.trim() == button.getAttribute("data-item-setor").trim()) {
         setor_id.selectedIndex = opcao.index 
     }else{
-        console.log('false')
     }
 })
 }
