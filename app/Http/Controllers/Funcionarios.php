@@ -24,6 +24,13 @@ class Funcionarios extends BaseController
     }
     public function inserir(Request $request){
         $dados = (object) $request->all();
+       
+        if(isset($dados->is_admin)) {
+            $dados->is_admin = 1;
+        }
+        else{
+            $dados->is_admin  = NULL;
+        }
 
         $dados->setor_id = $dados->setor_id ?? NULL;
         
@@ -33,7 +40,8 @@ class Funcionarios extends BaseController
             'rotulo' => $dados->rotulo,
             'nome' => $dados->nome,
             'senha' => $dados->senha,
-            'setor_id' => $dados->setor_id
+            'setor_id' => $dados->setor_id,
+            'is_admin' => $dados->is_admin
         ]);
         return back();
     }
