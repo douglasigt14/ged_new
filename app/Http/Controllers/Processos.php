@@ -131,6 +131,9 @@ class Processos extends BaseController
         if(!$dados->processo_id){
             return back()->with('error-iniciar', 'Selecione um Processo para Iniciar o Fluxo');
         }
+        if(!$dados->obs and $dados->passo_processo_id == 608){
+            return back()->with('error-iniciar', 'Observação Obrigadoria');
+        }
         $tem_bifurcacao = $dados->tem_bifurcacao ?? NULL;
         $sqlFluxo = "SELECT 
                         pp_princial.*
