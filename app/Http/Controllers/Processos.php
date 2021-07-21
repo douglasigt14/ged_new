@@ -135,6 +135,9 @@ class Processos extends BaseController
         if(!$teste_obs and $dados->passo_processo_id == 608){
             return back()->with('error-iniciar', 'Observação Obrigatória');
         }
+        if(true){
+            dd($dados);
+        }
         $tem_bifurcacao = $dados->tem_bifurcacao ?? NULL;
         $sqlFluxo = "SELECT 
                         pp_princial.*
